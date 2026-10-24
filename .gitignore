@@ -1,6 +1,29 @@
-__pycache__/
-*.pyc
+# Node / Next.js
 node_modules/
-.env
 .next/
-dist/
+out/
+public/app/
+coverage/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local secrets and environments
+.env
+.env.*
+!.env.example
+
+# Test and performance artifacts
+playwright-report/
+test-results/
+artifacts/
+.lighthouseci/
+
+# OS/editor noise
+.DS_Store
+.idea/
+.vscode/
+*.swp

@@ -1,0 +1,38 @@
+name: Feature request
+description: Suggest a user, accessibility, workflow, or platform improvement.
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem should this solve?
+      description: Describe the user need, not only a proposed implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: What would the user be able to do?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Formula / solver
+        - Plotting / visualization
+        - Accessibility / responsive design
+        - PWA / offline
+        - API / deployment
+        - Documentation / contributor experience
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives and limitations
+      description: Include trade-offs, safety concerns, and any known alternatives.

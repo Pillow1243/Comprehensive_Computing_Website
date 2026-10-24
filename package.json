@@ -1,0 +1,38 @@
+{
+  "name": "solve-everything",
+  "version": "1.1.0",
+  "private": false,
+  "type": "module",
+  "description": "Client-first scientific formula solver and bilingual PWA",
+  "scripts": {
+    "predev": "node scripts/prepare-static-app.mjs",
+    "dev": "next dev --hostname 0.0.0.0",
+    "prebuild": "node scripts/prepare-static-app.mjs",
+    "build": "next build",
+    "sync-registry": "node scripts/sync-formula-catalog.mjs",
+    "validate-registry": "node scripts/validate-registry.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:e2e": "npm run build && playwright test",
+    "test:e2e:ci": "playwright test",
+    "lighthouse:ci": "node scripts/run-lighthouse-ci.mjs",
+    "check": "npm run validate-registry && npm test"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "dependencies": {
+    "next": "16.4.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "@types/node": "26.6.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.2.3",
+    "ajv": "8.20.0",
+    "chrome-launcher": "^1.2.2",
+    "lighthouse": "^13.5.0",
+    "typescript": "7.0.2"
+  }
+}

@@ -1,5 +1,6 @@
-// Formula Registry — SolveEverything  (schema: docs/FORMULA_TEMPLATE.md)
-// هر فرمول: id, name_fa/en, category_path, variables[], formula_latex, compute(), steps, plot_spec, examples/tests
+// Formula Registry — SolveEverything (schema: packages/formula-registry/schema.json)
+// Runtime solvers are trusted module functions; this registry never evaluates source strings.
+import {PHASE1_FORMULAS} from './phase1-formulas.js';
 const N=(name,label_fa,label_en,unit,def,opts={})=>({name,label_fa,label_en,type:opts.type||'number',unit:unit||null,default:def,required:true,min:opts.min,max:opts.max,step:opts.step});
 const out=(v,steps)=>({values:v,steps});
 const r=(x,d=6)=>{ if(!isFinite(x)) return x; const p=10**d; return Math.round(x*p)/p; };
@@ -171,7 +172,30 @@ export const FORMULAS=[
  {id:'matrix_2x2',name_fa:'ماتریس ۲×۲: دترمینان و معکوس',name_en:'2×2 Matrix: Det & Inverse',category_path:['ریاضیات','جبر خطی'],tags:['ماتریس','دترمینان'],description_fa:'دترمینان، معکوس، اثر (trace) و مقادیر ویژه ماتریس ۲×۲',formula_latex:'\\det=ad-bc,\\; A^{-1}=\\frac1{\\det}\\begin{pmatrix}d&-b\\\\-c&a\\end{pmatrix}',difficulty:'intermediate',version:'1.0.0',validated:true,
   variables:[N('a','a',null,null,2),N('b','b',null,null,1),N('c','c',null,null,1),N('d','d',null,null,3)],tests:[{input:{a:2,b:1,c:1,d:3},expected:{determinant:5,trace:5}}],
   compute({a,b,c,d}){const det=a*d-b*c,tr=a+d,disc=tr*tr-4*det;let vals={determinant:r(det),trace:tr};let s=[`det = ${a}×${d} − ${b}×${c} = ${r(det)}`];if(det!==0){vals.inverse=`[[${r(d/det)}, ${r(-b/det)}], [${r(-c/det)}, ${r(a/det)}]]`;s.push(`A⁻¹ = (1/${r(det)}) × [[${d}, ${-b}], [${-c}, ${a}]] = ${vals.inverse}`);}if(disc>=0){vals.eigenvalues=`${r((tr+Math.sqrt(disc))/2)}, ${r((tr-Math.sqrt(disc))/2)}`;s.push(`مقادیر ویژه: λ = ${vals.eigenvalues}`);}return out(vals,s);}},
+ ...PHASE1_FORMULAS,
 ];
+
+// Complete schema metadata while keeping executable solvers as trusted module functions.
+const phase1Ids=new Set(PHASE1_FORMULAS.map(formula=>formula.id));
+for (const formula of FORMULAS) {
+  for(const variable of formula.variables||[]){
+    variable.unit ??= null;
+    variable.required ??= true;
+    if(typeof variable.label_en!=='string'||!variable.label_en.trim()) variable.label_en=variable.name.replaceAll('_',' ').replace(/\b\w/g,char=>char.toUpperCase());
+  }
+  const outputNames=new Set([...(formula.outputs||[]).map(output=>output.name),...(formula.tests||[]).flatMap(test=>Object.keys(test.expected||{}))]);
+  formula.outputs=[...outputNames].map(name=>formula.outputs?.find(output=>output.name===name)||{name,label_fa:name,unit:null});
+  for(const output of formula.outputs){
+    output.unit ??= null;
+    if(typeof output.label_en!=='string'||!output.label_en.trim()) output.label_en=output.name.replaceAll('_',' ').replace(/\b\w/g,char=>char.toUpperCase());
+  }
+  formula.examples ||= formula.tests?.slice(0,1).map(test=>({input:test.input,expected:test.expected}))||[];
+  formula.references ||= [];
+  formula.plot_spec ??= null;
+  formula.compute_js ||= `module:apps/web/${phase1Ids.has(formula.id)?'phase1-formulas.js':'registry.js'}#${formula.id}`;
+  formula.steps_generator_ref ||= `module:apps/web/${phase1Ids.has(formula.id)?'phase1-formulas.js':'registry.js'}#${formula.id}`;
+  formula.steps_generator ||= (inputs)=>formula.compute(inputs).steps;
+}
 
 export function parseList(v){ if(Array.isArray(v))return v.map(Number); return String(v).split(/[,\s;،]+/).filter(s=>s!=='').map(Number); }
 export const r6=r;

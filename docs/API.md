@@ -1,13 +1,21 @@
 # طراحی API — REST `/api/v1`
 
+API پایتون **اختیاری** است و روی GitHub Pages اجرا نمی‌شود. رابط کاربری و ۱۰۰ فرمول کلاینتی بدون آن کار می‌کنند؛ فقط عملیات نمادین/سروری به میزبان FastAPI نیاز دارند. راه‌اندازی و CORS: [`DEPLOYMENT.md`](DEPLOYMENT.md).
+
+## پیاده‌سازی‌شده در `backend/main.py`
+
 | Method | Endpoint | توضیح | نمونه |
 |---|---|---|---|
-|GET|`/health`|سلامت سرویس|`{status:"ok"}`|
-|GET|`/api/v1/formulas?q=&category=`|جستجو/فهرست فرمول‌ها|پاسخ: `{count, items[]}`|
-|POST|`/api/v1/solve`|حل سمت سرور|`{formula_id, inputs}` → `{result:{values,steps}}`|
-|POST|`/api/v1/calculus/derivative?point=`|مشتق نمادین (SymPy) + مقدار در نقطه|`{expression:"x^3-2x"}` → `{derivative, latex, at_point}`|
-|POST|`/api/v1/calculus/integrate?a=&b=`|انتگرال نامعین/معین|→ `{indefinite, definite}`|
+| GET | `/health` | سلامت سرویس | `{ "status": "ok" }` |
+| GET | `/api/v1/formulas?q=&category=` | جست‌وجوی نمایه‌ی کوچک سروری (فعلاً سه فرمول) | پاسخ `{count, items[]}` |
+| POST | `/api/v1/solve` | حل‌گرهای سروری allow-list شده (فعلاً سه فرمول) | `{ "formula_id": "quadratic", "inputs": {"a":1,"b":-3,"c":2} }` |
+| POST | `/api/v1/calculus/derivative?point=2` | مشتق نمادین SymPy | `{ "expression": "x^3-2*x", "variable": "x" }` |
+| POST | `/api/v1/calculus/integrate?a=0&b=3` | انتگرال نامعین و معین SymPy | `{ "expression": "x^2", "variable": "x" }` |
 
-فاز ۱: `POST /auth/*` (NextAuth: ایمیل/رمز argon2id + OAuth گوگل/گیت‌هاب، JWT session)، `GET/POST /me/history`، `PUT/DELETE /me/bookmarks/{id}`، `POST /share` (لینک کوتاه)، `POST /contributions` + داوری، `GET /formulas/{id}` (صفحه SEO)، GraphQL و SDK (`sdk/js`, `sdk/python`)، کلید API و quota (جدول `api_keys`).
-خطاها: `{detail}` با کدهای 400/401/404/422/429. Rate-limit: ۱۲۰ درخواست/دقیقه/IP (در تولید: Redis + بر اساس API-key).
-OpenAPI زنده: اجرای بک‌اند و مراجعه به `/docs`.
+پارسر نمادین فقط عملگرها، نام متغیر انتخاب‌شده، `pi`/`E` و توابع allow-list شده را از AST می‌پذیرد؛ `eval` و `sympy.parse_expr` استفاده نمی‌شوند. سقف طول عبارت ۵۰۰ نویسه و پیچیدگی درخت ۱۲۸ گره است. لایه‌ی عددی fallback نیز allow-list مستقل دارد. محدودیت نرخ محلی در حافظه ۱۲۰ درخواست در دقیقه/IP است؛ سرویس تولیدی باید از Redis/پراکسی API-aware استفاده کند.
+
+## برنامه‌ی آینده — هنوز پیاده‌سازی نشده
+
+احراز هویت/NextAuth، تاریخچه و نشانک‌های همگام‌شده، لینک کوتاه اشتراک‌گذاری، گردش کار مشارکت و بازبینی، GraphQL/SDK، کلید API و quota هنوز endpoint اجرایی ندارند. پایگاه داده‌ی نمونه و طرح معماری در مخزن صرفاً مستند/آماده‌سازی هستند؛ آن‌ها را با امکانات عملیاتی اشتباه نگیرید.
+
+OpenAPI زنده: اجرای FastAPI و مراجعه به `/docs`. خطاهای ورودی معمولاً `422` هستند؛ فرمول سروری ناشناخته `404` و محدودیت نرخ `429` برمی‌گرداند.

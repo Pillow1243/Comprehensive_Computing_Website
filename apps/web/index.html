@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="SolveEverything — حل گام‌به‌گام هر معادله و محاسبه ریاضی، فیزیک، شیمی و مهندسی با رسم پویا و پشتیبانی واحد">
 <meta name="theme-color" content="#7c5cff">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: blob:; font-src 'self' data: https://cdn.jsdelivr.net; connect-src 'self' https:; manifest-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
 <title>SolveEverything | حل همه‌چیز</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
@@ -70,6 +71,7 @@
       <div class="calc-wrap card"><input id="calcExpr" dir="ltr" class="calc-input" value="sqrt(16) + 3^2 * ln(e)" aria-label="عبارت ریاضی"><div id="calcOut" class="calc-out" dir="ltr" aria-live="polite"></div>
       <div class="calc-keys" id="calcKeys"></div></div>
       <div class="card"><h2>ابزار سریع</h2><label>مشتق عددی f در x — f: <input id="derivF" dir="ltr" value="x^3-2x"> x: <input id="derivX" type="number" value="2" class="mini"></label> <button class="btn" id="derivBtn">محاسبه</button> <span id="derivOut"></span><hr>
+      <label>مشتق نمادین سمت سرور — f: <input id="symbolicDerivF" dir="ltr" value="x^3-2*x"> x: <input id="symbolicDerivX" type="number" value="2" class="mini"></label> <button class="btn" id="serverDerivBtn">مشتق نمادین</button> <span id="serverDerivOut" role="status" aria-live="polite"></span><hr>
       <label>انتگرال سیمپسون ∫ f از a تا b — f: <input id="intF" dir="ltr" value="x^2"> a: <input id="intA" type="number" value="0" class="mini"> b: <input id="intB" type="number" value="3" class="mini"></label> <button class="btn" id="intBtn">محاسبه</button> <span id="intOut"></span><hr>
       <label>ریشه‌یابی دودویی در [a,b] — f: <input id="rootF" dir="ltr" value="x^2-2"> a: <input id="rootA" type="number" value="0" class="mini"> b: <input id="rootB" type="number" value="2" class="mini"></label> <button class="btn" id="rootBtn">محاسبه</button> <span id="rootOut"></span></div>
     </section>
@@ -86,5 +88,6 @@
 </div>
 <footer class="footer"><span>SolveEverything — Phase 0 MVP</span><a href="#/catalog">Catalog</a><a href="../..//docs/API.md">API</a><span id="offlineBadge" class="muted"></span></footer>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="runtime-config.js"></script>
 <script type="module" src="app.js"></script>
 </body></html>

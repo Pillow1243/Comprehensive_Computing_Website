@@ -1,0 +1,51 @@
+name: Formula request or correction
+description: Request a formula or report a mathematical/scientific result or unit error.
+title: "[Formula]: "
+labels: ["formula", "needs-review"]
+body:
+  - type: input
+    id: formula-name
+    attributes:
+      label: Formula name (Persian and/or English)
+      placeholder: e.g. Carnot efficiency
+    validations:
+      required: true
+  - type: input
+    id: formula-id
+    attributes:
+      label: Existing formula ID (for corrections)
+      placeholder: e.g. carnot_efficiency
+  - type: textarea
+    id: equation
+    attributes:
+      label: Equation and assumptions
+      description: Provide LaTeX or a clear equation, plus the domain/assumptions.
+    validations:
+      required: true
+  - type: textarea
+    id: variables
+    attributes:
+      label: Variables, units, and valid ranges
+      placeholder: "T_h: hot-reservoir temperature, kelvin, > 0"
+    validations:
+      required: true
+  - type: textarea
+    id: examples
+    attributes:
+      label: At least four independently checkable input → expected output cases
+      description: Include edge cases and numerical precision/tolerance where relevant.
+      placeholder: "Input: ...; Expected: ..."
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: Authoritative references
+      description: Textbook, standard, peer-reviewed source, or trustworthy URL.
+    validations:
+      required: true
+  - type: textarea
+    id: implementation
+    attributes:
+      label: Suggested step-by-step explanation or plot
+      description: Optional. Do not include secrets or executable source strings.
