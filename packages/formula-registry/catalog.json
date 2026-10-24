@@ -1,6 +1,6 @@
 {
   "project": "SolveEverything",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "implemented_formula_ids": [
     "gcd_lcm",
     "prime_factor",
@@ -101,9 +101,64 @@
     "drag_force",
     "torque",
     "power_efficiency",
-    "carnot_efficiency"
+    "carnot_efficiency",
+    "prime_test",
+    "modular_inverse",
+    "binomial_theorem",
+    "sum_of_powers",
+    "base_converter",
+    "cubic_equation",
+    "linear_system_3",
+    "absolute_value_equation",
+    "ratio_simplify",
+    "rectangle_geometry",
+    "parallelogram_geometry",
+    "trapezoid_area",
+    "rhombus_geometry",
+    "pyramid_geometry",
+    "torus_geometry",
+    "haversine_distance",
+    "inverse_trig_eval",
+    "six_trig_ratios",
+    "taylor_polynomial",
+    "limit_numeric",
+    "riemann_sum",
+    "matrix_3x3_ops",
+    "vector_3d_cross",
+    "expected_value_discrete",
+    "hypergeometric_probability",
+    "exponential_distribution",
+    "uniform_distribution",
+    "geometric_distribution",
+    "confidence_interval_mean",
+    "chi_square_goodness",
+    "coulomb_law",
+    "electric_field_point",
+    "lorentz_force",
+    "doppler_effect",
+    "sound_decibels",
+    "thin_lens",
+    "spring_hooke_energy",
+    "orbital_mechanics",
+    "stefan_boltzmann",
+    "henderson_hasselbalch",
+    "beer_lambert",
+    "gibbs_free_energy",
+    "weak_acid_ph",
+    "equilibrium_constant",
+    "voltage_divider",
+    "rc_time_constant",
+    "gear_ratio",
+    "pressure_vessel",
+    "power_factor_ac",
+    "perpetuity",
+    "irr_calc",
+    "depreciation_straight_line",
+    "bmr_tdee",
+    "data_storage_converter",
+    "ipv4_subnet"
   ],
-  "implemented_count": 100,
+  "implemented_count": 155,
   "sections": [
     {
       "id": "sec_01",
@@ -126,7 +181,7 @@
         "درصد",
         "لگاریتم"
       ],
-      "implemented_formula_count": 15,
+      "implemented_formula_count": 20,
       "implemented_formula_ids": [
         "gcd_lcm",
         "prime_factor",
@@ -142,7 +197,12 @@
         "modular_power",
         "euler_totient",
         "chinese_remainder",
-        "fibonacci_number"
+        "fibonacci_number",
+        "prime_test",
+        "modular_inverse",
+        "sum_of_powers",
+        "base_converter",
+        "ratio_simplify"
       ]
     },
     {
@@ -159,7 +219,7 @@
         "دنباله و سری",
         "جبر بولی و کارنو"
       ],
-      "implemented_formula_count": 7,
+      "implemented_formula_count": 11,
       "implemented_formula_ids": [
         "quadratic",
         "linear_system_2",
@@ -167,7 +227,11 @@
         "geometric_seq",
         "log_solve",
         "exponential_equation",
-        "polynomial_horner"
+        "polynomial_horner",
+        "binomial_theorem",
+        "cubic_equation",
+        "linear_system_3",
+        "absolute_value_equation"
       ]
     },
     {
@@ -185,7 +249,7 @@
         "بردارها dot/cross",
         "تبدیل مختصات"
       ],
-      "implemented_formula_count": 16,
+      "implemented_formula_count": 25,
       "implemented_formula_ids": [
         "trig_triangle_law_of_cosines",
         "law_of_sines",
@@ -202,7 +266,16 @@
         "circle_sector",
         "ellipse_geometry",
         "cone_geometry",
-        "cylinder_geometry"
+        "cylinder_geometry",
+        "rectangle_geometry",
+        "parallelogram_geometry",
+        "trapezoid_area",
+        "rhombus_geometry",
+        "pyramid_geometry",
+        "torus_geometry",
+        "haversine_distance",
+        "inverse_trig_eval",
+        "six_trig_ratios"
       ]
     },
     {
@@ -220,11 +293,14 @@
         "PDE گرما/موج",
         "بهینه‌سازی لاگرانژ"
       ],
-      "implemented_formula_count": 3,
+      "implemented_formula_count": 6,
       "implemented_formula_ids": [
         "poly_derivative",
         "trapezoidal_integral",
-        "numeric_derivative"
+        "numeric_derivative",
+        "taylor_polynomial",
+        "limit_numeric",
+        "riemann_sum"
       ]
     },
     {
@@ -239,12 +315,14 @@
         "کمترین مربعات",
         "گرام-اشمیت"
       ],
-      "implemented_formula_count": 4,
+      "implemented_formula_count": 6,
       "implemented_formula_ids": [
         "matrix_2x2",
         "vector_dot_angle",
         "determinant_3x3",
-        "matrix_multiply_2x2"
+        "matrix_multiply_2x2",
+        "matrix_3x3_ops",
+        "vector_3d_cross"
       ]
     },
     {
@@ -261,7 +339,7 @@
         "مارکوف",
         "ترکیبیات"
       ],
-      "implemented_formula_count": 11,
+      "implemented_formula_count": 18,
       "implemented_formula_ids": [
         "descriptive_stats",
         "normal_dist",
@@ -273,7 +351,14 @@
         "binomial_probability",
         "bayes_test",
         "poisson_probability",
-        "independent_union_probability"
+        "independent_union_probability",
+        "expected_value_discrete",
+        "hypergeometric_probability",
+        "exponential_distribution",
+        "uniform_distribution",
+        "geometric_distribution",
+        "confidence_interval_mean",
+        "chi_square_goodness"
       ]
     },
     {
@@ -340,7 +425,7 @@
         "نسبیت",
         "کوانتوم و هسته‌ای"
       ],
-      "implemented_formula_count": 22,
+      "implemented_formula_count": 31,
       "implemented_formula_ids": [
         "kinematics",
         "newton_energy",
@@ -363,7 +448,16 @@
         "drag_force",
         "torque",
         "power_efficiency",
-        "carnot_efficiency"
+        "carnot_efficiency",
+        "coulomb_law",
+        "electric_field_point",
+        "lorentz_force",
+        "doppler_effect",
+        "sound_decibels",
+        "thin_lens",
+        "spring_hooke_energy",
+        "orbital_mechanics",
+        "stefan_boltzmann"
       ]
     },
     {
@@ -382,7 +476,7 @@
         "بیر-لامبرت",
         "مایکلیس-منتن"
       ],
-      "implemented_formula_count": 9,
+      "implemented_formula_count": 14,
       "implemented_formula_ids": [
         "ph",
         "molarity",
@@ -392,7 +486,12 @@
         "nernst",
         "combined_gas_law",
         "dilution",
-        "faraday_electrolysis"
+        "faraday_electrolysis",
+        "henderson_hasselbalch",
+        "beer_lambert",
+        "gibbs_free_energy",
+        "weak_acid_ph",
+        "equilibrium_constant"
       ]
     },
     {
@@ -410,14 +509,19 @@
         "سه‌فاز و ترانس",
         "چرخ‌دنده و شافت"
       ],
-      "implemented_formula_count": 6,
+      "implemented_formula_count": 11,
       "implemented_formula_ids": [
         "beam_simple",
         "stress_strain",
         "reynolds",
         "heat_conduction",
         "conduction_heat_rate",
-        "resistor_series_parallel"
+        "resistor_series_parallel",
+        "voltage_divider",
+        "rc_time_constant",
+        "gear_ratio",
+        "pressure_vessel",
+        "power_factor_ac"
       ]
     },
     {
@@ -519,12 +623,15 @@
         "GARCH",
         "درخت دوجمله‌ای"
       ],
-      "implemented_formula_count": 4,
+      "implemented_formula_count": 7,
       "implemented_formula_ids": [
         "compound_interest",
         "loan_payment",
         "npv",
-        "finance_effective_rate"
+        "finance_effective_rate",
+        "perpetuity",
+        "irr_calc",
+        "depreciation_straight_line"
       ]
     },
     {
@@ -11289,6 +11396,5568 @@
       "references": [],
       "difficulty": "basic",
       "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "prime_test",
+      "name_fa": "آزمون اول بودن عدد",
+      "name_en": "Primality Test",
+      "category_path": [
+        "ریاضیات",
+        "حساب و نظریه اعداد"
+      ],
+      "tags": [
+        "اول",
+        "prime",
+        "آزمون"
+      ],
+      "description_fa": "تشخیص اول یا مرکب بودن عدد صحیح با آزمون تقسیم آزمایشی تا √n و کوچک‌ترین مقسوم‌علیه",
+      "variables": [
+        {
+          "name": "n",
+          "label_fa": "عدد صحیح n",
+          "label_en": "Integer n",
+          "type": "number",
+          "unit": null,
+          "default": 97,
+          "required": true,
+          "min": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "is_prime",
+          "label_fa": "is_prime",
+          "unit": null,
+          "label_en": "Is Prime"
+        },
+        {
+          "name": "smallest_factor",
+          "label_fa": "smallest_factor",
+          "unit": null,
+          "label_en": "Smallest Factor"
+        }
+      ],
+      "formula_latex": "n\\ \\mathrm{prime}\\iff\\nexists\\ p\\le\\sqrt n:\\ p\\mid n",
+      "compute_js": "module:apps/web/phase2-formulas.js#prime_test",
+      "steps_generator": "module:apps/web/phase2-formulas.js#prime_test",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "n": 97
+          },
+          "expected": {
+            "is_prime": true,
+            "smallest_factor": "—"
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "n": 97
+          },
+          "expected": {
+            "is_prime": true,
+            "smallest_factor": "—"
+          }
+        },
+        {
+          "input": {
+            "n": 121
+          },
+          "expected": {
+            "is_prime": false,
+            "smallest_factor": 11
+          }
+        },
+        {
+          "input": {
+            "n": 2
+          },
+          "expected": {
+            "is_prime": true,
+            "smallest_factor": "—"
+          }
+        },
+        {
+          "input": {
+            "n": 1
+          },
+          "expected": {
+            "is_prime": false,
+            "smallest_factor": "—"
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "modular_inverse",
+      "name_fa": "معکوس پیمانه‌ای (اکلیدس تعمیم‌یافته)",
+      "name_en": "Modular Inverse",
+      "category_path": [
+        "ریاضیات",
+        "حساب و نظریه اعداد"
+      ],
+      "tags": [
+        "پیمانه",
+        "معکوس",
+        "rsa"
+      ],
+      "description_fa": "یافتن x به‌طوری‌که a·x ≡ 1 (mod m) با الگوریتم اقلیدس تعمیم‌یافته؛ تنها در حالت نسبت به هم اول",
+      "variables": [
+        {
+          "name": "a",
+          "label_fa": "عدد a",
+          "label_en": "a",
+          "type": "number",
+          "unit": null,
+          "default": 3,
+          "required": true
+        },
+        {
+          "name": "m",
+          "label_fa": "پیمانه m",
+          "label_en": "Modulus m",
+          "type": "number",
+          "unit": null,
+          "default": 11,
+          "required": true,
+          "min": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "inverse",
+          "label_fa": "inverse",
+          "unit": null,
+          "label_en": "Inverse"
+        }
+      ],
+      "formula_latex": "a\\,x\\equiv 1\\pmod m,\\quad \\gcd(a,m)=1",
+      "compute_js": "module:apps/web/phase2-formulas.js#modular_inverse",
+      "steps_generator": "module:apps/web/phase2-formulas.js#modular_inverse",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "a": 3,
+            "m": 11
+          },
+          "expected": {
+            "inverse": 4
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "a": 3,
+            "m": 11
+          },
+          "expected": {
+            "inverse": 4
+          }
+        },
+        {
+          "input": {
+            "a": 7,
+            "m": 26
+          },
+          "expected": {
+            "inverse": 15
+          }
+        },
+        {
+          "input": {
+            "a": 17,
+            "m": 3120
+          },
+          "expected": {
+            "inverse": 2753
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "binomial_theorem",
+      "name_fa": "بسط دو جمله‌ای (ضرایب پاسکال)",
+      "name_en": "Binomial Expansion",
+      "category_path": [
+        "ریاضیات",
+        "جبر"
+      ],
+      "tags": [
+        "دو جمله‌ای",
+        "پاسکال",
+        "بسط"
+      ],
+      "description_fa": "محاسبه ضرایب و جملات بسط (a+b)^n با مثلث پاسکال برای n تا ۲۰",
+      "variables": [
+        {
+          "name": "a",
+          "label_fa": "a",
+          "label_en": "a",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true
+        },
+        {
+          "name": "b",
+          "label_fa": "b",
+          "label_en": "b",
+          "type": "number",
+          "unit": null,
+          "default": 3,
+          "required": true
+        },
+        {
+          "name": "n",
+          "label_fa": "توان n (۰ تا ۲۰)",
+          "label_en": "Power n",
+          "type": "number",
+          "unit": null,
+          "default": 4,
+          "required": true,
+          "min": 0,
+          "max": 20
+        }
+      ],
+      "outputs": [
+        {
+          "name": "coefficients",
+          "label_fa": "coefficients",
+          "unit": null,
+          "label_en": "Coefficients"
+        },
+        {
+          "name": "expansion_sum",
+          "label_fa": "expansion_sum",
+          "unit": null,
+          "label_en": "Expansion Sum"
+        }
+      ],
+      "formula_latex": "(a+b)^n=\\sum_{k=0}^{n}\\binom{n}{k}a^{n-k}b^k",
+      "compute_js": "module:apps/web/phase2-formulas.js#binomial_theorem",
+      "steps_generator": "module:apps/web/phase2-formulas.js#binomial_theorem",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "a": 1,
+            "b": 1,
+            "n": 3
+          },
+          "expected": {
+            "coefficients": "1, 3, 3, 1",
+            "expansion_sum": 8
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "a": 1,
+            "b": 1,
+            "n": 3
+          },
+          "expected": {
+            "coefficients": "1, 3, 3, 1",
+            "expansion_sum": 8
+          }
+        },
+        {
+          "input": {
+            "a": 2,
+            "b": 3,
+            "n": 2
+          },
+          "expected": {
+            "coefficients": "1, 2, 1",
+            "expansion_sum": 25
+          }
+        },
+        {
+          "input": {
+            "a": 1,
+            "b": 0,
+            "n": 5
+          },
+          "expected": {
+            "expansion_sum": 1
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "sum_of_powers",
+      "name_fa": "مجموع توان‌های اول (Σk, Σk², Σk³)",
+      "name_en": "Sum of Powers",
+      "category_path": [
+        "ریاضیات",
+        "حساب و نظریه اعداد"
+      ],
+      "tags": [
+        "مجموع",
+        "سیگما",
+        "سری"
+      ],
+      "description_fa": "مجموع اعداد طبیعی، مربع‌ها و مکعب‌ها از ۱ تا n با فرمول‌های فاولهابر",
+      "variables": [
+        {
+          "name": "n",
+          "label_fa": "عدد طبیعی n",
+          "label_en": "n",
+          "type": "number",
+          "unit": null,
+          "default": 10,
+          "required": true,
+          "min": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "sum_k",
+          "label_fa": "sum_k",
+          "unit": null,
+          "label_en": "Sum K"
+        },
+        {
+          "name": "sum_k2",
+          "label_fa": "sum_k2",
+          "unit": null,
+          "label_en": "Sum K2"
+        },
+        {
+          "name": "sum_k3",
+          "label_fa": "sum_k3",
+          "unit": null,
+          "label_en": "Sum K3"
+        }
+      ],
+      "formula_latex": "\\sum k=\\frac{n(n+1)}2,\\ \\sum k^2=\\frac{n(n+1)(2n+1)}6,\\ \\sum k^3=\\left(\\frac{n(n+1)}2\\right)^2",
+      "compute_js": "module:apps/web/phase2-formulas.js#sum_of_powers",
+      "steps_generator": "module:apps/web/phase2-formulas.js#sum_of_powers",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "n": 5
+          },
+          "expected": {
+            "sum_k": 15,
+            "sum_k2": 55,
+            "sum_k3": 225
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "n": 5
+          },
+          "expected": {
+            "sum_k": 15,
+            "sum_k2": 55,
+            "sum_k3": 225
+          }
+        },
+        {
+          "input": {
+            "n": 10
+          },
+          "expected": {
+            "sum_k": 55,
+            "sum_k2": 385,
+            "sum_k3": 3025
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "base_converter",
+      "name_fa": "تبدیل مبنا (۲ تا ۳۶)",
+      "name_en": "Number Base Converter",
+      "category_path": [
+        "ریاضیات",
+        "حساب و نظریه اعداد"
+      ],
+      "tags": [
+        "مبنا",
+        "باینری",
+        "هگزادسیمال"
+      ],
+      "description_fa": "تبدیل عدد صحیح بین مبناهای ۲ تا ۳۶ (باینری، اکتال، ده‌دهی، هگز و...)",
+      "variables": [
+        {
+          "name": "value",
+          "label_fa": "عدد (رقم‌های مجاز مبنا)",
+          "label_en": "Number digits",
+          "type": "text",
+          "unit": null,
+          "default": "FF",
+          "required": true
+        },
+        {
+          "name": "from_base",
+          "label_fa": "مبنای ورودی",
+          "label_en": "From base",
+          "type": "number",
+          "unit": null,
+          "default": 16,
+          "required": true,
+          "min": 2,
+          "max": 36
+        },
+        {
+          "name": "to_base",
+          "label_fa": "مبنای خروجی",
+          "label_en": "To base",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true,
+          "min": 2,
+          "max": 36
+        }
+      ],
+      "outputs": [
+        {
+          "name": "decimal",
+          "label_fa": "decimal",
+          "unit": null,
+          "label_en": "Decimal"
+        },
+        {
+          "name": "result",
+          "label_fa": "result",
+          "unit": null,
+          "label_en": "Result"
+        }
+      ],
+      "formula_latex": "(d_k\\dots d_1d_0)_b=\\sum d_i b^i",
+      "compute_js": "module:apps/web/phase2-formulas.js#base_converter",
+      "steps_generator": "module:apps/web/phase2-formulas.js#base_converter",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "value": "FF",
+            "from_base": 16,
+            "to_base": 10
+          },
+          "expected": {
+            "decimal": 255,
+            "result": "255"
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "value": "FF",
+            "from_base": 16,
+            "to_base": 10
+          },
+          "expected": {
+            "decimal": 255,
+            "result": "255"
+          }
+        },
+        {
+          "input": {
+            "value": "1010",
+            "from_base": 2,
+            "to_base": 10
+          },
+          "expected": {
+            "decimal": 10,
+            "result": "10"
+          }
+        },
+        {
+          "input": {
+            "value": "255",
+            "from_base": 10,
+            "to_base": 2
+          },
+          "expected": {
+            "decimal": 255,
+            "result": "11111111"
+          }
+        },
+        {
+          "input": {
+            "value": "17",
+            "from_base": 10,
+            "to_base": 8
+          },
+          "expected": {
+            "decimal": 17,
+            "result": "21"
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "cubic_equation",
+      "name_fa": "معادله درجه سه (کاردانو)",
+      "name_en": "Cubic Equation (Cardano)",
+      "category_path": [
+        "ریاضیات",
+        "جبر"
+      ],
+      "tags": [
+        "درجه سه",
+        "کاردانو",
+        "ریشه"
+      ],
+      "description_fa": "حل معادله ax³+bx²+cx+d=0 با فرمول کاردانو/حالت مثلثاتی؛ ریشه‌های حقیقی و رسم تابع",
+      "variables": [
+        {
+          "name": "a",
+          "label_fa": "ضریب a",
+          "label_en": "a",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "b",
+          "label_fa": "ضریب b",
+          "label_en": "b",
+          "type": "number",
+          "unit": null,
+          "default": -6,
+          "required": true
+        },
+        {
+          "name": "c",
+          "label_fa": "ضریب c",
+          "label_en": "c",
+          "type": "number",
+          "unit": null,
+          "default": 11,
+          "required": true
+        },
+        {
+          "name": "d",
+          "label_fa": "ضریب d",
+          "label_en": "d",
+          "type": "number",
+          "unit": null,
+          "default": -6,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "root_count",
+          "label_fa": "root_count",
+          "unit": null,
+          "label_en": "Root Count"
+        },
+        {
+          "name": "root_1",
+          "label_fa": "root_1",
+          "unit": null,
+          "label_en": "Root 1"
+        },
+        {
+          "name": "root_2",
+          "label_fa": "root_2",
+          "unit": null,
+          "label_en": "Root 2"
+        },
+        {
+          "name": "root_3",
+          "label_fa": "root_3",
+          "unit": null,
+          "label_en": "Root 3"
+        }
+      ],
+      "formula_latex": "ax^3+bx^2+cx+d=0,\\quad p=\\frac{3ac-b^2}{3a^2}",
+      "compute_js": "module:apps/web/phase2-formulas.js#cubic_equation",
+      "steps_generator": "module:apps/web/phase2-formulas.js#cubic_equation",
+      "plot_spec": {
+        "type": "cubic"
+      },
+      "examples": [
+        {
+          "input": {
+            "a": 1,
+            "b": -6,
+            "c": 11,
+            "d": -6
+          },
+          "expected": {
+            "root_count": 3,
+            "root_1": 1,
+            "root_2": 2,
+            "root_3": 3
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "a": 1,
+            "b": -6,
+            "c": 11,
+            "d": -6
+          },
+          "expected": {
+            "root_count": 3,
+            "root_1": 1,
+            "root_2": 2,
+            "root_3": 3
+          }
+        },
+        {
+          "input": {
+            "a": 1,
+            "b": 0,
+            "c": 0,
+            "d": -1
+          },
+          "expected": {
+            "root_count": 1,
+            "root_1": 1
+          }
+        },
+        {
+          "input": {
+            "a": 1,
+            "b": 0,
+            "c": -3,
+            "d": 0
+          },
+          "expected": {
+            "root_count": 3,
+            "root_2": 0
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "linear_system_3",
+      "name_fa": "دستگاه سه معادله خطی (کرامر)",
+      "name_en": "3×3 Linear System (Cramer)",
+      "category_path": [
+        "ریاضیات",
+        "جبر"
+      ],
+      "tags": [
+        "دستگاه",
+        "کرامر",
+        "دترمینان"
+      ],
+      "description_fa": "حل دستگاه ۳×۳ با قاعده کرامر و بررسی دترمینان",
+      "variables": [
+        {
+          "name": "a1",
+          "label_fa": "a₁",
+          "label_en": "A1",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "b1",
+          "label_fa": "b₁",
+          "label_en": "B1",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "c1",
+          "label_fa": "c₁",
+          "label_en": "C1",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "d1",
+          "label_fa": "پاسخ ۱",
+          "label_en": "RHS 1",
+          "type": "number",
+          "unit": null,
+          "default": 6,
+          "required": true
+        },
+        {
+          "name": "a2",
+          "label_fa": "a₂",
+          "label_en": "A2",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true
+        },
+        {
+          "name": "b2",
+          "label_fa": "b₂",
+          "label_en": "B2",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "c2",
+          "label_fa": "c₂",
+          "label_en": "C2",
+          "type": "number",
+          "unit": null,
+          "default": -1,
+          "required": true
+        },
+        {
+          "name": "d2",
+          "label_fa": "پاسخ ۲",
+          "label_en": "RHS 2",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "a3",
+          "label_fa": "a₃",
+          "label_en": "A3",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "b3",
+          "label_fa": "b₃",
+          "label_en": "B3",
+          "type": "number",
+          "unit": null,
+          "default": -1,
+          "required": true
+        },
+        {
+          "name": "c3",
+          "label_fa": "c₃",
+          "label_en": "C3",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true
+        },
+        {
+          "name": "d3",
+          "label_fa": "پاسخ ۳",
+          "label_en": "RHS 3",
+          "type": "number",
+          "unit": null,
+          "default": 5,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "det",
+          "label_fa": "det",
+          "unit": null,
+          "label_en": "Det"
+        },
+        {
+          "name": "x",
+          "label_fa": "x",
+          "unit": null,
+          "label_en": "X"
+        },
+        {
+          "name": "y",
+          "label_fa": "y",
+          "unit": null,
+          "label_en": "Y"
+        },
+        {
+          "name": "z",
+          "label_fa": "z",
+          "unit": null,
+          "label_en": "Z"
+        }
+      ],
+      "formula_latex": "x=\\frac{D_x}{D},\\ y=\\frac{D_y}{D},\\ z=\\frac{D_z}{D}",
+      "compute_js": "module:apps/web/phase2-formulas.js#linear_system_3",
+      "steps_generator": "module:apps/web/phase2-formulas.js#linear_system_3",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "a1": 1,
+            "b1": 1,
+            "c1": 1,
+            "d1": 6,
+            "a2": 2,
+            "b2": 1,
+            "c2": -1,
+            "d2": 1,
+            "a3": 1,
+            "b3": -1,
+            "c3": 2,
+            "d3": 5
+          },
+          "expected": {
+            "det": -7,
+            "x": 1,
+            "y": 2,
+            "z": 3
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "a1": 1,
+            "b1": 1,
+            "c1": 1,
+            "d1": 6,
+            "a2": 2,
+            "b2": 1,
+            "c2": -1,
+            "d2": 1,
+            "a3": 1,
+            "b3": -1,
+            "c3": 2,
+            "d3": 5
+          },
+          "expected": {
+            "det": -7,
+            "x": 1,
+            "y": 2,
+            "z": 3
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "absolute_value_equation",
+      "name_fa": "معادله قدر مطلق",
+      "name_en": "Absolute Value Equation",
+      "category_path": [
+        "ریاضیات",
+        "جبر"
+      ],
+      "tags": [
+        "قدر مطلق",
+        "معادله"
+      ],
+      "description_fa": "حل |a·x+b|=k؛ در صورت مثبت بودن k دو جواب، صفر یک جواب و منفی بی‌جواب",
+      "variables": [
+        {
+          "name": "a",
+          "label_fa": "ضریب a (مخالف صفر)",
+          "label_en": "a",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true
+        },
+        {
+          "name": "b",
+          "label_fa": "b",
+          "label_en": "b",
+          "type": "number",
+          "unit": null,
+          "default": -4,
+          "required": true
+        },
+        {
+          "name": "k",
+          "label_fa": "مقدار k (نامنفی)",
+          "label_en": "k",
+          "type": "number",
+          "unit": null,
+          "default": 6,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "solution_count",
+          "label_fa": "solution_count",
+          "unit": null,
+          "label_en": "Solution Count"
+        },
+        {
+          "name": "x1",
+          "label_fa": "x1",
+          "unit": null,
+          "label_en": "X1"
+        },
+        {
+          "name": "x2",
+          "label_fa": "x2",
+          "unit": null,
+          "label_en": "X2"
+        }
+      ],
+      "formula_latex": "|ax+b|=k\\Rightarrow ax+b=\\pm k",
+      "compute_js": "module:apps/web/phase2-formulas.js#absolute_value_equation",
+      "steps_generator": "module:apps/web/phase2-formulas.js#absolute_value_equation",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "a": 2,
+            "b": -4,
+            "k": 6
+          },
+          "expected": {
+            "solution_count": 2,
+            "x1": -1,
+            "x2": 5
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "a": 2,
+            "b": -4,
+            "k": 6
+          },
+          "expected": {
+            "solution_count": 2,
+            "x1": -1,
+            "x2": 5
+          }
+        },
+        {
+          "input": {
+            "a": 3,
+            "b": 6,
+            "k": 0
+          },
+          "expected": {
+            "solution_count": 1,
+            "x1": -2
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "ratio_simplify",
+      "name_fa": "ساده‌سازی نسبت (a:b)",
+      "name_en": "Ratio Simplifier",
+      "category_path": [
+        "ریاضیات",
+        "حساب و نظریه اعداد"
+      ],
+      "tags": [
+        "نسبت",
+        "تناسب"
+      ],
+      "description_fa": "ساده‌سازی نسبت دو عدد صحیح با ب.م.م و مقدار اعشاری",
+      "variables": [
+        {
+          "name": "a",
+          "label_fa": "عدد اول",
+          "label_en": "a",
+          "type": "number",
+          "unit": null,
+          "default": 12,
+          "required": true
+        },
+        {
+          "name": "b",
+          "label_fa": "عدد دوم",
+          "label_en": "b",
+          "type": "number",
+          "unit": null,
+          "default": 18,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "simplified",
+          "label_fa": "simplified",
+          "unit": null,
+          "label_en": "Simplified"
+        },
+        {
+          "name": "a_simple",
+          "label_fa": "a_simple",
+          "unit": null,
+          "label_en": "A Simple"
+        },
+        {
+          "name": "b_simple",
+          "label_fa": "b_simple",
+          "unit": null,
+          "label_en": "B Simple"
+        }
+      ],
+      "formula_latex": "a:b=\\frac{a}{g}:\\frac{b}{g},\\quad g=\\gcd(a,b)",
+      "compute_js": "module:apps/web/phase2-formulas.js#ratio_simplify",
+      "steps_generator": "module:apps/web/phase2-formulas.js#ratio_simplify",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "a": 12,
+            "b": 18
+          },
+          "expected": {
+            "simplified": "2 : 3",
+            "a_simple": 2,
+            "b_simple": 3
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "a": 12,
+            "b": 18
+          },
+          "expected": {
+            "simplified": "2 : 3",
+            "a_simple": 2,
+            "b_simple": 3
+          }
+        },
+        {
+          "input": {
+            "a": 100,
+            "b": 25
+          },
+          "expected": {
+            "simplified": "4 : 1",
+            "a_simple": 4,
+            "b_simple": 1
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "rectangle_geometry",
+      "name_fa": "مستطیل: مساحت، محیط، قطر",
+      "name_en": "Rectangle Geometry",
+      "category_path": [
+        "ریاضیات",
+        "هندسه و مثلثات"
+      ],
+      "tags": [
+        "مستطیل",
+        "مساحت",
+        "قطر"
+      ],
+      "description_fa": "مساحت، محیط و قطر مستطیل از روی دو ضلع",
+      "variables": [
+        {
+          "name": "a",
+          "label_fa": "طول a",
+          "label_en": "Length a",
+          "type": "number",
+          "unit": "length",
+          "default": 3,
+          "required": true
+        },
+        {
+          "name": "b",
+          "label_fa": "عرض b",
+          "label_en": "Width b",
+          "type": "number",
+          "unit": "length",
+          "default": 4,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "area",
+          "label_fa": "area",
+          "unit": null,
+          "label_en": "Area"
+        },
+        {
+          "name": "perimeter",
+          "label_fa": "perimeter",
+          "unit": null,
+          "label_en": "Perimeter"
+        },
+        {
+          "name": "diagonal",
+          "label_fa": "diagonal",
+          "unit": null,
+          "label_en": "Diagonal"
+        }
+      ],
+      "formula_latex": "A=ab,\\ P=2(a+b),\\ d=\\sqrt{a^2+b^2}",
+      "compute_js": "module:apps/web/phase2-formulas.js#rectangle_geometry",
+      "steps_generator": "module:apps/web/phase2-formulas.js#rectangle_geometry",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "a": 3,
+            "b": 4
+          },
+          "expected": {
+            "area": 12,
+            "perimeter": 14,
+            "diagonal": 5
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "a": 3,
+            "b": 4
+          },
+          "expected": {
+            "area": 12,
+            "perimeter": 14,
+            "diagonal": 5
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "parallelogram_geometry",
+      "name_fa": "متوازی‌الاضلاع",
+      "name_en": "Parallelogram Geometry",
+      "category_path": [
+        "ریاضیات",
+        "هندسه و مثلثات"
+      ],
+      "tags": [
+        "متوازی",
+        "اضلاع"
+      ],
+      "description_fa": "مساحت، محیط و قطرهای متوازی‌الاضلاع با ارتفاع و زاویه",
+      "variables": [
+        {
+          "name": "a",
+          "label_fa": "ضلع a",
+          "label_en": "Side a",
+          "type": "number",
+          "unit": "length",
+          "default": 5,
+          "required": true
+        },
+        {
+          "name": "b",
+          "label_fa": "ضلع b",
+          "label_en": "Side b",
+          "type": "number",
+          "unit": "length",
+          "default": 4,
+          "required": true
+        },
+        {
+          "name": "h",
+          "label_fa": "ارتفاع h",
+          "label_en": "Height h",
+          "type": "number",
+          "unit": "length",
+          "default": 3,
+          "required": true
+        },
+        {
+          "name": "theta",
+          "label_fa": "زاویه θ (درجه)",
+          "label_en": "Angle θ",
+          "type": "number",
+          "unit": "angle",
+          "default": 60,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "area",
+          "label_fa": "area",
+          "unit": null,
+          "label_en": "Area"
+        },
+        {
+          "name": "perimeter",
+          "label_fa": "perimeter",
+          "unit": null,
+          "label_en": "Perimeter"
+        }
+      ],
+      "formula_latex": "A=ah,\\ d_{1,2}=\\sqrt{a^2+b^2\\pm2ab\\cos\\theta}",
+      "compute_js": "module:apps/web/phase2-formulas.js#parallelogram_geometry",
+      "steps_generator": "module:apps/web/phase2-formulas.js#parallelogram_geometry",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "a": 5,
+            "b": 4,
+            "h": 3,
+            "theta": 60
+          },
+          "expected": {
+            "area": 15,
+            "perimeter": 18
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "a": 5,
+            "b": 4,
+            "h": 3,
+            "theta": 60
+          },
+          "expected": {
+            "area": 15,
+            "perimeter": 18
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "trapezoid_area",
+      "name_fa": "ذوزنقه: مساحت و خط وسط",
+      "name_en": "Trapezoid Area",
+      "category_path": [
+        "ریاضیات",
+        "هندسه و مثلثات"
+      ],
+      "tags": [
+        "ذوزنقه",
+        "مساحت"
+      ],
+      "description_fa": "مساحت ذوزنقه از روی دو قاعده و ارتفاع، به‌همراه خط وسط",
+      "variables": [
+        {
+          "name": "a",
+          "label_fa": "قاعده بزرگ a",
+          "label_en": "Base a",
+          "type": "number",
+          "unit": "length",
+          "default": 5,
+          "required": true
+        },
+        {
+          "name": "b",
+          "label_fa": "قاعده کوچک b",
+          "label_en": "Base b",
+          "type": "number",
+          "unit": "length",
+          "default": 3,
+          "required": true
+        },
+        {
+          "name": "h",
+          "label_fa": "ارتفاع h",
+          "label_en": "Height h",
+          "type": "number",
+          "unit": "length",
+          "default": 4,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "area",
+          "label_fa": "area",
+          "unit": null,
+          "label_en": "Area"
+        },
+        {
+          "name": "midline",
+          "label_fa": "midline",
+          "unit": null,
+          "label_en": "Midline"
+        }
+      ],
+      "formula_latex": "A=\\frac{a+b}{2}h,\\quad m=\\frac{a+b}{2}",
+      "compute_js": "module:apps/web/phase2-formulas.js#trapezoid_area",
+      "steps_generator": "module:apps/web/phase2-formulas.js#trapezoid_area",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "a": 5,
+            "b": 3,
+            "h": 4
+          },
+          "expected": {
+            "area": 16,
+            "midline": 4
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "a": 5,
+            "b": 3,
+            "h": 4
+          },
+          "expected": {
+            "area": 16,
+            "midline": 4
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "rhombus_geometry",
+      "name_fa": "لوزی: مساحت، ضلع، محیط",
+      "name_en": "Rhombus Geometry",
+      "category_path": [
+        "ریاضیات",
+        "هندسه و مثلثات"
+      ],
+      "tags": [
+        "لوزی",
+        "قطر"
+      ],
+      "description_fa": "مساحت لوزی از روی قطرها، ضلع و محیط",
+      "variables": [
+        {
+          "name": "d1",
+          "label_fa": "قطر اول d₁",
+          "label_en": "Diagonal d1",
+          "type": "number",
+          "unit": "length",
+          "default": 6,
+          "required": true
+        },
+        {
+          "name": "d2",
+          "label_fa": "قطر دوم d₂",
+          "label_en": "Diagonal d2",
+          "type": "number",
+          "unit": "length",
+          "default": 8,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "area",
+          "label_fa": "area",
+          "unit": null,
+          "label_en": "Area"
+        },
+        {
+          "name": "side",
+          "label_fa": "side",
+          "unit": null,
+          "label_en": "Side"
+        },
+        {
+          "name": "perimeter",
+          "label_fa": "perimeter",
+          "unit": null,
+          "label_en": "Perimeter"
+        }
+      ],
+      "formula_latex": "A=\\frac{d_1d_2}{2},\\ s=\\sqrt{(d_1/2)^2+(d_2/2)^2}",
+      "compute_js": "module:apps/web/phase2-formulas.js#rhombus_geometry",
+      "steps_generator": "module:apps/web/phase2-formulas.js#rhombus_geometry",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "d1": 6,
+            "d2": 8
+          },
+          "expected": {
+            "area": 24,
+            "side": 5,
+            "perimeter": 20
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "d1": 6,
+            "d2": 8
+          },
+          "expected": {
+            "area": 24,
+            "side": 5,
+            "perimeter": 20
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "pyramid_geometry",
+      "name_fa": "هرم مربع‌قاعده منتظم",
+      "name_en": "Square Pyramid",
+      "category_path": [
+        "ریاضیات",
+        "هندسه و مثلثات"
+      ],
+      "tags": [
+        "هرم",
+        "حجم"
+      ],
+      "description_fa": "حجم، ارتفاع مایل و مساحت کل هرم مربع‌قاعده منتظم",
+      "variables": [
+        {
+          "name": "s",
+          "label_fa": "ضلع قاعده s",
+          "label_en": "Base side",
+          "type": "number",
+          "unit": "length",
+          "default": 4,
+          "required": true
+        },
+        {
+          "name": "h",
+          "label_fa": "ارتفاع h",
+          "label_en": "Height",
+          "type": "number",
+          "unit": "length",
+          "default": 3,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "volume",
+          "label_fa": "volume",
+          "unit": null,
+          "label_en": "Volume"
+        },
+        {
+          "name": "slant_height",
+          "label_fa": "slant_height",
+          "unit": null,
+          "label_en": "Slant Height"
+        }
+      ],
+      "formula_latex": "V=\\frac13s^2h,\\ l=\\sqrt{h^2+(s/2)^2},\\ A=s^2+2sl",
+      "compute_js": "module:apps/web/phase2-formulas.js#pyramid_geometry",
+      "steps_generator": "module:apps/web/phase2-formulas.js#pyramid_geometry",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "s": 4,
+            "h": 3
+          },
+          "expected": {
+            "volume": 16,
+            "slant_height": 3.6056
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "s": 4,
+            "h": 3
+          },
+          "expected": {
+            "volume": 16,
+            "slant_height": 3.6056
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "torus_geometry",
+      "name_fa": "چنبره (تorus)",
+      "name_en": "Torus Geometry",
+      "category_path": [
+        "ریاضیات",
+        "هندسه و مثلثات"
+      ],
+      "tags": [
+        "چنبره",
+        "توروس"
+      ],
+      "description_fa": "حجم و مساحت رویه چنبره با شعاع بزرگ R و شعاع لوله r",
+      "variables": [
+        {
+          "name": "R",
+          "label_fa": "شعاع بزرگ R",
+          "label_en": "Major radius",
+          "type": "number",
+          "unit": "length",
+          "default": 10,
+          "required": true
+        },
+        {
+          "name": "r",
+          "label_fa": "شعاع لوله r",
+          "label_en": "Minor radius",
+          "type": "number",
+          "unit": "length",
+          "default": 3,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "volume",
+          "label_fa": "volume",
+          "unit": null,
+          "label_en": "Volume"
+        },
+        {
+          "name": "area",
+          "label_fa": "area",
+          "unit": null,
+          "label_en": "Area"
+        }
+      ],
+      "formula_latex": "V=2\\pi^2Rr^2,\\quad A=4\\pi^2Rr",
+      "compute_js": "module:apps/web/phase2-formulas.js#torus_geometry",
+      "steps_generator": "module:apps/web/phase2-formulas.js#torus_geometry",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "R": 10,
+            "r": 3
+          },
+          "expected": {
+            "volume": 1776.529,
+            "area": 1184.353
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "R": 10,
+            "r": 3
+          },
+          "expected": {
+            "volume": 1776.529,
+            "area": 1184.353
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "haversine_distance",
+      "name_fa": "فاصله کروی دو نقطه (هاورسین)",
+      "name_en": "Haversine Distance",
+      "category_path": [
+        "ریاضیات",
+        "هندسه و مثلثات"
+      ],
+      "tags": [
+        "هاورسینک",
+        "جی‌پی‌اس",
+        "کره"
+      ],
+      "description_fa": "فاصله دایره عظیمه بین دو نقطه جغرافیایی (طول و عرض جغرافیایی) روی کره زمین",
+      "variables": [
+        {
+          "name": "lat1",
+          "label_fa": "عرض جغرافیایی نقطه ۱",
+          "label_en": "Latitude 1",
+          "type": "number",
+          "unit": null,
+          "default": 51.5074,
+          "required": true
+        },
+        {
+          "name": "lon1",
+          "label_fa": "طول جغرافیایی نقطه ۱",
+          "label_en": "Longitude 1",
+          "type": "number",
+          "unit": null,
+          "default": -0.1278,
+          "required": true
+        },
+        {
+          "name": "lat2",
+          "label_fa": "عرض جغرافیایی نقطه ۲",
+          "label_en": "Latitude 2",
+          "type": "number",
+          "unit": null,
+          "default": 48.8566,
+          "required": true
+        },
+        {
+          "name": "lon2",
+          "label_fa": "طول جغرافیایی نقطه ۲",
+          "label_en": "Longitude 2",
+          "type": "number",
+          "unit": null,
+          "default": 2.3523,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "distance_km",
+          "label_fa": "distance_km",
+          "unit": null,
+          "label_en": "Distance Km"
+        }
+      ],
+      "formula_latex": "a=\\sin^2\\frac{\\Delta\\varphi}{2}+\\cos\\varphi_1\\cos\\varphi_2\\sin^2\\frac{\\Delta\\lambda}{2}",
+      "compute_js": "module:apps/web/phase2-formulas.js#haversine_distance",
+      "steps_generator": "module:apps/web/phase2-formulas.js#haversine_distance",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "lat1": 51.5074,
+            "lon1": -0.1278,
+            "lat2": 48.8566,
+            "lon2": 2.3523
+          },
+          "expected": {
+            "distance_km": 343.5
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "lat1": 51.5074,
+            "lon1": -0.1278,
+            "lat2": 48.8566,
+            "lon2": 2.3523
+          },
+          "expected": {
+            "distance_km": 343.5
+          }
+        },
+        {
+          "input": {
+            "lat1": 35.6892,
+            "lon1": 51.389,
+            "lat2": 35.6892,
+            "lon2": 51.389
+          },
+          "expected": {
+            "distance_km": 0
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "inverse_trig_eval",
+      "name_fa": "توابع مثلثاتی معکوس",
+      "name_en": "Inverse Trigonometric Functions",
+      "category_path": [
+        "ریاضیات",
+        "هندسه و مثلثات"
+      ],
+      "tags": [
+        "آرکسین",
+        "آرک‌کسین",
+        "آرک‌تانژانت"
+      ],
+      "description_fa": "محاسبه arcsin، arccos و arctan در دو واحد درجه و رادیان",
+      "variables": [
+        {
+          "name": "x",
+          "label_fa": "ورودی x",
+          "label_en": "x",
+          "type": "number",
+          "unit": null,
+          "default": 0.5,
+          "required": true
+        },
+        {
+          "name": "fn",
+          "label_fa": "تابع (asin/acos/atan)",
+          "label_en": "Function",
+          "type": "text",
+          "unit": null,
+          "default": "asin",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "degrees",
+          "label_fa": "degrees",
+          "unit": null,
+          "label_en": "Degrees"
+        }
+      ],
+      "formula_latex": "\\arcsin x,\\ \\arccos x,\\ \\arctan x",
+      "compute_js": "module:apps/web/phase2-formulas.js#inverse_trig_eval",
+      "steps_generator": "module:apps/web/phase2-formulas.js#inverse_trig_eval",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "x": 0.5,
+            "fn": "asin"
+          },
+          "expected": {
+            "degrees": 30
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "x": 0.5,
+            "fn": "asin"
+          },
+          "expected": {
+            "degrees": 30
+          }
+        },
+        {
+          "input": {
+            "x": 1,
+            "fn": "atan"
+          },
+          "expected": {
+            "degrees": 45
+          }
+        },
+        {
+          "input": {
+            "x": 1,
+            "fn": "acos"
+          },
+          "expected": {
+            "degrees": 0
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "six_trig_ratios",
+      "name_fa": "شش نسبت مثلثاتی از روی sin",
+      "name_en": "Six Trig Ratios",
+      "category_path": [
+        "ریاضیات",
+        "هندسه و مثلثات"
+      ],
+      "tags": [
+        "مثلثات",
+        "ربع",
+        "نسبت"
+      ],
+      "description_fa": "محاسبه هر شش نسبت مثلثاتی با دانستن sin θ و ربع آن (تعیین علامت‌ها)",
+      "variables": [
+        {
+          "name": "s",
+          "label_fa": "مقدار sin θ",
+          "label_en": "sin θ",
+          "type": "number",
+          "unit": null,
+          "default": 0.6,
+          "required": true
+        },
+        {
+          "name": "quadrant",
+          "label_fa": "ربع (۱ تا ۴)",
+          "label_en": "Quadrant",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 1,
+          "max": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "cos",
+          "label_fa": "cos",
+          "unit": null,
+          "label_en": "Cos"
+        },
+        {
+          "name": "tan",
+          "label_fa": "tan",
+          "unit": null,
+          "label_en": "Tan"
+        }
+      ],
+      "formula_latex": "\\cos\\theta=\\pm\\sqrt{1-\\sin^2\\theta},\\ \\tan=\\frac{\\sin}{\\cos}",
+      "compute_js": "module:apps/web/phase2-formulas.js#six_trig_ratios",
+      "steps_generator": "module:apps/web/phase2-formulas.js#six_trig_ratios",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "s": 0.6,
+            "quadrant": 1
+          },
+          "expected": {
+            "cos": 0.8,
+            "tan": 0.75
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "s": 0.6,
+            "quadrant": 1
+          },
+          "expected": {
+            "cos": 0.8,
+            "tan": 0.75
+          }
+        },
+        {
+          "input": {
+            "s": 0.5,
+            "quadrant": 2
+          },
+          "expected": {
+            "cos": -0.866
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "taylor_polynomial",
+      "name_fa": "چندجمله‌ای تیلور (عددی)",
+      "name_en": "Taylor Polynomial (Numeric)",
+      "category_path": [
+        "ریاضیات",
+        "حساب دیفرانسیل"
+      ],
+      "tags": [
+        "تیلور",
+        "مکلورن",
+        "تقریب"
+      ],
+      "description_fa": "محاسبه ضرایب بسط تیلور تابع حول نقطه a با مشتق‌های عددی مرکزی تا مرتبه ۶",
+      "variables": [
+        {
+          "name": "expr",
+          "label_fa": "تابع f(x)",
+          "label_en": "Function f(x)",
+          "type": "text",
+          "unit": null,
+          "default": "cos(x)",
+          "required": true
+        },
+        {
+          "name": "a",
+          "label_fa": "نقطه مرکزی a",
+          "label_en": "Center a",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "degree",
+          "label_fa": "مرتبه n (۰ تا ۶)",
+          "label_en": "Degree n",
+          "type": "number",
+          "unit": null,
+          "default": 4,
+          "required": true,
+          "min": 0,
+          "max": 6
+        },
+        {
+          "name": "x_eval",
+          "label_fa": "نقطه ارزیابی تقریب",
+          "label_en": "Eval at x",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "c0",
+          "label_fa": "c0",
+          "unit": null,
+          "label_en": "C0"
+        },
+        {
+          "name": "c2",
+          "label_fa": "c2",
+          "unit": null,
+          "label_en": "C2"
+        },
+        {
+          "name": "approx_value",
+          "label_fa": "approx_value",
+          "unit": null,
+          "label_en": "Approx Value"
+        },
+        {
+          "name": "c1",
+          "label_fa": "c1",
+          "unit": null,
+          "label_en": "C1"
+        }
+      ],
+      "formula_latex": "f(x)\\approx\\sum_{k=0}^{n}\\frac{f^{(k)}(a)}{k!}(x-a)^k",
+      "compute_js": "module:apps/web/phase2-formulas.js#taylor_polynomial",
+      "steps_generator": "module:apps/web/phase2-formulas.js#taylor_polynomial",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "expr": "cos(x)",
+            "a": 0,
+            "degree": 4,
+            "x_eval": 1
+          },
+          "expected": {
+            "c0": 1,
+            "c2": -0.5,
+            "approx_value": 0.541667
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "expr": "cos(x)",
+            "a": 0,
+            "degree": 4,
+            "x_eval": 1
+          },
+          "expected": {
+            "c0": 1,
+            "c2": -0.5,
+            "approx_value": 0.541667
+          }
+        },
+        {
+          "input": {
+            "expr": "exp(x)",
+            "a": 0,
+            "degree": 3,
+            "x_eval": 1
+          },
+          "expected": {
+            "c0": 1,
+            "c1": 1
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "limit_numeric",
+      "name_fa": "حد عددی تابع",
+      "name_en": "Numeric Limit",
+      "category_path": [
+        "ریاضیات",
+        "حساب دیفرانسیل"
+      ],
+      "tags": [
+        "حد",
+        "limit"
+      ],
+      "description_fa": "تخمین lim f(x) هنگام x→a با نزدیک شدن دو طرفه و تشخیص واگرایی",
+      "variables": [
+        {
+          "name": "expr",
+          "label_fa": "تابع f(x)",
+          "label_en": "Function f(x)",
+          "type": "text",
+          "unit": null,
+          "default": "sin(x)/x",
+          "required": true
+        },
+        {
+          "name": "a",
+          "label_fa": "نقطه a",
+          "label_en": "Point a",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "status",
+          "label_fa": "status",
+          "unit": null,
+          "label_en": "Status"
+        },
+        {
+          "name": "limit",
+          "label_fa": "limit",
+          "unit": null,
+          "label_en": "Limit"
+        }
+      ],
+      "formula_latex": "\\lim_{x\\to a}f(x)\\approx f(a\\pm h)",
+      "compute_js": "module:apps/web/phase2-formulas.js#limit_numeric",
+      "steps_generator": "module:apps/web/phase2-formulas.js#limit_numeric",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "expr": "sin(x)/x",
+            "a": 0
+          },
+          "expected": {
+            "status": "converges",
+            "limit": 1
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "expr": "sin(x)/x",
+            "a": 0
+          },
+          "expected": {
+            "status": "converges",
+            "limit": 1
+          }
+        },
+        {
+          "input": {
+            "expr": "(x^2-1)/(x-1)",
+            "a": 1
+          },
+          "expected": {
+            "status": "converges",
+            "limit": 2
+          }
+        },
+        {
+          "input": {
+            "expr": "1/x",
+            "a": 0
+          },
+          "expected": {
+            "status": "diverges"
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "riemann_sum",
+      "name_fa": "جمع ریمان و انتگرال عددی",
+      "name_en": "Riemann Sum",
+      "category_path": [
+        "ریاضیات",
+        "حساب دیفرانسیل"
+      ],
+      "tags": [
+        "ریمان",
+        "انتگرال",
+        "ذوزنقه‌ای"
+      ],
+      "description_fa": "تقریب انتگرال معین با روش‌های چپ، راست، نقطه میانی و ذوزنقه‌ای",
+      "variables": [
+        {
+          "name": "expr",
+          "label_fa": "تابع f(x)",
+          "label_en": "Function f(x)",
+          "type": "text",
+          "unit": null,
+          "default": "x^2",
+          "required": true
+        },
+        {
+          "name": "a",
+          "label_fa": "کران پایین a",
+          "label_en": "Lower a",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "b",
+          "label_fa": "کران بالا b",
+          "label_en": "Upper b",
+          "type": "number",
+          "unit": null,
+          "default": 3,
+          "required": true
+        },
+        {
+          "name": "n",
+          "label_fa": "تعداد زیربازه n",
+          "label_en": "Subintervals n",
+          "type": "number",
+          "unit": null,
+          "default": 6,
+          "required": true,
+          "min": 1
+        },
+        {
+          "name": "method",
+          "label_fa": "روش (left/right/midpoint/trapezoid)",
+          "label_en": "Method",
+          "type": "text",
+          "unit": null,
+          "default": "trapezoid",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "integral",
+          "label_fa": "integral",
+          "unit": null,
+          "label_en": "Integral"
+        }
+      ],
+      "formula_latex": "\\int_a^b f\\,dx\\approx\\sum_{i=1}^{n}f(x_i^*)\\Delta x",
+      "compute_js": "module:apps/web/phase2-formulas.js#riemann_sum",
+      "steps_generator": "module:apps/web/phase2-formulas.js#riemann_sum",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "expr": "x^2",
+            "a": 0,
+            "b": 3,
+            "n": 6,
+            "method": "trapezoid"
+          },
+          "expected": {
+            "integral": 9.125
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "expr": "x^2",
+            "a": 0,
+            "b": 3,
+            "n": 6,
+            "method": "trapezoid"
+          },
+          "expected": {
+            "integral": 9.125
+          }
+        },
+        {
+          "input": {
+            "expr": "x^2",
+            "a": 0,
+            "b": 3,
+            "n": 3,
+            "method": "midpoint"
+          },
+          "expected": {
+            "integral": 8.75
+          }
+        },
+        {
+          "input": {
+            "expr": "x^2",
+            "a": 0,
+            "b": 3,
+            "n": 3,
+            "method": "left"
+          },
+          "expected": {
+            "integral": 5
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "matrix_3x3_ops",
+      "name_fa": "ماتریس ۳×۳: دترمینان و معکوس",
+      "name_en": "3×3 Matrix Operations",
+      "category_path": [
+        "ریاضیات",
+        "جبر خطی"
+      ],
+      "tags": [
+        "ماتریس",
+        "معکوس",
+        "دترمینان"
+      ],
+      "description_fa": "دترمینان، اثر و معکوس ماتریس ۳×۳ با روش همسازه (ادژوگیت)",
+      "variables": [
+        {
+          "name": "a",
+          "label_fa": "a₁₁",
+          "label_en": "A",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true
+        },
+        {
+          "name": "b",
+          "label_fa": "a₁₂",
+          "label_en": "B",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "c",
+          "label_fa": "a₁₃",
+          "label_en": "C",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "d",
+          "label_fa": "a₂₁",
+          "label_en": "D",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "e",
+          "label_fa": "a₂₂",
+          "label_en": "E",
+          "type": "number",
+          "unit": null,
+          "default": 3,
+          "required": true
+        },
+        {
+          "name": "f",
+          "label_fa": "a₂₃",
+          "label_en": "F",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "g",
+          "label_fa": "a₃₁",
+          "label_en": "G",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "h",
+          "label_fa": "a₃₂",
+          "label_en": "H",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "i",
+          "label_fa": "a₃₃",
+          "label_en": "I",
+          "type": "number",
+          "unit": null,
+          "default": 4,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "determinant",
+          "label_fa": "determinant",
+          "unit": null,
+          "label_en": "Determinant"
+        },
+        {
+          "name": "trace",
+          "label_fa": "trace",
+          "unit": null,
+          "label_en": "Trace"
+        }
+      ],
+      "formula_latex": "A^{-1}=\\frac{1}{\\det A}\\,\\mathrm{adj}(A)",
+      "compute_js": "module:apps/web/phase2-formulas.js#matrix_3x3_ops",
+      "steps_generator": "module:apps/web/phase2-formulas.js#matrix_3x3_ops",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "a": 2,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 3,
+            "f": 0,
+            "g": 0,
+            "h": 0,
+            "i": 4
+          },
+          "expected": {
+            "determinant": 24,
+            "trace": 9
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "a": 2,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 3,
+            "f": 0,
+            "g": 0,
+            "h": 0,
+            "i": 4
+          },
+          "expected": {
+            "determinant": 24,
+            "trace": 9
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "vector_3d_cross",
+      "name_fa": "ضرب برداری سه‌بعدی",
+      "name_en": "3D Vector Cross Product",
+      "category_path": [
+        "ریاضیات",
+        "جبر خطی"
+      ],
+      "tags": [
+        "بردار",
+        "ضرب خارجی",
+        "زاویه"
+      ],
+      "description_fa": "ضرب خارجی، ضرب داخلی، اندازه و زاویه دو بردار سه‌بعدی",
+      "variables": [
+        {
+          "name": "ax",
+          "label_fa": "aₓ",
+          "label_en": "Ax",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "ay",
+          "label_fa": "a_y",
+          "label_en": "Ay",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "az",
+          "label_fa": "a_z",
+          "label_en": "Az",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "bx",
+          "label_fa": "bₓ",
+          "label_en": "Bx",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "by",
+          "label_fa": "b_y",
+          "label_en": "By",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "bz",
+          "label_fa": "b_z",
+          "label_en": "Bz",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "cross_z",
+          "label_fa": "cross_z",
+          "unit": null,
+          "label_en": "Cross Z"
+        },
+        {
+          "name": "dot",
+          "label_fa": "dot",
+          "unit": null,
+          "label_en": "Dot"
+        },
+        {
+          "name": "angle_deg",
+          "label_fa": "angle_deg",
+          "unit": null,
+          "label_en": "Angle Deg"
+        }
+      ],
+      "formula_latex": "\\vec a\\times\\vec b=\\begin{vmatrix}\\hat i&\\hat j&\\hat k\\\\a_x&a_y&a_z\\\\b_x&b_y&b_z\\end{vmatrix}",
+      "compute_js": "module:apps/web/phase2-formulas.js#vector_3d_cross",
+      "steps_generator": "module:apps/web/phase2-formulas.js#vector_3d_cross",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "ax": 1,
+            "ay": 0,
+            "az": 0,
+            "bx": 0,
+            "by": 1,
+            "bz": 0
+          },
+          "expected": {
+            "cross_z": 1,
+            "dot": 0,
+            "angle_deg": 90
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "ax": 1,
+            "ay": 0,
+            "az": 0,
+            "bx": 0,
+            "by": 1,
+            "bz": 0
+          },
+          "expected": {
+            "cross_z": 1,
+            "dot": 0,
+            "angle_deg": 90
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "expected_value_discrete",
+      "name_fa": "امید ریاضی و واریانس گسسته",
+      "name_en": "Expected Value & Variance",
+      "category_path": [
+        "ریاضیات",
+        "آمار و احتمال"
+      ],
+      "tags": [
+        "امید ریاضی",
+        "واریانس"
+      ],
+      "description_fa": "امید ریاضی E(X)، E(X²) و واریانس توزیع گسسته از روی مقادیر و احتمال‌ها",
+      "variables": [
+        {
+          "name": "values",
+          "label_fa": "مقادیر X (با کاما)",
+          "label_en": "Values",
+          "type": "text",
+          "unit": null,
+          "default": "0,1,2",
+          "required": true
+        },
+        {
+          "name": "probs",
+          "label_fa": "احتمال‌ها (مجموع ۱)",
+          "label_en": "Probabilities",
+          "type": "text",
+          "unit": null,
+          "default": "0.25,0.5,0.25",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "expected_value",
+          "label_fa": "expected_value",
+          "unit": null,
+          "label_en": "Expected Value"
+        },
+        {
+          "name": "variance",
+          "label_fa": "variance",
+          "unit": null,
+          "label_en": "Variance"
+        }
+      ],
+      "formula_latex": "E(X)=\\sum x_i p_i,\\ \\mathrm{Var}(X)=E(X^2)-E(X)^2",
+      "compute_js": "module:apps/web/phase2-formulas.js#expected_value_discrete",
+      "steps_generator": "module:apps/web/phase2-formulas.js#expected_value_discrete",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "values": "0,1,2",
+            "probs": "0.25,0.5,0.25"
+          },
+          "expected": {
+            "expected_value": 1,
+            "variance": 0.5
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "values": "0,1,2",
+            "probs": "0.25,0.5,0.25"
+          },
+          "expected": {
+            "expected_value": 1,
+            "variance": 0.5
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "hypergeometric_probability",
+      "name_fa": "توزیع هایپرژئومتریک",
+      "name_en": "Hypergeometric Distribution",
+      "category_path": [
+        "ریاضیات",
+        "آمار و احتمال"
+      ],
+      "tags": [
+        "هایپرژئومتریک",
+        "احتمال"
+      ],
+      "description_fa": "احتمال دقیق k موفقیت در n نمونه بدون جایگذاری از جامعه N تایی با K موفقیت",
+      "variables": [
+        {
+          "name": "N",
+          "label_fa": "اندازه جامعه N",
+          "label_en": "Population N",
+          "type": "number",
+          "unit": null,
+          "default": 52,
+          "required": true
+        },
+        {
+          "name": "K",
+          "label_fa": "حالت‌های موفق K",
+          "label_en": "Success states K",
+          "type": "number",
+          "unit": null,
+          "default": 13,
+          "required": true
+        },
+        {
+          "name": "n",
+          "label_fa": "تعداد نمونه n",
+          "label_en": "Draws n",
+          "type": "number",
+          "unit": null,
+          "default": 5,
+          "required": true
+        },
+        {
+          "name": "k",
+          "label_fa": "موفقیت‌های مشاهده k",
+          "label_en": "Observed k",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "probability",
+          "label_fa": "probability",
+          "unit": null,
+          "label_en": "Probability"
+        }
+      ],
+      "formula_latex": "P(X=k)=\\frac{\\binom{K}{k}\\binom{N-K}{n-k}}{\\binom{N}{n}}",
+      "compute_js": "module:apps/web/phase2-formulas.js#hypergeometric_probability",
+      "steps_generator": "module:apps/web/phase2-formulas.js#hypergeometric_probability",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "N": 52,
+            "K": 13,
+            "n": 5,
+            "k": 2
+          },
+          "expected": {
+            "probability": 0.2743
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "N": 52,
+            "K": 13,
+            "n": 5,
+            "k": 2
+          },
+          "expected": {
+            "probability": 0.2743
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "exponential_distribution",
+      "name_fa": "توزیع نمایی",
+      "name_en": "Exponential Distribution",
+      "category_path": [
+        "ریاضیات",
+        "آمار و احتمال"
+      ],
+      "tags": [
+        "نمایی",
+        "زمان انتظار"
+      ],
+      "description_fa": "چگالی، تابع توزیع تجمعی و میانگین توزیع نمایی با نرخ λ (مدل زمان بین رخدادها)",
+      "variables": [
+        {
+          "name": "lambda_rate",
+          "label_fa": "نرخ λ (مثبت)",
+          "label_en": "Rate λ",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true
+        },
+        {
+          "name": "x",
+          "label_fa": "زمان/مقدار x",
+          "label_en": "x",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "cdf",
+          "label_fa": "cdf",
+          "unit": null,
+          "label_en": "Cdf"
+        },
+        {
+          "name": "pdf",
+          "label_fa": "pdf",
+          "unit": null,
+          "label_en": "Pdf"
+        },
+        {
+          "name": "mean",
+          "label_fa": "mean",
+          "unit": null,
+          "label_en": "Mean"
+        }
+      ],
+      "formula_latex": "f(x)=\\lambda e^{-\\lambda x},\\ F(x)=1-e^{-\\lambda x}",
+      "compute_js": "module:apps/web/phase2-formulas.js#exponential_distribution",
+      "steps_generator": "module:apps/web/phase2-formulas.js#exponential_distribution",
+      "plot_spec": {
+        "type": "exponential_dist"
+      },
+      "examples": [
+        {
+          "input": {
+            "lambda_rate": 2,
+            "x": 1
+          },
+          "expected": {
+            "cdf": 0.8647,
+            "pdf": 0.2707,
+            "mean": 0.5
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "lambda_rate": 2,
+            "x": 1
+          },
+          "expected": {
+            "cdf": 0.8647,
+            "pdf": 0.2707,
+            "mean": 0.5
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "uniform_distribution",
+      "name_fa": "توزیع یکنواخت پیوسته",
+      "name_en": "Uniform Distribution",
+      "category_path": [
+        "ریاضیات",
+        "آمار و احتمال"
+      ],
+      "tags": [
+        "یکنواخت",
+        "توزیع"
+      ],
+      "description_fa": "چگالی، توزیع تجمعی، میانگین و واریانس توزیع یکنواخت U(a,b)",
+      "variables": [
+        {
+          "name": "a",
+          "label_fa": "کران پایین a",
+          "label_en": "Lower a",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "b",
+          "label_fa": "کران بالا b",
+          "label_en": "Upper b",
+          "type": "number",
+          "unit": null,
+          "default": 10,
+          "required": true
+        },
+        {
+          "name": "x",
+          "label_fa": "نقطه x",
+          "label_en": "x",
+          "type": "number",
+          "unit": null,
+          "default": 3,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "pdf",
+          "label_fa": "pdf",
+          "unit": null,
+          "label_en": "Pdf"
+        },
+        {
+          "name": "cdf",
+          "label_fa": "cdf",
+          "unit": null,
+          "label_en": "Cdf"
+        },
+        {
+          "name": "mean",
+          "label_fa": "mean",
+          "unit": null,
+          "label_en": "Mean"
+        },
+        {
+          "name": "variance",
+          "label_fa": "variance",
+          "unit": null,
+          "label_en": "Variance"
+        }
+      ],
+      "formula_latex": "f(x)=\\frac1{b-a},\\ E(X)=\\frac{a+b}{2},\\ \\mathrm{Var}=\\frac{(b-a)^2}{12}",
+      "compute_js": "module:apps/web/phase2-formulas.js#uniform_distribution",
+      "steps_generator": "module:apps/web/phase2-formulas.js#uniform_distribution",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "a": 0,
+            "b": 10,
+            "x": 3
+          },
+          "expected": {
+            "pdf": 0.1,
+            "cdf": 0.3,
+            "mean": 5,
+            "variance": 8.3333
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "a": 0,
+            "b": 10,
+            "x": 3
+          },
+          "expected": {
+            "pdf": 0.1,
+            "cdf": 0.3,
+            "mean": 5,
+            "variance": 8.3333
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "geometric_distribution",
+      "name_fa": "توزیع هندسی",
+      "name_en": "Geometric Distribution",
+      "category_path": [
+        "ریاضیات",
+        "آمار و احتمال"
+      ],
+      "tags": [
+        "هندسی",
+        "احتمال"
+      ],
+      "description_fa": "احتمال اولین موفقیت در آزمایش kام برنولی، میانگین و واریانس",
+      "variables": [
+        {
+          "name": "p",
+          "label_fa": "احتمال موفقیت p (۰ تا ۱)",
+          "label_en": "Probability p",
+          "type": "number",
+          "unit": null,
+          "default": 0.5,
+          "required": true
+        },
+        {
+          "name": "k",
+          "label_fa": "شماره آزمون k",
+          "label_en": "Trial k",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true,
+          "min": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "probability",
+          "label_fa": "probability",
+          "unit": null,
+          "label_en": "Probability"
+        },
+        {
+          "name": "mean",
+          "label_fa": "mean",
+          "unit": null,
+          "label_en": "Mean"
+        }
+      ],
+      "formula_latex": "P(X=k)=(1-p)^{k-1}p,\\ E(X)=\\frac1p",
+      "compute_js": "module:apps/web/phase2-formulas.js#geometric_distribution",
+      "steps_generator": "module:apps/web/phase2-formulas.js#geometric_distribution",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "p": 0.5,
+            "k": 2
+          },
+          "expected": {
+            "probability": 0.25,
+            "mean": 2
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "p": 0.5,
+            "k": 2
+          },
+          "expected": {
+            "probability": 0.25,
+            "mean": 2
+          }
+        },
+        {
+          "input": {
+            "p": 0.2,
+            "k": 3
+          },
+          "expected": {
+            "probability": 0.128
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "confidence_interval_mean",
+      "name_fa": "بازه اطمینان میانگین (z)",
+      "name_en": "Confidence Interval (z)",
+      "category_path": [
+        "ریاضیات",
+        "آمار و احتمال"
+      ],
+      "tags": [
+        "بازه اطمینان",
+        "z",
+        "میانگین"
+      ],
+      "description_fa": "بازه اطمینان ۹۰/۹۵/۹۹ درصدی میانگین با انحراف معیار جامعه معلوم",
+      "variables": [
+        {
+          "name": "mean",
+          "label_fa": "میانگین نمونه x̄",
+          "label_en": "Sample mean",
+          "type": "number",
+          "unit": null,
+          "default": 100,
+          "required": true
+        },
+        {
+          "name": "sigma",
+          "label_fa": "انحراف معیار σ",
+          "label_en": "Std σ",
+          "type": "number",
+          "unit": null,
+          "default": 15,
+          "required": true
+        },
+        {
+          "name": "n",
+          "label_fa": "حجم نمونه n",
+          "label_en": "Sample size",
+          "type": "number",
+          "unit": null,
+          "default": 25,
+          "required": true,
+          "min": 1
+        },
+        {
+          "name": "confidence",
+          "label_fa": "سطح اطمینان (۹۰/۹۵/۹۹)",
+          "label_en": "Confidence %",
+          "type": "number",
+          "unit": null,
+          "default": 95,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "se",
+          "label_fa": "se",
+          "unit": null,
+          "label_en": "Se"
+        },
+        {
+          "name": "margin",
+          "label_fa": "margin",
+          "unit": null,
+          "label_en": "Margin"
+        },
+        {
+          "name": "lower",
+          "label_fa": "lower",
+          "unit": null,
+          "label_en": "Lower"
+        },
+        {
+          "name": "upper",
+          "label_fa": "upper",
+          "unit": null,
+          "label_en": "Upper"
+        }
+      ],
+      "formula_latex": "\\bar x\\pm z_{\\alpha/2}\\frac{\\sigma}{\\sqrt n}",
+      "compute_js": "module:apps/web/phase2-formulas.js#confidence_interval_mean",
+      "steps_generator": "module:apps/web/phase2-formulas.js#confidence_interval_mean",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "mean": 100,
+            "sigma": 15,
+            "n": 25,
+            "confidence": 95
+          },
+          "expected": {
+            "se": 3,
+            "margin": 5.88,
+            "lower": 94.12,
+            "upper": 105.88
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "mean": 100,
+            "sigma": 15,
+            "n": 25,
+            "confidence": 95
+          },
+          "expected": {
+            "se": 3,
+            "margin": 5.88,
+            "lower": 94.12,
+            "upper": 105.88
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "chi_square_goodness",
+      "name_fa": "آزمون نیکویی برازش χ²",
+      "name_en": "Chi-Square Goodness of Fit",
+      "category_path": [
+        "ریاضیات",
+        "آمار و احتمال"
+      ],
+      "tags": [
+        "کای اسکوئر",
+        "برازش"
+      ],
+      "description_fa": "آماره χ² برای مقایسه فراوانی‌های مشاهده‌شده و مورد انتظار با درجه آزادی",
+      "variables": [
+        {
+          "name": "observed",
+          "label_fa": "فراوانی مشاهده‌شده",
+          "label_en": "Observed",
+          "type": "text",
+          "unit": null,
+          "default": "50,30,20",
+          "required": true
+        },
+        {
+          "name": "expected",
+          "label_fa": "فراوانی مورد انتظار",
+          "label_en": "Expected",
+          "type": "text",
+          "unit": null,
+          "default": "40,40,20",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "chi_square",
+          "label_fa": "chi_square",
+          "unit": null,
+          "label_en": "Chi Square"
+        },
+        {
+          "name": "degrees_freedom",
+          "label_fa": "degrees_freedom",
+          "unit": null,
+          "label_en": "Degrees Freedom"
+        }
+      ],
+      "formula_latex": "\\chi^2=\\sum\\frac{(O_i-E_i)^2}{E_i},\\ df=k-1",
+      "compute_js": "module:apps/web/phase2-formulas.js#chi_square_goodness",
+      "steps_generator": "module:apps/web/phase2-formulas.js#chi_square_goodness",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "observed": "50,30,20",
+            "expected": "40,40,20"
+          },
+          "expected": {
+            "chi_square": 5,
+            "degrees_freedom": 2
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "observed": "50,30,20",
+            "expected": "40,40,20"
+          },
+          "expected": {
+            "chi_square": 5,
+            "degrees_freedom": 2
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "coulomb_law",
+      "name_fa": "قانون کولن",
+      "name_en": "Coulomb's Law",
+      "category_path": [
+        "فیزیک",
+        "الکترومغناطیس"
+      ],
+      "tags": [
+        "کولن",
+        "بار",
+        "الکترواستاتیک"
+      ],
+      "description_fa": "نیروی الکترواستاتیکی بین دو بار نقطه‌ای و ثابت کولن",
+      "variables": [
+        {
+          "name": "q1",
+          "label_fa": "بار اول q₁ (C)",
+          "label_en": "Charge q1 C",
+          "type": "number",
+          "unit": null,
+          "default": 0.001,
+          "required": true
+        },
+        {
+          "name": "q2",
+          "label_fa": "بار دوم q₂ (C)",
+          "label_en": "Charge q2 C",
+          "type": "number",
+          "unit": null,
+          "default": 0.001,
+          "required": true
+        },
+        {
+          "name": "r",
+          "label_fa": "فاصله r (m)",
+          "label_en": "Distance r",
+          "type": "number",
+          "unit": "length",
+          "default": 1,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "force_N",
+          "label_fa": "force_N",
+          "unit": null,
+          "label_en": "Force N"
+        }
+      ],
+      "formula_latex": "F=k_e\\frac{|q_1q_2|}{r^2},\\ k_e=8.988\\times10^9",
+      "compute_js": "module:apps/web/phase2-formulas.js#coulomb_law",
+      "steps_generator": "module:apps/web/phase2-formulas.js#coulomb_law",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "q1": 0.001,
+            "q2": 0.001,
+            "r": 1
+          },
+          "expected": {
+            "force_N": 8987.5518
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "q1": 0.001,
+            "q2": 0.001,
+            "r": 1
+          },
+          "expected": {
+            "force_N": 8987.5518
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "electric_field_point",
+      "name_fa": "میدان و پتانسیل بار نقطه‌ای",
+      "name_en": "Point Charge E-field & Potential",
+      "category_path": [
+        "فیزیک",
+        "الکترومغناطیس"
+      ],
+      "tags": [
+        "میدان الکتریکی",
+        "پتانسیل"
+      ],
+      "description_fa": "بزرگی میدان الکتریکی و پتانسیل الکتریکی حاصل از بار نقطه‌ای",
+      "variables": [
+        {
+          "name": "Q",
+          "label_fa": "بار Q (C)",
+          "label_en": "Charge Q C",
+          "type": "number",
+          "unit": null,
+          "default": 0.000001,
+          "required": true
+        },
+        {
+          "name": "r",
+          "label_fa": "فاصله r (m)",
+          "label_en": "Distance r",
+          "type": "number",
+          "unit": "length",
+          "default": 1,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "field_N_per_C",
+          "label_fa": "field_N_per_C",
+          "unit": null,
+          "label_en": "Field N Per C"
+        },
+        {
+          "name": "potential_V",
+          "label_fa": "potential_V",
+          "unit": null,
+          "label_en": "Potential V"
+        }
+      ],
+      "formula_latex": "E=k_e\\frac{Q}{r^2},\\quad V=k_e\\frac{Q}{r}",
+      "compute_js": "module:apps/web/phase2-formulas.js#electric_field_point",
+      "steps_generator": "module:apps/web/phase2-formulas.js#electric_field_point",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "Q": 0.000001,
+            "r": 1
+          },
+          "expected": {
+            "field_N_per_C": 8987.5518,
+            "potential_V": 8987.5518
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "Q": 0.000001,
+            "r": 1
+          },
+          "expected": {
+            "field_N_per_C": 8987.5518,
+            "potential_V": 8987.5518
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "lorentz_force",
+      "name_fa": "نیروی لورنتس",
+      "name_en": "Lorentz Force",
+      "category_path": [
+        "فیزیک",
+        "الکترومغناطیس"
+      ],
+      "tags": [
+        "لورنتس",
+        "میدان مغناطیسی"
+      ],
+      "description_fa": "نیروی مغناطیسی وارد بر بار متحرک در میدان B با زاویه θ",
+      "variables": [
+        {
+          "name": "q",
+          "label_fa": "بار q (C)",
+          "label_en": "Charge C",
+          "type": "number",
+          "unit": null,
+          "default": 1.6e-19,
+          "required": true
+        },
+        {
+          "name": "v",
+          "label_fa": "سرعت v (m/s)",
+          "label_en": "Velocity",
+          "type": "number",
+          "unit": "speed",
+          "default": 2000000,
+          "required": true
+        },
+        {
+          "name": "B",
+          "label_fa": "میدان B (T)",
+          "label_en": "Field T",
+          "type": "number",
+          "unit": null,
+          "default": 0.5,
+          "required": true
+        },
+        {
+          "name": "theta",
+          "label_fa": "زاویه θ (درجه)",
+          "label_en": "Angle",
+          "type": "number",
+          "unit": "angle",
+          "default": 90,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "force_N",
+          "label_fa": "force_N",
+          "unit": null,
+          "label_en": "Force N"
+        }
+      ],
+      "formula_latex": "F=qvB\\sin\\theta",
+      "compute_js": "module:apps/web/phase2-formulas.js#lorentz_force",
+      "steps_generator": "module:apps/web/phase2-formulas.js#lorentz_force",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "q": 1.6e-19,
+            "v": 2000000,
+            "B": 0.5,
+            "theta": 90
+          },
+          "expected": {
+            "force_N": 1.6e-13
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "q": 1.6e-19,
+            "v": 2000000,
+            "B": 0.5,
+            "theta": 90
+          },
+          "expected": {
+            "force_N": 1.6e-13
+          }
+        },
+        {
+          "input": {
+            "q": 1.6e-19,
+            "v": 2000000,
+            "B": 0.5,
+            "theta": 0
+          },
+          "expected": {
+            "force_N": 0
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "doppler_effect",
+      "name_fa": "اثر دوپلر (صوت)",
+      "name_en": "Doppler Effect (Sound)",
+      "category_path": [
+        "فیزیک",
+        "مکانیک کلاسیک"
+      ],
+      "tags": [
+        "دوپلر",
+        "فرکانس",
+        "صوت"
+      ],
+      "description_fa": "فرکانس دریافتی با حرکت چشمه و شنونده (علامت مثبت = نزدیک شدن)",
+      "variables": [
+        {
+          "name": "f0",
+          "label_fa": "فرکانس چشمه f₀ (Hz)",
+          "label_en": "Source freq",
+          "type": "number",
+          "unit": null,
+          "default": 440,
+          "required": true
+        },
+        {
+          "name": "vs",
+          "label_fa": "سرعت چشمه (m/s، + نزدیک)",
+          "label_en": "Source speed",
+          "type": "number",
+          "unit": null,
+          "default": 20,
+          "required": true
+        },
+        {
+          "name": "vo",
+          "label_fa": "سرعت شنونده (m/s، + نزدیک)",
+          "label_en": "Observer speed",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "v_sound",
+          "label_fa": "سرعت صوت (m/s)",
+          "label_en": "Sound speed",
+          "type": "number",
+          "unit": null,
+          "default": 343,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "observed_freq",
+          "label_fa": "observed_freq",
+          "unit": null,
+          "label_en": "Observed Freq"
+        }
+      ],
+      "formula_latex": "f'=f_0\\frac{v\\pm v_o}{v\\mp v_s}",
+      "compute_js": "module:apps/web/phase2-formulas.js#doppler_effect",
+      "steps_generator": "module:apps/web/phase2-formulas.js#doppler_effect",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "f0": 440,
+            "vs": 20,
+            "vo": 0,
+            "v_sound": 343
+          },
+          "expected": {
+            "observed_freq": 467.2446
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "f0": 440,
+            "vs": 20,
+            "vo": 0,
+            "v_sound": 343
+          },
+          "expected": {
+            "observed_freq": 467.2446
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "sound_decibels",
+      "name_fa": "تراز شدت صوت (دسی‌بل)",
+      "name_en": "Sound Intensity Level (dB)",
+      "category_path": [
+        "فیزیک",
+        "مکانیک کلاسیک"
+      ],
+      "tags": [
+        "دسی‌بل",
+        "صوت",
+        "لگاریتم"
+      ],
+      "description_fa": "تراز شدت صوت بر حسب دسی‌بل از شدت I و آستانه شنوایی I₀=10⁻¹² W/m²",
+      "variables": [
+        {
+          "name": "I",
+          "label_fa": "شدت صوت I (W/m²)",
+          "label_en": "Intensity W/m²",
+          "type": "number",
+          "unit": null,
+          "default": 0.000001,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "level_dB",
+          "label_fa": "level_dB",
+          "unit": null,
+          "label_en": "Level DB"
+        },
+        {
+          "name": "intensity_ratio",
+          "label_fa": "intensity_ratio",
+          "unit": null,
+          "label_en": "Intensity Ratio"
+        }
+      ],
+      "formula_latex": "L=10\\log_{10}\\frac{I}{I_0}",
+      "compute_js": "module:apps/web/phase2-formulas.js#sound_decibels",
+      "steps_generator": "module:apps/web/phase2-formulas.js#sound_decibels",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "I": 0.000001
+          },
+          "expected": {
+            "level_dB": 60,
+            "intensity_ratio": 1000000
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "I": 0.000001
+          },
+          "expected": {
+            "level_dB": 60,
+            "intensity_ratio": 1000000
+          }
+        },
+        {
+          "input": {
+            "I": 1e-12
+          },
+          "expected": {
+            "level_dB": 0
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "thin_lens",
+      "name_fa": "عدسی نازک و بزرگنمایی",
+      "name_en": "Thin Lens Equation",
+      "category_path": [
+        "فیزیک",
+        "اپتیک"
+      ],
+      "tags": [
+        "عدسی",
+        "اپتیک",
+        "تصویر"
+      ],
+      "description_fa": "فاصله تصویر و بزرگنمایی عدسی نازک با 1/f=1/do+1/di",
+      "variables": [
+        {
+          "name": "f",
+          "label_fa": "فاصله کانونی f (cm)",
+          "label_en": "Focal length",
+          "type": "number",
+          "unit": null,
+          "default": 10,
+          "required": true
+        },
+        {
+          "name": "do",
+          "label_fa": "فاصله جسم dₒ (cm)",
+          "label_en": "Object distance",
+          "type": "number",
+          "unit": null,
+          "default": 30,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image_distance",
+          "label_fa": "image_distance",
+          "unit": null,
+          "label_en": "Image Distance"
+        },
+        {
+          "name": "magnification",
+          "label_fa": "magnification",
+          "unit": null,
+          "label_en": "Magnification"
+        }
+      ],
+      "formula_latex": "\\frac1f=\\frac1{d_o}+\\frac1{d_i},\\ M=-\\frac{d_i}{d_o}",
+      "compute_js": "module:apps/web/phase2-formulas.js#thin_lens",
+      "steps_generator": "module:apps/web/phase2-formulas.js#thin_lens",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "f": 10,
+            "do": 30
+          },
+          "expected": {
+            "image_distance": 15,
+            "magnification": -0.5
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "f": 10,
+            "do": 30
+          },
+          "expected": {
+            "image_distance": 15,
+            "magnification": -0.5
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "spring_hooke_energy",
+      "name_fa": "فنر: قانون هوک، انرژی و نوسان",
+      "name_en": "Spring: Hooke, Energy & SHM",
+      "category_path": [
+        "فیزیک",
+        "مکانیک کلاسیک"
+      ],
+      "tags": [
+        "فنر",
+        "هوک",
+        "نوسان"
+      ],
+      "description_fa": "نیروی فنر، انرژی پتانسیل کشسان و دوره تناوب جرم-فنر",
+      "variables": [
+        {
+          "name": "k",
+          "label_fa": "ثابت فنر k (N/m)",
+          "label_en": "Spring constant",
+          "type": "number",
+          "unit": null,
+          "default": 200,
+          "required": true
+        },
+        {
+          "name": "x",
+          "label_fa": "کشیدگی x (m)",
+          "label_en": "Extension",
+          "type": "number",
+          "unit": "length",
+          "default": 0.05,
+          "required": true
+        },
+        {
+          "name": "m",
+          "label_fa": "جرم متصل m (kg)",
+          "label_en": "Mass",
+          "type": "number",
+          "unit": "mass",
+          "default": 1,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "force",
+          "label_fa": "force",
+          "unit": null,
+          "label_en": "Force"
+        },
+        {
+          "name": "energy",
+          "label_fa": "energy",
+          "unit": null,
+          "label_en": "Energy"
+        },
+        {
+          "name": "period",
+          "label_fa": "period",
+          "unit": null,
+          "label_en": "Period"
+        }
+      ],
+      "formula_latex": "F=kx,\\ U=\\tfrac12kx^2,\\ T=2\\pi\\sqrt{\\frac mk}",
+      "compute_js": "module:apps/web/phase2-formulas.js#spring_hooke_energy",
+      "steps_generator": "module:apps/web/phase2-formulas.js#spring_hooke_energy",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "k": 200,
+            "x": 0.05,
+            "m": 1
+          },
+          "expected": {
+            "force": 10,
+            "energy": 0.25,
+            "period": 0.4443
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "k": 200,
+            "x": 0.05,
+            "m": 1
+          },
+          "expected": {
+            "force": 10,
+            "energy": 0.25,
+            "period": 0.4443
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "orbital_mechanics",
+      "name_fa": "مکانیک مداری (سرعت و گریز)",
+      "name_en": "Orbital Mechanics",
+      "category_path": [
+        "فیزیک",
+        "فیزیک مدرن"
+      ],
+      "tags": [
+        "مدار",
+        "سرعت گریز",
+        "گرانش"
+      ],
+      "description_fa": "سرعت مداری دایره‌ای، سرعت گریز و دوره تناوب ماهواره به دور جرم مرکزی",
+      "variables": [
+        {
+          "name": "M",
+          "label_fa": "جرم مرکزی M (kg)",
+          "label_en": "Central mass",
+          "type": "number",
+          "unit": null,
+          "default": 5.972e+24,
+          "required": true
+        },
+        {
+          "name": "r",
+          "label_fa": "شعاع مدار r (m)",
+          "label_en": "Orbit radius",
+          "type": "number",
+          "unit": "length",
+          "default": 6771000,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "orbital_speed",
+          "label_fa": "orbital_speed",
+          "unit": null,
+          "label_en": "Orbital Speed"
+        }
+      ],
+      "formula_latex": "v_o=\\sqrt{\\frac{GM}{r}},\\ v_e=\\sqrt{\\frac{2GM}{r}}",
+      "compute_js": "module:apps/web/phase2-formulas.js#orbital_mechanics",
+      "steps_generator": "module:apps/web/phase2-formulas.js#orbital_mechanics",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "M": 5.972e+24,
+            "r": 6771000
+          },
+          "expected": {
+            "orbital_speed": 7672.49
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "M": 5.972e+24,
+            "r": 6771000
+          },
+          "expected": {
+            "orbital_speed": 7672.49
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "stefan_boltzmann",
+      "name_fa": "تابش جسم سیاه (استفان-بولتزمن)",
+      "name_en": "Stefan-Boltzmann Radiation",
+      "category_path": [
+        "فیزیک",
+        "ترمودینامیک"
+      ],
+      "tags": [
+        "جسم سیاه",
+        "تابش",
+        "وین"
+      ],
+      "description_fa": "توان تابشی جسم سیاه و طول موج بیشینه قانون وین",
+      "variables": [
+        {
+          "name": "T",
+          "label_fa": "دمای مطلق T (K)",
+          "label_en": "Temperature K",
+          "type": "number",
+          "unit": "temperature_k",
+          "default": 5778,
+          "required": true
+        },
+        {
+          "name": "A",
+          "label_fa": "مساحت A (m²)",
+          "label_en": "Area",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "emissivity",
+          "label_fa": "ضریب صدور ε (۰ تا ۱)",
+          "label_en": "Emissivity",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "power_W",
+          "label_fa": "power_W",
+          "unit": null,
+          "label_en": "Power W"
+        },
+        {
+          "name": "lambda_max_nm",
+          "label_fa": "lambda_max_nm",
+          "unit": null,
+          "label_en": "Lambda Max Nm"
+        }
+      ],
+      "formula_latex": "P=\\varepsilon\\sigma A T^4,\\ \\lambda_{max}=\\frac bT",
+      "compute_js": "module:apps/web/phase2-formulas.js#stefan_boltzmann",
+      "steps_generator": "module:apps/web/phase2-formulas.js#stefan_boltzmann",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "T": 5778,
+            "A": 1,
+            "emissivity": 1
+          },
+          "expected": {
+            "power_W": 63200700,
+            "lambda_max_nm": 501.52
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "T": 5778,
+            "A": 1,
+            "emissivity": 1
+          },
+          "expected": {
+            "power_W": 63200700,
+            "lambda_max_nm": 501.52
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "henderson_hasselbalch",
+      "name_fa": "معادله هندرسون-هاسلباخ (بافر)",
+      "name_en": "Henderson-Hasselbalch",
+      "category_path": [
+        "شیمی",
+        "اسید و باز"
+      ],
+      "tags": [
+        "بافر",
+        "pH",
+        "اسید"
+      ],
+      "description_fa": "pH محلول بافر از روی pKa و نسبت غلظت باز مزدوج به اسید",
+      "variables": [
+        {
+          "name": "pKa",
+          "label_fa": "pKa اسید",
+          "label_en": "pKa",
+          "type": "number",
+          "unit": null,
+          "default": 4.76,
+          "required": true
+        },
+        {
+          "name": "salt",
+          "label_fa": "غلظت باز مزدوج [A⁻] (mol/L)",
+          "label_en": "[A-]",
+          "type": "number",
+          "unit": "concentration",
+          "default": 0.1,
+          "required": true
+        },
+        {
+          "name": "acid",
+          "label_fa": "غلظت اسید [HA] (mol/L)",
+          "label_en": "[HA]",
+          "type": "number",
+          "unit": "concentration",
+          "default": 0.1,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "pH",
+          "label_fa": "pH",
+          "unit": null,
+          "label_en": "PH"
+        }
+      ],
+      "formula_latex": "pH=pK_a+\\log_{10}\\frac{[A^-]}{[HA]}",
+      "compute_js": "module:apps/web/phase2-formulas.js#henderson_hasselbalch",
+      "steps_generator": "module:apps/web/phase2-formulas.js#henderson_hasselbalch",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "pKa": 4.76,
+            "salt": 0.1,
+            "acid": 0.1
+          },
+          "expected": {
+            "pH": 4.76
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "pKa": 4.76,
+            "salt": 0.1,
+            "acid": 0.1
+          },
+          "expected": {
+            "pH": 4.76
+          }
+        },
+        {
+          "input": {
+            "pKa": 4.76,
+            "salt": 0.01,
+            "acid": 0.1
+          },
+          "expected": {
+            "pH": 3.76
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "beer_lambert",
+      "name_fa": "قانون بیر-لامبرت",
+      "name_en": "Beer-Lambert Law",
+      "category_path": [
+        "شیمی",
+        "استوکیومتری"
+      ],
+      "tags": [
+        "جذب نوری",
+        "طیف‌سنجی"
+      ],
+      "description_fa": "جذب نور A=εlc و درصد عبور از روی غلظت و ضریب خاموشی مولی",
+      "variables": [
+        {
+          "name": "epsilon",
+          "label_fa": "ضریب خاموشی ε (L/mol·cm)",
+          "label_en": "Molar absorptivity",
+          "type": "number",
+          "unit": null,
+          "default": 100,
+          "required": true
+        },
+        {
+          "name": "l",
+          "label_fa": "طول مسیر نور l (cm)",
+          "label_en": "Path length",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "c",
+          "label_fa": "غلظت c (mol/L)",
+          "label_en": "Concentration",
+          "type": "number",
+          "unit": "concentration",
+          "default": 0.002,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "absorbance",
+          "label_fa": "absorbance",
+          "unit": null,
+          "label_en": "Absorbance"
+        },
+        {
+          "name": "transmittance_percent",
+          "label_fa": "transmittance_percent",
+          "unit": null,
+          "label_en": "Transmittance Percent"
+        }
+      ],
+      "formula_latex": "A=\\varepsilon l c,\\quad T=10^{-A}",
+      "compute_js": "module:apps/web/phase2-formulas.js#beer_lambert",
+      "steps_generator": "module:apps/web/phase2-formulas.js#beer_lambert",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "epsilon": 100,
+            "l": 1,
+            "c": 0.002
+          },
+          "expected": {
+            "absorbance": 0.2,
+            "transmittance_percent": 63.0957
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "epsilon": 100,
+            "l": 1,
+            "c": 0.002
+          },
+          "expected": {
+            "absorbance": 0.2,
+            "transmittance_percent": 63.0957
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "gibbs_free_energy",
+      "name_fa": "انرژی آزاد گیبس و ثابت تعادل",
+      "name_en": "Gibbs Free Energy",
+      "category_path": [
+        "شیمی",
+        "تعادل"
+      ],
+      "tags": [
+        "گیبس",
+        "ترمودینامیک",
+        "تعادل"
+      ],
+      "description_fa": "انرژی آزاد گیبس از آنتالپی و آنتروپی و رابطه آن با ثابت تعادل K",
+      "variables": [
+        {
+          "name": "dH",
+          "label_fa": "آنتالپی ΔH (kJ/mol)",
+          "label_en": "Enthalpy kJ/mol",
+          "type": "number",
+          "unit": null,
+          "default": -100,
+          "required": true
+        },
+        {
+          "name": "dS",
+          "label_fa": "آنتروپی ΔS (J/mol·K)",
+          "label_en": "Entropy J/molK",
+          "type": "number",
+          "unit": null,
+          "default": 50,
+          "required": true
+        },
+        {
+          "name": "T",
+          "label_fa": "دمای T (K)",
+          "label_en": "Temperature K",
+          "type": "number",
+          "unit": "temperature_k",
+          "default": 298,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "deltaG_kJ",
+          "label_fa": "deltaG_kJ",
+          "unit": null,
+          "label_en": "DeltaG KJ"
+        }
+      ],
+      "formula_latex": "\\Delta G=\\Delta H-T\\Delta S,\\quad K=e^{-\\Delta G/RT}",
+      "compute_js": "module:apps/web/phase2-formulas.js#gibbs_free_energy",
+      "steps_generator": "module:apps/web/phase2-formulas.js#gibbs_free_energy",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "dH": -100,
+            "dS": 50,
+            "T": 298
+          },
+          "expected": {
+            "deltaG_kJ": -114.9
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "dH": -100,
+            "dS": 50,
+            "T": 298
+          },
+          "expected": {
+            "deltaG_kJ": -114.9
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "weak_acid_ph",
+      "name_fa": "pH اسید ضعیف (حل دقیق درجه دو)",
+      "name_en": "Weak Acid pH",
+      "category_path": [
+        "شیمی",
+        "اسید و باز"
+      ],
+      "tags": [
+        "اسید ضعیف",
+        "Ka",
+        "تعادل"
+      ],
+      "description_fa": "غلظت یون هیدرونیوم و pH اسید ضعیف با حل دقیق معادله درجه دوم تعادل Ka=x²/(C−x)",
+      "variables": [
+        {
+          "name": "Ka",
+          "label_fa": "ثابت اسیدی Ka",
+          "label_en": "Ka",
+          "type": "number",
+          "unit": null,
+          "default": 0.000018,
+          "required": true
+        },
+        {
+          "name": "C",
+          "label_fa": "غلظت اولیه C (mol/L)",
+          "label_en": "Concentration",
+          "type": "number",
+          "unit": "concentration",
+          "default": 0.1,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "pH",
+          "label_fa": "pH",
+          "unit": null,
+          "label_en": "PH"
+        },
+        {
+          "name": "h_concentration",
+          "label_fa": "h_concentration",
+          "unit": null,
+          "label_en": "H Concentration"
+        }
+      ],
+      "formula_latex": "K_a=\\frac{x^2}{C-x}\\Rightarrow x=\\frac{-K_a+\\sqrt{K_a^2+4K_aC}}2",
+      "compute_js": "module:apps/web/phase2-formulas.js#weak_acid_ph",
+      "steps_generator": "module:apps/web/phase2-formulas.js#weak_acid_ph",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "Ka": 0.000018,
+            "C": 0.1
+          },
+          "expected": {
+            "pH": 2.8753,
+            "h_concentration": 0.001333
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "Ka": 0.000018,
+            "C": 0.1
+          },
+          "expected": {
+            "pH": 2.8753,
+            "h_concentration": 0.001333
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "equilibrium_constant",
+      "name_fa": "ثابت تعادل Kc",
+      "name_en": "Equilibrium Constant Kc",
+      "category_path": [
+        "شیمی",
+        "تعادل"
+      ],
+      "tags": [
+        "تعادل",
+        "Kc",
+        "غلظت"
+      ],
+      "description_fa": "ثابت تعادل واکنش A+B⇌C+D از غلظت‌های تعادلی",
+      "variables": [
+        {
+          "name": "C_conc",
+          "label_fa": "غلظت فراورده C (mol/L)",
+          "label_en": "[C]",
+          "type": "number",
+          "unit": "concentration",
+          "default": 0.2,
+          "required": true
+        },
+        {
+          "name": "D_conc",
+          "label_fa": "غلظت فراورده D (mol/L)",
+          "label_en": "[D]",
+          "type": "number",
+          "unit": "concentration",
+          "default": 0.2,
+          "required": true
+        },
+        {
+          "name": "A_conc",
+          "label_fa": "غلظت واکنش‌دهنده A (mol/L)",
+          "label_en": "[A]",
+          "type": "number",
+          "unit": "concentration",
+          "default": 0.5,
+          "required": true
+        },
+        {
+          "name": "B_conc",
+          "label_fa": "غلظت واکنش‌دهنده B (mol/L)",
+          "label_en": "[B]",
+          "type": "number",
+          "unit": "concentration",
+          "default": 0.5,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Kc",
+          "label_fa": "Kc",
+          "unit": null,
+          "label_en": "Kc"
+        }
+      ],
+      "formula_latex": "K_c=\\frac{[C][D]}{[A][B]}",
+      "compute_js": "module:apps/web/phase2-formulas.js#equilibrium_constant",
+      "steps_generator": "module:apps/web/phase2-formulas.js#equilibrium_constant",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "C_conc": 0.2,
+            "D_conc": 0.2,
+            "A_conc": 0.5,
+            "B_conc": 0.5
+          },
+          "expected": {
+            "Kc": 0.16
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "C_conc": 0.2,
+            "D_conc": 0.2,
+            "A_conc": 0.5,
+            "B_conc": 0.5
+          },
+          "expected": {
+            "Kc": 0.16
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "voltage_divider",
+      "name_fa": "مقسم ولتاژ",
+      "name_en": "Voltage Divider",
+      "category_path": [
+        "مهندسی",
+        "مدار و الکترونیک"
+      ],
+      "tags": [
+        "مقسم",
+        "ولتاژ",
+        "مدار"
+      ],
+      "description_fa": "ولتاژ خروجی مقسم مقاومتی و جریان مدار",
+      "variables": [
+        {
+          "name": "Vin",
+          "label_fa": "ولتاژ ورودی (V)",
+          "label_en": "Input voltage",
+          "type": "number",
+          "unit": "voltage",
+          "default": 12,
+          "required": true
+        },
+        {
+          "name": "R1",
+          "label_fa": "مقاومت R₁ (Ω)",
+          "label_en": "R1",
+          "type": "number",
+          "unit": "resistance",
+          "default": 4000,
+          "required": true
+        },
+        {
+          "name": "R2",
+          "label_fa": "مقاومت R₂ (Ω)",
+          "label_en": "R2",
+          "type": "number",
+          "unit": "resistance",
+          "default": 8000,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Vout",
+          "label_fa": "Vout",
+          "unit": null,
+          "label_en": "Vout"
+        },
+        {
+          "name": "current_A",
+          "label_fa": "current_A",
+          "unit": null,
+          "label_en": "Current A"
+        }
+      ],
+      "formula_latex": "V_{out}=V_{in}\\frac{R_2}{R_1+R_2}",
+      "compute_js": "module:apps/web/phase2-formulas.js#voltage_divider",
+      "steps_generator": "module:apps/web/phase2-formulas.js#voltage_divider",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "Vin": 12,
+            "R1": 4000,
+            "R2": 8000
+          },
+          "expected": {
+            "Vout": 8,
+            "current_A": 0.001
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "Vin": 12,
+            "R1": 4000,
+            "R2": 8000
+          },
+          "expected": {
+            "Vout": 8,
+            "current_A": 0.001
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "rc_time_constant",
+      "name_fa": "ثابت زمانی RC و شارژ خازن",
+      "name_en": "RC Time Constant",
+      "category_path": [
+        "مهندسی",
+        "مدار و الکترونیک"
+      ],
+      "tags": [
+        "خازن",
+        "شارژ",
+        "ثابت زمانی"
+      ],
+      "description_fa": "ثابت زمانی τ=RC، ولتاژ خازن در حال شارژ و انرژی ذخیره‌شده",
+      "variables": [
+        {
+          "name": "R",
+          "label_fa": "مقاومت R (Ω)",
+          "label_en": "Resistance",
+          "type": "number",
+          "unit": "resistance",
+          "default": 1000,
+          "required": true
+        },
+        {
+          "name": "C",
+          "label_fa": "ظرفیت C (F)",
+          "label_en": "Capacitance",
+          "type": "number",
+          "unit": null,
+          "default": 0.000001,
+          "required": true
+        },
+        {
+          "name": "V0",
+          "label_fa": "ولتاژ منبع V₀ (V)",
+          "label_en": "Source voltage",
+          "type": "number",
+          "unit": "voltage",
+          "default": 5,
+          "required": true
+        },
+        {
+          "name": "t",
+          "label_fa": "زمان t (s)",
+          "label_en": "Time t",
+          "type": "number",
+          "unit": "time",
+          "default": 0.001,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "tau",
+          "label_fa": "tau",
+          "unit": null,
+          "label_en": "Tau"
+        },
+        {
+          "name": "Vc",
+          "label_fa": "Vc",
+          "unit": null,
+          "label_en": "Vc"
+        }
+      ],
+      "formula_latex": "\\tau=RC,\\ V_c(t)=V_0(1-e^{-t/\\tau}),\\ U=\\tfrac12CV^2",
+      "compute_js": "module:apps/web/phase2-formulas.js#rc_time_constant",
+      "steps_generator": "module:apps/web/phase2-formulas.js#rc_time_constant",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "R": 1000,
+            "C": 0.000001,
+            "V0": 5,
+            "t": 0.001
+          },
+          "expected": {
+            "tau": 0.001,
+            "Vc": 3.1606
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "R": 1000,
+            "C": 0.000001,
+            "V0": 5,
+            "t": 0.001
+          },
+          "expected": {
+            "tau": 0.001,
+            "Vc": 3.1606
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "gear_ratio",
+      "name_fa": "نسبت چرخ‌دنده‌ها",
+      "name_en": "Gear Ratio",
+      "category_path": [
+        "مهندسی",
+        "استاتیک"
+      ],
+      "tags": [
+        "چرخ‌دنده",
+        "گیربکس",
+        "گشتاور"
+      ],
+      "description_fa": "نسبت دنده، سرعت خروجی و گشتاور ایده‌آل از روی تعداد دندانه‌ها",
+      "variables": [
+        {
+          "name": "N_drive",
+          "label_fa": "دندانه چرخ محرک",
+          "label_en": "Drive teeth",
+          "type": "number",
+          "unit": null,
+          "default": 20,
+          "required": true,
+          "min": 1
+        },
+        {
+          "name": "N_driven",
+          "label_fa": "دندانه چرخ متحرک",
+          "label_en": "Driven teeth",
+          "type": "number",
+          "unit": null,
+          "default": 60,
+          "required": true,
+          "min": 1
+        },
+        {
+          "name": "rpm_in",
+          "label_fa": "دور ورودی (rpm)",
+          "label_en": "Input rpm",
+          "type": "number",
+          "unit": null,
+          "default": 3000,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "ratio",
+          "label_fa": "ratio",
+          "unit": null,
+          "label_en": "Ratio"
+        },
+        {
+          "name": "rpm_out",
+          "label_fa": "rpm_out",
+          "unit": null,
+          "label_en": "Rpm Out"
+        }
+      ],
+      "formula_latex": "i=\\frac{N_{driven}}{N_{drive}},\\ \\omega_o=\\frac{\\omega_i}{i}",
+      "compute_js": "module:apps/web/phase2-formulas.js#gear_ratio",
+      "steps_generator": "module:apps/web/phase2-formulas.js#gear_ratio",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "N_drive": 20,
+            "N_driven": 60,
+            "rpm_in": 3000
+          },
+          "expected": {
+            "ratio": 3,
+            "rpm_out": 1000
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "N_drive": 20,
+            "N_driven": 60,
+            "rpm_in": 3000
+          },
+          "expected": {
+            "ratio": 3,
+            "rpm_out": 1000
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "pressure_vessel",
+      "name_fa": "تنش پوسته نازک استوانه تحت فشار",
+      "name_en": "Thin Pressure Vessel Stress",
+      "category_path": [
+        "مهندسی",
+        "استاتیک"
+      ],
+      "tags": [
+        "مخزن تحت فشار",
+        "تنش",
+        "هوپ"
+      ],
+      "description_fa": "تنش محیطی (هوپ) و طولی دیواره استوانه جدار نازک",
+      "variables": [
+        {
+          "name": "P",
+          "label_fa": "فشار داخلی P (Pa)",
+          "label_en": "Pressure Pa",
+          "type": "number",
+          "unit": "pressure",
+          "default": 1000000,
+          "required": true
+        },
+        {
+          "name": "D",
+          "label_fa": "قطر D (m)",
+          "label_en": "Diameter",
+          "type": "number",
+          "unit": "length",
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "t",
+          "label_fa": "ضخامت جدار t (m)",
+          "label_en": "Thickness",
+          "type": "number",
+          "unit": "length",
+          "default": 0.01,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "hoop_stress",
+          "label_fa": "hoop_stress",
+          "unit": null,
+          "label_en": "Hoop Stress"
+        },
+        {
+          "name": "longitudinal_stress",
+          "label_fa": "longitudinal_stress",
+          "unit": null,
+          "label_en": "Longitudinal Stress"
+        }
+      ],
+      "formula_latex": "\\sigma_h=\\frac{PD}{2t},\\quad \\sigma_l=\\frac{PD}{4t}",
+      "compute_js": "module:apps/web/phase2-formulas.js#pressure_vessel",
+      "steps_generator": "module:apps/web/phase2-formulas.js#pressure_vessel",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "P": 1000000,
+            "D": 1,
+            "t": 0.01
+          },
+          "expected": {
+            "hoop_stress": 50000000,
+            "longitudinal_stress": 25000000
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "P": 1000000,
+            "D": 1,
+            "t": 0.01
+          },
+          "expected": {
+            "hoop_stress": 50000000,
+            "longitudinal_stress": 25000000
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "power_factor_ac",
+      "name_fa": "ضریب توان AC و توان راکتیو",
+      "name_en": "AC Power Factor",
+      "category_path": [
+        "مهندسی",
+        "مدار و الکترونیک"
+      ],
+      "tags": [
+        "AC",
+        "ضریب توان",
+        "راکتیو"
+      ],
+      "description_fa": "توان ظاهری، حقیقی، راکتیو و زاویه فاز از روی V، I و ضریب توان",
+      "variables": [
+        {
+          "name": "V",
+          "label_fa": "ولتاژ مؤثر V (V)",
+          "label_en": "Voltage",
+          "type": "number",
+          "unit": "voltage",
+          "default": 230,
+          "required": true
+        },
+        {
+          "name": "I",
+          "label_fa": "جریان مؤثر I (A)",
+          "label_en": "Current",
+          "type": "number",
+          "unit": null,
+          "default": 10,
+          "required": true
+        },
+        {
+          "name": "pf",
+          "label_fa": "ضریب توان cosφ (۰ تا ۱)",
+          "label_en": "Power factor",
+          "type": "number",
+          "unit": null,
+          "default": 0.8,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "apparent_VA",
+          "label_fa": "apparent_VA",
+          "unit": null,
+          "label_en": "Apparent VA"
+        },
+        {
+          "name": "real_W",
+          "label_fa": "real_W",
+          "unit": null,
+          "label_en": "Real W"
+        },
+        {
+          "name": "reactive_VAR",
+          "label_fa": "reactive_VAR",
+          "unit": null,
+          "label_en": "Reactive VAR"
+        },
+        {
+          "name": "phase_angle",
+          "label_fa": "phase_angle",
+          "unit": null,
+          "label_en": "Phase Angle"
+        }
+      ],
+      "formula_latex": "S=VI,\\ P=S\\cos\\varphi,\\ Q=\\sqrt{S^2-P^2}",
+      "compute_js": "module:apps/web/phase2-formulas.js#power_factor_ac",
+      "steps_generator": "module:apps/web/phase2-formulas.js#power_factor_ac",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "V": 230,
+            "I": 10,
+            "pf": 0.8
+          },
+          "expected": {
+            "apparent_VA": 2300,
+            "real_W": 1840,
+            "reactive_VAR": 1380,
+            "phase_angle": 36.87
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "V": 230,
+            "I": 10,
+            "pf": 0.8
+          },
+          "expected": {
+            "apparent_VA": 2300,
+            "real_W": 1840,
+            "reactive_VAR": 1380,
+            "phase_angle": 36.87
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "perpetuity",
+      "name_fa": "ارزش فعلی پرپچویی (مستمری دائمی)",
+      "name_en": "Perpetuity Valuation",
+      "category_path": [
+        "مالی و اقتصاد",
+        "بهره و وام"
+      ],
+      "tags": [
+        "پرپچویی",
+        "مستمری",
+        "ارزش فعلی"
+      ],
+      "description_fa": "ارزش فعلی مستمری دائمی ساده و رشدی با نرخ تنزیل",
+      "variables": [
+        {
+          "name": "C",
+          "label_fa": "جریان نقدی دوره‌ای C",
+          "label_en": "Cash flow",
+          "type": "number",
+          "unit": null,
+          "default": 100,
+          "required": true
+        },
+        {
+          "name": "rate",
+          "label_fa": "نرخ تنزیل سالانه ٪",
+          "label_en": "Discount rate %",
+          "type": "number",
+          "unit": null,
+          "default": 5,
+          "required": true
+        },
+        {
+          "name": "growth",
+          "label_fa": "نرخ رشد دائمی g ٪",
+          "label_en": "Growth %",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "PV",
+          "label_fa": "PV",
+          "unit": null,
+          "label_en": "PV"
+        },
+        {
+          "name": "PV_growing",
+          "label_fa": "PV_growing",
+          "unit": null,
+          "label_en": "PV Growing"
+        }
+      ],
+      "formula_latex": "PV=\\frac{C}{r},\\quad PV_g=\\frac{C}{r-g}",
+      "compute_js": "module:apps/web/phase2-formulas.js#perpetuity",
+      "steps_generator": "module:apps/web/phase2-formulas.js#perpetuity",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "C": 100,
+            "rate": 5,
+            "growth": 0
+          },
+          "expected": {
+            "PV": 2000
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "C": 100,
+            "rate": 5,
+            "growth": 0
+          },
+          "expected": {
+            "PV": 2000
+          }
+        },
+        {
+          "input": {
+            "C": 100,
+            "rate": 5,
+            "growth": 2
+          },
+          "expected": {
+            "PV_growing": 3333.3333
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "irr_calc",
+      "name_fa": "نرخ بازده داخلی IRR",
+      "name_en": "Internal Rate of Return",
+      "category_path": [
+        "مالی و اقتصاد",
+        "سرمایه‌گذاری"
+      ],
+      "tags": [
+        "IRR",
+        "بازده",
+        "سرمایه‌گذاری"
+      ],
+      "description_fa": "نرخ تنزیلی که NPV پروژه را صفر می‌کند (جستجوی دودویی روی جریان‌های نقدی)",
+      "variables": [
+        {
+          "name": "initial",
+          "label_fa": "سرمایه‌گذاری اولیه I₀",
+          "label_en": "Initial investment",
+          "type": "number",
+          "unit": null,
+          "default": 10000,
+          "required": true
+        },
+        {
+          "name": "cashflows",
+          "label_fa": "جریان‌های نقدی سالانه (با کاما)",
+          "label_en": "Annual cash flows",
+          "type": "text",
+          "unit": null,
+          "default": "3000,4000,5000,4000",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IRR_percent",
+          "label_fa": "IRR_percent",
+          "unit": null,
+          "label_en": "IRR Percent"
+        }
+      ],
+      "formula_latex": "NPV(r)=-I_0+\\sum_{t=1}^n\\frac{CF_t}{(1+r)^t}=0",
+      "compute_js": "module:apps/web/phase2-formulas.js#irr_calc",
+      "steps_generator": "module:apps/web/phase2-formulas.js#irr_calc",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "initial": 10000,
+            "cashflows": "3000,4000,5000,4000"
+          },
+          "expected": {
+            "IRR_percent": 20.5
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "initial": 10000,
+            "cashflows": "3000,4000,5000,4000"
+          },
+          "expected": {
+            "IRR_percent": 20.5
+          }
+        },
+        {
+          "input": {
+            "initial": 1000,
+            "cashflows": "1100"
+          },
+          "expected": {
+            "IRR_percent": 10
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "depreciation_straight_line",
+      "name_fa": "استهلاک خط مستقیم",
+      "name_en": "Straight-Line Depreciation",
+      "category_path": [
+        "مالی و اقتصاد",
+        "سرمایه‌گذاری"
+      ],
+      "tags": [
+        "استهلاک",
+        "حسابداری"
+      ],
+      "description_fa": "هزینه استهلاک سالانه، نرخ درصدی و ارزش دفتری پایان سال اول",
+      "variables": [
+        {
+          "name": "cost",
+          "label_fa": "بهای تمام‌شده C",
+          "label_en": "Asset cost",
+          "type": "number",
+          "unit": null,
+          "default": 10000,
+          "required": true
+        },
+        {
+          "name": "salvage",
+          "label_fa": "ارزش اسقاط S",
+          "label_en": "Salvage value",
+          "type": "number",
+          "unit": null,
+          "default": 1000,
+          "required": true
+        },
+        {
+          "name": "life",
+          "label_fa": "عمر مفید n (سال)",
+          "label_en": "Life years",
+          "type": "number",
+          "unit": null,
+          "default": 9,
+          "required": true,
+          "min": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "annual",
+          "label_fa": "annual",
+          "unit": null,
+          "label_en": "Annual"
+        },
+        {
+          "name": "rate_percent",
+          "label_fa": "rate_percent",
+          "unit": null,
+          "label_en": "Rate Percent"
+        },
+        {
+          "name": "book_value_y1",
+          "label_fa": "book_value_y1",
+          "unit": null,
+          "label_en": "Book Value Y1"
+        }
+      ],
+      "formula_latex": "D=\\frac{C-S}{n},\\quad rate=\\frac DC",
+      "compute_js": "module:apps/web/phase2-formulas.js#depreciation_straight_line",
+      "steps_generator": "module:apps/web/phase2-formulas.js#depreciation_straight_line",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "cost": 10000,
+            "salvage": 1000,
+            "life": 9
+          },
+          "expected": {
+            "annual": 1000,
+            "rate_percent": 10,
+            "book_value_y1": 9000
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "cost": 10000,
+            "salvage": 1000,
+            "life": 9
+          },
+          "expected": {
+            "annual": 1000,
+            "rate_percent": 10,
+            "book_value_y1": 9000
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "bmr_tdee",
+      "name_fa": "سوخت‌وساز پایه و انرژی روزانه (میفلین)",
+      "name_en": "BMR & TDEE (Mifflin-St Jeor)",
+      "category_path": [
+        "زیست و سلامت",
+        "سلامت"
+      ],
+      "tags": [
+        "BMR",
+        "TDEE",
+        "کالری"
+      ],
+      "description_fa": "نرخ متابولیسم پایه با معادله میفلین-سنت ژور و انرژی مورد نیاز روزانه با ضریب فعالیت",
+      "variables": [
+        {
+          "name": "weight",
+          "label_fa": "وزن (kg)",
+          "label_en": "Weight",
+          "type": "number",
+          "unit": "mass",
+          "default": 70,
+          "required": true
+        },
+        {
+          "name": "height",
+          "label_fa": "قد (cm)",
+          "label_en": "Height cm",
+          "type": "number",
+          "unit": null,
+          "default": 175,
+          "required": true
+        },
+        {
+          "name": "age",
+          "label_fa": "سن (سال)",
+          "label_en": "Age",
+          "type": "number",
+          "unit": null,
+          "default": 30,
+          "required": true,
+          "min": 1
+        },
+        {
+          "name": "sex",
+          "label_fa": "جنسیت (male/female)",
+          "label_en": "Sex",
+          "type": "text",
+          "unit": null,
+          "default": "male",
+          "required": true
+        },
+        {
+          "name": "activity",
+          "label_fa": "ضریب فعالیت (۱.۲ تا ۱.۹)",
+          "label_en": "Activity factor",
+          "type": "number",
+          "unit": null,
+          "default": 1.4,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BMR",
+          "label_fa": "BMR",
+          "unit": null,
+          "label_en": "BMR"
+        },
+        {
+          "name": "TDEE",
+          "label_fa": "TDEE",
+          "unit": null,
+          "label_en": "TDEE"
+        }
+      ],
+      "formula_latex": "BMR=10w+6.25h-5a+s,\\ TDEE=BMR\\times AF",
+      "compute_js": "module:apps/web/phase2-formulas.js#bmr_tdee",
+      "steps_generator": "module:apps/web/phase2-formulas.js#bmr_tdee",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "weight": 70,
+            "height": 175,
+            "age": 30,
+            "sex": "male",
+            "activity": 1.4
+          },
+          "expected": {
+            "BMR": 1648.75,
+            "TDEE": 2308.25
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "weight": 70,
+            "height": 175,
+            "age": 30,
+            "sex": "male",
+            "activity": 1.4
+          },
+          "expected": {
+            "BMR": 1648.75,
+            "TDEE": 2308.25
+          }
+        },
+        {
+          "input": {
+            "weight": 60,
+            "height": 165,
+            "age": 25,
+            "sex": "female",
+            "activity": 1.2
+          },
+          "expected": {
+            "BMR": 1345.25
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "data_storage_converter",
+      "name_fa": "تبدیل حجم داده (بیت/بایت/KB..TiB)",
+      "name_en": "Digital Storage Converter",
+      "category_path": [
+        "کامپیوتر و اطلاعات",
+        "نظریه اطلاعات"
+      ],
+      "tags": [
+        "بایت",
+        "بیت",
+        "ذخیره‌سازی"
+      ],
+      "description_fa": "تبدیل یکای حجم داده با پیشوندهای اعشاری (KB) و دودویی (KiB)",
+      "variables": [
+        {
+          "name": "value",
+          "label_fa": "مقدار",
+          "label_en": "Value",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "from_unit",
+          "label_fa": "یکای مبدا (bit/B/KB/MB/GB/TB/KiB/MiB/GiB)",
+          "label_en": "From unit",
+          "type": "text",
+          "unit": null,
+          "default": "GB",
+          "required": true
+        },
+        {
+          "name": "to_unit",
+          "label_fa": "یکای مقصد",
+          "label_en": "To unit",
+          "type": "text",
+          "unit": null,
+          "default": "bit",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result",
+          "label_fa": "result",
+          "unit": null,
+          "label_en": "Result"
+        }
+      ],
+      "formula_latex": "1\\,B=8\\,bit,\\ 1\\,KB=10^3B,\\ 1\\,KiB=2^{10}B",
+      "compute_js": "module:apps/web/phase2-formulas.js#data_storage_converter",
+      "steps_generator": "module:apps/web/phase2-formulas.js#data_storage_converter",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "value": 1,
+            "from_unit": "GB",
+            "to_unit": "bit"
+          },
+          "expected": {
+            "result": 8000000000
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "value": 1,
+            "from_unit": "GB",
+            "to_unit": "bit"
+          },
+          "expected": {
+            "result": 8000000000
+          }
+        },
+        {
+          "input": {
+            "value": 8192,
+            "from_unit": "MB",
+            "to_unit": "GB"
+          },
+          "expected": {
+            "result": 8.192
+          }
+        },
+        {
+          "input": {
+            "value": 1,
+            "from_unit": "KiB",
+            "to_unit": "B"
+          },
+          "expected": {
+            "result": 1024
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
+      "validated": true
+    },
+    {
+      "id": "ipv4_subnet",
+      "name_fa": "محاسبه زیرشبکه IPv4 (CIDR)",
+      "name_en": "IPv4 Subnet Calculator",
+      "category_path": [
+        "کامپیوتر و اطلاعات",
+        "نظریه اطلاعات"
+      ],
+      "tags": [
+        "شبکه",
+        "IP",
+        "ساب‌نت"
+      ],
+      "description_fa": "آدرس شبکه، پخش، ماسک، وایلدکارد و تعداد هاست قابل استفاده از روی CIDR",
+      "variables": [
+        {
+          "name": "ip",
+          "label_fa": "آدرس IPv4",
+          "label_en": "IPv4 address",
+          "type": "text",
+          "unit": null,
+          "default": "192.168.1.10",
+          "required": true
+        },
+        {
+          "name": "prefix",
+          "label_fa": "پیشوند CIDR (۰ تا ۳۲)",
+          "label_en": "CIDR prefix",
+          "type": "number",
+          "unit": null,
+          "default": 24,
+          "required": true,
+          "min": 0,
+          "max": 32
+        }
+      ],
+      "outputs": [
+        {
+          "name": "network",
+          "label_fa": "network",
+          "unit": null,
+          "label_en": "Network"
+        },
+        {
+          "name": "broadcast",
+          "label_fa": "broadcast",
+          "unit": null,
+          "label_en": "Broadcast"
+        },
+        {
+          "name": "usable_hosts",
+          "label_fa": "usable_hosts",
+          "unit": null,
+          "label_en": "Usable Hosts"
+        },
+        {
+          "name": "mask",
+          "label_fa": "mask",
+          "unit": null,
+          "label_en": "Mask"
+        }
+      ],
+      "formula_latex": "mask=\\underbrace{11\\dots1}_{p}\\underbrace{00\\dots0}_{32-p}",
+      "compute_js": "module:apps/web/phase2-formulas.js#ipv4_subnet",
+      "steps_generator": "module:apps/web/phase2-formulas.js#ipv4_subnet",
+      "plot_spec": null,
+      "examples": [
+        {
+          "input": {
+            "ip": "192.168.1.10",
+            "prefix": 24
+          },
+          "expected": {
+            "network": "192.168.1.0",
+            "broadcast": "192.168.1.255",
+            "usable_hosts": 254,
+            "mask": "255.255.255.0"
+          }
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "ip": "192.168.1.10",
+            "prefix": 24
+          },
+          "expected": {
+            "network": "192.168.1.0",
+            "broadcast": "192.168.1.255",
+            "usable_hosts": 254,
+            "mask": "255.255.255.0"
+          }
+        },
+        {
+          "input": {
+            "ip": "10.0.0.5",
+            "prefix": 30
+          },
+          "expected": {
+            "network": "10.0.0.4",
+            "broadcast": "10.0.0.7",
+            "usable_hosts": 2,
+            "mask": "255.255.255.252"
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.2.0",
       "validated": true
     }
   ]

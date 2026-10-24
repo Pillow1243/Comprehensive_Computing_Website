@@ -17,7 +17,7 @@ const sectionMatches={
   sec_19:f=>f.category_path?.[0]==='مالی و اقتصاد',
 };
 
-catalog.version='1.1.0';
+catalog.version='1.2.0';
 catalog.schema_version='1.0.0';
 catalog.implemented_formula_ids=FORMULAS.map(formula=>formula.id);
 catalog.implemented_count=FORMULAS.length;

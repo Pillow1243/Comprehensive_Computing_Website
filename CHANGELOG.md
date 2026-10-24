@@ -4,6 +4,32 @@ All notable changes to SolveEverything are documented here. This project follows
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-10-24
+
+### Added
+- **55 new client-side formula solvers (100 → 155 total, 355 declared formula cases)**, each with bilingual metadata, derivation steps, domain validation and automated tests:
+  - Number theory & algebra: primality test, modular inverse, binomial expansion, sums of powers, base converter (2–36), cubic equation (Cardano), 3×3 linear system (Cramer), absolute-value equation, ratio simplifier.
+  - Geometry & trigonometry: rectangle, parallelogram, trapezoid, rhombus, square pyramid, torus, haversine great-circle distance, inverse trig functions, six trig ratios from sin.
+  - Calculus & linear algebra: numeric Taylor polynomial, numeric limit with divergence detection, Riemann sums (left/right/midpoint/trapezoid), 3×3 determinant/inverse, 3D cross product.
+  - Statistics: discrete expected value/variance, hypergeometric, exponential, uniform and geometric distributions, z confidence interval, chi-square goodness of fit.
+  - Physics: Coulomb, point-charge field/potential, Lorentz force, Doppler effect, decibel level, thin lens, spring/Hooke/SHM, orbital & escape velocity, Stefan-Boltzmann/Wien.
+  - Chemistry: Henderson-Hasselbalch, Beer-Lambert, Gibbs free energy, weak-acid pH (exact quadratic), equilibrium constant Kc.
+  - Engineering: voltage divider, RC charging, gear ratio, thin pressure-vessel stress, AC power factor.
+  - Finance/health/CS: perpetuity, IRR, straight-line depreciation, BMR/TDEE, digital storage converter, IPv4 subnet calculator.
+- Complete UI redesign: glassmorphism top bar, gradient hero with floating symbols, subject cards with color coding, subcategory filter chips, redesigned formula cards with difficulty indicator and one-tap bookmark, mobile bottom navigation and sidebar backdrop, Vazirmatn webfont, polished dark theme, per-result copy buttons, plotter presets, converter swap button, JSON history export, quiz streak/best score, `/` keyboard shortcut.
+- Engine: `sec/csc/cot/ncr/npr` safe functions and nine new unit dimensions (area, volume, force, energy, power, pressure, torque, data plus existing set).
+- New canvas plot types for cubic functions and exponential distributions.
+- Service worker cache bumped to v4 and now precaches `phase2-formulas.js`.
+
+### Changed
+- Package/catalog version bumped to 1.2.0; catalog resynchronized with 155 full records.
+- E2E hero-stat expectation updated to the new 155-formula count.
+
+### Fixed
+- `CSS.escape` dependency now falls back to a local escaper so solver forms keep working in non-browser runtimes.
+
+## [1.1.x]
+
 ### Fixed
 - Shared/bookmarked links (`#/formula/<id>?param=…`) failed to open because the query string became part of the formula id.
 - Calculator precedence: `-2^2` now equals `-4` (unary minus binds looser than `^`), and `constructor`/`toString` are no longer resolved as variables or functions.

@@ -1,6 +1,6 @@
 {
   "name": "solve-everything",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": false,
   "type": "module",
   "description": "Client-first scientific formula solver and bilingual PWA",

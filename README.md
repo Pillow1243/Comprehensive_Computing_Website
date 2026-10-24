@@ -5,7 +5,7 @@
 [![CI](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/ci.yml/badge.svg)](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/ci.yml)
 [![GitHub Pages](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/deploy-pages.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.1.0-informational.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-1.2.0-informational.svg)](CHANGELOG.md)
 [![CodeQL](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/codeql.yml/badge.svg)](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/codeql.yml)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Pillow1243/Comprehensive_Computing_Website/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Pillow1243/Comprehensive_Computing_Website)
 ![PWA](https://img.shields.io/badge/PWA-installable%20%7C%20offline-ready-7c5cff)
@@ -13,7 +13,7 @@
 
 **Solve any equation, step by step.** A Persian/English client-first scientific calculator for mathematics, physics, chemistry, engineering, statistics, and finance—built to work offline and deploy as a static site.
 
-**Live demo:** [Pillow1243.github.io/Comprehensive_Computing_Website](https://Pillow1243.github.io/Comprehensive_Computing_Website/) · **Status:** Phase 1 in progress · **Implemented:** 100 formula solvers, 266 declared formula test cases.
+**Live demo:** [Pillow1243.github.io/Comprehensive_Computing_Website](https://Pillow1243.github.io/Comprehensive_Computing_Website/) · **Status:** Phase 1 in progress · **Implemented:** 155 formula solvers, 355 declared formula test cases.
 
 > The GitHub Pages workflow is ready, but the repository owner must select **Settings → Pages → GitHub Actions** and deploy from `main` before the live URL is available. See [Deployment](docs/DEPLOYMENT.md).
 
@@ -39,7 +39,7 @@ No build step is needed to try only the original PWA: `python3 -m http.server 80
 
 | Area | Available now | Scope / limitations |
 |---|---|---|
-| Formula solvers | 100 client-side formulas across core math, geometry, calculus, statistics, physics, chemistry, engineering, and finance | The 500+ broad scientific catalog remains a roadmap target; see `ROADMAP.md`. |
+| Formula solvers | 155 client-side formulas across core math, geometry, calculus, statistics, physics, chemistry, engineering, finance, health and computer science | The 500+ broad scientific catalog remains a roadmap target; see `ROADMAP.md`. |
 | Steps and plots | Human-readable derivation steps, KaTeX rendering with text fallback, dynamic 2D Canvas plots | Advanced 3D, full symbolic CAS, and general-purpose plotting are future work. |
 | Tools | Safe scientific expression calculator, numeric derivative/integral/root tools, unit converter, practice quiz | The unit table is useful but not yet a complete dimensional-analysis system. |
 | Persistence | Local history, bookmarks, shareable formula links, print/PDF | No sign-in or server-side user history in the static Pages build. |

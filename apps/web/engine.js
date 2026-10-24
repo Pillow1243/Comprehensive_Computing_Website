@@ -1,5 +1,9 @@
 // Safe expression engine (no eval) — tokenizer + recursive-descent parser
-const FUNCS={sqrt:Math.sqrt,cbrt:Math.cbrt,sin:Math.sin,cos:Math.cos,tan:Math.tan,asin:Math.asin,acos:Math.acos,atan:Math.atan,sinh:Math.sinh,cosh:Math.cosh,tanh:Math.tanh,ln:Math.log,log:Math.log10,log2:Math.log2,log10:Math.log10,exp:Math.exp,abs:Math.abs,floor:Math.floor,ceil:Math.ceil,round:Math.round,sign:Math.sign,min:Math.min,max:Math.max};
+const FUNCS={sqrt:Math.sqrt,cbrt:Math.cbrt,sin:Math.sin,cos:Math.cos,tan:Math.tan,asin:Math.asin,acos:Math.acos,atan:Math.atan,sinh:Math.sinh,cosh:Math.cosh,tanh:Math.tanh,
+  sec:x=>1/Math.cos(x),csc:x=>1/Math.sin(x),cot:x=>1/Math.tan(x),
+  ncr:(n,r)=>{n=Math.round(n);r=Math.round(r);if(r<0||r>n||n<0)return NaN;let v=1;for(let k=1;k<=r;k++)v=v*(n-r+k)/k;return v;},
+  npr:(n,r)=>{n=Math.round(n);r=Math.round(r);if(r<0||r>n||n<0)return NaN;let v=1;for(let k=0;k<r;k++)v*=(n-k);return v;},
+  ln:Math.log,log:Math.log10,log2:Math.log2,log10:Math.log10,exp:Math.exp,abs:Math.abs,floor:Math.floor,ceil:Math.ceil,round:Math.round,sign:Math.sign,min:Math.min,max:Math.max};
 const CONSTS={pi:Math.PI,e:Math.E,tau:2*Math.PI,phi:(1+Math.sqrt(5))/2};
 export function evaluate(expr,vars={}){
   const toks=[]; let i=0; const s=String(expr).replace(/\s+/g,'');
@@ -49,6 +53,14 @@ export const UNITS={
  voltage:{label_fa:'ولتاژ',units:{mV:0.001,V:1,kV:1000},base:'V'},
  resistance:{label_fa:'مقاومت',units:{'Ω':1,'kΩ':1000,'MΩ':1e6},base:'Ω'},
  concentration:{label_fa:'غلظت',units:{'mol/L':1,'mmol/L':0.001},base:'mol/L'},
+ area:{label_fa:'مساحت',units:{'mm²':1e-6,'cm²':1e-4,'m²':1,'ha':1e4,'km²':1e6,'in²':0.00064516,'ft²':0.09290304,'acre':4046.8564224},base:'m²'},
+ volume:{label_fa:'حجم',units:{'mL':1e-3,'L':1,'m³':1000,'cm³':1e-3,'ft³':28.316846592,'gal_US':3.785411784,'fl_oz':0.0295735295625},base:'L'},
+ force:{label_fa:'نیرو',units:{N:1,kN:1000,'kgf':9.80665,lbf:4.4482216153,dyn:1e-5},base:'N'},
+ energy:{label_fa:'انرژی',units:{J:1,kJ:1000,cal:4.184,kcal:4184,Wh:3600,kWh:3.6e6,eV:1.602176634e-19},base:'J'},
+ power:{label_fa:'توان',units:{W:1,kW:1000,MW:1e6,hp:745.699871582},base:'W'},
+ pressure:{label_fa:'فشار',units:{Pa:1,kPa:1e3,MPa:1e6,bar:1e5,atm:101325,psi:6894.757293,mmHg:133.322387415},base:'Pa'},
+ torque:{label_fa:'گشتاور',units:{'N·m':1,'lbf·ft':1.3558179483,'kgf·m':9.80665},base:'N·m'},
+ data:{label_fa:'حجم داده',units:{bit:0.125,B:1,KB:1e3,MB:1e6,GB:1e9,TB:1e12,KiB:1024,MiB:1048576,GiB:1073741824},base:'B'},
 };
 export function convertUnits(value,dim,from,to){ if(!dim||!UNITS[dim]) return value; const u=UNITS[dim].units; return value*u[from]/u[to]; }
 export function toBase(value,dim,unit){ if(!dim||!UNITS[dim]) return value; return value*UNITS[dim].units[unit]; }
