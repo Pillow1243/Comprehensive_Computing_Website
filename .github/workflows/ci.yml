@@ -1,0 +1,38 @@
+name: CI
+on: {push: {branches: ["**"]}, pull_request: {}}
+jobs:
+  test-web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: "22"}
+      - name: Formula + engine unit tests
+        run: node --test tests/formulas.test.mjs
+      - name: Syntax check all JS modules
+        run: for f in apps/web/*.js; do node --check "$f"; done
+  api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -r backend/requirements.txt httpx
+      - name: Smoke test API
+        run: |
+          uvicorn backend.main:app --port 8000 & sleep 4
+          curl -f localhost:8000/health
+          curl -f -X POST localhost:8000/api/v1/solve -H 'content-type: application/json' -d '{"formula_id":"ph","inputs":{"concentration":0.001}}'
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: "22"}
+      - name: Static server smoke (responsive routes exist)
+        run: |
+          python3 -m http.server 8080 --directory apps/web & sleep 2
+          curl -f localhost:8080/ | grep -q SolveEverything
+          curl -f localhost:8080/manifest.webmanifest >/dev/null
+          curl -f localhost:8080/sw.js >/dev/null
+      # Phase 1: Playwright + BrowserStack matrix (320px…1920px, iOS/Android/Windows/macOS)

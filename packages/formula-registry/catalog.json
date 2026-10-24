@@ -1,0 +1,453 @@
+{
+  "project": "SolveEverything",
+  "version": "1.0.0",
+  "implemented_formula_ids": [
+    "gcd_lcm",
+    "prime_factor",
+    "factorial",
+    "percent_change",
+    "means",
+    "quadratic",
+    "linear_system_2",
+    "arithmetic_seq",
+    "geometric_seq",
+    "log_solve",
+    "trig_triangle_law_of_cosines",
+    "law_of_sines",
+    "heron",
+    "pythagorean",
+    "circle",
+    "polygon",
+    "solids",
+    "distance_midpoint",
+    "trig_eval",
+    "poly_derivative",
+    "descriptive_stats",
+    "normal_dist",
+    "correlation",
+    "matrix_2x2",
+    "kinematics",
+    "newton_energy",
+    "ohm_circuit",
+    "wave",
+    "relativity",
+    "heat",
+    "ph",
+    "molarity",
+    "ideal_gas",
+    "reaction_yield",
+    "arrhenius",
+    "nernst",
+    "beam_simple",
+    "stress_strain",
+    "reynolds",
+    "heat_conduction",
+    "compound_interest",
+    "loan_payment",
+    "npv",
+    "shannon_entropy",
+    "bmi",
+    "logistic_growth"
+  ],
+  "implemented_count": 46,
+  "sections": [
+    {
+      "id": "sec_01",
+      "title_fa": "01 حساب و نظریه اعداد",
+      "status": "partial",
+      "planned_items": [
+        "عملیات حسابی",
+        "فاکتوریل/دوگانه",
+        "GCD/LCM",
+        "اول بودن Miller-Rabin",
+        "تجزیه اول",
+        "فی اویلر",
+        "موبیوس",
+        "CRT",
+        "معکوس پیمانه‌ای",
+        "فیبوناچی/لوکاس",
+        "استرلینگ/بل",
+        "کسر مسلسل",
+        "اعداد مختلط",
+        "درصد",
+        "لگاریتم"
+      ]
+    },
+    {
+      "id": "sec_02",
+      "title_fa": "02 جبر",
+      "status": "partial",
+      "planned_items": [
+        "ساده‌سازی/فاکتور",
+        "چندجمله‌ای و هورنر",
+        "درجه۲ کاردانو/فراری درجه۳-۴",
+        "دستگاه خطی",
+        "نامساوی‌ها",
+        "دامنه/برد تابع",
+        "دنباله و سری",
+        "جبر بولی و کارنو"
+      ]
+    },
+    {
+      "id": "sec_03",
+      "title_fa": "03 هندسه و مثلثات",
+      "status": "partial",
+      "planned_items": [
+        "توابع مثلثاتی",
+        "قانون سینوس/کسینوس",
+        "حل مثلث SSS/SAS/ASA/SSA",
+        "هرون",
+        "دایره و قطاع",
+        "اجسام فضایی",
+        "هندسه تحلیلی و مقاطع مخروطی",
+        "بردارها dot/cross",
+        "تبدیل مختصات"
+      ]
+    },
+    {
+      "id": "sec_04",
+      "title_fa": "04 حساب دیفرانسیل و انتگرال",
+      "status": "partial",
+      "planned_items": [
+        "حد و هوپیتال",
+        "مشتق و قواعد",
+        "انتگرال و روش‌ها",
+        "انتگرال عددی Simpson/Trapezoid",
+        "سری تیلور/فوریه",
+        "لاپلاس/فوریه/FFT",
+        "ODE (اویلر/RK4)",
+        "PDE گرما/موج",
+        "بهینه‌سازی لاگرانژ"
+      ]
+    },
+    {
+      "id": "sec_05",
+      "title_fa": "05 جبر خطی",
+      "status": "partial",
+      "planned_items": [
+        "عملیات ماتریسی",
+        "دترمینان/معکوس",
+        "LU/QR/SVD/Cholesky",
+        "مقادیر ویژه",
+        "کمترین مربعات",
+        "گرام-اشمیت"
+      ]
+    },
+    {
+      "id": "sec_06",
+      "title_fa": "06 آمار و احتمال",
+      "status": "partial",
+      "planned_items": [
+        "آمار توصیفی",
+        "بازه اطمینان",
+        "آزمون t/z/کای‌دو/ANOVA",
+        "توزیع نرمال/دوجمله‌ای/پواسون/t/F/بتا/گاما",
+        "بیز",
+        "همبستگی/رگرسیون",
+        "مارکوف",
+        "ترکیبیات"
+      ]
+    },
+    {
+      "id": "sec_07",
+      "title_fa": "07 ریاضیات گسسته",
+      "status": "partial",
+      "planned_items": [
+        "منطق و جدول درستی",
+        "مجموعه‌ها",
+        "گراف BFS/DFS/دایجسترا/کروسکال",
+        "جریان بیشینه",
+        "PageRank",
+        "مرتب‌سازی و Big-O",
+        "DFA/NFA"
+      ]
+    },
+    {
+      "id": "sec_08",
+      "title_fa": "08 بهینه‌سازی",
+      "status": "partial",
+      "planned_items": [
+        "گرادیان نزولی/نیوتن/BFGS",
+        "سیمپلکس LP",
+        "لاگرانژ/KKT",
+        "کوله‌پشتی DP",
+        "TSP",
+        "PSO/ژنتیک"
+      ]
+    },
+    {
+      "id": "sec_09",
+      "title_fa": "09 توابع خاص",
+      "status": "partial",
+      "planned_items": [
+        "گاما/بتا",
+        "erf",
+        "بسل",
+        "لژاندر/هرمیت/لاگر/چبیشف",
+        "زتا/پلی‌لاگ",
+        "لامبرت W"
+      ]
+    },
+    {
+      "id": "sec_10",
+      "title_fa": "10 فیزیک",
+      "status": "partial",
+      "planned_items": [
+        "سینماتیک",
+        "دینامیک و اصطکاک",
+        "انرژی/تکانه/برخورد",
+        "دورانی و ممان اینرسی",
+        "گرانش و کپلر",
+        "نوسان و آونگ",
+        "سیالات و برنولی",
+        "ترمودینامیک و کارنو",
+        "الکترومغناطیس و مدار",
+        "اپتیک",
+        "نسبیت",
+        "کوانتوم و هسته‌ای"
+      ]
+    },
+    {
+      "id": "sec_11",
+      "title_fa": "11 شیمی",
+      "status": "partial",
+      "planned_items": [
+        "موازنه و مول",
+        "غلظت‌ها و رقیق‌سازی",
+        "تعادل Kc/Kp و ICE",
+        "pH/بافر",
+        "Ksp",
+        "نرنست و فارادی",
+        "هس و گیبس",
+        "سینتیک و آرنیوس",
+        "بیر-لامبرت",
+        "مایکلیس-منتن"
+      ]
+    },
+    {
+      "id": "sec_12",
+      "title_fa": "12 مهندسی",
+      "status": "partial",
+      "planned_items": [
+        "استاتیک و خرپا",
+        "تنش/خمش/پیچش/کمانش",
+        "ارتعاشات",
+        "سیالات و رینولدز",
+        "انتقال حرارت",
+        "مدار DC/AC و آپ‌امپ",
+        "کنترل PID/روث",
+        "سه‌فاز و ترانس",
+        "چرخ‌دنده و شافت"
+      ]
+    },
+    {
+      "id": "sec_13",
+      "title_fa": "13 علوم دیگر",
+      "status": "planned",
+      "planned_items": [
+        "بهره و NPV/IRR",
+        "رشد لجستیک و SIR",
+        "ریشتر و کپلر",
+        "هاردی-واینبرگ",
+        "فارماکوکینتیک"
+      ]
+    },
+    {
+      "id": "sec_14",
+      "title_fa": "14 اطلاعات و رمزنگاری",
+      "status": "planned",
+      "planned_items": [
+        "آنتروپی شانون",
+        "KL و ظرفیت کانال",
+        "هافمن",
+        "RSA/Diffie-Hellman/ECC",
+        "هش SHA",
+        "هامینگ/CRC"
+      ]
+    },
+    {
+      "id": "sec_15",
+      "title_fa": "15 پردازش سیگنال",
+      "status": "planned",
+      "planned_items": [
+        "کانولوشن",
+        "FFT/DFT",
+        "فیلتر باترورث/چبیشف",
+        "پنجره‌ها",
+        "کالمن",
+        "مدولاسیون"
+      ]
+    },
+    {
+      "id": "sec_16",
+      "title_fa": "16 یادگیری ماشین",
+      "status": "planned",
+      "planned_items": [
+        "رگرسیون و لجستیک",
+        "KNN/SVM/درخت",
+        "K-Means/PCA",
+        "فعال‌سازی و هزینه",
+        "Adam/SGD",
+        "معیارها F1/ROC"
+      ]
+    },
+    {
+      "id": "sec_17",
+      "title_fa": "17 نظریه بازی",
+      "status": "planned",
+      "planned_items": [
+        "تعادل نش",
+        "مینی‌مکس",
+        "شپلی",
+        "حراج ویکری",
+        "معمای زندانی"
+      ]
+    },
+    {
+      "id": "sec_18",
+      "title_fa": "18 قابلیت اطمینان",
+      "status": "planned",
+      "planned_items": [
+        "MTBF/MTTR",
+        "سری/موازی/k-out-of-n",
+        "وایبول",
+        "Cp/Cpk",
+        "نمودار کنترل"
+      ]
+    },
+    {
+      "id": "sec_19",
+      "title_fa": "19 اکچوئری و مالی پیشرفته",
+      "status": "planned",
+      "planned_items": [
+        "جدول عمر",
+        "Black-Scholes",
+        "VaR/CVaR",
+        "CAPM و مارکوویتز",
+        "GARCH",
+        "درخت دوجمله‌ای"
+      ]
+    },
+    {
+      "id": "sec_20",
+      "title_fa": "20 سری زمانی",
+      "status": "planned",
+      "planned_items": [
+        "هموارسازی نمایی",
+        "ARIMA/SARIMA",
+        "ACF/PACF",
+        "ADF/KPSS",
+        "GARCH"
+      ]
+    },
+    {
+      "id": "sec_21",
+      "title_fa": "21 رباتیک و مداری",
+      "status": "planned",
+      "planned_items": [
+        "سینماتیک 2R/3R",
+        "کوترنیون و اویلر",
+        "DH و ژاکوبین",
+        "هومان و Δv",
+        "PID"
+      ]
+    },
+    {
+      "id": "sec_22",
+      "title_fa": "22 گرافیک ۳بعدی",
+      "status": "planned",
+      "planned_items": [
+        "تبدیل آفین",
+        "کوترنیون/SLERP",
+        "پروجکشن",
+        "Phong/PBR",
+        "برخورد Ray/AABB",
+        "تبدیل رنگ"
+      ]
+    },
+    {
+      "id": "sec_23",
+      "title_fa": "23 پردازش تصویر و صدا",
+      "status": "planned",
+      "planned_items": [
+        "فیلتر گاوسی/سوبل",
+        "Canny و Hough",
+        "هیستوگرام",
+        "MFCC و Pitch",
+        "فوریه ۲بعدی"
+      ]
+    },
+    {
+      "id": "sec_24",
+      "title_fa": "24 ستاره‌شناسی",
+      "status": "planned",
+      "planned_items": [
+        "کپلر و عناصر مداری",
+        "قدر ظاهری/مطلق",
+        "هابل و انتقال به سرخ",
+        "شوارتزشیلد",
+        "زمان نجومی"
+      ]
+    },
+    {
+      "id": "sec_25",
+      "title_fa": "25 موسیقی و رنگ",
+      "status": "planned",
+      "planned_items": [
+        "فرکانس نت",
+        "گام‌ها و کوک",
+        "هارمونیک",
+        "RGB↔HSL↔Lab",
+        "Delta-E و کنتراست"
+      ]
+    },
+    {
+      "id": "sec_26",
+      "title_fa": "26 محاسبات علمی",
+      "status": "planned",
+      "planned_items": [
+        "مونت‌کارلو",
+        "MCMC",
+        "FDM/FEM پایه",
+        "Krylov",
+        "ریشه‌یابی چندمتغیره"
+      ]
+    },
+    {
+      "id": "sec_27",
+      "title_fa": "27 منطق فازی",
+      "status": "planned",
+      "planned_items": [
+        "تابع عضویت",
+        "T-norm/S-norm",
+        "Mamdani/Sugeno",
+        "کنترل فازی",
+        "ANFIS"
+      ]
+    },
+    {
+      "id": "sec_28",
+      "title_fa": "28 نظریه صف",
+      "status": "planned",
+      "planned_items": [
+        "M/M/1",
+        "M/M/c",
+        "M/G/1",
+        "قانون لیتل",
+        "تولد-مرگ"
+      ]
+    },
+    {
+      "id": "sec_29",
+      "title_fa": "29 ناوبری",
+      "status": "planned",
+      "planned_items": [
+        "Haversine",
+        "Vincenty",
+        "WGS84↔UTM",
+        "مرکاتور",
+        "مسیر دایره بزرگ"
+      ]
+    }
+  ]
+}
