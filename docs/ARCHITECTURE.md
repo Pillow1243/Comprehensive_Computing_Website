@@ -36,7 +36,7 @@ PostgreSQL (users, formulas, calculations…) ── Redis (cache/rate-limit) �
 |۱۳|رسپانسیو/PWA|`docs/RESPONSIVE.md` + `styles.css` + `manifest.webmanifest` + `sw.js` + `infra/native-apps.md`|
 
 ## کاتالوگ
-`packages/formula-registry/catalog.json`: ۲۹ بخش موضوعی و آیتم‌های برنامه‌ریزی‌شده؛ ۱۰۰ فرمول پیاده‌سازی‌شده با ۲۶۶ مورد تست اعلام‌شده. این کاتالوگ هنوز پیاده‌سازی کامل فهرست علمی (۵۰۰+) نیست.
+`packages/formula-registry/catalog.json`: ۲۹ بخش موضوعی و آیتم‌های برنامه‌ریزی‌شده؛ ۱۵۵ فرمول پیاده‌سازی‌شده با ۳۵۵ مورد تست اعلام‌شده. این کاتالوگ هنوز پیاده‌سازی کامل فهرست علمی (۵۰۰+) نیست.
 
 ## امنیت
 پارسر عبارت کلاینتی بدون `eval` و پارسر AST نمادین allow-list شده برای API؛ سقف طول/پیچیدگی، rate-limit نمونه، CORS بر اساس `CORS_ORIGINS`، و CSP محدودکننده در متای HTML. GitHub Pages اجازه تنظیم هدرهای دلخواه (از جمله HSTS و `frame-ancestors`) را از repo نمی‌دهد؛ برای سیاست‌های قوی‌تر باید CDN/هاست پاسخ‌هدر‌پذیر جلوی Pages قرار گیرد. هیچ source string از Registry اجرا نمی‌شود؛ فقط توابع مورداعتماد ماژول‌ها.
