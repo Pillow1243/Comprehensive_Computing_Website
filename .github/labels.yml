@@ -1,0 +1,33 @@
+- name: bug
+  color: d73a4a
+  description: Confirmed defect
+- name: enhancement
+  color: a2eeef
+  description: Product or experience improvement
+- name: formula
+  color: 5319e7
+  description: Formula or scientific-computing work
+- name: needs-review
+  color: fbca04
+  description: Needs domain or maintainer review
+- name: triage
+  color: ededed
+  description: Needs initial triage
+- name: documentation
+  color: 0075ca
+  description: Documentation improvements
+- name: accessibility
+  color: 0e8a16
+  description: Accessibility and inclusive design
+- name: good first issue
+  color: 7057ff
+  description: Suitable for a first contribution
+- name: help wanted
+  color: 008672
+  description: Maintainer help wanted
+- name: security
+  color: b60205
+  description: Security-sensitive work; do not disclose vulnerabilities publicly
+- name: pages
+  color: 0052cc
+  description: GitHub Pages and static-export deployment

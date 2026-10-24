@@ -1,4 +1,8 @@
-# پیکربندی رسپانسیو و PWA ✅ (پیاده‌سازی‌شده در `apps/web/styles.css`)
+# پیکربندی رسپانسیو و PWA
+
+هسته‌ی PWA از CSS موبایل‌محور در `apps/web/styles.css` استفاده می‌کند (بدون Tailwind runtime). پوسته Next استاتیک در `app/globals.css` ارتفاع `100dvh` و safe-area را به iframe می‌دهد. این تصمیم build ساده و فایل‌های سبک را حفظ می‌کند؛ افزودن Tailwind در حال حاضر ارزش پیچیدگی مهاجرت را ندارد.
+
+## وضعیت پیاده‌سازی
 
 - Breakpoints اجباری: xs 320 / sm 480 / md 768 / lg 1024 / xl 1280 / 2xl 1536 / 3xl 1920 — گرید فرمول‌ها: ۱→۲→۲→۳→۳→۴→۵ ستون؛ sidebar از lg به بالا ثابت، پایین‌تر Drawer.
 - Mobile-first، تاچ‌تارگت ≥44×44px، `viewport-fit=cover` + `env(safe-area-inset-*)` برای notch/Dynamic Island، پشتیبانی Portrait/Landscape و `prefers-reduced-motion`.

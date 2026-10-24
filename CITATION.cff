@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use SolveEverything in academic work, cite the software release and repository."
+title: "SolveEverything: A Client-First Scientific Formula Solver"
+type: software
+version: 1.1.0
+date-released: 2026-10-24
+repository-code: "https://github.com/Pillow1243/Comprehensive_Computing_Website"
+url: "https://Pillow1243.github.io/Comprehensive_Computing_Website/"
+license: MIT
+authors:
+  - family-names: "Pillow1243"
+    given-names: "SolveEverything contributors"
+keywords:
+  - mathematics
+  - physics
+  - chemistry
+  - engineering
+  - scientific computing
+  - Persian

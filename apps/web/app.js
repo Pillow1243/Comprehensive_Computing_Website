@@ -1,6 +1,7 @@
 import {FORMULAS,CATEGORIES,getFormula,r6} from './registry.js';
 import {evaluate,numericDerivative,numericIntegral,findRoot,UNITS,convertUnits,fmt,toBase,fromBase} from './engine.js';
 import {drawFormulaPlot,drawFunctionPlot} from './plot.js';
+import {requestSymbolicDerivative} from './api.js';
 
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 let lang=localStorage.getItem('se_lang')||'fa'; let currentFormula=null, currentResult=null, currentValues={};
@@ -68,6 +69,7 @@ function calcRun(){ try{ const v=evaluate($('#calcExpr').value); $('#calcOut').t
 $('#calcKeys').addEventListener('click',e=>{ const k=e.target.dataset.k; if(!k)return; const inp=$('#calcExpr'); if(k==='⌫')inp.value=inp.value.slice(0,-1); else if(k==='C')inp.value=''; else if(k==='='){calcRun();return;} else inp.value+=k; calcRun(); inp.focus(); });
 let cd; $('#calcExpr').addEventListener('input',()=>{clearTimeout(cd);cd=setTimeout(calcRun,200);}); calcRun();
 $('#derivBtn').onclick=()=>{ try{ $('#derivOut').textContent='f′ = '+fmt(numericDerivative($('#derivF').value,parseFloat($('#derivX').value)),8); }catch(e){$('#derivOut').textContent=e.message;} };
+$('#serverDerivBtn').onclick=async()=>{ const target=$('#serverDerivOut'); target.classList.remove('error'); target.textContent=lang==='en'?'Connecting…':'در حال اتصال…'; try{ const result=await requestSymbolicDerivative($('#symbolicDerivF').value,parseFloat($('#symbolicDerivX').value),lang); target.textContent=`f′ = ${result.derivative}  ;  f′(x) = ${result.at_point}`; }catch(e){target.textContent=e.message;target.classList.add('error');} };
 $('#intBtn').onclick=()=>{ try{ $('#intOut').textContent='∫ = '+fmt(numericIntegral($('#intF').value,parseFloat($('#intA').value),parseFloat($('#intB').value)),8); }catch(e){$('#intOut').textContent=e.message;} };
 $('#rootBtn').onclick=()=>{ try{ $('#rootOut').textContent='x ≈ '+fmt(findRoot($('#rootF').value,parseFloat($('#rootA').value),parseFloat($('#rootB').value)),10); }catch(e){$('#rootOut').textContent=e.message;} };
 // plotter
@@ -79,7 +81,7 @@ function fillUnits(){ const dim=dimSel.value; const opts=Object.keys(UNITS[dim].
 function convRun(){ const dim=dimSel.value; const v=convertUnits(parseFloat($('#convVal').value)||0,dim,$('#convFrom').value,$('#convTo').value); $('#convOut').textContent=`${$('#convVal').value} ${$('#convFrom').value} = ${fmt(v)} ${$('#convTo').value}`; const c=parseFloat($('#tempC').value)||0; $('#tempOut').textContent=`${fmt(c+273.15)} K = ${fmt(c*9/5+32)} °F`; }
 dimSel.onchange=fillUnits; ['convVal','convFrom','convTo','tempC'].forEach(id=>$('#'+id).addEventListener('input',convRun)); fillUnits();
 // catalog
-async function renderCatalog(){ try{ const data=await (await fetch('../packages/formula-registry/catalog.json')).json().catch(()=>null)||await (await fetch('../../packages/formula-registry/catalog.json')).json(); $('#catalogSummary').textContent=`${data.sections.length} بخش • ${data.implemented_count} فرمول پیاده‌سازی‌شده و تست‌شده • بقیه در نقشه راه فازهای ۱ تا ۳`;
+async function renderCatalog(){ try{ const data=await (await fetch('catalog.json')).json().catch(()=>null)||await (await fetch('../packages/formula-registry/catalog.json')).json().catch(()=>null)||await (await fetch('../../packages/formula-registry/catalog.json')).json(); $('#catalogSummary').textContent=`${data.sections.length} بخش • ${data.implemented_count} فرمول پیاده‌سازی‌شده و تست‌شده • بقیه در نقشه راه فازهای ۱ تا ۳`;
  $('#catalogList').innerHTML=data.sections.map(s=>`<div class="catalog-sec"><h3>${s.title_fa} <span class="pill ${s.status==='partial'?'done':''}">${s.status==='partial'?'در حال پیاده‌سازی':'برنامه‌ریزی‌شده'}</span></h3>${s.planned_items.map(i=>`<span class="pill">${i}</span>`).join('')}</div>`).join(''); }catch(e){ $('#catalogList').innerHTML='<p class="error">کاتالوگ بارگذاری نشد (در حالت آفلاین/فایل محلی). فایل packages/formula-registry/catalog.json را ببینید.</p>'; } }
 // history
 function renderHistory(){ const h=JSON.parse(localStorage.getItem('se_history')||'[]'); const b=JSON.parse(localStorage.getItem('se_bookmarks')||'[]');

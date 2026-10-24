@@ -1,0 +1,55 @@
+name: Bug report
+description: Report an incorrect result, broken UI, accessibility issue, or deployment failure.
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: "Please search existing issues first. For security vulnerabilities, use the private reporting route in SECURITY.md."
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Include the formula ID, page, or workflow if relevant.
+      placeholder: Describe the incorrect behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. Open… 2. Enter… 3. Observe…"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result and error text
+    validations:
+      required: true
+  - type: input
+    id: formula-id
+    attributes:
+      label: Formula ID (if applicable)
+      placeholder: e.g. trig_triangle_law_of_cosines
+  - type: input
+    id: environment
+    attributes:
+      label: Browser, OS, device, and viewport
+      placeholder: e.g. Safari on iOS 18, iPhone portrait
+  - type: dropdown
+    id: offline
+    attributes:
+      label: Was the app offline?
+      options:
+        - "No"
+        - "Yes"
+        - "Not sure"
+    validations:
+      required: true

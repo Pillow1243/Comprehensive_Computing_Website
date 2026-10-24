@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pillow1243.github.io/Comprehensive_Computing_Website/schemas/formula.schema.json",
+  "title": "SolveEverything Formula Registry Entry",
+  "description": "Serializable formula metadata. Executable implementations remain trusted module functions; never eval source received in JSON.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "name_fa", "name_en", "category_path", "tags", "description_fa",
+    "variables", "outputs", "formula_latex", "compute_js", "steps_generator",
+    "examples", "tests", "references", "difficulty", "version", "validated"
+  ],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z][a-z0-9_]{1,79}$"},
+    "name_fa": {"type": "string", "minLength": 1},
+    "name_en": {"type": "string", "minLength": 1},
+    "category_path": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "tags": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "description_fa": {"type": "string", "minLength": 1},
+    "variables": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["name", "label_fa", "label_en", "type", "unit", "required"],
+        "properties": {
+          "name": {"type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_]*$"},
+          "label_fa": {"type": "string", "minLength": 1},
+          "label_en": {"type": "string"},
+          "type": {"enum": ["number", "text", "select", "boolean"]},
+          "unit": {"type": ["string", "null"]},
+          "required": {"type": "boolean"},
+          "default": {},
+          "min": {"type": "number"},
+          "max": {"type": "number"},
+          "step": {"type": "number"},
+          "options": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "outputs": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["name", "label_fa", "label_en", "unit"],
+        "properties": {
+          "name": {"type": "string"},
+          "label_fa": {"type": "string"},
+          "label_en": {"type": "string"},
+          "unit": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "formula_latex": {"type": "string", "minLength": 1},
+    "compute_js": {
+      "type": "string",
+      "pattern": "^module:[A-Za-z0-9_./-]+#[a-z][a-z0-9_]*$",
+      "description": "Required reference to trusted source module (not JavaScript source to eval)."
+    },
+    "compute_python": {
+      "type": "string",
+      "pattern": "^server:[A-Za-z0-9_./-]+#[a-z][a-z0-9_]*$",
+      "description": "Optional allow-listed backend solver reference (not Python source to exec)."
+    },
+    "steps_generator": {
+      "type": "string",
+      "pattern": "^(module|server):[A-Za-z0-9_./-]+#[a-z][a-z0-9_]*$",
+      "description": "Required trusted module/function reference for human-readable derivation steps."
+    },
+    "plot_spec": {
+      "type": ["object", "null"],
+      "properties": {"type": {"type": "string"}, "dynamic": {"type": "boolean"}},
+      "additionalProperties": true
+    },
+    "examples": {"type": "array", "items": {"type": "object"}},
+    "tests": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["input", "expected"],
+        "properties": {
+          "input": {"type": "object"},
+          "expected": {"type": "object", "minProperties": 1}
+        }
+      }
+    },
+    "references": {"type": "array", "items": {"type": ["string", "object"]}},
+    "difficulty": {"enum": ["basic", "intermediate", "advanced"]},
+    "version": {"type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$"},
+    "validated": {"type": "boolean"}
+  }
+}
