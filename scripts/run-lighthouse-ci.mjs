@@ -13,6 +13,15 @@ import { fileURLToPath } from 'node:url';
 import lighthouse from 'lighthouse';
 import { launch } from 'chrome-launcher';
 
+const escapeCommand = (value) =>
+  String(value).replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A');
+
+/** Emit a GitHub workflow command so the failure is visible as a check annotation. */
+const annotate = (level, title, message) => {
+  if (!process.env.GITHUB_ACTIONS) return;
+  process.stdout.write(`::${level} title=${escapeCommand(title)}::${escapeCommand(message)}\n`);
+};
+
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const config = JSON.parse(await readFile(path.join(root, '.lighthouserc.json'), 'utf8'));
 const { collect, assert } = config.ci;
@@ -39,6 +48,12 @@ const waitForServer = new Promise((resolve, reject) => {
   server.once('error', (error) => {
     clearTimeout(timer);
     reject(error);
+  });
+  server.once('exit', (code) => {
+    if (code && code !== 0) {
+      clearTimeout(timer);
+      reject(new Error(`Static preview server exited with code ${code}: ${serverLog}`));
+    }
   });
 });
 
@@ -119,7 +134,10 @@ try {
       // downloading the report artifact.
       const lcpAudit = lhr.audits['largest-contentful-paint-element'];
       const lcpNode = lcpAudit?.details?.items?.[0]?.items?.[0]?.node;
-      const breakdown = lhr.audits['lcp-breakdown']?.details?.items ?? lhr.audits.diagnostics?.details?.items ?? [];
+      const diagnostics = lhr.audits.diagnostics?.details?.items?.[0] ?? {};
+      const breakdown = Object.entries(diagnostics)
+        .filter(([key, value]) => /lcp|phase|delay|duration/i.test(key) && typeof value === 'number')
+        .map(([key, value]) => `${key}=${Math.round(value)}ms`);
       const slowest = [...(lhr.audits['network-requests']?.details?.items ?? [])]
         .sort((a, b) => (b.transferSize ?? 0) - (a.transferSize ?? 0))
         .slice(0, 5)
@@ -128,14 +146,12 @@ try {
         const details = [
           `LCP ${Math.round(lhr.audits['largest-contentful-paint']?.numericValue ?? 0)} ms`,
           lcpNode ? `element ${lcpNode.snippet ?? lcpNode.selector ?? ''}` : '',
-          breakdown.length
-            ? `phases ${breakdown.map((item) => `${item.phase ?? item.key}: ${Math.round(item.timing ?? item.value ?? 0)} ms`).join(', ')}`
-            : '',
+          breakdown.length ? `phases ${breakdown.join(', ')}` : '',
           slowest.length ? `largest responses ${slowest.join(' | ')}` : '',
         ]
           .filter(Boolean)
           .join(' — ');
-        console.log(`::error title=Lighthouse diagnostics (${slug})::${escape(details)}`);
+        annotate('error', `Lighthouse diagnostics (${slug})`, details);
       }
 
       for (const [key, rule] of Object.entries(assertions)) {
@@ -157,6 +173,7 @@ try {
 } catch (error) {
   fatal = error;
   console.error(error);
+  annotate('error', 'Lighthouse runner', String(error?.stack ?? error));
 } finally {
   if (chrome) await chrome.kill().catch(() => {});
   server.kill('SIGTERM');
@@ -179,23 +196,21 @@ const summary = [
 console.log(summary);
 if (process.env.GITHUB_STEP_SUMMARY) await appendFile(process.env.GITHUB_STEP_SUMMARY, `${summary}\n`);
 
-const escape = (value) => String(value).replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A');
-if (process.env.GITHUB_ACTIONS) {
-  for (const failure of failures.slice(0, 20)) {
-    console.log(`::error title=Lighthouse budget::${escape(failure)}`);
-  }
-  if (fatal) console.log(`::error title=Lighthouse runner::${escape(String(fatal.stack ?? fatal).slice(0, 1500))}`);
+for (const failure of failures.slice(0, 20)) {
+  annotate('error', 'Lighthouse budget', failure);
 }
 
 if (fatal) {
   console.error(`Lighthouse could not run: ${fatal.message ?? fatal}`);
-  process.exit(1);
+  process.exitCode = 1;
 }
 
 for (const warning of warnings) console.warn(`WARNING: ${warning}`);
 if (failures.length) {
   for (const failure of failures) console.error(`FAIL: ${failure}`);
   console.error(`Lighthouse budgets violated (${failures.length}). Reports in artifacts/lighthouse/.`);
-  process.exit(1);
+  process.exitCode = 1;
 }
-console.log(`Lighthouse budgets met. Reports saved in ${path.relative(root, outDir)}/.`);
+if (!fatal && !failures.length) {
+  console.log(`Lighthouse budgets met. Reports saved in ${path.relative(root, outDir)}/.`);
+}
