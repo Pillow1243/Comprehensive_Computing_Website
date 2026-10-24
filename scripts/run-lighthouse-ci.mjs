@@ -71,6 +71,7 @@ const check = (key, rule, { score, numericValue }) => {
 };
 
 let chrome;
+let fatal = null;
 try {
   await waitForServer;
   const flags = (collect.settings?.chromeFlags ?? '--no-sandbox --headless=new').split(/\s+/).filter(Boolean);
@@ -130,6 +131,9 @@ try {
       chrome = undefined;
     }
   }
+} catch (error) {
+  fatal = error;
+  console.error(error);
 } finally {
   if (chrome) await chrome.kill().catch(() => {});
   server.kill('SIGTERM');
@@ -144,10 +148,26 @@ const summary = [
   '',
   ...(failures.length ? failures.map((failure) => `- ❌ ${failure}`) : []),
   ...(warnings.length ? warnings.map((warning) => `- ⚠️ ${warning}`) : []),
+  ...(fatal
+    ? ['', `**Runner error:** \`${String(fatal.message ?? fatal)}\``, '```', String(fatal.stack ?? '').slice(0, 2000), '```']
+    : []),
   '',
 ].join('\n');
 console.log(summary);
 if (process.env.GITHUB_STEP_SUMMARY) await appendFile(process.env.GITHUB_STEP_SUMMARY, `${summary}\n`);
+
+const escape = (value) => String(value).replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A');
+if (process.env.GITHUB_ACTIONS) {
+  for (const failure of failures.slice(0, 20)) {
+    console.log(`::error title=Lighthouse budget::${escape(failure)}`);
+  }
+  if (fatal) console.log(`::error title=Lighthouse runner::${escape(String(fatal.stack ?? fatal).slice(0, 1500))}`);
+}
+
+if (fatal) {
+  console.error(`Lighthouse could not run: ${fatal.message ?? fatal}`);
+  process.exit(1);
+}
 
 for (const warning of warnings) console.warn(`WARNING: ${warning}`);
 if (failures.length) {

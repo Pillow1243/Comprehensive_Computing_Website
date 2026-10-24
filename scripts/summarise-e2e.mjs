@@ -54,6 +54,24 @@ if (failed.length) {
 const summary = lines.join('\n');
 console.log(summary);
 
+// Workflow commands become check-run annotations, which stay readable even when
+// the raw job log is not accessible.
+const escape = (value) =>
+  String(value).replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A');
+if (process.env.GITHUB_ACTIONS) {
+  for (const { spec, test } of failed.slice(0, 20)) {
+    const errors = (test.results ?? [])
+      .flatMap((result) => result.errors ?? [])
+      .map((error) => error.message ?? '')
+      .filter(Boolean);
+    const detail = (errors[0] ?? test.status ?? 'failed').split('\n').slice(0, 6).join(' ');
+    const project = test.projectName ?? spec.projectName ?? 'unknown';
+    console.log(
+      `::error title=Playwright ${escape(project)} ${escape(spec.id ?? '')}::${escape(`${spec.title} — ${detail}`)}`,
+    );
+  }
+}
+
 if (process.env.GITHUB_STEP_SUMMARY) {
   await appendFile(process.env.GITHUB_STEP_SUMMARY, `${summary}\n`);
   const reportDir = process.env.PLAYWRIGHT_HTML_REPORT;
