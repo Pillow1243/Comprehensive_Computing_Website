@@ -90,9 +90,9 @@ test('plot supports zoom, reset and drag interactions', async ({ page }) => {
 });
 
 test('swipe to delete removes a history entry after confirmation', async ({ page }) => {
-  await page.goto('./formula/pythagorean/');
-  await page.getByRole('button', { name: 'محاسبه', exact: true }).last().click();
-  await expect(page.getByText('نتایج')).toBeVisible({ timeout: 15_000 });
+  // Deep link → the solver computes without opening the on-screen keyboard.
+  await page.goto('./formula/pythagorean/?a=3&b=4');
+  await expect(page.getByRole('region', { name: 'نتایج' })).toBeVisible({ timeout: 15_000 });
 
   await page.goto('./history/');
   const row = page.locator('li').first();

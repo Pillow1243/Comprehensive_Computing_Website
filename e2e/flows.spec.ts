@@ -30,7 +30,9 @@ test('home → category → formula → compute → steps → history', async ({
   await expect(coefficient).toHaveAttribute('inputmode', 'decimal');
   await expect(coefficient).toHaveValue('1');
 
-  // Math keyboard inserts into the focused field
+  // Math keyboard inserts into the focused field (opened explicitly on desktop,
+  // where focusing an input does not raise the sheet)
+  await page.getByRole('button', { name: 'کیبورد ریاضی' }).click();
   await page.locator('#input-c').click();
   await expect(page.locator('section[aria-label="کیبورد ریاضی"]')).toBeVisible();
   await page.getByRole('button', { name: 'پاک کردن جستجو' }).click();
@@ -47,7 +49,9 @@ test('home → category → formula → compute → steps → history', async ({
 
   // Steps tab
   await page.getByRole('tab', { name: 'مراحل' }).click();
-  await expect(page.getByRole('list', { name: /مراحل/ }).getByRole('listitem').first()).toBeVisible();
+  const steps = page.getByRole('list', { name: /گام/ });
+  await expect(steps.getByRole('listitem').first()).toBeVisible();
+  await expect(steps.getByRole('listitem').first()).toContainText(/Δ|x/);
 
   // History recorded
   await page.goto('./history/');

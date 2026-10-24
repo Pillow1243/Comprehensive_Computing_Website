@@ -80,7 +80,7 @@ db/schema.sql                   PostgreSQL schema for future hosted features
 
 ```bash
 npm run validate-registry     # 155 formulas, 430 cases, 29 catalog sections, manifests in sync
-npm run test:unit             # 689 Vitest tests (7 files: registry, engine, validation, utils, components, solver flow, compute client)
+npm run test:unit             # 690 Vitest tests (7 files: registry, engine, validation, utils, components, solver flow, compute client)
 npm test                      # test:unit + 596 Node registry/API/security assertions
 npm run build                 # Next static export → out/ (162 pages)
 npm run budget                # gzip JavaScript budgets: 192.3 KB home / 200, 20.6 KB formula page / 100

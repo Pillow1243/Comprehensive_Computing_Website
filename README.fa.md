@@ -80,7 +80,7 @@ db/schema.sql                   اسکیمای PostgreSQL برای قابلیت�
 
 ```bash
 npm run validate-registry     # ۱۵۵ فرمول، ۴۳۰ مورد تست، ۲۹ بخش کاتالوگ، manifest‌های همگام
-npm run test:unit             # ۶۸۹ تست Vitest
+npm run test:unit             # ۶۹۰ تست Vitest
 npm test                      # تست‌های واحد + ۵۹۶ بررسی Node برای registry/API
 npm run build                 # خروجی استاتیک Next در out/ (۱۶۲ صفحه)
 npm run budget                # بودجه gzip: ۱۹۲٫۳ کیلوبایت صفحه اصلی / ۲۰۰

@@ -115,6 +115,29 @@ try {
           .join(' | ')} |`,
       );
 
+      // Surface enough detail to act on a failing performance budget without
+      // downloading the report artifact.
+      const lcpAudit = lhr.audits['largest-contentful-paint-element'];
+      const lcpNode = lcpAudit?.details?.items?.[0]?.items?.[0]?.node;
+      const breakdown = lhr.audits['lcp-breakdown']?.details?.items ?? lhr.audits.diagnostics?.details?.items ?? [];
+      const slowest = [...(lhr.audits['network-requests']?.details?.items ?? [])]
+        .sort((a, b) => (b.transferSize ?? 0) - (a.transferSize ?? 0))
+        .slice(0, 5)
+        .map((item) => `${item.resourceType ?? 'other'} ${Math.round((item.transferSize ?? 0) / 1024)}KB ${item.url?.split('/').pop() ?? ''}`);
+      if (process.env.GITHUB_ACTIONS && (categories.performance ?? 1) < 0.9) {
+        const details = [
+          `LCP ${Math.round(lhr.audits['largest-contentful-paint']?.numericValue ?? 0)} ms`,
+          lcpNode ? `element ${lcpNode.snippet ?? lcpNode.selector ?? ''}` : '',
+          breakdown.length
+            ? `phases ${breakdown.map((item) => `${item.phase ?? item.key}: ${Math.round(item.timing ?? item.value ?? 0)} ms`).join(', ')}`
+            : '',
+          slowest.length ? `largest responses ${slowest.join(' | ')}` : '',
+        ]
+          .filter(Boolean)
+          .join(' — ');
+        console.log(`::error title=Lighthouse diagnostics (${slug})::${escape(details)}`);
+      }
+
       for (const [key, rule] of Object.entries(assertions)) {
         if (key.startsWith('categories:')) {
           const category = key.slice('categories:'.length);

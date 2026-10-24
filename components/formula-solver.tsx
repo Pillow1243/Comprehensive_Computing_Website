@@ -169,20 +169,26 @@ export function FormulaSolver({ formula }: { formula: Formula }) {
     [addHistory, formula, lang, preparedInputs, pushRecent, settings.haptics, t],
   );
 
-  // Query-string deep links compute once after hydration.
+  // Query-string deep links compute once after hydration. The latest compute
+  // callback is kept in a ref so this effect only depends on the formula —
+  // otherwise the `setRaw` re-render would clear the pending timer and the
+  // deep link would never compute.
+  const runComputeRef = useRef(runCompute);
+  useEffect(() => {
+    runComputeRef.current = runCompute;
+  }, [runCompute]);
+
   useEffect(() => {
     if (autoRun.current) return;
     const fromQuery = readQueryInputs(formula);
-    if (fromQuery) {
-      autoRun.current = true;
-      setRaw(fromQuery);
-      const timer = setTimeout(() => {
-        const prepared: RawInputs = { ...fromQuery };
-        void runCompute(prepared);
-      }, 250);
-      return () => clearTimeout(timer);
-    }
-  }, [formula, runCompute]);
+    if (!fromQuery) return;
+    autoRun.current = true;
+    setRaw(fromQuery);
+    const timer = setTimeout(() => {
+      void runComputeRef.current({ ...fromQuery } as RawInputs);
+    }, 250);
+    return () => clearTimeout(timer);
+  }, [formula]);
 
   useEffect(() => () => abortRef.current?.abort(), []);
 
@@ -424,7 +430,12 @@ export function FormulaSolver({ formula }: { formula: Formula }) {
                   onChange={(value) => setValue(variable.name, value)}
                   onFocus={() => {
                     setActiveField(variable.name);
-                    if (variable.type === 'number') setKeyboard(true);
+                    // A physical keyboard is almost always present on desktop, so
+                    // the sheet would only cover the compute button there.
+                    const coarsePointer =
+                      typeof window !== 'undefined' &&
+                      window.matchMedia?.('(pointer: coarse)')?.matches;
+                    if (variable.type === 'number' && coarsePointer) setKeyboard(true);
                   }}
                   error={errors[variable.name]}
                   angleUnit={angleUnits[variable.name] ?? 'deg'}

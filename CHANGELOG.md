@@ -13,7 +13,7 @@ All notable changes to SolveEverything are documented here. This project follows
 - **Lazy, bundled KaTeX** rendering with a plain-text fallback — no CDN dependency, so offline installs stay intact.
 - **Playwright matrix** (desktop + seven Android profiles, 79 tests) covering solve flows, deep links, theme persistence, search, sharing, offline banner, safe areas, orientation changes, plot gestures and swipe-to-delete; `scripts/serve-static.mjs` now serves the branded `404.html` for unknown paths.
 - **Performance guard rails**: `scripts/check-budget.mjs` enforces gzip budgets (192.3 KB home / 200 KB, 20.6 KB formula page / 100 KB, 312.1 KB total / 500 KB), `.lighthouserc.json` holds error-level Lighthouse assertions, and a Lighthouse workflow uploads HTML/JSON reports.
-- **Test coverage growth**: 689 Vitest tests (7 files) including React Testing Library component suites and full solver-flow tests, plus 596 Node assertions; `npm run test:all` chains validation, tests, build and budget.
+- **Test coverage growth**: 690 Vitest tests (7 files) including React Testing Library component suites and full solver-flow tests, plus 596 Node assertions; `npm run test:all` chains validation, tests, build and budget.
 - `scripts/build-formula-index.mjs` generates the registry manifests during `predev`/`prebuild`; validation now rejects stale manifests, duplicate test inputs, non-finite outputs and formulas with fewer than two declared cases.
 - Dependabot now uses grouped, cooldown-gated updates for GitHub Actions.
 
@@ -26,6 +26,8 @@ All notable changes to SolveEverything are documented here. This project follows
 
 ### Fixed
 - Compute requests hung forever when `Worker` was unavailable; the pool now fails fast so the local fallback runs immediately.
+- Query-string deep links never auto-computed: the effect re-ran after `setRaw` and cleared its own pending timer. The latest compute callback is now held in a ref so the one-shot run survives re-renders.
+- Focusing a numeric input opened the on-screen math keyboard on desktop, covering the primary action; the sheet now auto-opens only for coarse pointers (touch devices).
 
 ## [1.2.0] - 2026-10-24
 

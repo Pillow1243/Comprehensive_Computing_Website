@@ -52,6 +52,20 @@ describe('FormulaSolver flow', () => {
     expect(useAppStore.getState().recent[0]).toBe('quadratic');
   }, 20_000);
 
+  it('auto-computes values from a deep link', async () => {
+    window.history.replaceState({}, '', '/?a=1&b=-5&c=6');
+    try {
+      await renderSolver('quadratic');
+      await waitFor(() => expect(screen.getByText('نتایج')).toBeInTheDocument(), { timeout: 8000 });
+      await waitFor(() =>
+        expect(useAppStore.getState().history[0]?.values).toMatchObject({ x1: 3, x2: 2 }),
+      );
+      expect((screen.getByLabelText('ضریب c') as HTMLInputElement).value).toBe('6');
+    } finally {
+      window.history.replaceState({}, '', '/');
+    }
+  }, 20_000);
+
   it('blocks computation and explains invalid input', async () => {
     await renderSolver('quadratic');
     const a = screen.getByLabelText('ضریب a');
