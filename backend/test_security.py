@@ -93,3 +93,19 @@ class APIEndpointTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class RateLimitTests(unittest.TestCase):
+    def test_rate_limit_returns_429_not_500(self):
+        from backend import main as api_main
+
+        previous = dict(api_main._hits)
+        try:
+            api_main._hits.clear()
+            client = TestClient(api_main.app, raise_server_exceptions=False)
+            codes = [client.get("/health").status_code for _ in range(api_main._RATE_MAX + 5)]
+            self.assertEqual(codes[: api_main._RATE_MAX], [200] * api_main._RATE_MAX)
+            self.assertEqual(codes[-5:], [429] * 5)
+        finally:
+            api_main._hits.clear()
+            api_main._hits.update(previous)
