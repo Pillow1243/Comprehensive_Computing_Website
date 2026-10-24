@@ -3,7 +3,7 @@
 ## Unit / registry
 
 - `npm test` runs Node's built-in test runner across `tests/*.test.mjs` (currently **377 passing tests**; backend: `python -m unittest discover -s backend -p "test_*.py"`).
-- Every runtime formula must have metadata, a trusted compute function, at least one declared input/output case, and explanatory steps. Each of the 54 added Phase 1 formulas currently declares four or more numerical cases; the registry includes **266 formula cases** total.
+- Every runtime formula must have metadata, a trusted compute function, at least one declared input/output case, and explanatory steps. Each of the 54 added Phase 1 formulas currently declares four or more numerical cases; the registry includes **355 formula cases** across **155 implemented formulas**.
 - `npm run sync-registry` refreshes the complete JSON formula index after trusted runtime entries change; `npm run validate-registry` then applies the JSON Schema to all 100 entries and checks unique IDs, compute/step implementations, every expected output, and catalog synchronization.
 - `python -m unittest discover -s backend -p 'test_*.py'` runs 11 Python parser, solver, API, and CORS security checks.
 - Existing tests cover the safe expression parser, numerical derivative/integral/root tools, units, optional API failure behavior, and every formula's declared test cases.

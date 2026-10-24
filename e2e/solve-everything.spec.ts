@@ -7,7 +7,7 @@ test('Pages root opens the PWA app and serves its install manifest',async({page}
   const frame=page.locator('iframe[title="SolveEverything scientific calculator"]');
   await expect(frame).toBeVisible();
   const ui=app(page);
-  await expect(ui.locator('#heroStats')).toContainText('100');
+  await expect(ui.locator('#heroStats')).toContainText('155');
   const manifestHref=await page.locator('link[rel="manifest"]').getAttribute('href');
   expect(manifestHref).toContain('/app/manifest.webmanifest');
   const manifest=await page.request.get(new URL(manifestHref!,page.url()).toString());

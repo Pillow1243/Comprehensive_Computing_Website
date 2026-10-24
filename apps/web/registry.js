@@ -1,6 +1,7 @@
 // Formula Registry — SolveEverything (schema: packages/formula-registry/schema.json)
 // Runtime solvers are trusted module functions; this registry never evaluates source strings.
 import {PHASE1_FORMULAS} from './phase1-formulas.js';
+import {PHASE2_FORMULAS} from './phase2-formulas.js';
 const N=(name,label_fa,label_en,unit,def,opts={})=>({name,label_fa,label_en,type:opts.type||'number',unit:unit||null,default:def,required:true,min:opts.min,max:opts.max,step:opts.step});
 const out=(v,steps)=>({values:v,steps});
 const r=(x,d=6)=>{ if(!isFinite(x)) return x; const p=10**d; return Math.round(x*p)/p; };
@@ -173,10 +174,13 @@ export const FORMULAS=[
   variables:[N('a','a',null,null,2),N('b','b',null,null,1),N('c','c',null,null,1),N('d','d',null,null,3)],tests:[{input:{a:2,b:1,c:1,d:3},expected:{determinant:5,trace:5}}],
   compute({a,b,c,d}){const det=a*d-b*c,tr=a+d,disc=tr*tr-4*det;let vals={determinant:r(det),trace:tr};let s=[`det = ${a}×${d} − ${b}×${c} = ${r(det)}`];if(det!==0){vals.inverse=`[[${r(d/det)}, ${r(-b/det)}], [${r(-c/det)}, ${r(a/det)}]]`;s.push(`A⁻¹ = (1/${r(det)}) × [[${d}, ${-b}], [${-c}, ${a}]] = ${vals.inverse}`);}if(disc>=0){vals.eigenvalues=`${r((tr+Math.sqrt(disc))/2)}, ${r((tr-Math.sqrt(disc))/2)}`;s.push(`مقادیر ویژه: λ = ${vals.eigenvalues}`);}return out(vals,s);}},
  ...PHASE1_FORMULAS,
+ ...PHASE2_FORMULAS,
 ];
 
 // Complete schema metadata while keeping executable solvers as trusted module functions.
 const phase1Ids=new Set(PHASE1_FORMULAS.map(formula=>formula.id));
+const phase2Ids=new Set(PHASE2_FORMULAS.map(formula=>formula.id));
+function moduleFileFor(id){ if(phase1Ids.has(id))return 'phase1-formulas.js'; if(phase2Ids.has(id))return 'phase2-formulas.js'; return 'registry.js'; }
 for (const formula of FORMULAS) {
   for(const variable of formula.variables||[]){
     variable.unit ??= null;
@@ -192,8 +196,8 @@ for (const formula of FORMULAS) {
   formula.examples ||= formula.tests?.slice(0,1).map(test=>({input:test.input,expected:test.expected}))||[];
   formula.references ||= [];
   formula.plot_spec ??= null;
-  formula.compute_js ||= `module:apps/web/${phase1Ids.has(formula.id)?'phase1-formulas.js':'registry.js'}#${formula.id}`;
-  formula.steps_generator_ref ||= `module:apps/web/${phase1Ids.has(formula.id)?'phase1-formulas.js':'registry.js'}#${formula.id}`;
+  formula.compute_js ||= `module:apps/web/${moduleFileFor(formula.id)}#${formula.id}`;
+  formula.steps_generator_ref ||= `module:apps/web/${moduleFileFor(formula.id)}#${formula.id}`;
   formula.steps_generator ||= (inputs)=>formula.compute(inputs).steps;
 }
 

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="SolveEverything — حل گام‌به‌گام هر معادله و محاسبه ریاضی، فیزیک، شیمی و مهندسی با رسم پویا و پشتیبانی واحد">
-<meta name="theme-color" content="#7c5cff">
+<meta name="description" content="SolveEverything — حل گام‌به‌گام هر معادله و محاسبه ریاضی، فیزیک، شیمی، مهندسی، آمار و مالی با رسم پویا و پشتیبانی واحد">
+<meta name="theme-color" content="#6d5dfc">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; img-src 'self' data: blob:; font-src 'self' data: https://cdn.jsdelivr.net; connect-src 'self' https:; manifest-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
 <title>SolveEverything | حل همه‌چیز</title>
 <link rel="manifest" href="manifest.webmanifest">
@@ -19,10 +19,10 @@
 <a class="skip" href="#main">پرش به محتوا</a>
 <header class="topbar">
   <button id="menuBtn" class="icon-btn" aria-label="منو">☰</button>
-  <a class="brand" href="#/" aria-label="SolveEverything"><span class="logo">∑</span><span>Solve<b>Everything</b></span></a>
-  <div class="searchbox" role="search"><span aria-hidden="true">🔍</span><input id="globalSearch" type="search" placeholder="جستجوی فرمول… مثلث، pH، بهره…" aria-label="جستجوی فرمول"></div>
+  <a class="brand" href="#/" aria-label="SolveEverything"><span class="logo">∑</span><span class="brand-text">Solve<b>Everything</b></span></a>
+  <div class="searchbox" role="search"><span class="search-ico" aria-hidden="true">🔍</span><input id="globalSearch" type="search" placeholder="جستجوی فرمول… مثلث، pH، بهره…" aria-label="جستجوی فرمول"><kbd class="search-kbd">/</kbd></div>
   <nav class="top-actions" aria-label="عملیات">
-    <button id="themeBtn" class="chip-btn" aria-label="حالت شب/روز">🌙</button>
+    <button id="themeBtn" class="chip-btn icon-only" aria-label="حالت شب/روز">🌙</button>
     <button id="langBtn" class="chip-btn" aria-label="Language">EN</button>
     <button id="installBtn" class="chip-btn hidden">⬇ <span data-i18n="install">نصب اپ</span></button>
   </nav>
@@ -30,63 +30,132 @@
 <div class="layout">
   <aside id="sidebar" class="sidebar" aria-label="دسته‌بندی‌ها">
     <nav id="toolNav" class="tool-nav">
-      <a href="#/" data-nav="home">🏠 <span data-i18n="home">خانه و فرمول‌ها</span></a>
-      <a href="#/calculator" data-nav="calculator">🧮 <span data-i18n="calc">ماشین‌حساب علمی</span></a>
-      <a href="#/plotter" data-nav="plotter">📈 <span data-i18n="plotter">رسم تابع</span></a>
-      <a href="#/converter" data-nav="converter">🔁 <span data-i18n="converter">مبدل واحد</span></a>
-      <a href="#/practice" data-nav="practice">🎯 <span data-i18n="practice">تمرین و آزمون</span></a>
-      <a href="#/catalog" data-nav="catalog">🗂 <span data-i18n="catalog">کاتالوگ کامل (۲۹ بخش)</span></a>
-      <a href="#/history" data-nav="history">🕘 <span data-i18n="history">تاریخچه و نشان‌شده‌ها</span></a>
+      <a href="#/" data-nav="home"><span class="nav-ico">🏠</span><span data-i18n="home">خانه و فرمول‌ها</span></a>
+      <a href="#/calculator" data-nav="calculator"><span class="nav-ico">🧮</span><span data-i18n="calc">ماشین‌حساب علمی</span></a>
+      <a href="#/plotter" data-nav="plotter"><span class="nav-ico">📈</span><span data-i18n="plotter">رسم تابع</span></a>
+      <a href="#/converter" data-nav="converter"><span class="nav-ico">🔁</span><span data-i18n="converter">مبدل واحد</span></a>
+      <a href="#/practice" data-nav="practice"><span class="nav-ico">🎯</span><span data-i18n="practice">تمرین و آزمون</span></a>
+      <a href="#/catalog" data-nav="catalog"><span class="nav-ico">🗂</span><span data-i18n="catalog">کاتالوگ کامل (۲۹ بخش)</span></a>
+      <a href="#/history" data-nav="history"><span class="nav-ico">🕘</span><span data-i18n="history">تاریخچه و نشان‌شده‌ها</span></a>
     </nav>
-    <h2 data-i18n="cats">دسته‌بندی موضوعی</h2>
+    <h2 class="side-title" data-i18n="cats">دسته‌بندی موضوعی</h2>
     <div id="catTree"></div>
+    <div class="sidebar-foot">SolveEverything v1.2.0<br><span class="muted">client-first · offline-ready</span></div>
   </aside>
+  <div class="sidebar-backdrop" id="sidebarBackdrop" hidden></div>
   <main id="main" class="main" tabindex="-1">
     <section id="view-home">
       <div class="hero">
-        <h1 data-i18n="heroT">هر معادله‌ای را گام‌به‌گام حل کن</h1>
-        <p data-i18n="heroP">ریاضی، فیزیک، شیمی، مهندسی و مالی — با رسم پویا، پشتیبانی کامل واحد، فارسی و انگلیسی، روی هر دستگاهی.</p>
-        <div class="hero-stats" id="heroStats"></div>
-        <div class="quick" id="quickChips"></div>
+        <div class="hero-symbols" aria-hidden="true"><span>∫</span><span>π</span><span>√</span><span>∑</span><span>∞</span><span>Δ</span><span>λ</span><span>Ω</span></div>
+        <div class="hero-inner">
+          <h1 data-i18n="heroT">هر معادله‌ای را گام‌به‌گام حل کن</h1>
+          <p data-i18n="heroP">ریاضی، فیزیک، شیمی، مهندسی، آمار و مالی — با رسم پویا، پشتیبانی کامل واحد، فارسی و انگلیسی، روی هر دستگاهی.</p>
+          <div class="hero-stats" id="heroStats"></div>
+          <div class="quick" id="quickChips"></div>
+        </div>
       </div>
+      <h2 class="block-title" data-i18n="browseCat">مرور بر اساس موضوع</h2>
+      <div id="catCards" class="cat-cards"></div>
       <div class="section-head"><h2 data-i18n="allFormulas">همه فرمول‌ها</h2><span id="resultCount" class="muted"></span></div>
+      <div id="filterChips" class="filter-chips" role="group" aria-label="فیلتر دسته‌بندی"></div>
       <div id="formulaGrid" class="grid" aria-live="polite"></div>
       <p id="noResults" class="empty hidden">فرمولی یافت نشد. عبارت دیگری امتحان کنید یا از کاتالوگ کامل دیدن کنید.</p>
     </section>
 
     <section id="view-solver" class="hidden">
       <button class="back-btn" id="backBtn">← <span data-i18n="back">بازگشت</span></button>
-      <div class="solver-head"><div><p id="solverCat" class="muted"></p><h1 id="solverTitle"></h1><p id="solverDesc"></p><div id="solverLatex" class="latex-box" dir="ltr"></div></div>
-      <div class="solver-actions"><button id="bookmarkBtn" class="chip-btn">☆ <span data-i18n="bookmark">نشان‌کردن</span></button><button id="shareBtn" class="chip-btn">🔗 <span data-i18n="share">اشتراک‌گذاری</span></button><button id="printBtn" class="chip-btn">🖨 <span data-i18n="print">چاپ/PDF</span></button><button id="copyLatexBtn" class="chip-btn">TeX</button></div></div>
+      <div class="solver-head card">
+        <div class="solver-head-main">
+          <p id="solverCat" class="muted"></p>
+          <h1 id="solverTitle"></h1>
+          <p id="solverDesc"></p>
+          <div id="solverLatex" class="latex-box" dir="ltr"></div>
+        </div>
+        <div class="solver-actions">
+          <button id="bookmarkBtn" class="chip-btn">☆ <span data-i18n="bookmark">نشان‌کردن</span></button>
+          <button id="shareBtn" class="chip-btn">🔗 <span data-i18n="share">اشتراک‌گذاری</span></button>
+          <button id="printBtn" class="chip-btn">🖨 <span data-i18n="print">چاپ/PDF</span></button>
+          <button id="copyLatexBtn" class="chip-btn">TeX</button>
+        </div>
+      </div>
       <div class="solver-grid">
         <form id="solverForm" class="card" aria-label="ورودی‌ها"></form>
-        <div class="card result-card"><h2 data-i18n="result">نتیجه</h2><div id="resultBox" aria-live="polite"></div><h3 data-i18n="steps">حل گام‌به‌گام</h3><ol id="stepsBox" class="steps"></ol></div>
+        <div class="card result-card">
+          <h2 data-i18n="result">نتیجه</h2>
+          <div id="resultBox" aria-live="polite"></div>
+          <h3 data-i18n="steps">حل گام‌به‌گام</h3>
+          <ol id="stepsBox" class="steps"></ol>
+        </div>
       </div>
       <div class="card plot-card"><h2 data-i18n="plot">رسم پویا</h2><canvas id="formulaCanvas" class="plot" aria-label="نمودار فرمول"></canvas></div>
       <div class="card"><h2 data-i18n="examples">مثال و تست خودکار</h2><div id="examplesBox"></div></div>
     </section>
 
     <section id="view-calculator" class="hidden">
-      <h1 data-i18n="calc">ماشین‌حساب علمی</h1><p class="muted">sin, cos, sqrt, ln, log2, pi, e, ^, !, % — بدون eval، امن. مثال: <code dir="ltr">sqrt(16)+sin(pi/2)^2</code></p>
-      <div class="calc-wrap card"><input id="calcExpr" dir="ltr" class="calc-input" value="sqrt(16) + 3^2 * ln(e)" aria-label="عبارت ریاضی"><div id="calcOut" class="calc-out" dir="ltr" aria-live="polite"></div>
-      <div class="calc-keys" id="calcKeys"></div></div>
-      <div class="card"><h2>ابزار سریع</h2><label>مشتق عددی f در x — f: <input id="derivF" dir="ltr" value="x^3-2x"> x: <input id="derivX" type="number" value="2" class="mini"></label> <button class="btn" id="derivBtn">محاسبه</button> <span id="derivOut"></span><hr>
-      <label>مشتق نمادین سمت سرور — f: <input id="symbolicDerivF" dir="ltr" value="x^3-2*x"> x: <input id="symbolicDerivX" type="number" value="2" class="mini"></label> <button class="btn" id="serverDerivBtn">مشتق نمادین</button> <span id="serverDerivOut" role="status" aria-live="polite"></span><hr>
-      <label>انتگرال سیمپسون ∫ f از a تا b — f: <input id="intF" dir="ltr" value="x^2"> a: <input id="intA" type="number" value="0" class="mini"> b: <input id="intB" type="number" value="3" class="mini"></label> <button class="btn" id="intBtn">محاسبه</button> <span id="intOut"></span><hr>
-      <label>ریشه‌یابی دودویی در [a,b] — f: <input id="rootF" dir="ltr" value="x^2-2"> a: <input id="rootA" type="number" value="0" class="mini"> b: <input id="rootB" type="number" value="2" class="mini"></label> <button class="btn" id="rootBtn">محاسبه</button> <span id="rootOut"></span></div>
+      <h1 data-i18n="calc">ماشین‌حساب علمی</h1>
+      <p class="muted">sin, cos, tan, sec, csc, cot, sqrt, ln, log2, pi, e, ^, !, %, ncr, npr — بدون eval، امن. مثال: <code dir="ltr">sqrt(16)+sin(pi/2)^2</code></p>
+      <div class="calc-wrap card">
+        <input id="calcExpr" dir="ltr" class="calc-input" value="sqrt(16) + 3^2 * ln(e)" aria-label="عبارت ریاضی">
+        <div id="calcOut" class="calc-out" dir="ltr" aria-live="polite"></div>
+        <div class="calc-keys" id="calcKeys"></div>
+      </div>
+      <div class="card tools-card">
+        <h2>ابزار سریع</h2>
+        <div class="tool-grid">
+          <div class="tool-tile"><h4>مشتق عددی f در x</h4><label>f: <input id="derivF" dir="ltr" value="x^3-2x"></label><label>x: <input id="derivX" type="number" value="2" class="mini"></label><button class="btn" id="derivBtn">محاسبه</button><span id="derivOut" class="tool-out"></span></div>
+          <div class="tool-tile"><h4>مشتق نمادین سمت سرور</h4><label>f: <input id="symbolicDerivF" dir="ltr" value="x^3-2*x"></label><label>x: <input id="symbolicDerivX" type="number" value="2" class="mini"></label><button class="btn" id="serverDerivBtn">مشتق نمادین</button><span id="serverDerivOut" class="tool-out" role="status" aria-live="polite"></span></div>
+          <div class="tool-tile"><h4>انتگرال سیمپسون ∫ f از a تا b</h4><label>f: <input id="intF" dir="ltr" value="x^2"></label><label>a: <input id="intA" type="number" value="0" class="mini"></label><label>b: <input id="intB" type="number" value="3" class="mini"></label><button class="btn" id="intBtn">محاسبه</button><span id="intOut" class="tool-out"></span></div>
+          <div class="tool-tile"><h4>ریشه‌یابی دودویی در [a,b]</h4><label>f: <input id="rootF" dir="ltr" value="x^2-2"></label><label>a: <input id="rootA" type="number" value="0" class="mini"></label><label>b: <input id="rootB" type="number" value="2" class="mini"></label><button class="btn" id="rootBtn">محاسبه</button><span id="rootOut" class="tool-out"></span></div>
+        </div>
+      </div>
     </section>
 
-    <section id="view-plotter" class="hidden"><h1 data-i18n="plotter">رسم تابع</h1><div class="card"><label>f(x)= <input id="plotExpr" dir="ltr" value="sin(x)*exp(-x/5)" class="inline-input"></label> <label>از <input id="plotMin" type="number" value="-10" class="mini"></label> <label>تا <input id="plotMax" type="number" value="10" class="mini"></label><canvas id="plotCanvas" class="plot"></canvas><p id="plotErr" class="error"></p></div></section>
+    <section id="view-plotter" class="hidden">
+      <h1 data-i18n="plotter">رسم تابع</h1>
+      <div class="card">
+        <label class="plot-label">f(x)= <input id="plotExpr" dir="ltr" value="sin(x)*exp(-x/5)" class="inline-input"></label>
+        <div class="plot-controls">
+          <label>از <input id="plotMin" type="number" value="-10" class="mini"></label>
+          <label>تا <input id="plotMax" type="number" value="10" class="mini"></label>
+        </div>
+        <div id="plotPresets" class="filter-chips" role="group" aria-label="توابع آماده"></div>
+        <canvas id="plotCanvas" class="plot"></canvas>
+        <p id="plotErr" class="error"></p>
+      </div>
+    </section>
 
-    <section id="view-converter" class="hidden"><h1 data-i18n="converter">مبدل واحد</h1><div class="card converter"><label>کمیت <select id="convDim"></select></label><label>مقدار <input id="convVal" type="number" value="1" step="any"></label><label>از <select id="convFrom"></select></label><span aria-hidden="true">⇄</span><label>به <select id="convTo"></select></label><div class="conv-out" id="convOut" aria-live="polite"></div></div>
-    <div class="card"><h3>دما (ویژه)</h3><label><input id="tempC" type="number" value="25" class="mini"> °C</label> → <b id="tempOut"></b></div></section>
+    <section id="view-converter" class="hidden">
+      <h1 data-i18n="converter">مبدل واحد</h1>
+      <div class="card converter">
+        <label>کمیت <select id="convDim"></select></label>
+        <label>مقدار <input id="convVal" type="number" value="1" step="any"></label>
+        <label>از <select id="convFrom"></select></label>
+        <button type="button" id="convSwap" class="chip-btn swap-btn" aria-label="جابجایی مبدا و مقصد">⇄</button>
+        <label>به <select id="convTo"></select></label>
+        <div class="conv-out" id="convOut" aria-live="polite"></div>
+      </div>
+      <div class="card"><h3>دما (ویژه)</h3><label><input id="tempC" type="number" value="25" class="mini"> °C</label> → <b id="tempOut"></b></div>
+    </section>
 
     <section id="view-practice" class="hidden"><h1 data-i18n="practice">تمرین و آزمون</h1><div class="card" id="quizCard"></div></section>
     <section id="view-catalog" class="hidden"><h1 data-i18n="catalog">کاتالوگ کامل</h1><p class="muted" id="catalogSummary"></p><div id="catalogList"></div></section>
-    <section id="view-history" class="hidden"><h1 data-i18n="history">تاریخچه و نشان‌شده‌ها</h1><div class="solver-grid"><div class="card"><h2>🕘 تاریخچه</h2><div id="historyList"></div><button class="btn danger" id="clearHistory">پاک‌کردن تاریخچه</button></div><div class="card"><h2>⭐ نشان‌شده‌ها</h2><div id="bookmarkList"></div></div></div></section>
+    <section id="view-history" class="hidden">
+      <h1 data-i18n="history">تاریخچه و نشان‌شده‌ها</h1>
+      <div class="solver-grid">
+        <div class="card"><h2>🕘 تاریخچه <button class="chip-btn small" id="exportHistory">⬇ خروجی JSON</button></h2><div id="historyList"></div><button class="btn danger" id="clearHistory">پاک‌کردن تاریخچه</button></div>
+        <div class="card"><h2>⭐ نشان‌شده‌ها</h2><div id="bookmarkList"></div></div>
+      </div>
+    </section>
   </main>
 </div>
-<footer class="footer"><span>SolveEverything v1.1.0</span><a href="#/catalog">Catalog</a><a href="https://github.com/Pillow1243/Comprehensive_Computing_Website/blob/main/docs/API.md" target="_blank" rel="noopener noreferrer">API</a><span id="offlineBadge" class="muted"></span></footer>
+<nav class="bottom-nav" aria-label="ناوبری سریع">
+  <a href="#/" data-nav="home">🏠<span>خانه</span></a>
+  <a href="#/calculator" data-nav="calculator">🧮<span>ماشین‌حساب</span></a>
+  <a href="#/plotter" data-nav="plotter">📈<span>رسم</span></a>
+  <a href="#/converter" data-nav="converter">🔁<span>واحد</span></a>
+  <a href="#/history" data-nav="history">🕘<span>تاریخچه</span></a>
+</nav>
+<footer class="footer"><span>SolveEverything v1.2.0</span><a href="#/catalog">Catalog</a><a href="https://github.com/Pillow1243/Comprehensive_Computing_Website/blob/main/docs/API.md" target="_blank" rel="noopener noreferrer">API</a><span id="offlineBadge" class="muted"></span></footer>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 <script src="runtime-config.js"></script>
 <script type="module" src="app.js"></script>
