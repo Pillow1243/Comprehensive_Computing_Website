@@ -24,7 +24,9 @@ export default defineConfig({
   workers: process.env.CI ? 2 : undefined,
   timeout: 60_000,
   expect: { timeout: 10_000 },
-  reporter: process.env.CI ? [['list'], ['html', { outputFolder: 'playwright-report', open: 'never' }]] : 'list',
+  reporter: process.env.CI
+    ? [['list'], ['html', { outputFolder: 'playwright-report', open: 'never' }], ['json', { outputFile: 'e2e-results.json' }]]
+    : 'list',
   use: {
     baseURL,
     trace: 'retain-on-failure',

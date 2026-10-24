@@ -6,7 +6,7 @@
  * profile, enforces the assertions in .lighthouserc.json (failures exit non-zero)
  * and writes HTML + JSON reports to artifacts/lighthouse.
  */
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { spawn } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -56,6 +56,7 @@ const auditIdFor = (key) => {
 
 const failures = [];
 const warnings = [];
+const summaryRows = [];
 
 const check = (key, rule, { score, numericValue }) => {
   const [level, options = {}] = Array.isArray(rule) ? rule : [rule, {}];
@@ -107,6 +108,11 @@ try {
             .map(([key, value]) => `${key}=${Math.round((value ?? 0) * 100)}`)
             .join(' '),
       );
+      summaryRows.push(
+        `| ${slug} | ${run} | ${['performance', 'accessibility', 'best-practices', 'seo']
+          .map((key) => Math.round((categories[key] ?? 0) * 100))
+          .join(' | ')} |`,
+      );
 
       for (const [key, rule] of Object.entries(assertions)) {
         if (key.startsWith('categories:')) {
@@ -128,6 +134,20 @@ try {
   if (chrome) await chrome.kill().catch(() => {});
   server.kill('SIGTERM');
 }
+
+const summary = [
+  '### Lighthouse (mobile, simulated slow 4G)',
+  '',
+  '| Page | Run | Perf | A11y | Best practices | SEO |',
+  '|---|---|---:|---:|---:|---:|',
+  ...summaryRows,
+  '',
+  ...(failures.length ? failures.map((failure) => `- ❌ ${failure}`) : []),
+  ...(warnings.length ? warnings.map((warning) => `- ⚠️ ${warning}`) : []),
+  '',
+].join('\n');
+console.log(summary);
+if (process.env.GITHUB_STEP_SUMMARY) await appendFile(process.env.GITHUB_STEP_SUMMARY, `${summary}\n`);
 
 for (const warning of warnings) console.warn(`WARNING: ${warning}`);
 if (failures.length) {
