@@ -4,6 +4,29 @@ All notable changes to SolveEverything are documented here. This project follows
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-10-24
+
+### Added
+- **Next.js 16 App Router shell with static export** (162 prerendered pages) served under `/Comprehensive_Computing_Website/`, with loading, error and not-found boundaries for every route, plus a Pages deployment workflow that validates the registry and tests before publishing.
+- **Worker-based compute architecture**: solvers are bundled into `workers/compute-worker.js` (66.2 KB gzip) and loaded on demand. If workers are blocked or missing, the client computes on the main thread from a lazily imported registry instead of failing.
+- **Split formula data**: a 42 KB metadata/search index for first load and a 106 KB details payload (LaTeX, variables, outputs, examples) fetched only when a formula page opens.
+- **Lazy, bundled KaTeX** rendering with a plain-text fallback — no CDN dependency, so offline installs stay intact.
+- **Playwright matrix** (desktop + seven Android profiles, 79 tests) covering solve flows, deep links, theme persistence, search, sharing, offline banner, safe areas, orientation changes, plot gestures and swipe-to-delete; `scripts/serve-static.mjs` now serves the branded `404.html` for unknown paths.
+- **Performance guard rails**: `scripts/check-budget.mjs` enforces gzip budgets (192.3 KB home / 200 KB, 20.6 KB formula page / 100 KB, 312.1 KB total / 500 KB), `.lighthouserc.json` holds error-level Lighthouse assertions, and a Lighthouse workflow uploads HTML/JSON reports.
+- **Test coverage growth**: 689 Vitest tests (7 files) including React Testing Library component suites and full solver-flow tests, plus 596 Node assertions; `npm run test:all` chains validation, tests, build and budget.
+- `scripts/build-formula-index.mjs` generates the registry manifests during `predev`/`prebuild`; validation now rejects stale manifests, duplicate test inputs, non-finite outputs and formulas with fewer than two declared cases.
+- Dependabot now uses grouped, cooldown-gated updates for GitHub Actions.
+
+### Changed
+- 155 formulas declare **430 verified test cases** (up from 355); `compound_interest` handles zero rates (`∞` doubling time) and guards non-positive principal/periods.
+- `formatNumber` keeps the exponent sign in scientific notation (`1e+15`).
+- Package version and service-worker cache are now `2.0.0`.
+- `framer-motion` was removed; transitions are CSS-only.
+- Rewrote `README.md`, `README.fa.md`, `docs/TESTING.md` and `docs/performance-report.md` to describe the shipped architecture, current test counts and measured bundle budgets instead of stale figures.
+
+### Fixed
+- Compute requests hung forever when `Worker` was unavailable; the pool now fails fast so the local fallback runs immediately.
+
 ## [1.2.0] - 2026-10-24
 
 ### Added

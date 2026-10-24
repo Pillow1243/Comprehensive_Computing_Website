@@ -5,7 +5,7 @@
 [![CI](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/ci.yml/badge.svg)](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/ci.yml)
 [![GitHub Pages](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/deploy-pages.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.2.0-informational.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.0.0-informational.svg)](CHANGELOG.md)
 [![CodeQL](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/codeql.yml/badge.svg)](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/codeql.yml)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Pillow1243/Comprehensive_Computing_Website/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Pillow1243/Comprehensive_Computing_Website)
 ![PWA](https://img.shields.io/badge/PWA-%D9%86%D8%B5%D8%A8%E2%80%8C%D8%B4%D8%AF%D9%86%DB%8C%20%7C%20%D8%A2%D9%81%D9%84%D8%A7%DB%8C%D9%86-7c5cff)
@@ -69,7 +69,7 @@ packages/formula-registry/
   catalog.json                 ۲۹ بخش موضوعی + نمایه فرمول‌های پیاده‌شده
 scripts/                       همگام‌سازی/اعتبارسنجی کاتالوگ، پیش‌نمایش و Lighthouse
 tests/                         تست‌های Node و اعتبارسنجی registry/API
-e2e/                           پنج سناریوی Playwright
+e2e/                           سناریوهای Playwright برای دسکتاپ و هفت پروفایل اندروید
 docs/                          استقرار، API، معماری، دسترس‌پذیری و تست
 .github/workflows/              CI، Pages، CodeQL و OpenSSF Scorecard
 infra/native-apps.md            راهنمای اولیه Capacitor / Tauri
@@ -79,19 +79,22 @@ db/schema.sql                   اسکیمای PostgreSQL برای قابلیت�
 ## تست و خروجی Pages
 
 ```bash
-npm run validate-registry
-npm test                      # در این نسخه ۳۷۲ تست موفق
-npm run build                 # خروجی استاتیک Next در out/
+npm run validate-registry     # ۱۵۵ فرمول، ۴۳۰ مورد تست، ۲۹ بخش کاتالوگ، manifest‌های همگام
+npm run test:unit             # ۶۸۹ تست Vitest
+npm test                      # تست‌های واحد + ۵۹۶ بررسی Node برای registry/API
+npm run build                 # خروجی استاتیک Next در out/ (۱۶۲ صفحه)
+npm run budget                # بودجه gzip: ۱۹۲٫۳ کیلوبایت صفحه اصلی / ۲۰۰
+npm run test:all              # اعتبارسنجی → همه تست‌ها → build → بودجه
 npx playwright install chromium
-npm run test:e2e:ci
-npm run lighthouse:ci
+npm run test:e2e:ci           # ۷۹ سناریو روی دسکتاپ و هفت پروفایل اندروید
+npm run lighthouse:ci         # بودجه‌های .lighthouserc.json
 ```
 
 Build از `output: 'export'` استفاده می‌کند و دستور منسوخ `next export` را اجرا نمی‌کند. امتیاز Lighthouse قبل/بعد در این checkout اندازه‌گیری نشده؛ گزارش و روش تکرارپذیر: [performance report](docs/performance-report.md).
 
 ## مشارکت
 
-هر فرمول باید دامنه، واحد، فراداده دوزبانه، خروجی، مراحل توضیحی و حداقل چهار تست مستقل و قابل بررسی داشته باشد. پس از ویرایش، `npm run sync-registry` و سپس validator و تست‌ها را اجرا کنید. راهنماها: [مشارکت](CONTRIBUTING.md)، [قالب فرمول](docs/FORMULA_TEMPLATE.md)، [JSON Schema](packages/formula-registry/schema.json).
+هر فرمول باید دامنه، واحد، فراداده دوزبانه، خروجی، مراحل توضیحی و حداقل دو تست مستقل و قابل بررسی داشته باشد (تولیدکننده تا چهار مورد را هدف می‌گیرد). پس از ویرایش، `npm run sync-registry` و سپس validator و تست‌ها را اجرا کنید. راهنماها: [مشارکت](CONTRIBUTING.md)، [قالب فرمول](docs/FORMULA_TEMPLATE.md)، [JSON Schema](packages/formula-registry/schema.json).
 
 ## استقرار و راهنماها
 

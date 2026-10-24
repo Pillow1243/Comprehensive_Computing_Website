@@ -919,6 +919,14 @@
           "expected": {
             "largest_prime": 5
           }
+        },
+        {
+          "input": {
+            "n": 361
+          },
+          "expected": {
+            "largest_prime": 19
+          }
         }
       ],
       "references": [],
@@ -1010,6 +1018,17 @@
             "combination": 10,
             "permutation": 20
           }
+        },
+        {
+          "input": {
+            "n": 10,
+            "r": 2
+          },
+          "expected": {
+            "factorial_n": 3628800,
+            "combination": 45,
+            "permutation": 90
+          }
         }
       ],
       "references": [],
@@ -1082,6 +1101,15 @@
           "expected": {
             "percent_change": 25
           }
+        },
+        {
+          "input": {
+            "old": 160,
+            "new": 100
+          },
+          "expected": {
+            "percent_change": -37.5
+          }
         }
       ],
       "references": [],
@@ -1142,6 +1170,14 @@
           },
           "expected": {
             "arithmetic": 4.666667
+          }
+        },
+        {
+          "input": {
+            "data": "4,8,16"
+          },
+          "expected": {
+            "arithmetic": 9.333333
           }
         }
       ],
@@ -1238,6 +1274,18 @@
             "x1": 3,
             "x2": 2,
             "discriminant": 1
+          }
+        },
+        {
+          "input": {
+            "a": 0.5,
+            "b": -5,
+            "c": 6
+          },
+          "expected": {
+            "x1": 8.605551,
+            "x2": 1.394449,
+            "discriminant": 13
           }
         }
       ],
@@ -1363,6 +1411,20 @@
             "x": 2,
             "y": 3
           }
+        },
+        {
+          "input": {
+            "a1": 4,
+            "b1": 3,
+            "c1": 13,
+            "a2": 1,
+            "b2": -1,
+            "c2": -1
+          },
+          "expected": {
+            "x": 1.428571,
+            "y": 2.428571
+          }
         }
       ],
       "references": [],
@@ -1454,6 +1516,17 @@
           "expected": {
             "nth": 29,
             "sum": 155
+          }
+        },
+        {
+          "input": {
+            "a1": 4,
+            "d": 3,
+            "n": 10
+          },
+          "expected": {
+            "nth": 31,
+            "sum": 175
           }
         }
       ],
@@ -1547,6 +1620,17 @@
             "nth": 48,
             "sum": 93
           }
+        },
+        {
+          "input": {
+            "a1": 6,
+            "ratio": 2,
+            "n": 5
+          },
+          "expected": {
+            "nth": 96,
+            "sum": 186
+          }
         }
       ],
       "references": [],
@@ -1619,6 +1703,15 @@
           },
           "expected": {
             "log": 5
+          }
+        },
+        {
+          "input": {
+            "base": 4,
+            "value": 32
+          },
+          "expected": {
+            "log": 2.5
           }
         }
       ],
@@ -1798,6 +1891,16 @@
           "expected": {
             "b": 14.142136
           }
+        },
+        {
+          "input": {
+            "a": 20,
+            "A": 30,
+            "B": 45
+          },
+          "expected": {
+            "b": 28.284271
+          }
         }
       ],
       "references": [],
@@ -1892,6 +1995,17 @@
             "area": 6,
             "semiperimeter": 6
           }
+        },
+        {
+          "input": {
+            "a": 6,
+            "b": 4,
+            "c": 5
+          },
+          "expected": {
+            "area": 9.921567,
+            "semiperimeter": 7.5
+          }
         }
       ],
       "references": [],
@@ -1977,6 +2091,16 @@
           "expected": {
             "hypotenuse": 5
           }
+        },
+        {
+          "input": {
+            "a": 6,
+            "b": 4,
+            "C": 90
+          },
+          "expected": {
+            "hypotenuse": 7.211103
+          }
         }
       ],
       "references": [],
@@ -2059,6 +2183,16 @@
             "circumference": 6.283185,
             "area": 3.141593
           }
+        },
+        {
+          "input": {
+            "radius": 2,
+            "theta": 180
+          },
+          "expected": {
+            "circumference": 12.566371,
+            "area": 12.566371
+          }
         }
       ],
       "references": [],
@@ -2140,6 +2274,16 @@
             "area": 4,
             "interior_angle": 90
           }
+        },
+        {
+          "input": {
+            "n": 8,
+            "s": 2
+          },
+          "expected": {
+            "area": 19.313708,
+            "interior_angle": 135
+          }
         }
       ],
       "references": [],
@@ -2212,6 +2356,15 @@
           },
           "expected": {
             "sphere_volume": 113.097336
+          }
+        },
+        {
+          "input": {
+            "radius": 6,
+            "h": 5
+          },
+          "expected": {
+            "sphere_volume": 904.778684
           }
         }
       ],
@@ -2309,6 +2462,17 @@
           "expected": {
             "distance": 5
           }
+        },
+        {
+          "input": {
+            "x1": 0,
+            "y1": 0,
+            "x2": 6,
+            "y2": 4
+          },
+          "expected": {
+            "distance": 7.211103
+          }
         }
       ],
       "references": [],
@@ -2381,6 +2545,15 @@
           "expected": {
             "sin": 1,
             "cos": 0
+          }
+        },
+        {
+          "input": {
+            "angle": 180
+          },
+          "expected": {
+            "sin": 0,
+            "cos": -1
           }
         }
       ],
@@ -2456,6 +2629,15 @@
           "expected": {
             "derivative_at_x": 6
           }
+        },
+        {
+          "input": {
+            "coeffs": "2,0,0",
+            "x": 3
+          },
+          "expected": {
+            "derivative_at_x": 12
+          }
         }
       ],
       "references": [],
@@ -2527,6 +2709,15 @@
           "expected": {
             "mean": 2.5,
             "median": 2.5
+          }
+        },
+        {
+          "input": {
+            "data": "2,4,6,8"
+          },
+          "expected": {
+            "mean": 5,
+            "median": 5
           }
         }
       ],
@@ -2623,6 +2814,17 @@
             "z": 0,
             "P(X≤x)": 0.5
           }
+        },
+        {
+          "input": {
+            "x": 200,
+            "mu": 100,
+            "sigma": 15
+          },
+          "expected": {
+            "z": 6.666667,
+            "P(X≤x)": 1
+          }
         }
       ],
       "references": [],
@@ -2704,6 +2906,16 @@
           "expected": {
             "correlation": 1,
             "slope": 2
+          }
+        },
+        {
+          "input": {
+            "xs": "2,4,6",
+            "ys": "2,4,6"
+          },
+          "expected": {
+            "correlation": 1,
+            "slope": 1
           }
         }
       ],
@@ -2798,6 +3010,17 @@
           "expected": {
             "final_velocity": 30,
             "displacement": 45
+          }
+        },
+        {
+          "input": {
+            "u": 0,
+            "a": 20,
+            "t": 3
+          },
+          "expected": {
+            "final_velocity": 60,
+            "displacement": 90
           }
         }
       ],
@@ -2902,6 +3125,18 @@
             "force": 6,
             "kinetic_energy": 16
           }
+        },
+        {
+          "input": {
+            "m": 4,
+            "a": 3,
+            "v": 4,
+            "h": 10
+          },
+          "expected": {
+            "force": 12,
+            "kinetic_energy": 32
+          }
         }
       ],
       "references": [],
@@ -3004,6 +3239,18 @@
             "parallel_resistance": 2.4,
             "current_single_R1": 3
           }
+        },
+        {
+          "input": {
+            "V": 24,
+            "R1": 4,
+            "R2": 6
+          },
+          "expected": {
+            "series_resistance": 10,
+            "parallel_resistance": 2.4,
+            "current_single_R1": 6
+          }
         }
       ],
       "references": [],
@@ -3083,6 +3330,16 @@
           "expected": {
             "wave_speed": 100,
             "period": 0.02
+          }
+        },
+        {
+          "input": {
+            "f": 100,
+            "lambda": 2
+          },
+          "expected": {
+            "wave_speed": 200,
+            "period": 0.01
           }
         }
       ],
@@ -3179,6 +3436,17 @@
           },
           "expected": {
             "gamma": 1.25
+          }
+        },
+        {
+          "input": {
+            "beta": 0.3,
+            "m": 1,
+            "t0": 1,
+            "L0": 10
+          },
+          "expected": {
+            "gamma": 1.0483
           }
         }
       ],
@@ -3280,6 +3548,18 @@
           },
           "expected": {
             "heat_J": 41860,
+            "kelvin": 373.15
+          }
+        },
+        {
+          "input": {
+            "m": 2,
+            "c": 4186,
+            "dT": 10,
+            "celsius": 100
+          },
+          "expected": {
+            "heat_J": 83720,
             "kelvin": 373.15
           }
         }
@@ -3491,6 +3771,21 @@
             "molarity": 1,
             "target_volume_L": 0.5
           }
+        },
+        {
+          "input": {
+            "mass": 116.88,
+            "molar_mass": 58.44,
+            "volume_L": 1,
+            "M1": 1,
+            "V1": 0.1,
+            "M2": 0.2
+          },
+          "expected": {
+            "moles": 2,
+            "molarity": 2,
+            "target_volume_L": 0.5
+          }
         }
       ],
       "references": [],
@@ -3574,6 +3869,16 @@
           "expected": {
             "pressure_atm": 1
           }
+        },
+        {
+          "input": {
+            "n": 2,
+            "T": 273.15,
+            "V": 22.414
+          },
+          "expected": {
+            "pressure_atm": 2
+          }
         }
       ],
       "references": [],
@@ -3645,6 +3950,15 @@
           },
           "expected": {
             "percent_yield": 80
+          }
+        },
+        {
+          "input": {
+            "actual": 72,
+            "theoretical": 45
+          },
+          "expected": {
+            "percent_yield": 160
           }
         }
       ],
@@ -3728,6 +4042,16 @@
           },
           "expected": {
             "k": 1
+          }
+        },
+        {
+          "input": {
+            "A": 2,
+            "Ea": 0,
+            "T": 298
+          },
+          "expected": {
+            "k": 2
           }
         }
       ],
@@ -3813,6 +4137,16 @@
           "expected": {
             "E": 1.1
           }
+        },
+        {
+          "input": {
+            "E0": 2.2,
+            "n": 2,
+            "Q": 1
+          },
+          "expected": {
+            "E": 2.2
+          }
         }
       ],
       "references": [],
@@ -3895,6 +4229,16 @@
           "expected": {
             "reaction": 5000,
             "max_moment": 10000
+          }
+        },
+        {
+          "input": {
+            "P": 20000,
+            "L": 4
+          },
+          "expected": {
+            "reaction": 10000,
+            "max_moment": 20000
           }
         }
       ],
@@ -3999,6 +4343,18 @@
             "stress_MPa": 250,
             "strain": 0.00125
           }
+        },
+        {
+          "input": {
+            "F": 100000,
+            "A": 200,
+            "E_GPa": 200,
+            "L": 2
+          },
+          "expected": {
+            "stress_MPa": 500,
+            "strain": 0.0025
+          }
         }
       ],
       "references": [],
@@ -4092,6 +4448,17 @@
           },
           "expected": {
             "Re": 100000
+          }
+        },
+        {
+          "input": {
+            "rho": 2000,
+            "v": 1,
+            "D": 0.1,
+            "mu": 0.001
+          },
+          "expected": {
+            "Re": 200000
           }
         }
       ],
@@ -4196,6 +4563,18 @@
             "heat_rate_W": 10,
             "thermal_resistance": 1
           }
+        },
+        {
+          "input": {
+            "k": 2,
+            "A": 1,
+            "dT": 10,
+            "L": 1
+          },
+          "expected": {
+            "heat_rate_W": 20,
+            "thermal_resistance": 0.5
+          }
         }
       ],
       "references": [],
@@ -4261,6 +4640,24 @@
           "label_fa": "future_value",
           "unit": null,
           "label_en": "Future Value"
+        },
+        {
+          "name": "future_continuous",
+          "label_fa": "future_continuous",
+          "unit": null,
+          "label_en": "Future Continuous"
+        },
+        {
+          "name": "interest_earned",
+          "label_fa": "interest_earned",
+          "unit": null,
+          "label_en": "Interest Earned"
+        },
+        {
+          "name": "doubling_years_rule72",
+          "label_fa": "doubling_years_rule72",
+          "unit": null,
+          "label_en": "Doubling Years Rule72"
         }
       ],
       "formula_latex": "FV=PV(1+r/m)^{mt},\\; FV_c=PVe^{rt}",
@@ -4292,6 +4689,20 @@
           },
           "expected": {
             "future_value": 1000
+          }
+        },
+        {
+          "input": {
+            "PV": 10000,
+            "rate": 8,
+            "years": 10,
+            "m": 12
+          },
+          "expected": {
+            "future_value": 22196.4,
+            "future_continuous": 22255.41,
+            "interest_earned": 12196.4,
+            "doubling_years_rule72": 9
           }
         }
       ],
@@ -4379,6 +4790,16 @@
           "expected": {
             "monthly_payment": 100
           }
+        },
+        {
+          "input": {
+            "principal": 2400,
+            "annual_rate": 0,
+            "months": 12
+          },
+          "expected": {
+            "monthly_payment": 200
+          }
         }
       ],
       "references": [],
@@ -4462,6 +4883,16 @@
           "expected": {
             "npv": 200
           }
+        },
+        {
+          "input": {
+            "initial": 0,
+            "rate": 0,
+            "cashflows": "200,200"
+          },
+          "expected": {
+            "npv": 400
+          }
         }
       ],
       "references": [],
@@ -4499,6 +4930,18 @@
           "label_fa": "entropy_bits",
           "unit": null,
           "label_en": "Entropy Bits"
+        },
+        {
+          "name": "max_entropy",
+          "label_fa": "max_entropy",
+          "unit": null,
+          "label_en": "Max Entropy"
+        },
+        {
+          "name": "efficiency_percent",
+          "label_fa": "efficiency_percent",
+          "unit": null,
+          "label_en": "Efficiency Percent"
         }
       ],
       "formula_latex": "H=-\\sum p_i\\log_2 p_i",
@@ -4522,6 +4965,16 @@
           },
           "expected": {
             "entropy_bits": 1
+          }
+        },
+        {
+          "input": {
+            "probs": "0.25,0.25,0.25,0.25"
+          },
+          "expected": {
+            "entropy_bits": 2,
+            "max_entropy": 2,
+            "efficiency_percent": 100
           }
         }
       ],
@@ -4594,6 +5047,15 @@
           },
           "expected": {
             "bmi": 22.9
+          }
+        },
+        {
+          "input": {
+            "mass": 140,
+            "height": 1.75
+          },
+          "expected": {
+            "bmi": 45.7
           }
         }
       ],
@@ -4691,6 +5153,17 @@
           },
           "expected": {
             "population": 10
+          }
+        },
+        {
+          "input": {
+            "K": 1000,
+            "P0": 20,
+            "growth": 0,
+            "t": 5
+          },
+          "expected": {
+            "population": 20
           }
         }
       ],
@@ -4793,6 +5266,18 @@
           "expected": {
             "determinant": 5,
             "trace": 5
+          }
+        },
+        {
+          "input": {
+            "a": 4,
+            "b": 1,
+            "c": 1,
+            "d": 3
+          },
+          "expected": {
+            "determinant": 11,
+            "trace": 7
           }
         }
       ],
@@ -12266,6 +12751,28 @@
             "y": 2,
             "z": 3
           }
+        },
+        {
+          "input": {
+            "a1": 2,
+            "b1": 1,
+            "c1": 1,
+            "d1": 6,
+            "a2": 2,
+            "b2": 1,
+            "c2": -1,
+            "d2": 1,
+            "a3": 1,
+            "b3": -1,
+            "c3": 2,
+            "d3": 5
+          },
+          "expected": {
+            "det": -6,
+            "x": 1.166667,
+            "y": 1.166667,
+            "z": 2.5
+          }
         }
       ],
       "references": [],
@@ -12564,6 +13071,17 @@
             "perimeter": 14,
             "diagonal": 5
           }
+        },
+        {
+          "input": {
+            "a": 6,
+            "b": 4
+          },
+          "expected": {
+            "area": 24,
+            "perimeter": 20,
+            "diagonal": 7.211103
+          }
         }
       ],
       "references": [],
@@ -12666,6 +13184,18 @@
             "area": 15,
             "perimeter": 18
           }
+        },
+        {
+          "input": {
+            "a": 10,
+            "b": 4,
+            "h": 3,
+            "theta": 60
+          },
+          "expected": {
+            "area": 30,
+            "perimeter": 28
+          }
         }
       ],
       "references": [],
@@ -12757,6 +13287,17 @@
             "area": 16,
             "midline": 4
           }
+        },
+        {
+          "input": {
+            "a": 10,
+            "b": 3,
+            "h": 4
+          },
+          "expected": {
+            "area": 26,
+            "midline": 6.5
+          }
         }
       ],
       "references": [],
@@ -12845,6 +13386,17 @@
             "side": 5,
             "perimeter": 20
           }
+        },
+        {
+          "input": {
+            "d1": 12,
+            "d2": 8
+          },
+          "expected": {
+            "area": 48,
+            "side": 7.211103,
+            "perimeter": 28.84441
+          }
         }
       ],
       "references": [],
@@ -12925,6 +13477,16 @@
             "volume": 16,
             "slant_height": 3.6056
           }
+        },
+        {
+          "input": {
+            "s": 8,
+            "h": 3
+          },
+          "expected": {
+            "volume": 64,
+            "slant_height": 5
+          }
         }
       ],
       "references": [],
@@ -13004,6 +13566,16 @@
           "expected": {
             "volume": 1776.529,
             "area": 1184.353
+          }
+        },
+        {
+          "input": {
+            "R": 20,
+            "r": 3
+          },
+          "expected": {
+            "volume": 3553.058,
+            "area": 2368.705
           }
         }
       ],
@@ -13813,6 +14385,23 @@
             "determinant": 24,
             "trace": 9
           }
+        },
+        {
+          "input": {
+            "a": 4,
+            "b": 0,
+            "c": 0,
+            "d": 0,
+            "e": 3,
+            "f": 0,
+            "g": 0,
+            "h": 0,
+            "i": 4
+          },
+          "expected": {
+            "determinant": 48,
+            "trace": 11
+          }
         }
       ],
       "references": [],
@@ -13946,6 +14535,21 @@
             "dot": 0,
             "angle_deg": 90
           }
+        },
+        {
+          "input": {
+            "ax": 2,
+            "ay": 0,
+            "az": 0,
+            "bx": 0,
+            "by": 1,
+            "bz": 0
+          },
+          "expected": {
+            "cross_z": 2,
+            "dot": 0,
+            "angle_deg": 90
+          }
         }
       ],
       "references": [],
@@ -14025,6 +14629,16 @@
           "expected": {
             "expected_value": 1,
             "variance": 0.5
+          }
+        },
+        {
+          "input": {
+            "values": "0,2,4",
+            "probs": "0.25,0.5,0.25"
+          },
+          "expected": {
+            "expected_value": 2,
+            "variance": 2
           }
         }
       ],
@@ -14120,6 +14734,17 @@
           "expected": {
             "probability": 0.2743
           }
+        },
+        {
+          "input": {
+            "N": 104,
+            "K": 13,
+            "n": 5,
+            "k": 2
+          },
+          "expected": {
+            "probability": 0.10304
+          }
         }
       ],
       "references": [],
@@ -14209,6 +14834,17 @@
             "cdf": 0.8647,
             "pdf": 0.2707,
             "mean": 0.5
+          }
+        },
+        {
+          "input": {
+            "lambda_rate": 4,
+            "x": 1
+          },
+          "expected": {
+            "cdf": 0.981684,
+            "pdf": 0.073263,
+            "mean": 0.25
           }
         }
       ],
@@ -14316,6 +14952,19 @@
             "cdf": 0.3,
             "mean": 5,
             "variance": 8.3333
+          }
+        },
+        {
+          "input": {
+            "a": 0,
+            "b": 20,
+            "x": 3
+          },
+          "expected": {
+            "pdf": 0.05,
+            "cdf": 0.15,
+            "mean": 10,
+            "variance": 33.333333
           }
         }
       ],
@@ -14527,6 +15176,20 @@
             "lower": 94.12,
             "upper": 105.88
           }
+        },
+        {
+          "input": {
+            "mean": 200,
+            "sigma": 15,
+            "n": 25,
+            "confidence": 95
+          },
+          "expected": {
+            "se": 3,
+            "margin": 5.88,
+            "lower": 194.12,
+            "upper": 205.88
+          }
         }
       ],
       "references": [],
@@ -14605,6 +15268,16 @@
           },
           "expected": {
             "chi_square": 5,
+            "degrees_freedom": 2
+          }
+        },
+        {
+          "input": {
+            "observed": "100,60,40",
+            "expected": "40,40,20"
+          },
+          "expected": {
+            "chi_square": 120,
             "degrees_freedom": 2
           }
         }
@@ -14691,6 +15364,16 @@
           "expected": {
             "force_N": 8987.5518
           }
+        },
+        {
+          "input": {
+            "q1": 0.002,
+            "q2": 0.001,
+            "r": 1
+          },
+          "expected": {
+            "force_N": 17975.1036
+          }
         }
       ],
       "references": [],
@@ -14770,6 +15453,16 @@
           "expected": {
             "field_N_per_C": 8987.5518,
             "potential_V": 8987.5518
+          }
+        },
+        {
+          "input": {
+            "Q": 0.000002,
+            "r": 1
+          },
+          "expected": {
+            "field_N_per_C": 17975.1036,
+            "potential_V": 17975.1036
           }
         }
       ],
@@ -14971,6 +15664,17 @@
           "expected": {
             "observed_freq": 467.2446
           }
+        },
+        {
+          "input": {
+            "f0": 880,
+            "vs": 20,
+            "vo": 0,
+            "v_sound": 343
+          },
+          "expected": {
+            "observed_freq": 934.4892
+          }
         }
       ],
       "references": [],
@@ -15130,6 +15834,16 @@
             "image_distance": 15,
             "magnification": -0.5
           }
+        },
+        {
+          "input": {
+            "f": 20,
+            "do": 30
+          },
+          "expected": {
+            "image_distance": 60,
+            "magnification": -2
+          }
         }
       ],
       "references": [],
@@ -15230,6 +15944,18 @@
             "energy": 0.25,
             "period": 0.4443
           }
+        },
+        {
+          "input": {
+            "k": 400,
+            "x": 0.05,
+            "m": 1
+          },
+          "expected": {
+            "force": 20,
+            "energy": 0.5,
+            "period": 0.314159
+          }
         }
       ],
       "references": [],
@@ -15302,6 +16028,15 @@
           },
           "expected": {
             "orbital_speed": 7672.49
+          }
+        },
+        {
+          "input": {
+            "M": 1.1944e+25,
+            "r": 6771000
+          },
+          "expected": {
+            "orbital_speed": 10850.54
           }
         }
       ],
@@ -15394,6 +16129,17 @@
           "expected": {
             "power_W": 63200700,
             "lambda_max_nm": 501.52
+          }
+        },
+        {
+          "input": {
+            "T": 11556,
+            "A": 1,
+            "emissivity": 1
+          },
+          "expected": {
+            "power_W": 1011211196,
+            "lambda_max_nm": 250.759
           }
         }
       ],
@@ -15580,6 +16326,17 @@
             "absorbance": 0.2,
             "transmittance_percent": 63.0957
           }
+        },
+        {
+          "input": {
+            "epsilon": 200,
+            "l": 1,
+            "c": 0.002
+          },
+          "expected": {
+            "absorbance": 0.4,
+            "transmittance_percent": 39.8107
+          }
         }
       ],
       "references": [],
@@ -15664,6 +16421,16 @@
           "expected": {
             "deltaG_kJ": -114.9
           }
+        },
+        {
+          "input": {
+            "dH": -200,
+            "dS": 50,
+            "T": 298
+          },
+          "expected": {
+            "deltaG_kJ": -214.9
+          }
         }
       ],
       "references": [],
@@ -15744,6 +16511,16 @@
           "expected": {
             "pH": 2.8753,
             "h_concentration": 0.001333
+          }
+        },
+        {
+          "input": {
+            "Ka": 0.000036,
+            "C": 0.1
+          },
+          "expected": {
+            "pH": 2.726,
+            "h_concentration": 0.001879
           }
         }
       ],
@@ -15840,6 +16617,17 @@
           "expected": {
             "Kc": 0.16
           }
+        },
+        {
+          "input": {
+            "C_conc": 0.4,
+            "D_conc": 0.2,
+            "A_conc": 0.5,
+            "B_conc": 0.5
+          },
+          "expected": {
+            "Kc": 0.32
+          }
         }
       ],
       "references": [],
@@ -15931,6 +16719,17 @@
           "expected": {
             "Vout": 8,
             "current_A": 0.001
+          }
+        },
+        {
+          "input": {
+            "Vin": 24,
+            "R1": 4000,
+            "R2": 8000
+          },
+          "expected": {
+            "Vout": 16,
+            "current_A": 0.002
           }
         }
       ],
@@ -16035,6 +16834,18 @@
             "tau": 0.001,
             "Vc": 3.1606
           }
+        },
+        {
+          "input": {
+            "R": 2000,
+            "C": 0.000001,
+            "V0": 5,
+            "t": 0.001
+          },
+          "expected": {
+            "tau": 0.002,
+            "Vc": 1.967347
+          }
         }
       ],
       "references": [],
@@ -16129,6 +16940,17 @@
             "ratio": 3,
             "rpm_out": 1000
           }
+        },
+        {
+          "input": {
+            "N_drive": 40,
+            "N_driven": 60,
+            "rpm_in": 3000
+          },
+          "expected": {
+            "ratio": 1.5,
+            "rpm_out": 2000
+          }
         }
       ],
       "references": [],
@@ -16220,6 +17042,17 @@
           "expected": {
             "hoop_stress": 50000000,
             "longitudinal_stress": 25000000
+          }
+        },
+        {
+          "input": {
+            "P": 2000000,
+            "D": 1,
+            "t": 0.01
+          },
+          "expected": {
+            "hoop_stress": 100000000,
+            "longitudinal_stress": 50000000
           }
         }
       ],
@@ -16328,6 +17161,19 @@
             "real_W": 1840,
             "reactive_VAR": 1380,
             "phase_angle": 36.87
+          }
+        },
+        {
+          "input": {
+            "V": 460,
+            "I": 10,
+            "pf": 0.8
+          },
+          "expected": {
+            "apparent_VA": 4600,
+            "real_W": 3680,
+            "reactive_VAR": 2760,
+            "phase_angle": 36.8699
           }
         }
       ],
@@ -16610,6 +17456,18 @@
             "annual": 1000,
             "rate_percent": 10,
             "book_value_y1": 9000
+          }
+        },
+        {
+          "input": {
+            "cost": 20000,
+            "salvage": 1000,
+            "life": 9
+          },
+          "expected": {
+            "annual": 2111.1111,
+            "rate_percent": 10.5556,
+            "book_value_y1": 17888.8889
           }
         }
       ],

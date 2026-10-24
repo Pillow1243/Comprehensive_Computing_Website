@@ -3,6 +3,9 @@ import Ajv2020 from 'ajv/dist/2020.js';
 import {FORMULAS} from '../apps/web/registry.js';
 import {serializeFormula,stableJson} from './formula-catalog-utils.mjs';
 
+const indexManifest=JSON.parse(await readFile(new URL('../packages/formula-registry/formula-index.json',import.meta.url),'utf8'));
+const detailManifest=JSON.parse(await readFile(new URL('../packages/formula-registry/formula-details.json',import.meta.url),'utf8'));
+
 const fail=message=>{console.error(`Registry validation failed: ${message}`);process.exitCode=1;};
 const catalog=JSON.parse(await readFile(new URL('../packages/formula-registry/catalog.json',import.meta.url),'utf8'));
 const schema=JSON.parse(await readFile(new URL('../packages/formula-registry/schema.json',import.meta.url),'utf8'));
@@ -23,7 +26,9 @@ for(const formula of FORMULAS){
   if(!Array.isArray(formula.references)) errors.push(`${formula.id}: references must be an array`);
   if(typeof formula.compute_js!=='string'||!/^module:[A-Za-z0-9_./-]+#[a-z][a-z0-9_]*$/.test(formula.compute_js)) errors.push(`${formula.id}: invalid trusted JS module reference`);
   if(typeof formula.steps_generator_ref!=='string'||!/^module:[A-Za-z0-9_./-]+#[a-z][a-z0-9_]*$/.test(formula.steps_generator_ref)) errors.push(`${formula.id}: invalid steps-generator module reference`);
-  if(!Array.isArray(formula.tests)||formula.tests.length<1) errors.push(`${formula.id}: at least one test is required`);
+  if(!Array.isArray(formula.tests)||formula.tests.length<2) errors.push(`${formula.id}: at least two tests are required (got ${formula.tests?.length??0})`);
+  const distinctInputs=new Set((formula.tests||[]).map(test=>stableJson(test.input)));
+  if(distinctInputs.size!==(formula.tests||[]).length) errors.push(`${formula.id}: duplicate test inputs are not allowed`);
   const outputNames=new Set((formula.outputs||[]).map(output=>output.name));
   for(const test of formula.tests||[]) for(const key of Object.keys(test.expected||{})) if(!outputNames.has(key)) errors.push(`${formula.id}: outputs metadata is missing '${key}'`);
   if(typeof formula.compute!=='function') errors.push(`${formula.id}: trusted compute function is missing`);
@@ -41,6 +46,7 @@ for(const formula of FORMULAS){
       const result=formula.compute({...test.input});
       if(!result||!result.values||!Array.isArray(result.steps)||result.steps.length===0) errors.push(`${formula.id}: test ${index+1} returned invalid values/steps`);
       for(const key of Object.keys(test.expected)) if(!(key in result.values)) errors.push(`${formula.id}: test ${index+1} expects missing output '${key}'`);
+      for(const [key,value] of Object.entries(result.values)) if(typeof value==='number'&&!Number.isFinite(value)) errors.push(`${formula.id}: test ${index+1} produced a non-finite output '${key}'`);
     }catch(error){errors.push(`${formula.id}: test ${index+1} throws: ${error.message}`);}
   }
 }
@@ -63,6 +69,20 @@ else for(const item of catalog.formula_index){
 }
 if(!Array.isArray(catalog.sections)||catalog.sections.length!==29) errors.push('catalog must retain the 29 planned discipline sections');
 
+// ── browser manifests must match the trusted registry exactly ─────────────
+if(!Array.isArray(indexManifest)||indexManifest.length!==FORMULAS.length) errors.push(`formula-index.json must contain ${FORMULAS.length} entries; run npm run build:index`);
+if(Object.keys(detailManifest).length!==FORMULAS.length) errors.push(`formula-details.json must contain ${FORMULAS.length} entries; run npm run build:index`);
+for(const formula of FORMULAS){
+  const indexEntry=indexManifest.find(entry=>entry.id===formula.id);
+  if(!indexEntry){errors.push(`formula-index.json is missing ${formula.id}`);continue;}
+  if(indexEntry.name_fa!==formula.name_fa||indexEntry.name_en!==formula.name_en||stableJson(indexEntry.category_path)!==stableJson(formula.category_path)) errors.push(`formula-index.json is stale for ${formula.id}`);
+  if(indexEntry.test_count!==formula.tests.length) errors.push(`formula-index.json test_count is stale for ${formula.id}`);
+  const detail=detailManifest[formula.id];
+  if(!detail){errors.push(`formula-details.json is missing ${formula.id}`);continue;}
+  if(detail.variables.length!==formula.variables.length) errors.push(`formula-details.json variables are stale for ${formula.id}`);
+  if(detail.outputs.length!==formula.outputs.length) errors.push(`formula-details.json outputs are stale for ${formula.id}`);
+}
+
 if(errors.length){for(const error of errors)fail(error);process.exit(1);}
 const testCases=FORMULAS.reduce((n,formula)=>n+formula.tests.length,0);
-console.log(`Registry valid: ${FORMULAS.length} formulas, ${testCases} declared cases, ${catalog.sections.length} catalog sections.`);
+console.log(`Registry valid: ${FORMULAS.length} formulas, ${testCases} declared cases, ${catalog.sections.length} catalog sections, manifests in sync.`);

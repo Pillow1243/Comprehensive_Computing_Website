@@ -17,7 +17,19 @@ createServer((req,res)=>{
   let file=path.resolve(root,`.${pathname}`);
   if(!file.startsWith(root+path.sep)&&file!==root){res.writeHead(403).end('Forbidden');return;}
   try{if(statSync(file).isDirectory())file=path.join(file,'index.html');if(!statSync(file).isFile())throw new Error('not file');}
-  catch{res.writeHead(404).end('Not Found');return;}
+  catch{
+    // GitHub Pages serves 404.html for unknown paths — mirror that locally so
+    // the branded not-found page is what developers and tests actually see.
+    const notFound=path.join(root,'404.html');
+    try{
+      if(statSync(notFound).isFile()){
+        res.writeHead(404,{'content-type':'text/html; charset=utf-8','cache-control':'no-cache'});
+        if(req.method==='HEAD'){res.end();return;}
+        createReadStream(notFound).pipe(res);return;
+      }
+    }catch{}
+    res.writeHead(404).end('Not Found');return;
+  }
   res.writeHead(200,{'content-type':mime[path.extname(file)]||'application/octet-stream','cache-control':'no-cache'});
   if(req.method==='HEAD'){res.end();return;}
   createReadStream(file).pipe(res);

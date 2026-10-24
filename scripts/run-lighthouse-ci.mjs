@@ -1,61 +1,138 @@
-import {mkdir,readFile,writeFile} from 'node:fs/promises';
-import {spawn} from 'node:child_process';
+/**
+ * Lighthouse runner that works both locally and in CI without the paid
+ * temporary-public-storage upload.
+ *
+ * It starts the static export server, audits every configured URL on a mobile
+ * profile, enforces the assertions in .lighthouserc.json (failures exit non-zero)
+ * and writes HTML + JSON reports to artifacts/lighthouse.
+ */
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { spawn } from 'node:child_process';
 import path from 'node:path';
-import {fileURLToPath} from 'node:url';
+import { fileURLToPath } from 'node:url';
 import lighthouse from 'lighthouse';
-import {launch} from 'chrome-launcher';
+import { launch } from 'chrome-launcher';
 
-const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const config=JSON.parse(await readFile(path.join(root,'.lighthouserc.json'),'utf8'));
-const collect=config.ci.collect;
-const url=collect.url?.[0];
-if(!url)throw new Error('Lighthouse config must include at least one collect.url.');
-const outDir=path.resolve(root,config.ci.upload?.outputDir||'artifacts/lighthouse');
-await mkdir(outDir,{recursive:true});
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const config = JSON.parse(await readFile(path.join(root, '.lighthouserc.json'), 'utf8'));
+const { collect, assert } = config.ci;
+const urls = collect.url ?? [];
+if (!urls.length) throw new Error('Lighthouse config must include at least one collect.url.');
+const assertions = assert?.assertions ?? {};
+const outDir = path.resolve(root, config.ci.upload?.outputDir ?? 'artifacts/lighthouse');
+await mkdir(outDir, { recursive: true });
 
-const server=spawn(process.execPath,['scripts/serve-static.mjs'],{cwd:root,stdio:['ignore','pipe','pipe']});
-let serverLog='';
-const waitForServer=new Promise((resolve,reject)=>{
-  const timer=setTimeout(()=>reject(new Error(`Static preview server did not start. ${serverLog}`)),30_000);
-  server.stdout.on('data',chunk=>{serverLog+=chunk.toString();if(serverLog.includes('Static export at')){clearTimeout(timer);resolve();}});
-  server.stderr.on('data',chunk=>{serverLog+=chunk.toString();});
-  server.once('error',error=>{clearTimeout(timer);reject(error);});
-  server.once('exit',code=>{if(code!==null&&code!==0){clearTimeout(timer);reject(new Error(`Static preview server exited (${code}). ${serverLog}`));}});
+const server = spawn(process.execPath, ['scripts/serve-static.mjs'], { cwd: root, stdio: ['ignore', 'pipe', 'pipe'] });
+let serverLog = '';
+const waitForServer = new Promise((resolve, reject) => {
+  const timer = setTimeout(() => reject(new Error(`Static preview server did not start. ${serverLog}`)), 30_000);
+  server.stdout.on('data', (chunk) => {
+    serverLog += chunk.toString();
+    if (serverLog.includes('Static export at')) {
+      clearTimeout(timer);
+      resolve();
+    }
+  });
+  server.stderr.on('data', (chunk) => {
+    serverLog += chunk.toString();
+  });
+  server.once('error', (error) => {
+    clearTimeout(timer);
+    reject(error);
+  });
 });
 
-let chrome;
-try{
-  await waitForServer;
-  const flags=(collect.settings?.chromeFlags||'--no-sandbox --headless=new').split(/\s+/).filter(Boolean);
-  const formFactor=collect.settings?.emulatedFormFactor||'mobile';
-  const runs=Math.max(1,Number(collect.numberOfRuns)||1);
-  for(let i=1;i<=runs;i++){
-    chrome=await launch({chromePath:process.env.CHROME_PATH,chromeFlags:flags});
-    const result=await lighthouse(url,{port:chrome.port,output:['html','json'],logLevel:'error'}, {
-      extends:'lighthouse:default',
-      settings:{emulatedFormFactor:formFactor,onlyCategories:['performance','accessibility','best-practices','seo'],throttlingMethod:'simulate'},
-    });
-    const timestamp=new Date().toISOString().replace(/[:.]/g,'-');
-    const html=Array.isArray(result.report)?result.report[0]:result.report;
-    const json=Array.isArray(result.report)?result.report[1]:JSON.stringify(result.lhr,null,2);
-    await writeFile(path.join(outDir,`run-${i}-${timestamp}.html`),html);
-    await writeFile(path.join(outDir,`run-${i}-${timestamp}.json`),json);
-    const scores=Object.fromEntries(Object.entries(result.lhr.categories).map(([key,value])=>[key,value.score]));
-    console.log(`Lighthouse run ${i}/${runs}:`,Object.fromEntries(Object.entries(scores).map(([key,value])=>[key,`${Math.round(value*100)}%`])));
-    const assertions=config.ci.assert?.assertions||{};
-    for(const [key,rule] of Object.entries(assertions)){
-      if(!key.startsWith('categories:')||!Array.isArray(rule))continue;
-      const category=key.slice('categories:'.length),minimum=rule[1]?.minScore;
-      if(typeof minimum==='number'&&typeof scores[category]==='number'&&scores[category]<minimum){
-        const message=`${category} score ${scores[category].toFixed(2)} is below configured warn threshold ${minimum.toFixed(2)}.`;
-        if(rule[0]==='error')throw new Error(message);
-        console.warn(`WARNING: ${message}`);
-      }
-    }
-    await chrome.kill();chrome=undefined;
+const auditIdFor = (key) => {
+  const map = {
+    'first-contentful-paint': 'first-contentful-paint',
+    'largest-contentful-paint': 'largest-contentful-paint',
+    'total-blocking-time': 'total-blocking-time',
+    'cumulative-layout-shift': 'cumulative-layout-shift',
+    'server-response-time': 'server-response-time',
+    'cumulative-layout-shift-max': 'cumulative-layout-shift',
+  };
+  return map[key] ?? key;
+};
+
+const failures = [];
+const warnings = [];
+
+const check = (key, rule, { score, numericValue }) => {
+  const [level, options = {}] = Array.isArray(rule) ? rule : [rule, {}];
+  if (options.minScore !== undefined && typeof score === 'number' && score < options.minScore) {
+    const message = `${key}: score ${score.toFixed(2)} < ${options.minScore}`;
+    (level === 'error' ? failures : warnings).push(message);
   }
-  console.log(`Lighthouse reports saved in ${path.relative(root,outDir)}/`);
-}finally{
-  if(chrome)await chrome.kill().catch(()=>{});
+  if (options.maxNumericValue !== undefined && typeof numericValue === 'number' && numericValue > options.maxNumericValue) {
+    const message = `${key}: ${Math.round(numericValue)} > ${options.maxNumericValue}`;
+    (level === 'error' ? failures : warnings).push(message);
+  }
+};
+
+let chrome;
+try {
+  await waitForServer;
+  const flags = (collect.settings?.chromeFlags ?? '--no-sandbox --headless=new').split(/\s+/).filter(Boolean);
+  const runs = Math.max(1, Number(collect.numberOfRuns) || 1);
+
+  for (const url of urls) {
+    for (let run = 1; run <= runs; run += 1) {
+      chrome = await launch({ chromePath: process.env.CHROME_PATH, chromeFlags: flags });
+      const result = await lighthouse(
+        url,
+        { port: chrome.port, output: ['html', 'json'], logLevel: 'error' },
+        {
+          extends: 'lighthouse:default',
+          settings: {
+            formFactor: 'mobile',
+            screenEmulation: collect.settings?.screenEmulation ?? { mobile: true, width: 412, height: 915, deviceScaleFactor: 1.75 },
+            throttlingMethod: collect.settings?.throttlingMethod ?? 'simulate',
+            onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
+          },
+        },
+      );
+      const lhr = result.lhr;
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+      const slug = new URL(url).pathname.replace(/\//g, '_').replace(/^_|_$/g, '') || 'root';
+      const reports = Array.isArray(result.report) ? result.report : [result.report];
+      await writeFile(path.join(outDir, `${slug}-run${run}-${timestamp}.html`), reports[0]);
+      await writeFile(path.join(outDir, `${slug}-run${run}-${timestamp}.json`), reports[1] ?? JSON.stringify(lhr, null, 2));
+
+      const categories = Object.fromEntries(
+        Object.entries(lhr.categories).map(([key, value]) => [key, value.score]),
+      );
+      console.log(
+        `[${slug}] run ${run}/${runs} ` +
+          Object.entries(categories)
+            .map(([key, value]) => `${key}=${Math.round((value ?? 0) * 100)}`)
+            .join(' '),
+      );
+
+      for (const [key, rule] of Object.entries(assertions)) {
+        if (key.startsWith('categories:')) {
+          const category = key.slice('categories:'.length);
+          check(`${category} (${slug})`, rule, { score: categories[category] ?? 0 });
+          continue;
+        }
+        const audit = lhr.audits[auditIdFor(key)];
+        if (!audit) continue;
+        const score = typeof audit.score === 'number' ? audit.score : undefined;
+        check(`${key} (${slug})`, rule, { score, numericValue: audit.numericValue });
+      }
+
+      await chrome.kill();
+      chrome = undefined;
+    }
+  }
+} finally {
+  if (chrome) await chrome.kill().catch(() => {});
   server.kill('SIGTERM');
 }
+
+for (const warning of warnings) console.warn(`WARNING: ${warning}`);
+if (failures.length) {
+  for (const failure of failures) console.error(`FAIL: ${failure}`);
+  console.error(`Lighthouse budgets violated (${failures.length}). Reports in artifacts/lighthouse/.`);
+  process.exit(1);
+}
+console.log(`Lighthouse budgets met. Reports saved in ${path.relative(root, outDir)}/.`);

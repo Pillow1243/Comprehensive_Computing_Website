@@ -2,20 +2,15 @@
 // Runtime solvers are trusted module functions; this registry never evaluates source strings.
 import {PHASE1_FORMULAS} from './phase1-formulas.js';
 import {PHASE2_FORMULAS} from './phase2-formulas.js';
+import {EXTRA_TESTS} from './extra-tests.js';
 const N=(name,label_fa,label_en,unit,def,opts={})=>({name,label_fa,label_en,type:opts.type||'number',unit:unit||null,default:def,required:true,min:opts.min,max:opts.max,step:opts.step});
 const out=(v,steps)=>({values:v,steps});
 const r=(x,d=6)=>{ if(!isFinite(x)) return x; const p=10**d; return Math.round(x*p)/p; };
 function stepsCalc(title,subs,result){return [title,subs,result];}
 
-export const CATEGORIES=[
- {id:'math',fa:'ریاضیات',en:'Mathematics',icon:'∑',children:['حساب و نظریه اعداد','جبر','هندسه و مثلثات','حساب دیفرانسیل','جبر خطی','آمار و احتمال','ریاضیات گسسته']},
- {id:'physics',fa:'فیزیک',en:'Physics',icon:'⚛',children:['مکانیک کلاسیک','الکترومغناطیس','ترمودینامیک','اپتیک','فیزیک مدرن']},
- {id:'chemistry',fa:'شیمی',en:'Chemistry',icon:'⚗',children:['استوکیومتری','اسید و باز','تعادل','الکتروشیمی','سینتیک']},
- {id:'engineering',fa:'مهندسی',en:'Engineering',icon:'⚙',children:['استاتیک','مدار و الکترونیک','مکانیک سیالات','انتقال حرارت','کنترل']},
- {id:'finance',fa:'مالی و اقتصاد',en:'Finance',icon:'💰',children:['بهره و وام','سرمایه‌گذاری']},
- {id:'cs',fa:'کامپیوتر و اطلاعات',en:'CS & Information',icon:'💻',children:['نظریه اطلاعات','ترکیبیات']},
- {id:'health',fa:'زیست و سلامت',en:'Bio & Health',icon:'🧬',children:['سلامت','رشد و اپیدمی']},
-];
+export {CATEGORIES} from './categories.js';
+
+
 
 export const FORMULAS=[
  // ── حساب ──
@@ -150,7 +145,7 @@ export const FORMULAS=[
  // ── مالی ──
  {id:'compound_interest',name_fa:'بهره مرکب و ارزش آینده',name_en:'Compound Interest',category_path:['مالی و اقتصاد','بهره و وام'],tags:['بهره','سرمایه'],description_fa:'ارزش آینده، بهره مرکب پیوسته و زمان دوبرابر شدن',formula_latex:'FV=PV(1+r/m)^{mt},\\; FV_c=PVe^{rt}',difficulty:'basic',version:'1.0.0',validated:true,plot_spec:{type:'growth'},
   variables:[N('PV','سرمایه اولیه PV','Present value',null,10000),N('rate','نرخ سالانه ٪','Annual rate %',null,8),N('years','مدت (سال)','Years',null,10),N('m','دفعات ترکیب در سال','Compounds/year',null,12,{min:1})],tests:[{input:{PV:1000,rate:0,years:5,m:1},expected:{future_value:1000}}],
-  compute({PV,rate,years,m}){const rdec=rate/100,fv=PV*(1+rdec/m)**(m*years),fvc=PV*Math.exp(rdec*years);return out({future_value:r(fv,2),future_continuous:r(fvc,2),interest_earned:r(fv-PV,2),doubling_years_rule72:r(72/rate,2)},[`FV = ${PV}(1+${rdec}/${m})^(${m}×${years}) = ${r(fv,2)}`,`بهره کسب‌شده = ${r(fv-PV,2)} ، دوبرابر شدن ≈ 72/${rate} = ${r(72/rate,2)} سال`]);}},
+  compute({PV,rate,years,m}){if(!(PV>0))throw new Error('سرمایه اولیه باید مثبت باشد');if(!(m>=1))throw new Error('دفعات ترکیب باید حداقل ۱ باشد');if(!(years>=0))throw new Error('مدت نمی‌تواند منفی باشد');const rdec=rate/100,fv=PV*(1+rdec/m)**(m*years),fvc=PV*Math.exp(rdec*years);const doubling=rate>0?r(72/rate,2):'∞';return out({future_value:r(fv,2),future_continuous:r(fvc,2),interest_earned:r(fv-PV,2),doubling_years_rule72:doubling},[`FV = ${PV}(1+${rdec}/${m})^(${m}×${years}) = ${r(fv,2)}`,`بهره کسب‌شده = ${r(fv-PV,2)} ، دوبرابر شدن ≈ 72/${rate} = ${doubling} سال`]);}},
  {id:'loan_payment',name_fa:'قسط وام (سالانه)',name_en:'Loan Payment (Annuity)',category_path:['مالی و اقتصاد','بهره و وام'],tags:['وام','قسط'],description_fa:'قسط ثابت ماهانه، کل پرداختی و کل بهره وام',formula_latex:'PMT=\\frac{Pr}{1-(1+r)^{-n}}',difficulty:'basic',version:'1.0.0',validated:true,plot_spec:{type:'growth'},
   variables:[N('principal','اصل وام','Principal',null,100000),N('annual_rate','نرخ سالانه ٪','Annual rate %',null,6),N('months','تعداد اقساط (ماه)','Months',null,60,{min:1})],tests:[{input:{principal:1200,annual_rate:0,months:12},expected:{monthly_payment:100}}],
   compute({principal,annual_rate,months}){const i=annual_rate/100/12;const pmt=i===0?principal/months:principal*i/(1-(1+i)**-months);return out({monthly_payment:r(pmt,2),total_paid:r(pmt*months,2),total_interest:r(pmt*months-principal,2)},[`i = ${annual_rate}٪/12 = ${r(i,6)}`,`PMT = ${r(pmt,2)} در ماه ، کل بهره = ${r(pmt*months-principal,2)}`]);}},
@@ -161,7 +156,7 @@ export const FORMULAS=[
  // ── کامپیوتر / سلامت ──
  {id:'shannon_entropy',name_fa:'آنتروپی شانون',name_en:'Shannon Entropy',category_path:['کامپیوتر و اطلاعات','نظریه اطلاعات'],tags:['آنتروپی','اطلاعات'],description_fa:'آنتروپی منبع گسسته از روی احتمال نمادها',formula_latex:'H=-\\sum p_i\\log_2 p_i',difficulty:'intermediate',version:'1.0.0',validated:true,
   variables:[{name:'probs',label_fa:'احتمال‌ها (با کاما، مجموع=۱)',label_en:'Probabilities (sum=1)',type:'text',default:'0.5,0.25,0.25',required:true}],tests:[{input:{probs:'0.5,0.5'},expected:{entropy_bits:1}}],
-  compute({probs}){const ps=parseList(probs);const sum=ps.reduce((a,b)=>a+b,0);if(Math.abs(sum-1)>0.01)throw new Error('مجموع احتمال‌ها باید ۱ باشد');const H=-ps.reduce((a,p)=>a+(p>0?p*Math.log2(p):0),0);return out({entropy_bits:r(H,4),max_entropy:r(Math.log2(ps.length),4),efficiency_percent:r(H/Math.log2(ps.length)*100,1)},[`H = −Σ p·log₂p = ${r(H,4)} بیت/نماد`,`حداکثر آنتروپی برای ${ps.length} نماد: ${r(Math.log2(ps.length),4)} بیت`]);}},
+  compute({probs}){const ps=parseList(probs);if(ps.length<2)throw new Error('حداقل دو نماد لازم است');if(ps.some(p=>p<0))throw new Error('احتمال‌ها نباید منفی باشند');const sum=ps.reduce((a,b)=>a+b,0);if(Math.abs(sum-1)>0.01)throw new Error('مجموع احتمال‌ها باید ۱ باشد');const H=-ps.reduce((a,p)=>a+(p>0?p*Math.log2(p):0),0);return out({entropy_bits:r(H,4),max_entropy:r(Math.log2(ps.length),4),efficiency_percent:r(H/Math.log2(ps.length)*100,1)},[`H = −Σ p·log₂p = ${r(H,4)} بیت/نماد`,`حداکثر آنتروپی برای ${ps.length} نماد: ${r(Math.log2(ps.length),4)} بیت`]);}},
  {id:'bmi',name_fa:'شاخص توده بدنی BMI',name_en:'Body Mass Index',category_path:['زیست و سلامت','سلامت'],tags:['BMI','سلامت'],description_fa:'BMI، دسته‌بندی WHO و محدوده وزن سالم',formula_latex:'BMI=\\frac{m}{h^2}',difficulty:'basic',version:'1.0.0',validated:true,
   variables:[N('mass','وزن (kg)','Mass','mass',70),N('height','قد','Height','length',1.75)],tests:[{input:{mass:70,height:1.75},expected:{bmi:r(70/3.0625,1)}}],
   compute({mass,height}){if(!(height>0))throw new Error('قد باید بزرگ‌تر از صفر باشد');const bmi=mass/(height*height);const cat=bmi<18.5?'کم‌وزن (Underweight)':bmi<25?'نرمال (Normal)':bmi<30?'اضافه‌وزن (Overweight)':'چاق (Obese)';return out({bmi:r(bmi,1),category:cat,healthy_min_kg:r(18.5*height*height,1),healthy_max_kg:r(24.9*height*height,1)},[`BMI = ${mass} / ${height}² = ${r(bmi,1)} ⟹ ${cat}`,`محدوده سالم: ${r(18.5*height*height,1)} تا ${r(24.9*height*height,1)} kg`]);}},
@@ -182,6 +177,13 @@ const phase1Ids=new Set(PHASE1_FORMULAS.map(formula=>formula.id));
 const phase2Ids=new Set(PHASE2_FORMULAS.map(formula=>formula.id));
 function moduleFileFor(id){ if(phase1Ids.has(id))return 'phase1-formulas.js'; if(phase2Ids.has(id))return 'phase2-formulas.js'; return 'registry.js'; }
 for (const formula of FORMULAS) {
+  // Every formula must ship at least two automated cases (see docs/FORMULA_TEMPLATE.md).
+  const extra=EXTRA_TESTS[formula.id];
+  if(extra&&Array.isArray(extra)){
+    for(const testCase of extra){
+      if(!formula.tests.some(existing=>JSON.stringify(existing.input)===JSON.stringify(testCase.input))) formula.tests.push(testCase);
+    }
+  }
   for(const variable of formula.variables||[]){
     variable.unit ??= null;
     variable.required ??= true;
