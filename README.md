@@ -80,7 +80,7 @@ db/schema.sql                   PostgreSQL schema for future hosted features
 
 ```bash
 npm run validate-registry
-npm test                      # 372 passing unit/registry/API tests at this revision
+npm test                      # 377 passing unit/registry/regression/API tests at this revision (+12 backend unittest)
 npm run build                 # Next static export → out/
 npx playwright install chromium
 npm run test:e2e:ci

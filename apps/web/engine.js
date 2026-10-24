@@ -15,16 +15,18 @@ export function evaluate(expr,vars={}){
   }
   let pos=0; const peek=()=>toks[pos], next=()=>toks[pos++];
   function parseExpr(){ let v=parseTerm(); while(peek()&&['+','-'].includes(peek().t)){ const op=next().t; const rhs=parseTerm(); v=op==='+'?v+rhs:v-rhs; } return v; }
-  function parseTerm(){ let v=parseFactor(); while(peek()&&['*','/','%'].includes(peek().t)){ const op=next().t; const rhs=parseFactor(); v=op==='*'?v*rhs:op==='/'?v/rhs:v%rhs; } return v; }
-  function parseFactor(){ let base=parseUnary(); if(peek()&&peek().t==='^'){ next(); const ex=parseFactor(); base=Math.pow(base,ex); } if(peek()&&peek().t==='!'){ next(); base=factorial(base); } return base; }
-  function parseUnary(){ if(peek()&&peek().t==='-'){next();return -parseUnary();} if(peek()&&peek().t==='+'){next();return parseUnary();} return parseAtom(); }
+  function parseTerm(){ let v=parseUnary(); while(peek()&&['*','/','%'].includes(peek().t)){ const op=next().t; const rhs=parseUnary(); v=op==='*'?v*rhs:op==='/'?v/rhs:v%rhs; } return v; }
+  // Precedence (high→low): postfix !, ^ (right-assoc), unary -/+, * / %, + -.
+  // Unary minus binds looser than ^, so -2^2 = -(2^2) = -4 and 2^-1 = 0.5.
+  function parseUnary(){ if(peek()&&peek().t==='-'){next();return -parseUnary();} if(peek()&&peek().t==='+'){next();return parseUnary();} return parsePower(); }
+  function parsePower(){ let base=parseAtom(); if(peek()&&peek().t==='!'){ next(); base=factorial(base); } if(peek()&&peek().t==='^'){ next(); const ex=parseUnary(); base=Math.pow(base,ex); } return base; }
   function factorial(n){ if(n<0||Math.round(n)!==n) throw new Error('فاکتوریل فقط برای صحیح نامنفی'); let r=1; for(let k=2;k<=n&&k<=171;k++)r*=k; return r; }
   function parseAtom(){ const tk=next(); if(!tk) throw new Error('پایان غیرمنتظره عبارت');
     if(tk.t==='num') return tk.v;
     if(tk.t==='('){ const v=parseExpr(); if(!peek()||next().t!==')') throw new Error('پرانتز بسته نیست'); return v; }
     if(tk.t==='id'){ const name=tk.v;
-      if(peek()&&peek().t==='('){ next(); const args=[parseExpr()]; while(peek()&&peek().t===','){next();args.push(parseExpr());} if(!peek()||next().t!==')') throw new Error('پرانتز تابع بسته نیست'); if(FUNCS[name]) return FUNCS[name](...args); throw new Error('تابع ناشناخته: '+name); }
-      if(name in vars) return vars[name]; if(name in CONSTS) return CONSTS[name]; throw new Error('متغیر ناشناخته: '+name); }
+      if(peek()&&peek().t==='('){ next(); const args=[parseExpr()]; while(peek()&&peek().t===','){next();args.push(parseExpr());} if(!peek()||next().t!==')') throw new Error('پرانتز تابع بسته نیست'); if(Object.hasOwn(FUNCS,name)) return FUNCS[name](...args); throw new Error('تابع ناشناخته: '+name); }
+      if(Object.hasOwn(vars,name)) return vars[name]; if(Object.hasOwn(CONSTS,name)) return CONSTS[name]; throw new Error('متغیر ناشناخته: '+name); }
     throw new Error('توکن غیرمنتظره'); }
   const v=parseExpr(); if(pos<toks.length) throw new Error('بخشی از عبارت پردازش نشد'); return v;
 }

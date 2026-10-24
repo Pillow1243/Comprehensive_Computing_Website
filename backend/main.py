@@ -7,6 +7,7 @@ import ast, math, os, time
 from typing import Any
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 app = FastAPI(title="SolveEverything API", version="1.0.0",
@@ -26,12 +27,22 @@ app.add_middleware(
 
 # ── simple in-memory rate limit (production: Redis) ──
 _hits: dict[str, list[float]] = {}
+_RATE_WINDOW_S, _RATE_MAX = 60.0, 120
 @app.middleware("http")
 async def rate_limit(request: Request, call_next):
+    # Exceptions raised inside HTTP middleware bypass FastAPI's handlers (they became HTTP 500),
+    # so the 429 response must be returned directly.
     now = time.time(); ip = request.client.host if request.client else "?"
-    _hits[ip] = [t for t in _hits.get(ip, []) if now - t < 60]
-    if len(_hits[ip]) >= 120: raise HTTPException(429, "Rate limit: 120 req/min")
-    _hits[ip].append(now)
+    recent = [t for t in _hits.get(ip, []) if now - t < _RATE_WINDOW_S]
+    if len(recent) >= _RATE_MAX:
+        _hits[ip] = recent
+        return JSONResponse({"detail": "Rate limit: 120 req/min"}, status_code=429,
+                            headers={"Retry-After": "60"})
+    recent.append(now)
+    _hits[ip] = recent
+    if len(_hits) > 10_000:  # bound memory: drop idle clients
+        for key in [k for k, v in _hits.items() if not v or now - v[-1] >= _RATE_WINDOW_S]:
+            _hits.pop(key, None)
     return await call_next(request)
 
 class SolveRequest(BaseModel):

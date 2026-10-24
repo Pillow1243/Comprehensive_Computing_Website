@@ -2,6 +2,25 @@
 
 All notable changes to SolveEverything are documented here. This project follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Fixed
+- Shared/bookmarked links (`#/formula/<id>?param=…`) failed to open because the query string became part of the formula id.
+- Calculator precedence: `-2^2` now equals `-4` (unary minus binds looser than `^`), and `constructor`/`toString` are no longer resolved as variables or functions.
+- Plotter froze the browser when the range had `min ≥ max`, and the normal-curve plot looped forever when σ = 0.
+- Invalid inputs produced `NaN` in results (e.g. `gcd(0,0)`, `percent change` with old = 0, BMI with height 0). They now show a clear error.
+- Factorial/permutation/combination returned silently wrong values when `r > n`, and froze the tab for huge `n`; input is now validated.
+- Practice quiz could ask questions whose answer was not a finite number.
+- Changing language cleared the formula inputs; they are now kept.
+- Each keystroke added a history entry; consecutive duplicates are now skipped.
+- API rate limiter returned HTTP 500 instead of 429; the in-memory hit table is now bounded.
+- Footer "API" link pointed to a non-existent path; it now links to `docs/API.md` on GitHub.
+- Service worker served cached files indefinitely (users could stay on an old build); app files are now network-first, `catalog.json` is precached, and one missing asset no longer blocks installation.
+- `docker-compose.yml` referenced a Celery worker that does not exist in the codebase; removed.
+
+### Added
+- `tests/regressions.test.mjs` and a backend rate-limit test covering the fixes above.
+
 ## [1.1.0] - 2026-10-24
 
 ### Added
