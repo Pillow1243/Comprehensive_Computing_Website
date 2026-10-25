@@ -20,7 +20,7 @@
 - `tests/unit/compute-core.test.ts` — worker handler operations (`ping`, `compute`, `evaluate`, `sample`, `derivative`, `integrate`, `root`, `matrix`, `stats`, `regression`) plus `availableFormulaIds`.
 - `tests/unit/validation.test.ts` — required/optional semantics, min/max domains, unit handling, bilingual error messages. Empty fields fall back to the declared default; only a required field without a default errors.
 - `tests/unit/utils.test.ts` — number formatting (including scientific notation signs), LaTeX/text helpers, haptics guards.
-- `tests/unit/components.test.tsx` — FormulaCard, ResultPanel/StepByStep, inputs, math keyboard tabs, dialogs, empty/error states, error boundary, KaTeX lazy rendering, offline banner, Button.
+- `tests/unit/components.test.tsx` — FormulaCard, ResultPanel/StepByStep, inputs, math keyboard tabs, dialogs, empty/error states, error boundary, build-time KaTeX rendering (markup in the HTML, no client renderer), offline banner, Button.
 - `tests/unit/compute-client.test.ts` — worker-unavailable fallback: with no `Worker` in the environment the client must fail fast and compute locally rather than hang until the 30 s timeout.
 - `tests/unit/solver-flow.test.tsx` — renders `FormulaSolver` as a user would: compute, results, history + recent bookmarks, invalid input rejection, domain rejection, steps tab, example loading, bookmark toggle. jsdom has no `Worker`, so this also exercises the graceful main-thread fallback path.
 
