@@ -170,7 +170,19 @@ describe('constants and tools registry', () => {
   });
 
   it('registers the tools hub routes', () => {
-    expect(TOOLS.map((tool) => tool.id)).toEqual(['units', 'chemistry', 'periodic-table', 'constants']);
+    expect(TOOLS.map((tool) => tool.id)).toEqual([
+      'graph',
+      'assistant',
+      'matrix',
+      'statistics',
+      'units',
+      'chemistry',
+      'periodic-table',
+      'constants',
+      'practice',
+      'learn',
+      'workspace',
+    ]);
     for (const tool of TOOLS) {
       expect(tool.href.startsWith('/')).toBe(true);
       expect(tool.fa).toBeTruthy();

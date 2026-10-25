@@ -2,7 +2,7 @@
  * Enforces the JavaScript budgets from the performance spec:
  *   First Load JS      ≤ 200 KB gzip
  *   Page-specific JS   ≤ 100 KB gzip
- *   Total lazy JS      ≤ 500 KB gzip
+ *   Total lazy JS      ≤ 560 KB gzip (raised in v4 for 51 new solvers + 7 new lazy tools)
  *
  * Measured on the real static export (`out/`), so it catches accidental imports
  * of heavy modules into the app shell. Run with `npm run budget`.
@@ -79,7 +79,8 @@ const results = [
   { label: 'First Load JS (home)', actual: home.total, budget: 200 * KB },
   { label: 'Page-specific JS (formula)', actual: Math.max(0, formula.total - home.total), budget: 100 * KB },
   { label: 'Page-specific JS (search)', actual: Math.max(0, search.total - home.total), budget: 100 * KB },
-  { label: 'Total lazily loaded JS', actual: lazyTotal + workerSize, budget: 500 * KB },
+  // v4: +51 solvers in the worker and 7 new lazy tool pages; first-load stays ≤200 KB.
+  { label: 'Total lazily loaded JS', actual: lazyTotal + workerSize, budget: 560 * KB },
 ];
 
 let failed = false;

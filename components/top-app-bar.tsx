@@ -16,6 +16,13 @@ const titles: Record<string, string> = {
   '/tools': 'tools',
   '/tools/units': 'unitConverter',
   '/tools/chemistry': 'molarMass',
+  '/tools/graph': 'graphTool',
+  '/tools/matrix': 'matrixTool',
+  '/tools/statistics': 'statsTool',
+  '/tools/assistant': 'assistantTool',
+  '/practice': 'practice',
+  '/learn': 'learn',
+  '/workspace': 'workspace',
   '/periodic-table': 'periodicTable',
   '/constants': 'constantsRef',
 };

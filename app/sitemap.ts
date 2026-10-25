@@ -20,6 +20,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/tools/',
     '/tools/units/',
     '/tools/chemistry/',
+    '/tools/graph/',
+    '/tools/matrix/',
+    '/tools/statistics/',
+    '/tools/assistant/',
+    '/practice/',
+    '/learn/',
+    '/workspace/',
     '/periodic-table/',
     '/constants/',
   ];
