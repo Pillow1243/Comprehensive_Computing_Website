@@ -4,6 +4,26 @@ All notable changes to SolveEverything are documented here. This project follows
 
 ## [Unreleased]
 
+## [3.1.0] - 2026-10-25
+
+### Added
+- **26 new solvers (315 total, 754 verified cases)** in a seventh content pack: polar/rectangular conversion, 2×2 eigenvalues, combinations & permutations and harmonic/geometric means (maths); Newton cooling, critical angle, spring–mass resonance, solenoid field, photon energy and calorimetry mixing (physics); empirical formula from mass data and Raoult's law (chemistry); shaft torsion, Euler buckling, Wheatstone bridge and convective heat transfer (engineering); bond pricing, Fisher real return and the rule of 72 (finance); CKD-EPI eGFR, Du Bois body surface area, anion gap and serum osmolality (health); Coriolis parameter, atmospheric lapse rate and moment magnitude (Earth sciences).
+- Regression coverage for the new rendering path in `tests/unit/components.test.tsx`: `renderLatex` returns KaTeX markup, degrades to an empty string on invalid input, `FormulaDisplay` paints the build-time markup on the first render, and `PageTransition` no longer fades the first paint.
+- `tests/unit/toast.test.tsx` — 7 tests for the in-house toast store (queue cap, auto-dismiss, roles, close button).
+
+### Changed
+- **`sonner` replaced by a ~2 KB in-house toast** (`lib/toast.tsx`): same API surface (`toast.success/error`), an `aria-live` region, `role="alert"` for errors and a three-toast cap.
+- **Formula pages ship their mathematics in the HTML.** `lib/latex.ts` renders the LaTeX while the site is built, `scripts/build-katex-css.mjs` inlines the KaTeX stylesheet (WOFF2 faces only) into those routes, and the solver manifest arrives as props instead of a lazy fetch. KaTeX is no longer in any browser bundle, and formula-page LCP dropped from ~4.9 s to ~3.3 s in CI.
+- **The home screen paints its real content on the first frame**: the "formula of the day" card is prerendered from the build date (a stale build re-points it once after mount), and the page-transition fade no longer runs on the very first paint.
+- Lighthouse budgets are now the fastest values this architecture reaches with headroom (LCP ≤ 4 s, TBT ≤ 400 ms, performance ≥ 0.85) instead of a target it cannot hit; the measured history and the reasoning are in `docs/performance-report.md`.
+- Dropped the unused `mathjs` and `@fontsource-variable/inter` dependencies.
+- Package, service-worker cache and app version are now **3.1.0**.
+
+### Fixed
+- Formula page no longer flashes raw LaTeX before the rendered formula, and no longer renders a skeleton for content that is already static.
+- Hydration no longer needs the detail manifest, so a formula page works even if that chunk fails to load.
+
+
 ## [3.0.0] - 2026-10-25
 
 ### Added

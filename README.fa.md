@@ -5,7 +5,7 @@
 [![CI](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/ci.yml/badge.svg)](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/ci.yml)
 [![GitHub Pages](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/deploy-pages.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-3.0.0-informational.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-3.1.0-informational.svg)](CHANGELOG.md)
 [![CodeQL](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/codeql.yml/badge.svg)](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/codeql.yml)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Pillow1243/Comprehensive_Computing_Website/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Pillow1243/Comprehensive_Computing_Website)
 ![PWA](https://img.shields.io/badge/PWA-%D9%86%D8%B5%D8%A8%E2%80%8C%D8%B4%D8%AF%D9%86%DB%8C%20%7C%20%D8%A2%D9%81%D9%84%D8%A7%DB%8C%D9%86-7c5cff)
@@ -13,7 +13,7 @@
 
 **هر معادله‌ای را گام‌به‌گام حل کن.** ماشین‌حساب علمی فارسی/انگلیسی برای ریاضی، فیزیک، شیمی، مهندسی، آمار و مالی؛ کلاینت‌محور، قابل نصب و آماده کار آفلاین.
 
-**دمو:** [Pillow1243.github.io/Comprehensive_Computing_Website](https://Pillow1243.github.io/Comprehensive_Computing_Website/) · **وضعیت:** نسخه ۳.۰.۰ · **پیاده‌سازی‌شده:** ۲۸۹ حل‌گر فرمول با ۷۰۲ مورد تست خودکار، به‌همراه مبدل یکا (۱۳ دسته، ۹۵ یکا)، ابزار جرم مولی، جدول تناوبی تعاملی و مرجع ثابت‌های فیزیکی.
+**دمو:** [Pillow1243.github.io/Comprehensive_Computing_Website](https://Pillow1243.github.io/Comprehensive_Computing_Website/) · **وضعیت:** نسخه ۳.۱.۰ · **پیاده‌سازی‌شده:** ۳۱۵ حل‌گر فرمول با ۷۵۴ مورد تست خودکار، به‌همراه مبدل یکا (۱۳ دسته، ۹۵ یکا)، ابزار جرم مولی، جدول تناوبی تعاملی و مرجع ثابت‌های فیزیکی.
 
 > Workflow استقرار آماده است، اما مالک ریپو باید یک‌بار از مسیر **Settings → Pages → GitHub Actions** منبع Pages را فعال کند و سپس از `main` انتشار دهد. راهنما: [استقرار](docs/DEPLOYMENT.md).
 
@@ -39,7 +39,7 @@ npm run dev
 
 | حوزه | اکنون | دامنه و محدودیت |
 |---|---|---|
-| حل‌گرها | ۲۸۹ فرمول کلاینتی در ریاضیات، فیزیک، شیمی، مهندسی، مالی و اقتصاد، کامپیوتر، سلامت، نجوم و زمین/محیط | هدف ۵۰۰+ فرمول هنوز در نقشه راه است؛ `ROADMAP.md` را ببینید. |
+| حل‌گرها | ۳۱۵ فرمول کلاینتی در ریاضیات، فیزیک، شیمی، مهندسی، مالی و اقتصاد، کامپیوتر، سلامت، نجوم و زمین/محیط | هدف ۵۰۰+ فرمول هنوز در نقشه راه است؛ `ROADMAP.md` را ببینید. |
 | گام‌ها و نمودار | مراحل حل، KaTeX با fallback متنی، نمودار پویای Canvas دوبعدی | CAS کامل، رسم سه‌بعدی و نمودارگر عمومی پیشرفته در آینده‌اند. |
 | ابزارها | مبدل یکا (۱۳ دسته، ۹۵ یکا)، تحلیل جرم مولی و درصد جرمی (با پرانتز و هیدرات)، جدول تناوبی ۱۱۸ عنصری، مرجع ۳۲ ثابت فیزیکی، ماشین‌حساب با پارسر امن، مشتق/انتگرال/ریشه‌یابی عددی و آزمون تمرینی | تحلیل ابعادی کامل و رسم سه‌بعدی در آینده‌اند. |
 | ذخیره‌سازی | تاریخچه، نشان‌گذاری، لینک قابل اشتراک و چاپ/PDF محلی | در Pages حساب کاربری یا ذخیره‌سازی تاریخچه سمت سرور وجود ندارد. |
