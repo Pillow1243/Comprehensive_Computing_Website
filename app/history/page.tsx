@@ -100,6 +100,7 @@ export default function HistoryPage() {
                             <Trash2 className="h-5 w-5" />
                           </div>
                           <div
+                            data-testid="history-row"
                             className="relative touch-pan-y bg-surface-container"
                             onPointerDown={(event) => {
                               const startX = event.clientX;

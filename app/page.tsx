@@ -36,7 +36,10 @@ export default function HomePage() {
   const recentIds = useAppStore((state) => state.recent);
   const bookmarks = useAppStore((state) => state.bookmarks);
 
-  const [spotlight, setSpotlight] = useState<FormulaMeta>(() => getFormula('quadratic') ?? FORMULAS[0]);
+  // The spotlight changes with the calendar day, so it must not take part in
+  // server rendering: a prerendered link would point at a different formula
+  // than the hydrated one and clicks could land on the wrong id.
+  const [spotlight, setSpotlight] = useState<FormulaMeta | null>(null);
   useEffect(() => {
     const day = Math.floor(Date.now() / 86_400_000);
     setSpotlight(FORMULAS[day % FORMULAS.length]);
@@ -163,31 +166,45 @@ export default function HomePage() {
         <h2 id="spotlight-heading" className="text-title-large font-semibold text-on-surface">
           {t('spotlight')}
         </h2>
-        <Link
-          href={`/formula/${spotlight.id}/`}
-          className="card-lift glass-card block rounded-3xl p-4"
-        >
-          <div className="flex items-start gap-3">
-            <span className="icon-bubble h-11 w-11 shrink-0">
-              <Sparkles className="h-5 w-5" aria-hidden="true" />
-            </span>
-            <div className="min-w-0 flex-1">
-              <p className="flex items-center gap-1.5 text-title-medium font-semibold text-on-surface">
-                <span className="truncate">{formulaName(spotlight, lang)}</span>
-                <span className="shrink-0 rounded-full bg-surface-container-highest px-1.5 py-0.5 text-label-small font-normal text-on-surface-variant">
-                  {t(spotlight.difficulty)}
-                </span>
-              </p>
-              <p className="mt-1 line-clamp-2 text-body-small leading-relaxed text-on-surface-variant">
-                <FormulaDescription formula={spotlight} />
-              </p>
-              <p className="mt-2 text-label-small text-primary">
-                {formulaCategory(spotlight, lang)}
-              </p>
+        {spotlight ? (
+          <Link
+            href={`/formula/${spotlight.id}/`}
+            className="card-lift glass-card block min-h-[7.5rem] rounded-3xl p-4"
+          >
+            <div className="flex items-start gap-3">
+              <span className="icon-bubble h-11 w-11 shrink-0">
+                <Sparkles className="h-5 w-5" aria-hidden="true" />
+              </span>
+              <div className="min-w-0 flex-1">
+                <p className="flex items-center gap-1.5 text-title-medium font-semibold text-on-surface">
+                  <span className="truncate">{formulaName(spotlight, lang)}</span>
+                  <span className="shrink-0 rounded-full bg-surface-container-highest px-1.5 py-0.5 text-label-small font-normal text-on-surface-variant">
+                    {t(spotlight.difficulty)}
+                  </span>
+                </p>
+                <p className="mt-1 line-clamp-2 min-h-8 text-body-small leading-relaxed text-on-surface-variant">
+                  <FormulaDescription formula={spotlight} />
+                </p>
+                <p className="mt-2 text-label-small text-primary">{formulaCategory(spotlight, lang)}</p>
+              </div>
+              <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-on-surface-variant rtl:rotate-180" aria-hidden="true" />
             </div>
-            <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-on-surface-variant rtl:rotate-180" aria-hidden="true" />
+          </Link>
+        ) : (
+          <div
+            aria-hidden="true"
+            className="glass-card block min-h-[7.5rem] rounded-3xl p-4"
+          >
+            <div className="flex items-start gap-3">
+              <span className="h-11 w-11 shrink-0 animate-pulse rounded-xl bg-on-surface/10" />
+              <div className="min-w-0 flex-1 space-y-2 pt-1">
+                <span className="block h-4 w-2/3 animate-pulse rounded-full bg-on-surface/10" />
+                <span className="block h-3 w-full animate-pulse rounded-full bg-on-surface/10" />
+                <span className="block h-3 w-4/5 animate-pulse rounded-full bg-on-surface/10" />
+              </div>
+            </div>
           </div>
-        </Link>
+        )}
       </section>
 
       {/* Categories */}
