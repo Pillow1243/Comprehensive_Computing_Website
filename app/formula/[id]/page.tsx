@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import 'katex/dist/katex.min.css';
 import { FORMULAS, getFormula, formulaName, type Formula, type FormulaMeta } from '@/lib/formulas';
 import { renderLatex } from '@/lib/latex';
+import { KATEX_CSS } from '@/lib/katex-css.generated';
 import { FormulaDetail } from '@/components/formula-detail';
 
 export const dynamicParams = false;
@@ -54,10 +54,15 @@ export default async function FormulaPage({ params }: { params: Promise<{ id: st
   const summaries = (await import('@/packages/formula-registry/formula-descriptions.json')).default as Record<string, string>;
 
   return (
-    <FormulaDetail
-      formula={formula}
-      formulaHtml={renderLatex(formula.formula_latex)}
-      description={summaries[id]}
-    />
+    <>
+      {/* Scoped to this route: no render-blocking stylesheet request, and no
+          KaTeX CSS on the 289 pages that never show math. */}
+      <style dangerouslySetInnerHTML={{ __html: KATEX_CSS }} />
+      <FormulaDetail
+        formula={formula}
+        formulaHtml={renderLatex(formula.formula_latex)}
+        description={summaries[id]}
+      />
+    </>
   );
 }
