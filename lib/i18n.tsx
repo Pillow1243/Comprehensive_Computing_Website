@@ -240,6 +240,8 @@ const fa: Dictionary = {
   disciplines: 'رشته‌ها',
   toolsShort: 'ابزار',
   backToTools: 'بازگشت به ابزارها',
+  allUnits: 'همهٔ یکاها',
+  compositionHint: 'جرم‌های اتمی بر پایهٔ وزن‌های اتمی استاندارد IUPAC محاسبه می‌شوند.',
 };
 
 const en: Dictionary = {
@@ -473,6 +475,8 @@ const en: Dictionary = {
   disciplines: 'Disciplines',
   toolsShort: 'Tools',
   backToTools: 'Back to tools',
+  allUnits: 'All units',
+  compositionHint: 'Atomic masses follow IUPAC conventional atomic weights.',
 };
 
 const ar: Dictionary = {
@@ -567,6 +571,8 @@ const ar: Dictionary = {
   disciplines: 'التخصصات',
   toolsShort: 'أدوات',
   backToTools: 'العودة إلى الأدوات',
+  allUnits: 'كل الوحدات',
+  compositionHint: 'الكتل الذرية وفق أوزان IUPAC القياسية.',
 };
 
 const dictionaries: Record<Language, Dictionary> = { fa, en, ar };

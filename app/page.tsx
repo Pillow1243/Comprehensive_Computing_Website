@@ -3,18 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
-import {
-  ArrowRight,
-  ChevronRight,
-  Dices,
-  FlaskConical,
-  Grid3x3,
-  Ruler,
-  ShieldCheck,
-  Sparkles,
-  Wifi,
-  Zap,
-} from 'lucide-react';
+import { ArrowRight, ChevronRight, Dices, ShieldCheck, Sparkles, Wifi, Zap } from 'lucide-react';
 import { CategoryCard } from '@/components/category-card';
 import { FormulaCard } from '@/components/formula-card';
 import { InstallBanner } from '@/components/install-banner';
@@ -38,8 +27,6 @@ import { cn, formatNumber } from '@/lib/utils';
 
 const fallbackRecent = ['quadratic', 'ph', 'pythagorean', 'compound_interest'];
 const fallbackSuggested = ['heron', 'ohm_circuit', 'normal_dist', 'kinematics'];
-
-const toolIcons = { units: Ruler, chemistry: FlaskConical, 'periodic-table': Grid3x3 };
 
 export default function HomePage() {
   const { t, lang } = useI18n();

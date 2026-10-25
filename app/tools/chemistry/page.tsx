@@ -54,7 +54,7 @@ export default function MolarMassPage() {
 
       {analysis.error ? (
         <p role="alert" className="rounded-2xl border border-error/40 bg-error-container/60 px-4 py-3 text-body-medium text-on-error-container">
-          {analysis.error}
+          {lang === 'fa' ? analysis.error : t('invalidFormula')}
         </p>
       ) : analysis.data ? (
         <>
@@ -111,9 +111,7 @@ export default function MolarMassPage() {
 
           <p className="flex items-start gap-1.5 text-body-small text-on-surface-variant">
             <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-            {lang === 'fa'
-              ? 'جرم‌های اتمی بر پایه وزن‌های اتمی استاندارد IUPAC محاسبه می‌شوند؛ برای ایزوتوپ‌های ناپایدار، جرم ایزوتوپ پایدارتر در نظر گرفته شده است.'
-              : 'Atomic masses follow IUPAC conventional atomic weights; unstable elements use their most stable isotope.'}
+            {t('compositionHint')}
           </p>
         </>
       ) : null}

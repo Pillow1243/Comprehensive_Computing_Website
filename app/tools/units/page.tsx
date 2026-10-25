@@ -173,7 +173,7 @@ export default function UnitsPage() {
 
       <section aria-labelledby="unit-table-heading" className="space-y-2">
         <h2 id="unit-table-heading" className="text-title-medium font-semibold text-on-surface">
-          {t('to')} {t('all')}
+          {t('allUnits')}
         </h2>
         <ul className="divide-y divide-outline-variant overflow-hidden rounded-2xl border border-outline-variant bg-surface-container">
           {table.map((row) => (
