@@ -3,8 +3,8 @@
 //   • same-origin app files  → network-first (new deploys show up on the next load), cache as offline fallback
 //   • cross-origin CDN assets (KaTeX) → cache-first (versioned URLs, safe to cache)
 // Bump CACHE whenever the precached list changes so old caches are purged on activate.
-const CACHE='solveeverything-v4';
-const ASSETS=['./','./index.html','./styles.css','./app.js','./registry.js','./phase1-formulas.js','./phase2-formulas.js','./engine.js','./plot.js','./api.js','./runtime-config.js','./manifest.webmanifest','./icon.svg','./catalog.json'];
+const CACHE='solveeverything-v5';
+const ASSETS=['./','./index.html','./styles.css','./app.js','./registry.js','./phase1-formulas.js','./phase2-formulas.js','./engine.js','./plot.js','./api.js','./runtime-config.js','./manifest.webmanifest','./icon.svg','./catalog.json','./phase3-formulas.js','./phase4-formulas.js','./phase5-formulas.js','./phase6-formulas.js'];
 
 self.addEventListener('install',e=>{
   // Cache each asset separately: one missing file must not stop the whole worker from installing.

@@ -3,6 +3,7 @@
 import { createContext, useContext, useEffect, useMemo, type ReactNode } from 'react';
 import { useAppStore } from '@/lib/store';
 import { isRtlLanguage, localizeDigits, type Numerals } from '@/lib/utils';
+import { categorySegment } from '@/lib/category-names';
 
 export type Language = 'fa' | 'en' | 'ar';
 export type Direction = 'rtl' | 'ltr';
@@ -207,6 +208,40 @@ const fa: Dictionary = {
   validationSummary: '{count} ورودی نیاز به اصلاح دارد',
   shareLink: 'لینک این محاسبه',
   shareLinkHint: 'ورودی‌ها داخل لینک ذخیره می‌شوند؛ هیچ داده‌ای به سرور نمی‌رود.',
+  tools: 'ابزارها',
+  toolsHint: 'ماشین‌حساب‌های تخصصی که همیشه همراه‌تان است',
+  unitConverter: 'تبدیل یکا',
+  molarMass: 'جرم مولی',
+  periodicTable: 'جدول تناوبی',
+  constantsRef: 'ثابت‌های فیزیکی',
+  from: 'از',
+  to: 'به',
+  swap: 'جابه‌جایی',
+  category: 'دسته',
+  searchElement: 'جستجوی عنصر، نماد یا عدد اتمی…',
+  allGroups: 'همه گروه‌ها',
+  element: 'عنصر',
+  atomicNumber: 'عدد اتمی',
+  atomicMass: 'جرم اتمی',
+  group: 'گروه',
+  radioactive: 'پرتوزا',
+  massUnit: 'g/mol',
+  percentComposition: 'درصد جرمی',
+  formulaPlaceholder: 'مثلاً Ca(OH)2 یا CuSO4·5H2O',
+  analyze: 'تحلیل',
+  composition: 'ترکیب',
+  invalidFormula: 'فرمول معتبر نیست',
+  exactValue: 'دقیق',
+  uncertainty: 'عدم قطعیت',
+  searchConstant: 'جستجوی ثابت…',
+  surpriseMe: 'یک فرمول تصادفی',
+  spotlight: 'فرمول امروز',
+  browseAll: 'مرور همه',
+  disciplines: 'رشته‌ها',
+  toolsShort: 'ابزار',
+  backToTools: 'بازگشت به ابزارها',
+  allUnits: 'همهٔ یکاها',
+  compositionHint: 'جرم‌های اتمی بر پایهٔ وزن‌های اتمی استاندارد IUPAC محاسبه می‌شوند.',
 };
 
 const en: Dictionary = {
@@ -408,6 +443,40 @@ const en: Dictionary = {
   validationSummary: '{count} inputs need attention',
   shareLink: 'Link to this calculation',
   shareLinkHint: 'Inputs are encoded in the link; nothing is sent to a server.',
+  tools: 'Tools',
+  toolsHint: 'Specialist calculators that live in your pocket',
+  unitConverter: 'Unit converter',
+  molarMass: 'Molar mass',
+  periodicTable: 'Periodic table',
+  constantsRef: 'Physical constants',
+  from: 'From',
+  to: 'To',
+  swap: 'Swap',
+  category: 'Category',
+  searchElement: 'Search element, symbol or atomic number…',
+  allGroups: 'All groups',
+  element: 'Element',
+  atomicNumber: 'Atomic number',
+  atomicMass: 'Atomic mass',
+  group: 'Group',
+  radioactive: 'Radioactive',
+  massUnit: 'g/mol',
+  percentComposition: 'Mass percent',
+  formulaPlaceholder: 'e.g. Ca(OH)2 or CuSO4·5H2O',
+  analyze: 'Analyse',
+  composition: 'Composition',
+  invalidFormula: 'Enter a valid formula',
+  exactValue: 'Exact',
+  uncertainty: 'Uncertainty',
+  searchConstant: 'Search constants…',
+  surpriseMe: 'Surprise me',
+  spotlight: 'Formula of the day',
+  browseAll: 'Browse all',
+  disciplines: 'Disciplines',
+  toolsShort: 'Tools',
+  backToTools: 'Back to tools',
+  allUnits: 'All units',
+  compositionHint: 'Atomic masses follow IUPAC conventional atomic weights.',
 };
 
 const ar: Dictionary = {
@@ -471,6 +540,39 @@ const ar: Dictionary = {
   offline: 'أنت غير متصل',
   installApp: 'تثبيت التطبيق',
   mathKeyboard: 'لوحة الرياضيات',
+  tools: 'الأدوات',
+  toolsHint: 'آلات حاسبة متخصصة في جيبك',
+  unitConverter: 'محول الوحدات',
+  molarMass: 'الكتلة المولية',
+  periodicTable: 'الجدول الدوري',
+  constantsRef: 'الثوابت الفيزيائية',
+  from: 'من',
+  to: 'إلى',
+  swap: 'تبديل',
+  category: 'الفئة',
+  searchElement: 'ابحث عن عنصر أو رمز أو رقم ذري…',
+  allGroups: 'كل المجموعات',
+  element: 'عنصر',
+  atomicNumber: 'العدد الذري',
+  atomicMass: 'الكتلة الذرية',
+  group: 'المجموعة',
+  radioactive: 'مشع',
+  percentComposition: 'النسبة الكتلية',
+  formulaPlaceholder: 'مثال: Ca(OH)2',
+  analyze: 'تحليل',
+  composition: 'التركيب',
+  invalidFormula: 'أدخل صيغة صحيحة',
+  exactValue: 'دقيق',
+  uncertainty: 'عدم اليقين',
+  searchConstant: 'ابحث عن ثابت…',
+  surpriseMe: 'صيغة عشوائية',
+  spotlight: 'صيغة اليوم',
+  browseAll: 'تصفح الكل',
+  disciplines: 'التخصصات',
+  toolsShort: 'أدوات',
+  backToTools: 'العودة إلى الأدوات',
+  allUnits: 'كل الوحدات',
+  compositionHint: 'الكتل الذرية وفق أوزان IUPAC القياسية.',
 };
 
 const dictionaries: Record<Language, Dictionary> = { fa, en, ar };
@@ -524,10 +626,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
           : String(input ?? '—');
       return localizeDigits(raw, lang, numerals);
     };
-    const categoryLabel = (path: string[]) => {
-      if (lang === 'fa') return path[path.length - 1] ?? '';
-      return path[path.length - 1] ?? '';
-    };
+    const categoryLabel = (path: string[]) => categorySegment(path[path.length - 1] ?? '', lang);
     return { lang, dir, isRtl: dir === 'rtl', numerals, t, format, categoryLabel };
   }, [lang, dir, numerals]);
 
@@ -542,5 +641,5 @@ export function useI18n(): I18nContextValue {
 
 export const translateCategory = (path: string[], lang: Language): string => {
   if (!path.length) return '';
-  return path[path.length - 1];
+  return categorySegment(path[path.length - 1], lang);
 };

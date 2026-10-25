@@ -3,9 +3,11 @@ import {
   Binary,
   Cog,
   FlaskConical,
+  Globe2,
   HeartPulse,
   Landmark,
   Sigma,
+  Telescope,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -17,6 +19,8 @@ const map: Record<string, LucideIcon> = {
   Landmark,
   Binary,
   HeartPulse,
+  Telescope,
+  Globe2,
 };
 
 export function CategoryIcon({ name, className }: { name: string; className?: string }) {

@@ -11,53 +11,63 @@
 :root {
   color-scheme: light;
 
-  /* ---- M3 tonal palette · light ---------------------------------------- */
-  --md-primary: 74 92 255;
+  /* ---- Tonal palette · light (violet / amber / cyan) -------------------- */
+  --md-primary: 92 76 232;
   --md-on-primary: 255 255 255;
-  --md-primary-container: 221 225 255;
-  --md-on-primary-container: 0 16 92;
-  --md-primary-fixed: 221 225 255;
+  --md-primary-container: 227 222 255;
+  --md-on-primary-container: 24 12 94;
+  --md-primary-fixed: 227 222 255;
 
-  --md-secondary: 255 181 71;
-  --md-on-secondary: 62 46 0;
-  --md-secondary-container: 255 222 168;
-  --md-on-secondary-container: 44 34 0;
+  --md-secondary: 168 106 0;
+  --md-on-secondary: 255 255 255;
+  --md-secondary-container: 255 232 194;
+  --md-on-secondary-container: 45 27 0;
 
-  --md-tertiary: 106 79 168;
+  --md-tertiary: 0 116 132;
   --md-on-tertiary: 255 255 255;
-  --md-tertiary-container: 234 221 255;
-  --md-on-tertiary-container: 40 20 84;
+  --md-tertiary-container: 200 240 248;
+  --md-on-tertiary-container: 0 32 38;
 
-  --md-surface: 254 251 255;
-  --md-surface-dim: 223 217 226;
-  --md-surface-bright: 254 251 255;
+  --md-surface: 253 252 255;
+  --md-surface-dim: 226 223 236;
+  --md-surface-bright: 253 252 255;
   --md-surface-container-lowest: 255 255 255;
-  --md-surface-container-low: 249 243 251;
-  --md-surface-container: 243 237 245;
-  --md-surface-container-high: 237 231 240;
-  --md-surface-container-highest: 231 225 234;
-  --md-surface-variant: 227 225 236;
-  --md-on-surface: 27 27 31;
-  --md-on-surface-variant: 70 70 79;
-  --md-outline: 118 118 128;
-  --md-outline-variant: 199 197 208;
+  --md-surface-container-low: 247 245 253;
+  --md-surface-container: 241 239 250;
+  --md-surface-container-high: 234 232 246;
+  --md-surface-container-highest: 227 225 241;
+  --md-surface-variant: 230 227 242;
+  --md-on-surface: 24 23 33;
+  --md-on-surface-variant: 78 76 94;
+  --md-outline: 120 118 138;
+  --md-outline-variant: 202 199 218;
 
   --md-error: 186 26 26;
   --md-on-error: 255 255 255;
   --md-error-container: 255 218 214;
   --md-on-error-container: 65 0 2;
 
-  --md-success: 20 108 46;
+  --md-success: 17 108 66;
   --md-on-success: 255 255 255;
-  --md-success-container: 195 246 199;
-  --md-on-success-container: 0 34 8;
+  --md-success-container: 205 247 224;
+  --md-on-success-container: 0 38 20;
 
-  --md-warning: 130 84 0;
+  --md-warning: 138 84 0;
   --md-on-warning: 255 255 255;
 
   --md-scrim: 0 0 0;
-  --md-inverse: 48 47 52;
-  --md-inverse-on-surface: 244 239 244;
+  --md-inverse: 47 46 58;
+  --md-inverse-on-surface: 244 241 250;
+
+  /* ---- brand gradients (theme aware) ---------------------------------- */
+  --brand-a: 92 76 232;
+  --brand-b: 168 85 247;
+  --brand-c: 6 182 212;
+  --brand-glow: 124 106 255;
+  --mesh-1: 92 76 232;
+  --mesh-2: 168 85 247;
+  --mesh-3: 34 211 238;
+  --mesh-alpha: 0.16;
 
   /* ---- safe areas ------------------------------------------------------ */
   --safe-top: env(safe-area-inset-top, 0px);
@@ -71,6 +81,18 @@
   --content-max: 42rem;
   --keyboard-height: 0px;
 
+  /* ---- element group palette (periodic table) ------------------------- */
+  --el-nonmetal: 21 128 61;
+  --el-noble: 109 40 217;
+  --el-alkali: 190 24 60;
+  --el-alkaline: 161 98 7;
+  --el-metalloid: 13 148 136;
+  --el-halogen: 3 105 161;
+  --el-post-transition: 71 85 105;
+  --el-transition: 190 24 93;
+  --el-lanthanide: 126 34 206;
+  --el-actinide: 162 28 175;
+
   /* ---- motion ---------------------------------------------------------- */
   --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
   --ease-emphasized-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
@@ -82,53 +104,74 @@
 :root[data-theme='dark'] {
   color-scheme: dark;
 
-  /* ---- M3 tonal palette · AMOLED dark (default) ------------------------ */
-  --md-primary: 186 195 255;
-  --md-on-primary: 10 26 140;
-  --md-primary-container: 45 63 207;
-  --md-on-primary-container: 221 225 255;
-  --md-primary-fixed: 221 225 255;
+  /* ---- Tonal palette · AMOLED dark (default) --------------------------- */
+  --md-primary: 187 178 255;
+  --md-on-primary: 33 18 108;
+  --md-primary-container: 78 62 196;
+  --md-on-primary-container: 228 223 255;
+  --md-primary-fixed: 228 223 255;
 
-  --md-secondary: 255 217 160;
-  --md-on-secondary: 68 48 0;
-  --md-secondary-container: 92 66 0;
-  --md-on-secondary-container: 255 222 168;
+  --md-secondary: 255 206 138;
+  --md-on-secondary: 70 44 0;
+  --md-secondary-container: 100 64 0;
+  --md-on-secondary-container: 255 232 194;
 
-  --md-tertiary: 211 187 255;
-  --md-on-tertiary: 57 33 108;
-  --md-tertiary-container: 80 55 133;
-  --md-on-tertiary-container: 234 221 255;
+  --md-tertiary: 128 227 234;
+  --md-on-tertiary: 0 52 60;
+  --md-tertiary-container: 0 74 84;
+  --md-on-tertiary-container: 200 240 248;
 
   --md-surface: 0 0 0; /* AMOLED */
   --md-surface-dim: 0 0 0;
-  --md-surface-bright: 38 37 42;
+  --md-surface-bright: 42 41 54;
   --md-surface-container-lowest: 0 0 0;
-  --md-surface-container-low: 11 11 15;
-  --md-surface-container: 18 18 22;
-  --md-surface-container-high: 27 27 31;
-  --md-surface-container-highest: 36 36 41;
-  --md-surface-variant: 27 27 31;
-  --md-on-surface: 228 225 230;
-  --md-on-surface-variant: 199 197 208;
-  --md-outline: 145 144 154;
-  --md-outline-variant: 70 70 79;
+  --md-surface-container-low: 10 10 17;
+  --md-surface-container: 17 17 26;
+  --md-surface-container-high: 26 26 38;
+  --md-surface-container-highest: 36 36 51;
+  --md-surface-variant: 30 30 43;
+  --md-on-surface: 233 230 244;
+  --md-on-surface-variant: 196 192 216;
+  --md-outline: 148 145 168;
+  --md-outline-variant: 62 60 82;
 
   --md-error: 255 180 171;
   --md-on-error: 105 0 5;
   --md-error-container: 147 0 10;
   --md-on-error-container: 255 218 214;
 
-  --md-success: 122 223 160;
-  --md-on-success: 0 57 22;
-  --md-success-container: 0 82 34;
-  --md-on-success-container: 195 246 199;
+  --md-success: 126 233 168;
+  --md-on-success: 0 57 28;
+  --md-success-container: 0 88 44;
+  --md-on-success-container: 205 247 224;
 
   --md-warning: 255 213 130;
   --md-on-warning: 65 42 0;
 
   --md-scrim: 0 0 0;
-  --md-inverse: 228 225 230;
-  --md-inverse-on-surface: 27 27 31;
+  --md-inverse: 233 230 244;
+  --md-inverse-on-surface: 24 23 33;
+
+  --brand-a: 139 124 255;
+  --brand-b: 196 132 255;
+  --brand-c: 45 212 232;
+  --brand-glow: 139 124 255;
+  --mesh-1: 124 106 255;
+  --mesh-2: 190 120 255;
+  --mesh-3: 34 211 238;
+  --mesh-alpha: 0.3;
+
+  /* brighter element hues keep ≥4.5:1 contrast on the AMOLED surface */
+  --el-nonmetal: 74 222 128;
+  --el-noble: 167 139 250;
+  --el-alkali: 251 113 133;
+  --el-alkaline: 251 191 36;
+  --el-metalloid: 45 212 191;
+  --el-halogen: 56 189 248;
+  --el-post-transition: 148 163 184;
+  --el-transition: 244 114 182;
+  --el-lanthanide: 192 132 252;
+  --el-actinide: 232 121 249;
 }
 
 /* ==========================================================================
@@ -150,6 +193,7 @@
 
   body {
     @apply bg-surface text-on-surface font-sans antialiased;
+    background-image: radial-gradient(circle at 50% -10%, rgb(var(--brand-a) / 0.16), transparent 55%);
     min-height: 100dvh;
     margin: 0;
     letter-spacing: 0;
@@ -446,6 +490,15 @@
   }
 }
 
+@keyframes se-page-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes se-sheet-in {
   from {
     transform: translateY(100%);
@@ -475,6 +528,12 @@
     animation: se-fade 0.2s linear both;
   }
 
+  /* Page-level transition: opacity only, never a transform (see
+     components/page-transition.tsx). */
+  .anim-page-in {
+    animation: se-page-in 0.22s var(--ease-emphasized-decelerate) both;
+  }
+
   .anim-scale-in {
     animation: se-scale-in 0.2s var(--ease-emphasized-decelerate) both;
   }
@@ -485,5 +544,302 @@
 
   .anim-slide-down {
     animation: se-slide-down 0.25s var(--ease-emphasized-decelerate) both;
+  }
+}
+
+/* ==========================================================================
+   SolveEverything 3.0 — visual layer
+   Aurora mesh backdrop, gradient surfaces and the card language used by the
+   redesigned home, tools and formula pages. Everything is token driven so the
+   splash of colour works in both the light and the AMOLED dark theme.
+   ========================================================================== */
+
+@keyframes se-aurora {
+  0% {
+    transform: translate3d(-6%, -4%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(5%, 6%, 0) scale(1.12);
+  }
+  100% {
+    transform: translate3d(-6%, -4%, 0) scale(1);
+  }
+}
+
+@keyframes se-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes se-pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgb(var(--brand-glow) / 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgb(var(--brand-glow) / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(var(--brand-glow) / 0);
+  }
+}
+
+@keyframes se-gradient-pan {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@layer components {
+  /* Ambient aurora backdrop used by <AppBackdrop />. */
+  .app-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .app-backdrop__blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(70px);
+    opacity: var(--mesh-alpha);
+    animation: se-aurora 22s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .app-backdrop__blob--one {
+    width: 26rem;
+    height: 26rem;
+    top: -8rem;
+    inset-inline-start: -6rem;
+    background: radial-gradient(circle at 30% 30%, rgb(var(--mesh-1)), transparent 70%);
+  }
+
+  .app-backdrop__blob--two {
+    width: 22rem;
+    height: 22rem;
+    top: 12rem;
+    inset-inline-end: -8rem;
+    background: radial-gradient(circle at 60% 40%, rgb(var(--mesh-2)), transparent 70%);
+    animation-delay: -7s;
+  }
+
+  .app-backdrop__blob--three {
+    width: 30rem;
+    height: 30rem;
+    bottom: -14rem;
+    inset-inline-start: 20%;
+    background: radial-gradient(circle at 50% 50%, rgb(var(--mesh-3)), transparent 70%);
+    animation-delay: -13s;
+  }
+
+  .app-backdrop__grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgb(var(--md-outline-variant) / 0.16) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--md-outline-variant) / 0.16) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(circle at 50% 0%, black, transparent 72%);
+    -webkit-mask-image: radial-gradient(circle at 50% 0%, black, transparent 72%);
+  }
+
+  /* Frosted surface that still reads well on the AMOLED theme. */
+  .glass-card {
+    background: linear-gradient(
+      160deg,
+      rgb(var(--md-surface-container-high) / 0.92),
+      rgb(var(--md-surface-container) / 0.86)
+    );
+    border: 1px solid rgb(var(--md-outline-variant) / 0.7);
+    -webkit-backdrop-filter: blur(14px) saturate(130%);
+    backdrop-filter: blur(14px) saturate(130%);
+  }
+
+  .brand-gradient {
+    background-image: linear-gradient(120deg, rgb(var(--brand-a)), rgb(var(--brand-b)) 55%, rgb(var(--brand-c)));
+    background-size: 220% 220%;
+    animation: se-gradient-pan 14s ease infinite;
+  }
+
+  .brand-gradient-soft {
+    background-image: linear-gradient(
+      140deg,
+      rgb(var(--brand-a) / 0.2),
+      rgb(var(--brand-b) / 0.14) 50%,
+      rgb(var(--brand-c) / 0.12)
+    );
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(100deg, rgb(var(--brand-a)), rgb(var(--brand-b)) 55%, rgb(var(--brand-c)));
+    color: rgb(var(--brand-b));
+  }
+
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .text-gradient {
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  .ring-glow {
+    box-shadow: 0 0 0 1px rgb(var(--brand-a) / 0.4), 0 18px 40px -24px rgb(var(--brand-glow) / 0.8);
+  }
+
+  .pulse-ring {
+    animation: se-pulse-ring 2.6s ease-out infinite;
+  }
+
+  .card-lift {
+    transition: transform 220ms var(--ease-emphasized), box-shadow 220ms var(--ease-emphasized),
+      border-color 220ms var(--ease-emphasized), background-color 220ms var(--ease-emphasized);
+  }
+
+  .card-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 36px -26px rgb(var(--brand-glow) / 0.9);
+    border-color: rgb(var(--brand-a) / 0.4);
+  }
+
+  .card-lift:active {
+    transform: scale(0.985);
+  }
+
+  .divider-soft {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(var(--md-outline-variant) / 0.9), transparent);
+  }
+
+  .icon-bubble {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.9rem;
+    background-image: linear-gradient(140deg, rgb(var(--brand-a) / 0.22), rgb(var(--brand-c) / 0.16));
+    color: rgb(var(--md-on-surface));
+  }
+
+  .hero-surface {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.75rem;
+    border: 1px solid rgb(var(--md-outline-variant) / 0.8);
+    background: linear-gradient(155deg, rgb(var(--md-surface-container-high) / 0.96), rgb(var(--md-surface-container) / 0.9));
+  }
+
+  .hero-surface::before {
+    content: '';
+    position: absolute;
+    inset: -40% 40% 40% -30%;
+    background: radial-gradient(circle at 40% 40%, rgb(var(--brand-b) / 0.4), transparent 65%);
+    pointer-events: none;
+  }
+
+  .hero-surface::after {
+    content: '';
+    position: absolute;
+    inset: 45% -35% -45% 35%;
+    background: radial-gradient(circle at 60% 60%, rgb(var(--brand-c) / 0.28), transparent 65%);
+    pointer-events: none;
+  }
+
+  .segmented {
+    display: flex;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    border-radius: 9999px;
+    background: rgb(var(--md-surface-container-high) / 0.85);
+    border: 1px solid rgb(var(--md-outline-variant) / 0.7);
+  }
+
+  .segmented > button {
+    min-height: 2.5rem;
+    border-radius: 9999px;
+    padding-inline: 0.9rem;
+    font-size: 0.8125rem;
+    transition: background 160ms linear, color 160ms linear;
+  }
+
+  .segmented > [aria-selected='true'],
+  .segmented > [aria-pressed='true'] {
+    background: rgb(var(--md-primary));
+    color: rgb(var(--md-on-primary));
+  }
+
+  .data-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    border-radius: 9999px;
+    border: 1px solid rgb(var(--md-outline-variant) / 0.8);
+    background: rgb(var(--md-surface-container-high) / 0.7);
+    padding: 0.3rem 0.65rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.02em;
+    color: rgb(var(--md-on-surface-variant));
+  }
+
+  .mono-result {
+    font-family: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  .anim-float {
+    animation: se-float 7s ease-in-out infinite;
+  }
+
+  .anim-fade-up-slow {
+    animation: se-fade-up 0.55s var(--ease-emphasized-decelerate) both;
+  }
+
+  .text-shadow-soft {
+    text-shadow: 0 2px 24px rgb(var(--brand-glow) / 0.35);
+  }
+
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 70%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent);
+  }
+}
+
+/* Slim, theme-aware scrollbars on desktop. */
+@media (pointer: fine) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--md-outline-variant)) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--md-outline-variant));
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--md-outline));
+    background-clip: content-box;
   }
 }

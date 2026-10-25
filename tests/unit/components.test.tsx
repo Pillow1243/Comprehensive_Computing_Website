@@ -119,6 +119,25 @@ describe('inputs', () => {
 });
 
 describe('MathKeyboard', () => {
+  it('portals the sheet to <body> so ancestors cannot re-anchor it', () => {
+    const { container } = renderWithProviders(
+      <div style={{ transform: 'translateY(0)' }}>
+        <MathKeyboard
+          open
+          onClose={() => {}}
+          onInsert={() => {}}
+          onBackspace={() => {}}
+          onClear={() => {}}
+          onDone={() => {}}
+        />
+      </div>,
+    );
+    const sheet = screen.getByRole('region', { name: 'کیبورد ریاضی' });
+    // Portalled: outside the (transformed) wrapper, a direct child of <body>.
+    expect(container.contains(sheet)).toBe(false);
+    expect(sheet.parentElement).toBe(document.body);
+  });
+
   it('inserts symbols at the caret and supports backspace', () => {
     const onInsert = vi.fn();
     const onBackspace = vi.fn();

@@ -4,6 +4,7 @@ import { CheckCircle2 } from 'lucide-react';
 import { cn, formatNumber } from '@/lib/utils';
 import { useI18n } from '@/lib/i18n';
 import { outputLabel, type Formula } from '@/lib/formulas';
+import { humanizeOutput } from '@/lib/output-labels';
 import { useEffect, useRef } from 'react';
 
 export function StepByStep({ steps }: { steps: string[] }) {
@@ -74,7 +75,7 @@ export function ResultPanel({
       <dl className="grid grid-cols-1 gap-2 sm:grid-cols-2">
         {entries.map(([key, value]) => {
           const output = formula.outputs.find((candidate) => candidate.name === key);
-          const label = output ? outputLabel(output, lang) : key;
+          const label = humanizeOutput(key, output ? outputLabel(output, lang) : undefined, lang);
           const display =
             typeof value === 'number'
               ? formatNumber(value, { decimals: 6, lang })

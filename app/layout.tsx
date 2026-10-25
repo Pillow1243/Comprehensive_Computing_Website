@@ -6,6 +6,7 @@ import { Providers } from '@/components/providers';
 import { AppShell } from '@/components/app-shell';
 import { themeBootstrapScript } from '@/lib/theme';
 import { BASE_PATH } from '@/lib/base-path';
+import { CATEGORIES, FORMULAS, totalTests } from '@/lib/formulas';
 
 const siteUrl = 'https://pillow1243.github.io/Comprehensive_Computing_Website';
 
@@ -15,8 +16,7 @@ export const metadata: Metadata = {
     default: 'SolveEverything — حل همه‌چیز گام‌به‌گام',
     template: '%s · SolveEverything',
   },
-  description:
-    'SolveEverything یک حل‌کننده علمی گام‌به‌گام برای ریاضی، فیزیک، شیمی، مهندسی و مالی است — آفلاین، دوزبانه و متن‌باز.',
+  description: `SolveEverything یک حل‌کننده علمی گام‌به‌گام با ${FORMULAS.length} فرمول اعتبارسنجی‌شده در ریاضی، فیزیک، شیمی، مهندسی، مالی، کامپیوتر، سلامت، نجوم و محیط‌زیست است — آفلاین، دوزبانه و متن‌باز.`,
   applicationName: 'SolveEverything',
   manifest: `${BASE_PATH}/manifest.webmanifest`,
   icons: {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     type: 'website',
     title: 'SolveEverything — solve any equation, step by step',
     description:
-      'A client-first scientific solver: 96+ validated formulas, live plots, unit awareness, offline PWA.',
+      `A client-first scientific solver: ${FORMULAS.length} validated formulas across ${CATEGORIES.length} disciplines, ${totalTests} verified cases, live plots, unit awareness and an offline PWA.`,
     url: siteUrl,
     siteName: 'SolveEverything',
     locale: 'fa_IR',

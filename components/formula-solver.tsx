@@ -23,6 +23,8 @@ import { toast } from 'sonner';
 import { Button, IconButton } from '@/components/ui/button';
 import { Chip } from '@/components/ui/chip';
 import { FormulaDisplay } from '@/components/formula-display';
+import { FormulaDescription } from '@/components/formula-description';
+import { categorySegment } from '@/lib/category-names';
 import { FormulaInput } from '@/components/formula-input';
 import { DynamicPlot, type TrianglePatch } from '@/components/dynamic-plot';
 import { MathKeyboard } from '@/components/math-keyboard';
@@ -32,7 +34,6 @@ import { ConfirmDialog } from '@/components/ui/dialog';
 import { computeFormula } from '@/lib/compute-client';
 import {
   formulaName,
-  formulaDescription,
   relatedFormulas,
   type Formula,
 } from '@/lib/formulas';
@@ -365,7 +366,7 @@ export function FormulaSolver({ formula }: { formula: Formula }) {
         <div
           role="tablist"
           aria-label={formulaName(formula, lang)}
-          className="chip-rail px-2 pb-1.5"
+          className="chip-rail gap-1.5 px-3 pb-2"
         >
           {tabs.map((item) => {
             const Icon = item.icon;
@@ -382,10 +383,10 @@ export function FormulaSolver({ formula }: { formula: Formula }) {
                   if (settings.haptics) haptic(8);
                 }}
                 className={cn(
-                  'flex min-h-10 flex-1 items-center justify-center gap-1.5 rounded-full px-3 text-label-large transition-colors',
+                  'flex min-h-10 flex-1 items-center justify-center gap-1.5 rounded-full px-3 text-label-large transition-all duration-200',
                   selected
-                    ? 'bg-primary-container text-on-primary-container'
-                    : 'text-on-surface-variant hover:bg-on-surface/5',
+                    ? 'brand-gradient font-semibold text-white shadow-glow'
+                    : 'bg-surface-container text-on-surface-variant hover:bg-surface-container-high',
                 )}
               >
                 <Icon className="h-4 w-4" aria-hidden="true" />
@@ -398,18 +399,29 @@ export function FormulaSolver({ formula }: { formula: Formula }) {
 
       <div className="px-4 pt-4" data-testid="formula-page">
         {/* Hero */}
-        <section className="mb-4">
-          <p className="mb-1 flex flex-wrap items-center gap-1 text-label-small text-on-surface-variant">
-            {formula.category_path.map((part) => (
-              <span key={part}>{part}</span>
+        <section className="glass-card mb-4 rounded-3xl p-4">
+          <p className="mb-1.5 flex flex-wrap items-center gap-1 text-label-small text-on-surface-variant">
+            {formula.category_path.map((part, index) => (
+              <span key={part} className="flex items-center gap-1">
+                {index > 0 && (
+                  <span aria-hidden="true" className="opacity-50">
+                    /
+                  </span>
+                )}
+                <span>{categorySegment(part, lang)}</span>
+              </span>
             ))}
-            <span aria-hidden="true">·</span>
-            <span className="rounded-full bg-surface-container-high px-2 py-0.5">
+            <span aria-hidden="true" className="opacity-50">
+              /
+            </span>
+            <span className="rounded-full bg-primary-container px-2 py-0.5 font-medium text-on-primary-container">
               {t(formula.difficulty)}
             </span>
           </p>
           <h2 className="text-headline-small font-semibold text-on-surface">{formulaName(formula, lang)}</h2>
-          <p className="mt-1 text-body-medium text-on-surface-variant">{formulaDescription(formula, lang)}</p>
+          <p className="mt-1 text-body-medium text-on-surface-variant">
+            <FormulaDescription formula={formula} />
+          </p>
           <div className="mt-3">
             <FormulaDisplay latex={formula.formula_latex} />
           </div>
@@ -650,7 +662,7 @@ export function FormulaSolver({ formula }: { formula: Formula }) {
                 if (settings.haptics) haptic(12);
                 void runCompute();
               }}
-              className="h-14"
+              className="h-14 brand-gradient text-white shadow-glow"
             >
               {computing ? t('calculating') : t('compute')}
               <Check className="h-5 w-5" aria-hidden="true" />

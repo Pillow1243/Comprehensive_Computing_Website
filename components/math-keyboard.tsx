@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import {
   ChevronDown,
   ClipboardPaste,
@@ -226,138 +227,149 @@ export function MathKeyboard({
 
   const keys = tab === 'numbers' ? numericKeys : functionKeys;
 
-  return (
-    <>
-      {open && (
-        <section
-          aria-label={t('mathKeyboard')}
-          className={cn(
-            'anim-sheet-in',
-            'fixed inset-x-0 bottom-0 z-[60] border-t border-outline-variant bg-surface-container-high',
-            'shadow-elevation-4 safe-bottom',
-          )}
-        >
-          <div className="mx-auto w-full max-w-2xl px-2 pb-2 pt-1">
-            <div className="flex items-center gap-1">
-              <span className="flex h-9 items-center gap-1.5 rounded-full px-2 text-label-medium text-on-surface-variant">
-                <Sigma className="h-4 w-4" aria-hidden="true" />
-                <span className="max-w-32 truncate">{activeLabel ?? t('mathKeyboard')}</span>
-              </span>
-              <div className="flex-1" />
-              <button
-                type="button"
-                onClick={() => press({ label: '', action: 'paste' })}
-                aria-label={t('paste')}
-                className="flex h-10 w-10 items-center justify-center rounded-full text-on-surface-variant active:bg-on-surface/10"
-              >
-                <ClipboardPaste className="h-5 w-5" aria-hidden="true" />
-              </button>
-              <button
-                type="button"
-                onClick={toggleVoice}
-                aria-label={t('insert')}
-                aria-pressed={listening}
-                className={cn(
-                  'flex h-10 w-10 items-center justify-center rounded-full',
-                  listening ? 'bg-error text-on-error' : 'text-on-surface-variant active:bg-on-surface/10',
-                )}
-              >
-                {listening ? (
-                  <MicOff className="h-5 w-5" aria-hidden="true" />
-                ) : (
-                  <Mic className="h-5 w-5" aria-hidden="true" />
-                )}
-              </button>
-              <button
-                type="button"
-                onClick={() => press({ label: '', action: 'clear' })}
-                aria-label={t('clearSearch')}
-                className="flex h-10 w-10 items-center justify-center rounded-full text-on-surface-variant active:bg-on-surface/10"
-              >
-                <X className="h-5 w-5" aria-hidden="true" />
-              </button>
-              <button
-                type="button"
-                onClick={onClose}
-                aria-label={t('hideKeyboard')}
-                className="flex h-10 w-10 items-center justify-center rounded-full text-on-surface-variant active:bg-on-surface/10"
-              >
-                <ChevronDown className="h-5 w-5" aria-hidden="true" />
-              </button>
-            </div>
+  // Mounted only on the client: the sheet is portalled to <body> so that no
+  // ancestor transform, filter or overflow can re-anchor or clip it.
+  const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
+  useEffect(() => setPortalTarget(document.body), []);
 
-            <div className="mb-1.5 flex gap-1 rounded-full bg-surface-container p-0.5" role="tablist">
-              {(['numbers', 'functions'] as const).map((key) => (
-                <button
-                  key={key}
-                  role="tab"
-                  aria-selected={tab === key}
-                  onClick={() => {
-                    haptic(8, hapticsEnabled);
-                    setTab(key);
-                  }}
-                  className={cn(
-                    'h-9 flex-1 rounded-full text-label-medium transition-colors',
-                    tab === key ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant',
-                  )}
-                >
-                  {key === 'numbers' ? '۱۲۳' : 'ƒ(x)'}
-                </button>
-              ))}
-            </div>
+  const sheet =
+    open && portalTarget
+      ? createPortal(
+          <>
+            <section
+              aria-label={t('mathKeyboard')}
+              className={cn(
+                'anim-sheet-in',
+                // Capped to the viewport so the keys can never fall off-screen on
+                // short devices; the grid scrolls instead.
+                'fixed inset-x-0 bottom-0 z-[60] max-h-[78dvh] overflow-y-auto overscroll-contain',
+                'border-t border-outline-variant bg-surface-container-high shadow-elevation-4 safe-bottom',
+              )}
+            >
+              <div className="mx-auto w-full max-w-2xl px-2 pb-2 pt-1">
+                <div className="flex items-center gap-1">
+                  <span className="flex h-9 items-center gap-1.5 rounded-full px-2 text-label-medium text-on-surface-variant">
+                    <Sigma className="h-4 w-4" aria-hidden="true" />
+                    <span className="max-w-32 truncate">{activeLabel ?? t('mathKeyboard')}</span>
+                  </span>
+                  <div className="flex-1" />
+                  <button
+                    type="button"
+                    onClick={() => press({ label: '', action: 'paste' })}
+                    aria-label={t('paste')}
+                    className="flex h-10 w-10 items-center justify-center rounded-full text-on-surface-variant active:bg-on-surface/10"
+                  >
+                    <ClipboardPaste className="h-5 w-5" aria-hidden="true" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={toggleVoice}
+                    aria-label={t('insert')}
+                    aria-pressed={listening}
+                    className={cn(
+                      'flex h-10 w-10 items-center justify-center rounded-full',
+                      listening ? 'bg-error text-on-error' : 'text-on-surface-variant active:bg-on-surface/10',
+                    )}
+                  >
+                    {listening ? (
+                      <MicOff className="h-5 w-5" aria-hidden="true" />
+                    ) : (
+                      <Mic className="h-5 w-5" aria-hidden="true" />
+                    )}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => press({ label: '', action: 'clear' })}
+                    aria-label={t('clearSearch')}
+                    className="flex h-10 w-10 items-center justify-center rounded-full text-on-surface-variant active:bg-on-surface/10"
+                  >
+                    <X className="h-5 w-5" aria-hidden="true" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={onClose}
+                    aria-label={t('hideKeyboard')}
+                    className="flex h-10 w-10 items-center justify-center rounded-full text-on-surface-variant active:bg-on-surface/10"
+                  >
+                    <ChevronDown className="h-5 w-5" aria-hidden="true" />
+                  </button>
+                </div>
 
-            <div className="grid grid-cols-5 gap-1">
-              {keys.map((key) => (
-                <button
-                  key={`${key.label}-${key.insert ?? key.action}`}
-                  type="button"
-                  onClick={() => press(key)}
-                  aria-label={key.aria ?? key.label}
-                  className={cn(
-                    'tap-none flex h-12 items-center justify-center rounded-lg bg-surface-container-highest',
-                    'font-mono text-body-large text-on-surface shadow-elevation-1',
-                    'transition-transform active:scale-95',
-                  )}
-                >
-                  {key.label}
-                </button>
-              ))}
-            </div>
+                <div className="mb-1.5 flex gap-1 rounded-full bg-surface-container p-0.5" role="tablist">
+                  {(['numbers', 'functions'] as const).map((key) => (
+                    <button
+                      key={key}
+                      role="tab"
+                      aria-selected={tab === key}
+                      onClick={() => {
+                        haptic(8, hapticsEnabled);
+                        setTab(key);
+                      }}
+                      className={cn(
+                        'h-9 flex-1 rounded-full text-label-medium transition-colors',
+                        tab === key ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant',
+                      )}
+                    >
+                      {key === 'numbers' ? '۱۲۳' : 'ƒ(x)'}
+                    </button>
+                  ))}
+                </div>
 
-            <div className="mt-1 grid grid-cols-4 gap-1">
-              <button
-                type="button"
-                onClick={() => press({ label: '', action: 'backspace' })}
-                aria-label={t('delete')}
-                className="flex h-12 items-center justify-center gap-1 rounded-lg bg-surface-container-highest text-on-surface shadow-elevation-1 active:scale-95"
-              >
-                <Delete className="h-5 w-5" aria-hidden="true" />
-              </button>
-              <button
-                type="button"
-                onClick={() => onInsert('%')}
-                className="flex h-12 items-center justify-center rounded-lg bg-surface-container-highest font-mono text-body-large text-on-surface shadow-elevation-1 active:scale-95"
-              >
-                %
-              </button>
-              <button
-                type="button"
-                onClick={() => onInsert('rad')}
-                className="flex h-12 items-center justify-center rounded-lg bg-surface-container-highest text-label-medium text-on-surface shadow-elevation-1 active:scale-95"
-              >
-                °/rad
-              </button>
-              <button
-                type="button"
-                onClick={onDone}
-                className="flex h-12 items-center justify-center rounded-lg bg-primary text-label-large font-semibold text-on-primary shadow-elevation-1 active:scale-95"
-              >
-                {t('done')}
-              </button>
-            </div>
-          </div>
-        </section>
-      )}
-    </>
-  );
+                <div className="grid grid-cols-5 gap-1">
+                  {keys.map((key) => (
+                    <button
+                      key={`${key.label}-${key.insert ?? key.action}`}
+                      type="button"
+                      onClick={() => press(key)}
+                      aria-label={key.aria ?? key.label}
+                      className={cn(
+                        'tap-none flex h-12 items-center justify-center rounded-lg bg-surface-container-highest',
+                        'font-mono text-body-large text-on-surface shadow-elevation-1',
+                        'transition-transform active:scale-95',
+                      )}
+                    >
+                      {key.label}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="mt-1 grid grid-cols-4 gap-1">
+                  <button
+                    type="button"
+                    onClick={() => press({ label: '', action: 'backspace' })}
+                    aria-label={t('delete')}
+                    className="flex h-12 items-center justify-center gap-1 rounded-lg bg-surface-container-highest text-on-surface shadow-elevation-1 active:scale-95"
+                  >
+                    <Delete className="h-5 w-5" aria-hidden="true" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onInsert('%')}
+                    className="flex h-12 items-center justify-center rounded-lg bg-surface-container-highest font-mono text-body-large text-on-surface shadow-elevation-1 active:scale-95"
+                  >
+                    %
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => onInsert('rad')}
+                    className="flex h-12 items-center justify-center rounded-lg bg-surface-container-highest text-label-medium text-on-surface shadow-elevation-1 active:scale-95"
+                  >
+                    °/rad
+                  </button>
+                  <button
+                    type="button"
+                    onClick={onDone}
+                    className="flex h-12 items-center justify-center rounded-lg bg-primary text-label-large font-semibold text-on-primary shadow-elevation-1 active:scale-95"
+                  >
+                    {t('done')}
+                  </button>
+                </div>
+              </div>
+            </section>
+          </>,
+          portalTarget,
+        )
+      : null;
+
+  return sheet;
 }

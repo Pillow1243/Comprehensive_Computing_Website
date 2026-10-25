@@ -121,11 +121,13 @@ const config: Config = {
         },
         'fade-up': {
           from: { opacity: '0', transform: 'translateY(8px)' },
-          to: { opacity: '1', transform: 'translateY(0)' },
+          // `none` (not `translateY(0)`) so the finished animation stops
+          // creating a containing block for fixed-position children.
+          to: { opacity: '1', transform: 'none' },
         },
         'slide-up': {
           from: { transform: 'translateY(100%)' },
-          to: { transform: 'translateY(0)' },
+          to: { transform: 'none' },
         },
         ripple: {
           from: { transform: 'scale(0)', opacity: '0.4' },

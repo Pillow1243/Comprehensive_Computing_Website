@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { ArrowUpRight, Plus, Sparkles } from 'lucide-react';
 import { BottomSheet } from '@/components/ui/bottom-sheet';
 import { CategoryIcon } from '@/components/icons';
-import { categoryMeta, formulaName, getFormula } from '@/lib/formulas';
+import { categoryMeta, formulaCategory, formulaName, getFormula } from '@/lib/formulas';
 import { useI18n } from '@/lib/i18n';
 import { cn, haptic } from '@/lib/utils';
 import { useAppStore } from '@/lib/store';
@@ -94,7 +94,7 @@ export function QuickStartFab() {
                         {formulaName(formula, lang)}
                       </span>
                       <span className="block truncate text-body-small text-on-surface-variant">
-                        {formula.category_path.join(' · ')}
+                        {formulaCategory(formula, lang)}
                       </span>
                     </span>
                     <ArrowUpRight className="h-4 w-4 text-on-surface-variant rtl:-scale-x-100" aria-hidden="true" />

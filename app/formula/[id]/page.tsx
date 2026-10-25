@@ -19,14 +19,16 @@ export async function generateMetadata({
   if (!formula) return { title: 'فرمول پیدا نشد' };
   const title = formulaName(formula, 'fa');
   const english = formulaName(formula, 'en');
+  const summaries = (await import('@/packages/formula-registry/formula-descriptions.json')).default as Record<string, string>;
+  const description = summaries[formula.id];
   return {
     title: `${title} — ${english}`,
-    description: formula.description_fa,
+    description,
     keywords: [...formula.tags, formula.name_en, formula.name_fa],
     alternates: { canonical: `/formula/${formula.id}/` },
     openGraph: {
       title: `${title} · ${english}`,
-      description: formula.description_fa,
+      description,
       type: 'article',
     },
   };

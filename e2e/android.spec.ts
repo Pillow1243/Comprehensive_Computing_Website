@@ -95,7 +95,7 @@ test('swipe to delete removes a history entry after confirmation', async ({ page
   await expect(page.getByRole('region', { name: 'نتایج' })).toBeVisible({ timeout: 15_000 });
 
   await page.goto('./history/');
-  const row = page.locator('li').first();
+  const row = page.getByTestId('history-row').first();
   await expect(row).toBeVisible();
 
   // Drive the swipe through the same pointer events a finger produces. Mouse
@@ -116,7 +116,7 @@ test('swipe to delete removes a history entry after confirmation', async ({ page
 
 test('Android back button returns to the previous screen', async ({ page }) => {
   await page.goto('./');
-  await page.getByRole('link', { name: /معادله درجه دو/ }).first().click();
+  await page.locator('a[href$="/formula/quadratic/"]').first().click();
   await expect(page).toHaveURL(/\/formula\/quadratic\/?$/);
   await page.goBack();
   await expect(page).toHaveURL(/Comprehensive_Computing_Website\/?$/);

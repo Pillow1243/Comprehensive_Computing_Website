@@ -1,6 +1,7 @@
 import RAW_INDEX from '@/packages/formula-registry/formula-index.json';
 import { CATEGORIES as RAW_CATEGORIES } from '@/apps/web/categories.js';
 import type { Language } from '@/lib/i18n';
+import { categoryPathLabel } from '@/lib/category-names';
 
 export type Difficulty = 'basic' | 'intermediate' | 'advanced';
 
@@ -45,7 +46,8 @@ export interface FormulaMeta {
   id: string;
   name_fa: string;
   name_en: string;
-  description_fa: string;
+  /** Present only after `loadDescriptions()` resolves (kept out of first load). */
+  description_fa?: string;
   category_path: string[];
   tags: string[];
   difficulty: Difficulty;
@@ -97,11 +99,14 @@ export const loadFormula = async (id: string): Promise<Formula | undefined> => {
   return { ...meta, ...detail };
 };
 
+export const formulaCategory = (formula: FormulaMeta, lang: Language): string =>
+  categoryPathLabel(formula.category_path, lang);
+
 export const formulaName = (formula: FormulaMeta, lang: Language): string =>
   lang === 'fa' ? formula.name_fa : formula.name_en;
 
 export const formulaDescription = (formula: FormulaMeta, lang: Language): string => {
-  if (lang === 'fa') return formula.description_fa;
+  if (lang === 'fa') return formula.description_fa ?? `${formula.name_fa} — ${formula.category_path.join(' · ')}`;
   return `A validated, step-by-step ${formula.name_en} solver with unit-aware inputs, plotting and saved history.`;
 };
 
@@ -183,8 +188,26 @@ export const CATEGORY_META: Record<string, CategoryMeta> = {
     accent: '#FDA4AF',
     fa: 'زیست و سلامت',
     en: 'Bio & Health',
-    summary_fa: 'سلامت، رشد، اپیدمی',
-    summary_en: 'Health, growth, epidemiology',
+    summary_fa: 'سلامت، تناسب اندام، رشد و اپیدمی',
+    summary_en: 'Health, fitness, growth and epidemiology',
+  },
+  astronomy: {
+    icon: 'Telescope',
+    tint: 'from-[#818CF8]/24 to-[#312E81]/10',
+    accent: '#C7D2FE',
+    fa: 'نجوم و فضا',
+    en: 'Astronomy & Space',
+    summary_fa: 'مدارها، ستاره‌ها، کیهان‌شناسی',
+    summary_en: 'Orbits, stars, cosmology',
+  },
+  earth: {
+    icon: 'Globe2',
+    tint: 'from-[#34D399]/22 to-[#0EA5E9]/10',
+    accent: '#A7F3D0',
+    fa: 'زمین و محیط',
+    en: 'Earth & Environment',
+    summary_fa: 'اقلیم، باد، زلزله',
+    summary_en: 'Climate, wind, earthquakes',
   },
 };
 
@@ -260,7 +283,7 @@ export const searchFormulas = (query: string, filters: SearchFilters = {}): Form
         formula.id,
         formula.name_fa,
         formula.name_en,
-        formula.description_fa,
+        formula.description_fa ?? '',
         formula.tags.join(' '),
         formula.category_path.join(' '),
       ].join(' '),
@@ -300,3 +323,23 @@ export const relatedFormulas = (formula: FormulaMeta, limit = 4): FormulaMeta[] 
 export const totalTests = FORMULAS.reduce((sum, formula) => sum + formula.test_count, 0);
 
 export const FORMULA_COUNT = FORMULAS.length;
+
+/**
+ * Persian summaries are ~9 KB gzip, so they live in their own manifest and are
+ * pulled in the first time a card needs one. Every caller shares one promise.
+ */
+let descriptionCache: Record<string, string> | null = null;
+let descriptionPromise: Promise<Record<string, string>> | null = null;
+
+export const loadDescriptions = (): Promise<Record<string, string>> => {
+  if (descriptionCache) return Promise.resolve(descriptionCache);
+  descriptionPromise ??= import('@/packages/formula-registry/formula-descriptions.json').then(
+    (module) => {
+      descriptionCache = module.default as Record<string, string>;
+      return descriptionCache;
+    },
+  );
+  return descriptionPromise;
+};
+
+export const cachedDescription = (id: string): string | undefined => descriptionCache?.[id];
