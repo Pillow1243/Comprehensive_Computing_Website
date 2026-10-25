@@ -4,11 +4,12 @@
 
 | Layer | Command | What it covers | Current status |
 |---|---|---|---|
-| Registry validation | `npm run validate-registry` | JSON Schema, unique ids, compute + steps present, ≥2 declared cases per formula, duplicate test inputs, finite outputs, manifest/`formula-index.json`/`formula-details.json` sync | 315 formulas, 754 cases, 29 catalog sections, in sync |
-| Component + unit (Vitest) | `npm run test:unit` | Formula registry, compute core, input validation, formatting utils, tools data (units, chemistry, periodic table, constants), React components (RTL) and a full solver flow | 1 253 tests / 9 files |
-| Registry + engine (Node) | `node --test tests/*.test.mjs` | Safe expression parser, numerical derivative/integral/root tools, units, optional API failure behaviour, every declared formula case, security assertions | 1 002 assertions |
-| Bundle budget | `npm run budget` | gzip First Load JS, page-specific bytes, total JS, worker size | all budgets met |
-| E2E (Playwright) | `npm run test:e2e:ci` | Desktop flows + seven Android device profiles | 79 tests / 2 spec files |
+| Dependency audit | `npm run audit` | npm advisories at low severity and above | 0 advisories in the verified lockfile (2026-10-25) |
+| Registry validation | `npm run validate-registry` | JSON Schema, unique IDs, trusted compute + steps, ≥2 declared cases, valid citations/review-state rules, section-status/count consistency, manifest sync | 315 formulas, 754 cases, 29 sections, in sync |
+| Component + unit (Vitest) | `npm run test:unit` | Registry, compute core, validation, tools, UI/components, solver flow, safe share routing, JSON/CSV export | 1,378 tests / 12 files |
+| Registry + engine (Node) | `node --test tests/*.test.mjs` | Safe expression parser, numerical tools, units, API failure behaviour, formula cases, regression/security checks | 1,082 tests passed |
+| Bundle budget | `npm run budget` | gzip First Load JS, page-specific bytes, total JS, worker size | 190.6 KB home / 23.2 KB formula / 414.5 KB total; budgets met |
+| E2E (Playwright) | `npm run test:e2e:ci` | Desktop flows + seven Android device profiles | 81 tests listed; browser execution not performed in this review |
 
 `npm run test:all` chains validate → all tests → build → budget, which is the same ordering the Pages workflow uses before publishing.
 
@@ -28,7 +29,7 @@
 
 `playwright.config.ts` builds nothing itself (`test:e2e` runs `npm run build` first) and serves `out/` through `scripts/serve-static.mjs` at `http://127.0.0.1:4173/Comprehensive_Computing_Website/`, including the Page's `404.html` behaviour.
 
-- `e2e/flows.spec.ts` — desktop: home → category → formula → keyboard → compute → steps → history, deep link auto-compute, theme switch/persistence, search + empty state without native dialogs, full-screen formula dialog, share link, inline validation errors, 404 page, manifest/service-worker delivery under the sub-path.
+- `e2e/flows.spec.ts` — desktop: home → category → formula → keyboard → compute → steps → history, deep-link auto-compute, theme/persistence, search, share target, share links, JSON download, inline validation, 404 and sub-path manifest/service-worker delivery.
 - `e2e/android.spec.ts` — Pixel 7/7 Pro/8a/9 Pro, Galaxy S24/A55, Galaxy Tab S9: thumb-sized bottom nav, active tab state, math keyboard above the safe area, `inputmode` suppression, orientation change, plot zoom/reset/drag, swipe-to-delete with a custom confirm dialog (never `window.confirm`), Android back navigation, offline banner, safe-area wiring.
 
 Locally:

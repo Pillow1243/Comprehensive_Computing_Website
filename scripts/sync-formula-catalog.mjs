@@ -21,8 +21,8 @@ const sectionMatches={
   sec_24:f=>f.category_path?.[0]==='نجوم و فضا',
 };
 
-catalog.version='2.1.0';
-catalog.schema_version='1.0.0';
+catalog.version='2.2.0';
+catalog.schema_version='1.1.0';
 catalog.implemented_formula_ids=FORMULAS.map(formula=>formula.id);
 catalog.implemented_count=FORMULAS.length;
 catalog.formula_index=FORMULAS.map(serializeFormula);
@@ -31,6 +31,8 @@ for(const section of catalog.sections){
   const matches=catalog.formula_index.filter(sectionMatches[section.id]||(()=>false));
   section.implemented_formula_count=matches.length;
   section.implemented_formula_ids=matches.map(formula=>formula.id);
+  // Never label an empty section implemented; partial means at least one item exists.
+  section.status=matches.length?'partial':'planned';
 }
 
 await writeFile(catalogPath,`${JSON.stringify(catalog,null,2)}\n`);

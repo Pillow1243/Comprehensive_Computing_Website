@@ -9,8 +9,10 @@ import {
   Calculator,
   Check,
   Copy,
+  Download,
   FunctionSquare,
   History,
+  Info,
   LineChart,
   ListOrdered,
   MoreVertical,
@@ -42,6 +44,7 @@ import { useAppStore, type HistoryEntry } from '@/lib/store';
 import { useVisualViewport } from '@/lib/hooks';
 import { assertFiniteOutputs, describeError, validateInputs, type RawInputs } from '@/lib/validation';
 import { reportError } from '@/lib/telemetry';
+import { calculationAsCsv, calculationAsJson, downloadTextFile } from '@/lib/calculation-export';
 import { withBasePath } from '@/lib/base-path';
 import { cn, copyToClipboard, formatNumber, groupByDate, haptic, shareContent } from '@/lib/utils';
 
@@ -265,6 +268,29 @@ export function FormulaSolver({
     else if (outcome === 'failed') toast.error(t('shareNotSupported'));
   };
 
+  const exportCalculation = (format: 'json' | 'csv') => {
+    if (!result) return;
+    const record = {
+      formula_id: formula.id,
+      formula_name: formulaName(formula, lang),
+      formula_latex: formula.formula_latex,
+      inputs: Object.fromEntries(formula.variables.map(({ name }) => [name, preparedInputs[name] ?? raw[name] ?? ''])),
+      input_units: Object.fromEntries(formula.variables.map(({ name, unit }) => [name, unit ?? null])),
+      outputs: result.values,
+      output_units: Object.fromEntries(formula.outputs.map(({ name, unit }) => [name, unit ?? null])),
+      steps: result.steps ?? [],
+      created_at: new Date().toISOString(),
+    };
+    const stamp = record.created_at.replaceAll(':', '-');
+    if (format === 'json') {
+      downloadTextFile(calculationAsJson(record), 'application/json;charset=utf-8', `solveeverything-${formula.id}-${stamp}.json`);
+    } else {
+      downloadTextFile(calculationAsCsv(record), 'text/csv;charset=utf-8', `solveeverything-${formula.id}-${stamp}.csv`);
+    }
+    toast.success(t('exportReady'));
+    setMenuOpen(false);
+  };
+
   const loadHistoryEntry = (entry: HistoryEntry) => {
     const next: Record<string, string> = { ...raw };
     for (const [key, value] of Object.entries(entry.inputs)) next[key] = String(value);
@@ -346,6 +372,24 @@ export function FormulaSolver({
               >
                 <Copy className="h-4 w-4" aria-hidden="true" />
                 {t('copyLatex')}
+              </button>
+              <button
+                type="button"
+                disabled={!result}
+                onClick={() => exportCalculation('json')}
+                className="flex min-h-12 w-full items-center gap-3 px-4 text-body-medium text-on-surface hover:bg-on-surface/5 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <Download className="h-4 w-4" aria-hidden="true" />
+                {t('exportJson')}
+              </button>
+              <button
+                type="button"
+                disabled={!result}
+                onClick={() => exportCalculation('csv')}
+                className="flex min-h-12 w-full items-center gap-3 px-4 text-body-medium text-on-surface hover:bg-on-surface/5 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <Download className="h-4 w-4" aria-hidden="true" />
+                {t('exportCsv')}
               </button>
               <button
                 type="button"
@@ -435,6 +479,32 @@ export function FormulaSolver({
           <div className="mt-3">
             <FormulaDisplay latex={formula.formula_latex} html={formulaHtml} />
           </div>
+          <aside className="mt-3 rounded-2xl border border-warning/40 bg-warning/10 p-3" role="note" aria-label={t('scientificReviewTitle')}>
+            <p className="flex items-center gap-2 text-label-medium font-semibold text-on-surface">
+              <Info className="h-4 w-4 shrink-0 text-warning" aria-hidden="true" />
+              {t('scientificReviewTitle')}
+            </p>
+            {formula.scientific_review_status === 'domain_reviewed' ? (
+              <>
+                <p className="mt-1 text-body-small text-on-surface-variant">
+                  {t('reviewedBy', { reviewer: formula.reviewed_by || '—', date: formula.reviewed_at || '—' })}
+                </p>
+                {!!formula.references.length && (
+                  <ul className="mt-2 list-inside list-disc text-body-small">
+                    {formula.references.map((reference) => (
+                      <li key={reference.url}>
+                        <a href={reference.url} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-2">
+                          {reference.title}{reference.publisher ? ` — ${reference.publisher}` : ''}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </>
+            ) : (
+              <p className="mt-1 text-body-small leading-relaxed text-on-surface-variant">{t('scientificReviewNotice')}</p>
+            )}
+          </aside>
         </section>
 
         {/* Panels */}

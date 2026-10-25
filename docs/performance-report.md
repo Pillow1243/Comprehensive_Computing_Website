@@ -1,6 +1,18 @@
 # Performance report
 
-_Last measured: 2026-10-25 (branch `arena/deafa75c-comprehensive-computing-websit`, Lighthouse 13.5, mobile emulation 412×915 DPR 1.75, simulated slow 4G, CPU slowdown ×4, median of 3 runs)._
+**Measurement status:** the Lighthouse values below are a historical snapshot from branch `arena/deafa75c-comprehensive-computing-websit`; they are not measurements of the current 3.2.0 working tree. The current build's JavaScript budgets were rechecked on 2026-10-25, but Lighthouse was not rerun after the latest changes. Run `npm run lighthouse:ci` in a Chromium-enabled environment before publishing new scores.
+
+## Current checkout — verified build budgets (not Lighthouse)
+
+`npm run test:all` on the current working tree completed successfully: static build generated 330 routes and the bundle checker reported the following gzip sizes. These numbers are bundle measurements, not page-speed scores.
+
+| Metric | Current value | Budget |
+|---|---:|---:|
+| First Load JS (home) | 190.6 KB | 200 KB |
+| Page-specific JS (formula) | 23.2 KB | 100 KB |
+| Page-specific JS (search) | 0.2 KB | 100 KB |
+| Total JavaScript reachable from any page | 414.5 KB | 500 KB |
+| Compute worker (lazy) | 137.0 KB | — |
 
 ## What is measured, and by whom
 

@@ -13,10 +13,14 @@ interface RegisteredFormula {
   category_path: string[];
   tags: string[];
   difficulty: string;
-  variables: Array<{ name: string; label_fa: string; label_en: string; type: string; unit: string | null }>;
+  variables: Array<{ name: string; label_fa: string; label_en: string; type: string; unit: string | null; default?: unknown }>;
   outputs: Array<{ name: string; label_fa: string; label_en: string; unit: string | null }>;
   tests: Array<{ input: Record<string, unknown>; expected: Record<string, unknown> }>;
   examples: Array<Record<string, unknown>>;
+  references: Array<{ title: string; url: string }>;
+  scientific_review_status: 'not_reviewed' | 'domain_reviewed';
+  reviewed_by?: string | null;
+  reviewed_at?: string | null;
   compute: (inputs: Record<string, number | string | boolean>) => { values: Record<string, unknown>; steps: string[] };
   plot_spec?: { type?: string } | null;
 }
@@ -24,7 +28,7 @@ interface RegisteredFormula {
 const registered = FORMULAS as unknown as RegisteredFormula[];
 
 describe('formula registry', () => {
-  it('contains at least 150 validated formulas', () => {
+  it('contains at least 150 registered formula calculators', () => {
     expect(registered.length).toBeGreaterThanOrEqual(150);
   });
 
@@ -82,6 +86,29 @@ describe('formula registry', () => {
     it('ships at least one example and no stack-trace-only errors', () => {
       expect(formula.examples.length).toBeGreaterThan(0);
     });
+  });
+
+  it('passes a default-input smoke sweep for every calculator', () => {
+    for (const formula of registered) {
+      const inputs = Object.fromEntries(formula.variables.map((variable) => [variable.name, variable.default]));
+      expect(Object.values(inputs).every((value) => value !== undefined), `${formula.id} lacks a default input`).toBe(true);
+      const result = formula.compute(inputs as Record<string, string | number | boolean>);
+      expect(result.steps.length, `${formula.id} returned no explanatory steps for defaults`).toBeGreaterThan(0);
+      for (const [key, value] of Object.entries(result.values)) {
+        if (typeof value === 'number') expect(Number.isFinite(value), `${formula.id}.${key} is not finite`).toBe(true);
+      }
+    }
+  });
+
+  it('never labels a formula independently reviewed without sources and reviewer metadata', () => {
+    for (const formula of registered) {
+      expect(['not_reviewed', 'domain_reviewed']).toContain(formula.scientific_review_status);
+      if (formula.scientific_review_status === 'domain_reviewed') {
+        expect(formula.references.length, formula.id).toBeGreaterThan(0);
+        expect(formula.reviewed_by?.trim(), formula.id).toBeTruthy();
+        expect(formula.reviewed_at, formula.id).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      }
+    }
   });
 
   it('keeps the generated index and details manifests in sync', () => {

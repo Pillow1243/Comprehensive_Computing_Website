@@ -31,6 +31,15 @@ export interface FormulaTest {
   expected: Record<string, unknown>;
 }
 
+export interface FormulaReference {
+  title: string;
+  url: string;
+  publisher?: string;
+  accessed_at?: string;
+}
+
+export type ScientificReviewStatus = 'not_reviewed' | 'domain_reviewed';
+
 export interface PlotSpec {
   type?: string;
   [key: string]: unknown;
@@ -61,7 +70,12 @@ export interface Formula extends FormulaMeta {
   outputs: FormulaOutput[];
   plot_spec?: PlotSpec | null;
   examples: Array<Record<string, number | string | boolean>>;
+  references: FormulaReference[];
+  scientific_review_status: ScientificReviewStatus;
+  reviewed_by?: string | null;
+  reviewed_at?: string | null;
   version: string;
+  /** True when declared computational test cases pass; not a scientific review claim. */
   validated: boolean;
 }
 
@@ -107,7 +121,7 @@ export const formulaName = (formula: FormulaMeta, lang: Language): string =>
 
 export const formulaDescription = (formula: FormulaMeta, lang: Language): string => {
   if (lang === 'fa') return formula.description_fa ?? `${formula.name_fa} — ${formula.category_path.join(' · ')}`;
-  return `A validated, step-by-step ${formula.name_en} solver with unit-aware inputs, plotting and saved history.`;
+  return `${formula.name_en} calculator with step-by-step results. Scientific review status and sources are shown on the formula page.`;
 };
 
 export const variableLabel = (variable: FormulaVariable, lang: Language): string =>

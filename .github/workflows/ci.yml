@@ -27,6 +27,8 @@ jobs:
           cache: npm
       - name: Install npm dependencies
         run: npm ci
+      - name: Audit npm dependencies
+        run: npm run audit
       - name: Validate formula registry and catalog
         run: npm run validate-registry
       - name: Unit tests

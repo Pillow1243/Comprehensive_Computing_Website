@@ -51,6 +51,10 @@ for (const formula of FORMULAS) {
     })),
     examples: (formula.examples ?? []).map((example) => example.input ?? example),
     plot_spec: formula.plot_spec ?? null,
+    references: formula.references ?? [],
+    scientific_review_status: formula.scientific_review_status ?? 'not_reviewed',
+    reviewed_by: formula.reviewed_by ?? null,
+    reviewed_at: formula.reviewed_at ?? null,
     version: formula.version ?? '1.0.0',
     validated: Boolean(formula.validated),
   };

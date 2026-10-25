@@ -2,6 +2,7 @@ import {readFile} from 'node:fs/promises';
 import Ajv2020 from 'ajv/dist/2020.js';
 import {FORMULAS} from '../apps/web/registry.js';
 import {serializeFormula,stableJson} from './formula-catalog-utils.mjs';
+import {isIsoDate,isSafeCitation} from './formula-review-validation.mjs';
 
 const indexManifest=JSON.parse(await readFile(new URL('../packages/formula-registry/formula-index.json',import.meta.url),'utf8'));
 const detailManifest=JSON.parse(await readFile(new URL('../packages/formula-registry/formula-details.json',import.meta.url),'utf8'));
@@ -24,6 +25,15 @@ for(const formula of FORMULAS){
   if(!Array.isArray(formula.outputs)||formula.outputs.length<1) errors.push(`${formula.id}: outputs must be non-empty`);
   if(!Array.isArray(formula.examples)||formula.examples.length<1) errors.push(`${formula.id}: at least one example is required`);
   if(!Array.isArray(formula.references)) errors.push(`${formula.id}: references must be an array`);
+  for(const reference of formula.references||[]){
+    if(!isSafeCitation(reference)) errors.push(`${formula.id}: citation must have a title, credential-free HTTPS URL, and optional real YYYY-MM-DD access date`);
+  }
+  if(!['not_reviewed','domain_reviewed'].includes(formula.scientific_review_status)) errors.push(`${formula.id}: invalid scientific_review_status`);
+  if(formula.scientific_review_status==='domain_reviewed'){
+    if(!formula.references?.length) errors.push(`${formula.id}: domain-reviewed formulas need at least one source`);
+    if(typeof formula.reviewed_by!=='string'||!formula.reviewed_by.trim()) errors.push(`${formula.id}: domain-reviewed formulas need a reviewer`);
+    if(!isIsoDate(formula.reviewed_at)) errors.push(`${formula.id}: domain-reviewed formulas need a real YYYY-MM-DD review date`);
+  }
   if(typeof formula.compute_js!=='string'||!/^module:[A-Za-z0-9_./-]+#[a-z][a-z0-9_]*$/.test(formula.compute_js)) errors.push(`${formula.id}: invalid trusted JS module reference`);
   if(typeof formula.steps_generator_ref!=='string'||!/^module:[A-Za-z0-9_./-]+#[a-z][a-z0-9_]*$/.test(formula.steps_generator_ref)) errors.push(`${formula.id}: invalid steps-generator module reference`);
   if(!Array.isArray(formula.tests)||formula.tests.length<2) errors.push(`${formula.id}: at least two tests are required (got ${formula.tests?.length??0})`);
@@ -51,10 +61,10 @@ for(const formula of FORMULAS){
   }
 }
 
-const schemaRequired=['id','name_fa','name_en','category_path','tags','description_fa','variables','outputs','formula_latex','compute_js','steps_generator','examples','tests','references','difficulty','version','validated'];
+const schemaRequired=['id','name_fa','name_en','category_path','tags','description_fa','variables','outputs','formula_latex','compute_js','steps_generator','examples','tests','references','scientific_review_status','reviewed_by','reviewed_at','difficulty','version','validated'];
 for(const field of schemaRequired) if(!schema.required?.includes(field)) errors.push(`JSON Schema does not require ${field}`);
 const catalogIds=new Set(catalog.implemented_formula_ids||[]);
-if(catalog.schema_version!=='1.0.0') errors.push(`unsupported catalog schema version ${catalog.schema_version}`);
+if(catalog.schema_version!=='1.1.0') errors.push(`unsupported catalog schema version ${catalog.schema_version}`);
 if(catalog.implemented_count!==FORMULAS.length) errors.push(`catalog count ${catalog.implemented_count} != runtime count ${FORMULAS.length}`);
 if(catalogIds.size!==FORMULAS.length) errors.push(`catalog has ${catalogIds.size} unique IDs; runtime has ${FORMULAS.length}`);
 for(const id of formulaIds) if(!catalogIds.has(id)) errors.push(`catalog is missing ${id}`);
@@ -68,6 +78,13 @@ else for(const item of catalog.formula_index){
   if(formula&&stableJson(item)!==stableJson(serializeFormula(formula))) errors.push(`formula_index ${item.id}: metadata differs from the trusted runtime registry`);
 }
 if(!Array.isArray(catalog.sections)||catalog.sections.length!==29) errors.push('catalog must retain the 29 planned discipline sections');
+else for(const section of catalog.sections){
+  const ids=section.implemented_formula_ids||[];
+  if(section.implemented_formula_count!==ids.length) errors.push(`${section.id}: implementation count does not match its formula IDs`);
+  if(new Set(ids).size!==ids.length) errors.push(`${section.id}: duplicate implemented formula ID`);
+  const expectedStatus=ids.length?'partial':'planned';
+  if(section.status!==expectedStatus) errors.push(`${section.id}: status should be ${expectedStatus} for ${ids.length} implemented formulas`);
+}
 
 // ── browser manifests must match the trusted registry exactly ─────────────
 if(!Array.isArray(indexManifest)||indexManifest.length!==FORMULAS.length) errors.push(`formula-index.json must contain ${FORMULAS.length} entries; run npm run build:index`);
@@ -81,6 +98,8 @@ for(const formula of FORMULAS){
   if(!detail){errors.push(`formula-details.json is missing ${formula.id}`);continue;}
   if(detail.variables.length!==formula.variables.length) errors.push(`formula-details.json variables are stale for ${formula.id}`);
   if(detail.outputs.length!==formula.outputs.length) errors.push(`formula-details.json outputs are stale for ${formula.id}`);
+  if(stableJson(detail.references)!==stableJson(formula.references)) errors.push(`formula-details.json references are stale for ${formula.id}`);
+  if(detail.scientific_review_status!==formula.scientific_review_status||detail.reviewed_by!==formula.reviewed_by||detail.reviewed_at!==formula.reviewed_at) errors.push(`formula-details.json review status is stale for ${formula.id}`);
 }
 
 if(errors.length){for(const error of errors)fail(error);process.exit(1);}
