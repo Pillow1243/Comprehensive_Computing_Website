@@ -17,7 +17,7 @@ import localFont from 'next/font/local';
 export const vazirmatn = localFont({
   src: [{ path: './fonts/vazirmatn-arabic.woff2', weight: '100 900', style: 'normal' }],
   variable: '--font-vazirmatn',
-  display: 'optional',
+  display: 'swap',
   preload: true,
   fallback: ['system-ui', 'Segoe UI', 'Tahoma', 'sans-serif'],
   adjustFontFallback: false,
@@ -26,7 +26,7 @@ export const vazirmatn = localFont({
 export const vazirmatnLatin = localFont({
   src: [{ path: './fonts/vazirmatn-latin.woff2', weight: '100 900', style: 'normal' }],
   variable: '--font-vazirmatn-latin',
-  display: 'optional',
+  display: 'swap',
   preload: false,
   fallback: ['system-ui', 'Segoe UI', 'Arial', 'sans-serif'],
   adjustFontFallback: false,
