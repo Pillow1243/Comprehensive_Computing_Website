@@ -1,7 +1,7 @@
 'use client';
 
 import { Download, Smartphone, X } from 'lucide-react';
-import { toast } from 'sonner';
+import { toast } from '@/lib/toast';
 import { useInstall } from '@/lib/install';
 import { useI18n } from '@/lib/i18n';
 import { Button } from '@/components/ui/button';

@@ -1,7 +1,14 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import type { ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
+
+/**
+ * Set once the first screen has been hydrated, so the initial paint is never
+ * faded in. A fade on first load hides the whole page behind `opacity: 0` for
+ * ~220 ms, which delays the largest contentful paint by exactly that much.
+ */
+let hydratedOnce = false;
 
 /**
  * Fade on navigation (220 ms, ease-out).
@@ -17,8 +24,15 @@ import type { ReactNode } from 'react';
  */
 export function PageTransition({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  // Client-side navigations mount a fresh instance and read the flag as `true`,
+  // so the fade still runs for every route change after the first load.
+  const [animate] = useState(() => hydratedOnce);
+  useEffect(() => {
+    hydratedOnce = true;
+  }, []);
+
   return (
-    <div key={pathname} className="anim-page-in">
+    <div key={pathname} className={animate ? 'anim-page-in' : undefined}>
       {children}
     </div>
   );

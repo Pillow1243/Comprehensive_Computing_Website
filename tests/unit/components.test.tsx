@@ -15,6 +15,8 @@ import { EmptyState, ErrorState } from '@/components/ui/states';
 import { Skeleton } from '@/components/ui/skeleton';
 import { FormulaErrorBoundary } from '@/components/formula-error-boundary';
 import { FormulaDisplay } from '@/components/formula-display';
+import { PageTransition } from '@/components/page-transition';
+import { renderLatex } from '@/lib/latex';
 import { Button } from '@/components/ui/button';
 import { OfflineBanner } from '@/components/offline-banner';
 import { NetworkContext } from '@/lib/network';
@@ -255,23 +257,35 @@ describe('FormulaErrorBoundary', () => {
   });
 });
 
+describe('PageTransition', () => {
+  it('does not fade the very first paint (it would delay the LCP)', () => {
+    const { container } = renderWithProviders(
+      <PageTransition>
+        <p>محتوا</p>
+      </PageTransition>,
+    );
+    expect(container.querySelector('.anim-page-in')).toBeNull();
+    expect(container.textContent).toContain('محتوا');
+  });
+});
+
 describe('FormulaDisplay', () => {
-  it('renders KaTeX after the lazy import resolves', async () => {
-    await act(async () => {
-      renderWithProviders(<FormulaDisplay latex="x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}" />);
-    });
-    await act(async () => {
-      await new Promise((resolve) => setTimeout(resolve, 50));
-    });
+  it('renders build-time KaTeX markup on the first paint', () => {
+    const latex = 'x=\\frac{-b\\pm\\sqrt{b^2-4ac}}{2a}';
+    renderWithProviders(<FormulaDisplay latex={latex} html={renderLatex(latex)} />);
+    // No effect, no timer: the markup is already in the tree.
     expect(document.querySelector('.katex')).toBeTruthy();
+    expect(document.querySelector('[role="math"]')?.getAttribute('aria-label')).toBe(latex);
   });
 
-  it('falls back to plain LaTeX when rendering fails', async () => {
-    await act(async () => {
-      renderWithProviders(<FormulaDisplay latex={'\\frac{'} />);
-      await new Promise((resolve) => setTimeout(resolve, 50));
-    });
+  it('falls back to plain LaTeX when no markup was provided', () => {
+    renderWithProviders(<FormulaDisplay latex={'\\frac{'} />);
     expect(document.body.textContent).toContain('\\frac{');
+  });
+
+  it('survives invalid LaTeX without throwing', () => {
+    expect(renderLatex('\\frac{')).toContain('katex');
+    expect(renderLatex('')).toBe('');
   });
 });
 

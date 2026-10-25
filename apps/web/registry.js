@@ -6,6 +6,7 @@ import {PHASE3_FORMULAS} from './phase3-formulas.js';
 import {PHASE4_FORMULAS} from './phase4-formulas.js';
 import {PHASE5_FORMULAS} from './phase5-formulas.js';
 import {PHASE6_FORMULAS} from './phase6-formulas.js';
+import {PHASE7_FORMULAS} from './phase7-formulas.js';
 import {EXTRA_TESTS} from './extra-tests.js';
 const N=(name,label_fa,label_en,unit,def,opts={})=>({name,label_fa,label_en,type:opts.type||'number',unit:unit||null,default:def,required:true,min:opts.min,max:opts.max,step:opts.step});
 const out=(v,steps)=>({values:v,steps});
@@ -178,11 +179,12 @@ export const FORMULAS=[
  ...PHASE4_FORMULAS,
  ...PHASE5_FORMULAS,
  ...PHASE6_FORMULAS,
+ ...PHASE7_FORMULAS,
 ];
 
 // Complete schema metadata while keeping executable solvers as trusted module functions.
 const moduleFiles=new Map();
-for(const [file,pack] of [['phase1-formulas.js',PHASE1_FORMULAS],['phase2-formulas.js',PHASE2_FORMULAS],['phase3-formulas.js',PHASE3_FORMULAS],['phase4-formulas.js',PHASE4_FORMULAS],['phase5-formulas.js',PHASE5_FORMULAS],['phase6-formulas.js',PHASE6_FORMULAS]]){
+for(const [file,pack] of [['phase1-formulas.js',PHASE1_FORMULAS],['phase2-formulas.js',PHASE2_FORMULAS],['phase3-formulas.js',PHASE3_FORMULAS],['phase4-formulas.js',PHASE4_FORMULAS],['phase5-formulas.js',PHASE5_FORMULAS],['phase6-formulas.js',PHASE6_FORMULAS],['phase7-formulas.js',PHASE7_FORMULAS]]){
   for(const formula of pack) moduleFiles.set(formula.id,file);
 }
 function moduleFileFor(id){ return moduleFiles.get(id) || 'registry.js'; }

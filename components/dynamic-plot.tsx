@@ -10,7 +10,7 @@ import {
   ZoomIn,
   ZoomOut,
 } from 'lucide-react';
-import { toast } from 'sonner';
+import { toast } from '@/lib/toast';
 import { cn, formatNumber } from '@/lib/utils';
 import { useI18n } from '@/lib/i18n';
 import { useTheme } from '@/lib/theme';

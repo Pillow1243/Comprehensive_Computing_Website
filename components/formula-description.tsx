@@ -13,13 +13,16 @@ export function FormulaDescription({
   formula,
   className,
   placeholder = true,
+  initialText,
 }: {
   formula: FormulaMeta;
   className?: string;
   placeholder?: boolean;
+  /** Summary already known at build time (formula pages inline it). */
+  initialText?: string;
 }) {
   const { lang } = useI18n();
-  const [text, setText] = useState<string | undefined>(cachedDescription(formula.id));
+  const [text, setText] = useState<string | undefined>(() => initialText ?? cachedDescription(formula.id));
 
   useEffect(() => {
     if (text) return;

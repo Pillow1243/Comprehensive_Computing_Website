@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next';
-import 'katex/dist/katex.min.css';
 import './globals.css';
 import { fontVariables } from './fonts';
 import { Providers } from '@/components/providers';

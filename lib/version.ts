@@ -1,3 +1,3 @@
-export const APP_VERSION = '3.0.0';
+export const APP_VERSION = '3.1.0';
 export const REPO_URL = 'https://github.com/Pillow1243/Comprehensive_Computing_Website';
-export const SW_VERSION = 'v3.0.0';
+export const SW_VERSION = 'v3.1.0';

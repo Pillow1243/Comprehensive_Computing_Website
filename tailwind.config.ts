@@ -58,8 +58,8 @@ const config: Config = {
         'inverse-on-surface': token('md-inverse-on-surface'),
       },
       fontFamily: {
-        sans: ['var(--font-vazirmatn)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
-        latin: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-vazirmatn)', 'var(--font-vazirmatn-latin)', 'system-ui', 'sans-serif'],
+        latin: ['var(--font-vazirmatn-latin)', 'var(--font-vazirmatn)', 'system-ui', 'sans-serif'],
         persian: ['var(--font-vazirmatn)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-jetbrains)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
         katex: ['KaTeX_Main', 'KaTeX_Math', 'serif'],

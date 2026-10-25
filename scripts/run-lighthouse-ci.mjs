@@ -140,16 +140,51 @@ try {
       );
 
       if (process.env.GITHUB_ACTIONS && (categories.performance ?? 1) < 0.9) {
-        const lcpNode =
-          lhr.audits['largest-contentful-paint-element']?.details?.items?.[0]?.items?.[0]?.node ??
-          lhr.audits['largest-contentful-paint-element']?.details?.items?.[0]?.node;
+        const ms = (key) => Math.round(lhr.audits[key]?.numericValue ?? 0);
+        const lcpElement = lhr.audits['largest-contentful-paint-element']?.details?.items?.[0];
+        const lcpNode = lcpElement?.items?.[0]?.node ?? lcpElement?.node;
         const slowest = [...(lhr.audits['network-requests']?.details?.items ?? [])]
           .sort((a, b) => (b.transferSize ?? 0) - (a.transferSize ?? 0))
-          .slice(0, 5)
+          .slice(0, 4)
           .map((item) => `${item.resourceType ?? 'other'} ${Math.round((item.transferSize ?? 0) / 1024)}KB ${item.url?.split('/').pop() ?? ''}`);
+        const blocking = (lhr.audits['render-blocking-resources']?.details?.items ?? [])
+          .slice(0, 3)
+          .map((item) => `${Math.round(item.wastedMs ?? 0)}ms ${item.url?.split('/').pop() ?? ''}`);
+        const mainThread = (lhr.audits['mainthread-work-breakdown']?.details?.items ?? [])
+          .sort((a, b) => (b.duration ?? 0) - (a.duration ?? 0))
+          .slice(0, 3)
+          .map((item) => `${item.groupLabel ?? item.group} ${Math.round(item.duration ?? 0)}ms`);
         const details = [
-          `LCP ${Math.round(lhr.audits['largest-contentful-paint']?.numericValue ?? 0)} ms`,
-          lcpNode ? `element ${lcpNode.snippet ?? lcpNode.selector ?? ''}` : '',
+          `FCP ${ms('first-contentful-paint')} ms`,
+          `LCP ${ms('largest-contentful-paint')} ms`,
+          `TBT ${ms('total-blocking-time')} ms`,
+          `CLS ${(lhr.audits['cumulative-layout-shift']?.numericValue ?? 0).toFixed(3)}`,
+          lcpNode ? `LCP element ${String(lcpNode.snippet ?? lcpNode.selector ?? '').slice(0, 160)}` : '',
+          (() => {
+            const requests = lhr.audits['network-requests']?.details?.items ?? [];
+            const font = requests.find((item) => /vazirmatn/.test(item.url ?? ''));
+            return font
+              ? `font ${Math.round((font.networkEndTime ?? 0) - (font.networkRequestTime ?? 0))} ms, ends at ${Math.round(font.networkEndTime ?? 0)} ms`
+              : 'font request not found';
+          })(),
+          (() => {
+            const items = lhr.audits['lcp-breakdown-insight']?.details?.items ?? [];
+            const phases = (items[0]?.items ?? []).map((row) => `${row.subpart}=${Math.round(row.duration ?? 0)}`).join(' ');
+            return phases ? `LCP phases ${phases}` : 'LCP phases n/a';
+          })(),
+          (() => {
+            const items = lhr.audits['lcp-breakdown-insight']?.details?.items ?? [];
+            const node = items[1]?.node ?? items[0]?.node;
+            return node ? `LCP element ${String(node.snippet ?? node.selector ?? '').slice(0, 200)}` : 'LCP element n/a';
+          })(),
+          (() => {
+            const timings = (lhr.audits['user-timings']?.details?.items ?? [])
+              .filter((item) => String(item.name ?? '').startsWith('LCPDIAG'))
+              .map((item) => item.name.replace('LCPDIAG ', ''));
+            return timings.length ? `LCP probe ${timings.slice(-2).join(' || ')}` : '';
+          })(),
+          blocking.length ? `render-blocking ${blocking.join(' | ')}` : '',
+          mainThread.length ? `main thread ${mainThread.join(' | ')}` : '',
           slowest.length ? `largest responses ${slowest.join(' | ')}` : '',
         ]
           .filter(Boolean)

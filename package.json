@@ -1,13 +1,13 @@
 {
   "name": "solve-everything",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "private": false,
   "type": "module",
-  "description": "SolveEverything v3 \u2014 offline-first scientific formula solver, unit converter, periodic table and constants reference (Next.js static export)",
+  "description": "SolveEverything v3 — offline-first scientific formula solver, unit converter, periodic table and constants reference (Next.js static export)",
   "scripts": {
-    "predev": "npm run build:workers && npm run build:index",
+    "predev": "npm run build:workers && npm run build:index && npm run build:katex",
     "dev": "next dev --hostname 0.0.0.0",
-    "prebuild": "npm run build:workers && npm run build:index",
+    "prebuild": "npm run build:workers && npm run build:index && npm run build:katex",
     "build": "next build",
     "build:workers": "esbuild workers/compute-worker.ts --bundle --format=iife --platform=browser --target=es2019 --outfile=public/workers/compute-worker.js --minify --log-level=warning",
     "start": "node scripts/serve-static.mjs",
@@ -22,25 +22,23 @@
     "icons": "node scripts/generate-icons.mjs",
     "build:index": "node scripts/build-formula-index.mjs",
     "budget": "node scripts/check-budget.mjs",
-    "test:all": "npm run validate-registry && npm test && npm run build && npm run budget"
+    "test:all": "npm run validate-registry && npm test && npm run build && npm run budget",
+    "build:katex": "node scripts/build-katex-css.mjs"
   },
   "engines": {
     "node": ">=20.9.0"
   },
   "dependencies": {
-    "@fontsource-variable/inter": "^5.2.8",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@fontsource-variable/vazirmatn": "^5.2.8",
     "autoprefixer": "^10.4.21",
     "clsx": "^2.1.1",
     "katex": "^0.16.22",
     "lucide-react": "^0.545.0",
-    "mathjs": "^15.1.0",
     "next": "16.4.3",
     "postcss": "^8.5.6",
     "react": "19.3.1",
     "react-dom": "19.3.1",
-    "sonner": "^2.0.7",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^3.4.17",
     "zustand": "^5.0.8"

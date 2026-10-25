@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Bookmark, BookmarkCheck, ChevronLeft, ChevronRight } from 'lucide-react';
-import { toast } from 'sonner';
+import { toast } from '@/lib/toast';
 import { CategoryIcon } from '@/components/icons';
 import { categoryMeta, formulaName, type FormulaMeta } from '@/lib/formulas';
 import { FormulaDescription } from '@/components/formula-description';
