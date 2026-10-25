@@ -160,6 +160,13 @@ try {
           `TBT ${ms('total-blocking-time')} ms`,
           `CLS ${(lhr.audits['cumulative-layout-shift']?.numericValue ?? 0).toFixed(3)}`,
           lcpNode ? `LCP element ${String(lcpNode.snippet ?? lcpNode.selector ?? '').slice(0, 160)}` : '',
+          (() => {
+            const requests = lhr.audits['network-requests']?.details?.items ?? [];
+            const font = requests.find((item) => /vazirmatn/.test(item.url ?? ''));
+            return font
+              ? `font ${Math.round((font.networkEndTime ?? 0) - (font.networkRequestTime ?? 0))} ms, ends at ${Math.round(font.networkEndTime ?? 0)} ms`
+              : 'font request not found';
+          })(),
           `LCP audit ${JSON.stringify(lhr.audits['largest-contentful-paint-element']?.details ?? null).slice(0, 320)}`,
           blocking.length ? `render-blocking ${blocking.join(' | ')}` : '',
           mainThread.length ? `main thread ${mainThread.join(' | ')}` : '',
