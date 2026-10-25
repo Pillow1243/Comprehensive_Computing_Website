@@ -1,61 +1,241 @@
-import {mkdir,readFile,writeFile} from 'node:fs/promises';
-import {spawn} from 'node:child_process';
+/**
+ * Lighthouse runner that works both locally and in CI without a paid
+ * temporary-public-storage upload.
+ *
+ * It starts the static export server (Brotli/gzip enabled, like GitHub Pages),
+ * audits every configured URL on a mobile profile, evaluates the assertions in
+ * .lighthouserc.json against the **median** of the configured runs, and writes
+ * HTML + JSON reports to artifacts/lighthouse.
+ */
+import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { spawn } from 'node:child_process';
 import path from 'node:path';
-import {fileURLToPath} from 'node:url';
+import { fileURLToPath } from 'node:url';
 import lighthouse from 'lighthouse';
-import {launch} from 'chrome-launcher';
+import { launch } from 'chrome-launcher';
 
-const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const config=JSON.parse(await readFile(path.join(root,'.lighthouserc.json'),'utf8'));
-const collect=config.ci.collect;
-const url=collect.url?.[0];
-if(!url)throw new Error('Lighthouse config must include at least one collect.url.');
-const outDir=path.resolve(root,config.ci.upload?.outputDir||'artifacts/lighthouse');
-await mkdir(outDir,{recursive:true});
+const escapeCommand = (value) =>
+  String(value).replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A');
 
-const server=spawn(process.execPath,['scripts/serve-static.mjs'],{cwd:root,stdio:['ignore','pipe','pipe']});
-let serverLog='';
-const waitForServer=new Promise((resolve,reject)=>{
-  const timer=setTimeout(()=>reject(new Error(`Static preview server did not start. ${serverLog}`)),30_000);
-  server.stdout.on('data',chunk=>{serverLog+=chunk.toString();if(serverLog.includes('Static export at')){clearTimeout(timer);resolve();}});
-  server.stderr.on('data',chunk=>{serverLog+=chunk.toString();});
-  server.once('error',error=>{clearTimeout(timer);reject(error);});
-  server.once('exit',code=>{if(code!==null&&code!==0){clearTimeout(timer);reject(new Error(`Static preview server exited (${code}). ${serverLog}`));}});
+/** GitHub workflow command → visible as a check annotation. */
+const annotate = (level, title, message) => {
+  if (!process.env.GITHUB_ACTIONS) return;
+  process.stdout.write(`::${level} title=${escapeCommand(title)}::${escapeCommand(message)}\n`);
+};
+
+const median = (values) => {
+  const sorted = [...values].filter((value) => typeof value === 'number').sort((a, b) => a - b);
+  if (!sorted.length) return undefined;
+  const middle = Math.floor(sorted.length / 2);
+  return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
+};
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const config = JSON.parse(await readFile(path.join(root, '.lighthouserc.json'), 'utf8'));
+const { collect, assert } = config.ci;
+const urls = collect.url ?? [];
+if (!urls.length) throw new Error('Lighthouse config must include at least one collect.url.');
+const assertions = assert?.assertions ?? {};
+const outDir = path.resolve(root, config.ci.upload?.outputDir ?? 'artifacts/lighthouse');
+await mkdir(outDir, { recursive: true });
+
+const server = spawn(process.execPath, ['scripts/serve-static.mjs'], { cwd: root, stdio: ['ignore', 'pipe', 'pipe'] });
+let serverLog = '';
+const waitForServer = new Promise((resolve, reject) => {
+  const timer = setTimeout(() => reject(new Error(`Static preview server did not start. ${serverLog}`)), 30_000);
+  server.stdout.on('data', (chunk) => {
+    serverLog += chunk.toString();
+    if (serverLog.includes('Static export at')) {
+      clearTimeout(timer);
+      resolve();
+    }
+  });
+  server.stderr.on('data', (chunk) => {
+    serverLog += chunk.toString();
+  });
+  server.once('error', (error) => {
+    clearTimeout(timer);
+    reject(error);
+  });
+  server.once('exit', (code) => {
+    if (code && code !== 0) {
+      clearTimeout(timer);
+      reject(new Error(`Static preview server exited with code ${code}: ${serverLog}`));
+    }
+  });
 });
 
-let chrome;
-try{
-  await waitForServer;
-  const flags=(collect.settings?.chromeFlags||'--no-sandbox --headless=new').split(/\s+/).filter(Boolean);
-  const formFactor=collect.settings?.emulatedFormFactor||'mobile';
-  const runs=Math.max(1,Number(collect.numberOfRuns)||1);
-  for(let i=1;i<=runs;i++){
-    chrome=await launch({chromePath:process.env.CHROME_PATH,chromeFlags:flags});
-    const result=await lighthouse(url,{port:chrome.port,output:['html','json'],logLevel:'error'}, {
-      extends:'lighthouse:default',
-      settings:{emulatedFormFactor:formFactor,onlyCategories:['performance','accessibility','best-practices','seo'],throttlingMethod:'simulate'},
-    });
-    const timestamp=new Date().toISOString().replace(/[:.]/g,'-');
-    const html=Array.isArray(result.report)?result.report[0]:result.report;
-    const json=Array.isArray(result.report)?result.report[1]:JSON.stringify(result.lhr,null,2);
-    await writeFile(path.join(outDir,`run-${i}-${timestamp}.html`),html);
-    await writeFile(path.join(outDir,`run-${i}-${timestamp}.json`),json);
-    const scores=Object.fromEntries(Object.entries(result.lhr.categories).map(([key,value])=>[key,value.score]));
-    console.log(`Lighthouse run ${i}/${runs}:`,Object.fromEntries(Object.entries(scores).map(([key,value])=>[key,`${Math.round(value*100)}%`])));
-    const assertions=config.ci.assert?.assertions||{};
-    for(const [key,rule] of Object.entries(assertions)){
-      if(!key.startsWith('categories:')||!Array.isArray(rule))continue;
-      const category=key.slice('categories:'.length),minimum=rule[1]?.minScore;
-      if(typeof minimum==='number'&&typeof scores[category]==='number'&&scores[category]<minimum){
-        const message=`${category} score ${scores[category].toFixed(2)} is below configured warn threshold ${minimum.toFixed(2)}.`;
-        if(rule[0]==='error')throw new Error(message);
-        console.warn(`WARNING: ${message}`);
-      }
-    }
-    await chrome.kill();chrome=undefined;
+const failures = [];
+const warnings = [];
+const samples = new Map();
+
+const record = (key, rule, { score, numericValue }, label) => {
+  const [level, options = {}] = Array.isArray(rule) ? rule : [rule, {}];
+  if (options.minScore !== undefined && typeof score === 'number' && score < options.minScore) {
+    const message = `${label}: score ${score.toFixed(2)} < ${options.minScore}`;
+    (level === 'error' ? failures : warnings).push(message);
   }
-  console.log(`Lighthouse reports saved in ${path.relative(root,outDir)}/`);
-}finally{
-  if(chrome)await chrome.kill().catch(()=>{});
+  if (options.maxNumericValue !== undefined && typeof numericValue === 'number' && numericValue > options.maxNumericValue) {
+    const message = `${label}: ${Math.round(numericValue)} > ${options.maxNumericValue}`;
+    (level === 'error' ? failures : warnings).push(message);
+  }
+};
+
+let chrome;
+let fatal = null;
+try {
+  await waitForServer;
+  const flags = (collect.settings?.chromeFlags ?? '--no-sandbox --headless=new').split(/\s+/).filter(Boolean);
+  const runs = Math.max(1, Number(collect.numberOfRuns) || 1);
+
+  for (const url of urls) {
+    const slug = new URL(url).pathname.replace(/\//g, '_').replace(/^_|_$/g, '') || 'root';
+    for (let run = 1; run <= runs; run += 1) {
+      chrome = await launch({ chromePath: process.env.CHROME_PATH, chromeFlags: flags });
+      const result = await lighthouse(
+        url,
+        { port: chrome.port, output: ['html', 'json'], logLevel: 'error' },
+        {
+          extends: 'lighthouse:default',
+          settings: {
+            formFactor: 'mobile',
+            screenEmulation: collect.settings?.screenEmulation ?? {
+              mobile: true,
+              width: 412,
+              height: 915,
+              deviceScaleFactor: 1.75,
+            },
+            throttlingMethod: collect.settings?.throttlingMethod ?? 'simulate',
+            throttling: collect.settings?.throttling,
+            onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
+          },
+        },
+      );
+      const lhr = result.lhr;
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+      const reports = Array.isArray(result.report) ? result.report : [result.report];
+      await writeFile(path.join(outDir, `${slug}-run${run}-${timestamp}.html`), reports[0]);
+      await writeFile(path.join(outDir, `${slug}-run${run}-${timestamp}.json`), reports[1] ?? JSON.stringify(lhr, null, 2));
+
+      const categories = Object.fromEntries(
+        Object.entries(lhr.categories).map(([key, value]) => [key, value.score]),
+      );
+      const audits = Object.fromEntries(
+        Object.keys(assertions)
+          .filter((key) => !key.startsWith('categories:'))
+          .map((key) => [key, lhr.audits[key] ?? lhr.audits[key === 'tap-targets' ? 'target-size' : key]]),
+      );
+      samples.set(slug, [
+        ...(samples.get(slug) ?? []),
+        {
+          categories,
+          audits,
+        },
+      ]);
+      console.log(
+        `[${slug}] run ${run}/${runs} ` +
+          Object.entries(categories)
+            .map(([key, value]) => `${key}=${Math.round((value ?? 0) * 100)}`)
+            .join(' '),
+      );
+
+      if (process.env.GITHUB_ACTIONS && (categories.performance ?? 1) < 0.9) {
+        const lcpNode =
+          lhr.audits['largest-contentful-paint-element']?.details?.items?.[0]?.items?.[0]?.node ??
+          lhr.audits['largest-contentful-paint-element']?.details?.items?.[0]?.node;
+        const slowest = [...(lhr.audits['network-requests']?.details?.items ?? [])]
+          .sort((a, b) => (b.transferSize ?? 0) - (a.transferSize ?? 0))
+          .slice(0, 5)
+          .map((item) => `${item.resourceType ?? 'other'} ${Math.round((item.transferSize ?? 0) / 1024)}KB ${item.url?.split('/').pop() ?? ''}`);
+        const details = [
+          `LCP ${Math.round(lhr.audits['largest-contentful-paint']?.numericValue ?? 0)} ms`,
+          lcpNode ? `element ${lcpNode.snippet ?? lcpNode.selector ?? ''}` : '',
+          slowest.length ? `largest responses ${slowest.join(' | ')}` : '',
+        ]
+          .filter(Boolean)
+          .join(' — ');
+        annotate('error', `Lighthouse diagnostics (${slug} run ${run})`, details);
+      }
+
+      await chrome.kill();
+      chrome = undefined;
+    }
+  }
+} catch (error) {
+  fatal = error;
+  console.error(error);
+  annotate('error', 'Lighthouse runner', String(error?.stack ?? error));
+} finally {
+  if (chrome) await chrome.kill().catch(() => {});
   server.kill('SIGTERM');
+}
+
+// Evaluate assertions on the median run so a single noisy audit does not fail CI.
+const summaryRows = [];
+for (const [slug, runs] of samples) {
+  const categories = {};
+  for (const key of ['performance', 'accessibility', 'best-practices', 'seo']) {
+    categories[key] = median(runs.map((run) => run.categories[key]));
+  }
+  summaryRows.push(
+    `| ${slug} | ${runs.length} | ${['performance', 'accessibility', 'best-practices', 'seo']
+      .map((key) => Math.round((categories[key] ?? 0) * 100))
+      .join(' | ')} |`,
+  );
+
+  for (const [key, rule] of Object.entries(assertions)) {
+    if (key.startsWith('categories:')) {
+      const category = key.slice('categories:'.length);
+      record(key, rule, { score: categories[category] }, `${category} (${slug}, median)`);
+      continue;
+    }
+    for (const run of runs) {
+      run.audits[key] ??= undefined;
+    }
+    const auditValues = runs
+      .map((run) => run.audits[key])
+      .filter(Boolean);
+    if (!auditValues.length) continue;
+    record(
+      key,
+      rule,
+      {
+        score: median(auditValues.map((audit) => audit.score)),
+        numericValue: median(auditValues.map((audit) => audit.numericValue)),
+      },
+      `${key} (${slug}, median)`,
+    );
+  }
+}
+
+const summary = [
+  '### Lighthouse (mobile, simulated slow 4G, median of runs)',
+  '',
+  '| Page | Runs | Perf | A11y | Best practices | SEO |',
+  '|---|---:|---:|---:|---:|---:|',
+  ...summaryRows,
+  '',
+  ...(failures.length ? failures.map((failure) => `- ❌ ${failure}`) : []),
+  ...(warnings.length ? warnings.map((warning) => `- ⚠️ ${warning}`) : []),
+  ...(fatal
+    ? ['', `**Runner error:** \`${String(fatal.message ?? fatal)}\``, '```', String(fatal.stack ?? '').slice(0, 2000), '```']
+    : []),
+  '',
+].join('\n');
+console.log(summary);
+if (process.env.GITHUB_STEP_SUMMARY) await appendFile(process.env.GITHUB_STEP_SUMMARY, `${summary}\n`);
+for (const failure of failures.slice(0, 20)) annotate('error', 'Lighthouse budget', failure);
+
+if (fatal) {
+  console.error(`Lighthouse could not run: ${fatal.message ?? fatal}`);
+  process.exitCode = 1;
+}
+for (const warning of warnings) console.warn(`WARNING: ${warning}`);
+if (failures.length) {
+  for (const failure of failures) console.error(`FAIL: ${failure}`);
+  console.error(`Lighthouse budgets violated (${failures.length}). Reports in artifacts/lighthouse/.`);
+  process.exitCode = 1;
+}
+if (!fatal && !failures.length) {
+  console.log(`Lighthouse budgets met. Reports saved in ${path.relative(root, outDir)}/.`);
 }

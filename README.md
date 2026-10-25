@@ -5,7 +5,7 @@
 [![CI](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/ci.yml/badge.svg)](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/ci.yml)
 [![GitHub Pages](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/deploy-pages.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-1.2.0-informational.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.0.0-informational.svg)](CHANGELOG.md)
 [![CodeQL](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/codeql.yml/badge.svg)](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/codeql.yml)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Pillow1243/Comprehensive_Computing_Website/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Pillow1243/Comprehensive_Computing_Website)
 ![PWA](https://img.shields.io/badge/PWA-installable%20%7C%20offline-ready-7c5cff)
@@ -13,7 +13,7 @@
 
 **Solve any equation, step by step.** A Persian/English client-first scientific calculator for mathematics, physics, chemistry, engineering, statistics, and finance—built to work offline and deploy as a static site.
 
-**Live demo:** [Pillow1243.github.io/Comprehensive_Computing_Website](https://Pillow1243.github.io/Comprehensive_Computing_Website/) · **Status:** Phase 1 in progress · **Implemented:** 155 formula solvers, 355 declared formula test cases.
+**Live demo:** [Pillow1243.github.io/Comprehensive_Computing_Website](https://Pillow1243.github.io/Comprehensive_Computing_Website/) · **Status:** v2.0.0 · **Implemented:** 155 formula solvers with 430 declared, automatically verified test cases.
 
 > The GitHub Pages workflow is ready, but the repository owner must select **Settings → Pages → GitHub Actions** and deploy from `main` before the live URL is available. See [Deployment](docs/DEPLOYMENT.md).
 
@@ -67,9 +67,9 @@ backend/                       Optional FastAPI + SymPy API
 packages/formula-registry/
   schema.json                  Registry JSON Schema
   catalog.json                 29 topic sections + implemented formula index
-scripts/                       Catalog sync/validation, static-copy, preview and Lighthouse
-tests/                         Node unit tests and registry/API tests
-e2e/                           Five Playwright user-flow scenarios
+scripts/                       Catalog sync/validation, bundle budget, static preview and Lighthouse
+tests/                         Vitest component/unit suites plus Node registry and API tests
+e2e/                           Playwright flows for desktop and seven Android device profiles
 docs/                          Deployment, API, architecture, accessibility, testing
 .github/workflows/              CI, Pages deploy, CodeQL, OpenSSF Scorecard
 infra/native-apps.md            Capacitor / Tauri setup notes
@@ -79,19 +79,22 @@ db/schema.sql                   PostgreSQL schema for future hosted features
 ## Run checks and build the Pages export
 
 ```bash
-npm run validate-registry
-npm test                      # 377 passing unit/registry/regression/API tests at this revision (+12 backend unittest)
-npm run build                 # Next static export → out/
+npm run validate-registry     # 155 formulas, 430 cases, 29 catalog sections, manifests in sync
+npm run test:unit             # 690 Vitest tests (7 files: registry, engine, validation, utils, components, solver flow, compute client)
+npm test                      # test:unit + 596 Node registry/API/security assertions
+npm run build                 # Next static export → out/ (162 pages)
+npm run budget                # gzip JavaScript budgets: 192.3 KB home / 200, 20.6 KB formula page / 100
+npm run test:all              # validate → all tests → build → budget
 npx playwright install chromium
-npm run test:e2e:ci
-npm run lighthouse:ci
+npm run test:e2e:ci           # 79 flows across desktop + 7 Android profiles
+npm run lighthouse:ci         # budgets in .lighthouserc.json (perf ≥ 0.9, a11y ≥ 0.95)
 ```
 
-`npm run build` uses `output: 'export'`; it does not use deprecated `next export`. Lighthouse results are uploaded by CI when available; the checkout has no measured before/after Lighthouse score yet. See [the performance report](docs/performance-report.md).
+`npm run build` uses `output: 'export'`; it does not use deprecated `next export`. Playwright browsers are not installed in every sandbox, so browser suites run in CI; Lighthouse scores are only quoted from an actual browser run (see [the performance report](docs/performance-report.md)).
 
 ## Formula contributions
 
-Every formula must include its domain, units, bilingual metadata, outputs, useful steps, and at least four independently checkable test cases. After editing, run `npm run sync-registry`, then the validator and suite before submitting. See [CONTRIBUTING.md](CONTRIBUTING.md), the [formula template](docs/FORMULA_TEMPLATE.md), and [the schema](packages/formula-registry/schema.json).
+Every formula must include its domain, units, bilingual metadata, outputs, useful steps, and at least two independently checkable test cases (the generator targets four wherever the domain allows). After editing, run `npm run sync-registry`, then the validator and suite before submitting. See [CONTRIBUTING.md](CONTRIBUTING.md), the [formula template](docs/FORMULA_TEMPLATE.md), and [the schema](packages/formula-registry/schema.json).
 
 ## Deployment
 
@@ -101,7 +104,7 @@ Read [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for GitHub Pages setup, the static
 
 - [Contributing](CONTRIBUTING.md) · [Code of Conduct](CODE_OF_CONDUCT.md) · [Security](SECURITY.md)
 - [Changelog](CHANGELOG.md) · [Roadmap](ROADMAP.md) · [Citation](CITATION.cff)
-- UI wireframe: [docs/WIREFRAME.md](docs/WIREFRAME.md). A checked-in product screenshot will be added after browser capture is available; no synthetic Lighthouse or screenshot claim is made.
+- UI wireframe: [docs/WIREFRAME.md](docs/WIREFRAME.md). The manifest intentionally ships without `screenshots` until a real browser capture exists; no synthetic screenshot or Lighthouse score is claimed.
 
 ## Disclaimer
 

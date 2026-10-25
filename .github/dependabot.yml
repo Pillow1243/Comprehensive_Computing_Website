@@ -25,6 +25,12 @@ updates:
       interval: weekly
       day: monday
     open-pull-requests-limit: 10
+    # Give newly published action releases a week to settle before opening a PR.
+    cooldown:
+      default-days: 7
+    groups:
+      github-actions:
+        patterns: ["*"]
 
   - package-ecosystem: docker
     directory: "/"
