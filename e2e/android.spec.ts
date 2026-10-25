@@ -97,11 +97,16 @@ test('swipe to delete removes a history entry after confirmation', async ({ page
   await page.goto('./history/');
   const row = page.locator('li').first();
   await expect(row).toBeVisible();
+
+  // Drive the swipe through the same pointer events a finger produces. Mouse
+  // synthesis is unreliable here because the row translates under the cursor.
   const box = (await row.boundingBox())!;
-  await page.mouse.move(box.x + box.width - 40, box.y + box.height / 2);
-  await page.mouse.down();
-  await page.mouse.move(box.x + 40, box.y + box.height / 2, { steps: 12 });
-  await page.mouse.up();
+  const startX = box.x + box.width - 30;
+  const y = box.y + box.height / 2;
+  await row.dispatchEvent('pointerdown', { clientX: startX, clientY: y, pointerType: 'touch', isPrimary: true });
+  await row.dispatchEvent('pointermove', { clientX: startX - 60, clientY: y, pointerType: 'touch' });
+  await row.dispatchEvent('pointermove', { clientX: startX - 120, clientY: y, pointerType: 'touch' });
+  await row.dispatchEvent('pointerup', { clientX: startX - 120, clientY: y, pointerType: 'touch' });
 
   const dialog = page.getByRole('alertdialog');
   await expect(dialog).toBeVisible();
