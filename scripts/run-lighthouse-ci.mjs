@@ -167,7 +167,16 @@ try {
               ? `font ${Math.round((font.networkEndTime ?? 0) - (font.networkRequestTime ?? 0))} ms, ends at ${Math.round(font.networkEndTime ?? 0)} ms`
               : 'font request not found';
           })(),
-          `LCP audit ${JSON.stringify(lhr.audits['largest-contentful-paint-element']?.details ?? null).slice(0, 320)}`,
+          (() => {
+            const items = lhr.audits['lcp-breakdown-insight']?.details?.items ?? [];
+            const phases = (items[0]?.items ?? []).map((row) => `${row.subpart}=${Math.round(row.duration ?? 0)}`).join(' ');
+            return phases ? `LCP phases ${phases}` : 'LCP phases n/a';
+          })(),
+          (() => {
+            const items = lhr.audits['lcp-breakdown-insight']?.details?.items ?? [];
+            const node = items[1]?.node ?? items[0]?.node;
+            return node ? `LCP element ${String(node.snippet ?? node.selector ?? '').slice(0, 200)}` : 'LCP element n/a';
+          })(),
           blocking.length ? `render-blocking ${blocking.join(' | ')}` : '',
           mainThread.length ? `main thread ${mainThread.join(' | ')}` : '',
           slowest.length ? `largest responses ${slowest.join(' | ')}` : '',
