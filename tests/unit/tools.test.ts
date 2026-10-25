@@ -171,6 +171,13 @@ describe('constants and tools registry', () => {
 
   it('registers the tools hub routes', () => {
     expect(TOOLS.map((tool) => tool.id)).toEqual([
+      'formula-builder',
+      'simulator',
+      'cas',
+      'pipeline',
+      'graph3d',
+      'check-work',
+      'iran',
       'graph',
       'assistant',
       'matrix',

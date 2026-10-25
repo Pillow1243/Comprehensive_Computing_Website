@@ -11,6 +11,7 @@ import {
   parseDataset,
 } from '@/lib/data-lab';
 import { formatNumber } from '@/lib/utils';
+import { welchTTest, oneSampleTTest, oneWayAnova, chiSquareIndependence, multipleRegression, type TTestResult, type AnovaResult, type ChiSquareResult } from '@/lib/stats-inference';
 
 const SAMPLE_SERIES = '12, 15, 14, 18, 22, 19, 25, 21, 17, 16, 20, 24, 28, 23, 19, 15, 18, 26, 30, 22, 18, 14, 17, 21, 19, 23, 27, 24, 20, 16';
 const SAMPLE_PAIRS = '1, 3\n2, 5\n3, 6\n4, 9\n5, 11\n6, 12\n7, 15\n8, 16\n9, 19\n10, 21';
@@ -19,6 +20,33 @@ export default function StatisticsPage() {
   const { t, lang, numerals } = useI18n();
   const [text, setText] = useState('');
   const [predictX, setPredictX] = useState('12');
+  const fa = lang !== 'en';
+  const [mu0, setMu0] = useState('0');
+  const [groupA, setGroupA] = useState('12, 15, 14, 18, 22, 19');
+  const [groupB, setGroupB] = useState('9, 11, 13, 10, 14, 12');
+  const [anovaText, setAnovaText] = useState('1, 2, 3, 4\n5, 6, 7, 8\n9, 10, 11, 12');
+  const [chiText, setChiText] = useState('10, 20\n20, 10');
+  const [inference, setInference] = useState<{ one?: TTestResult; welch?: TTestResult; anova?: AnovaResult; chi?: ChiSquareResult; multi?: { coefficients: number[]; rSquared: number }; error?: string } | null>(null);
+
+  const parseNumbers = (value: string) => value.split(/[\s,;،]+/).map(Number).filter(Number.isFinite);
+  const runInference = () => {
+    try {
+      const one = dataset.values.length >= 2 ? oneSampleTTest(dataset.values, Number(mu0) || 0) : undefined;
+      const a = parseNumbers(groupA);
+      const b = parseNumbers(groupB);
+      const welch = a.length >= 2 && b.length >= 2 ? welchTTest(a, b) : undefined;
+      const groups = anovaText.split(/\n+/).map(parseNumbers).filter((group) => group.length >= 2);
+      const anova = groups.length >= 2 ? oneWayAnova(groups) : undefined;
+      const table = chiText.split(/\n+/).map((line) => parseNumbers(line)).filter((row) => row.length >= 2);
+      const chi = table.length >= 2 ? chiSquareIndependence(table) : undefined;
+      const multi = dataset.hasPairs && dataset.pairs.length > 3
+        ? (() => { const result = multipleRegression(dataset.pairs.map((pair) => pair.y), [dataset.pairs.map((pair) => pair.x)]); return { coefficients: result.coefficients, rSquared: result.rSquared }; })()
+        : undefined;
+      setInference({ one, welch, anova, chi, multi });
+    } catch (error) {
+      setInference({ error: error instanceof Error ? error.message : String(error) });
+    }
+  };
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [width, setWidth] = useState(320);
 
@@ -188,6 +216,19 @@ export default function StatisticsPage() {
         <div className="flex flex-wrap gap-1.5">
           <Chip onClick={() => setText(SAMPLE_SERIES)}>{t('loadSampleData')} · 1D</Chip>
           <Chip onClick={() => setText(SAMPLE_PAIRS)}>{t('loadSampleData')} · x,y</Chip>
+          <label className="flex min-h-10 cursor-pointer items-center rounded-full border border-outline-variant px-3 text-label-large text-on-surface">
+            {fa ? 'وارد کردن فایل CSV/TXT' : 'Import CSV/TXT file'}
+            <input
+              type="file"
+              accept=".csv,.tsv,.txt,text/csv,text/plain"
+              className="sr-only"
+              onChange={(event) => {
+                const file = event.target.files?.[0];
+                if (!file) return;
+                void file.text().then((content) => setText(content.slice(0, 200_000)));
+              }}
+            />
+          </label>
         </div>
       </section>
 
@@ -249,6 +290,29 @@ export default function StatisticsPage() {
           </section>
         </>
       )}
+
+      <section className="space-y-3 rounded-3xl border border-outline-variant bg-surface-container p-4">
+        <h2 className="text-title-medium font-semibold text-on-surface">{fa ? 'آمار استنباطی' : 'Inferential statistics'}</h2>
+        <p className="text-body-small text-on-surface-variant">{fa ? 'آزمون t تک‌نمونه‌ای روی دادهٔ اصلی، t ولش بین دو گروه، ANOVA یک‌طرفه، کای‌دو و (برای دادهٔ x,y) رگرسیون چندگانه با همان x — همه با p-value دقیق.' : 'One-sample t on the main dataset, Welch t between two groups, one-way ANOVA, chi-square and multiple regression — all with exact p-values.'}</p>
+        <div className="grid gap-2 sm:grid-cols-2">
+          <label className="block"><span className="mb-1 block text-label-medium text-on-surface-variant">{fa ? 'میانگین فرضی μ₀ برای آزمون تک‌نمونه‌ای' : 'Hypothesised mean μ₀'}</span><input value={mu0} onChange={(e) => setMu0(e.target.value)} dir="ltr" inputMode="decimal" className="h-11 w-full rounded-xl border border-outline-variant bg-surface-container-lowest px-3 font-mono text-on-surface outline-none focus:border-primary" /></label>
+          <label className="block"><span className="mb-1 block text-label-medium text-on-surface-variant">{fa ? 'گروه A' : 'Group A'}</span><input value={groupA} onChange={(e) => setGroupA(e.target.value)} dir="ltr" className="h-11 w-full rounded-xl border border-outline-variant bg-surface-container-lowest px-3 font-mono text-on-surface outline-none focus:border-primary" /></label>
+          <label className="block"><span className="mb-1 block text-label-medium text-on-surface-variant">{fa ? 'گروه B' : 'Group B'}</span><input value={groupB} onChange={(e) => setGroupB(e.target.value)} dir="ltr" className="h-11 w-full rounded-xl border border-outline-variant bg-surface-container-lowest px-3 font-mono text-on-surface outline-none focus:border-primary" /></label>
+          <label className="block"><span className="mb-1 block text-label-medium text-on-surface-variant">{fa ? 'گروه‌های ANOVA (هر سطر یک گروه)' : 'ANOVA groups (one group per line)'}</span><textarea value={anovaText} onChange={(e) => setAnovaText(e.target.value)} rows={3} dir="ltr" className="w-full rounded-xl border border-outline-variant bg-surface-container-lowest p-3 font-mono text-on-surface outline-none focus:border-primary" /></label>
+          <label className="block sm:col-span-2"><span className="mb-1 block text-label-medium text-on-surface-variant">{fa ? 'جدول توافقی کای‌دو (هر سطر یک ردیف)' : 'Chi-square contingency table (one row per line)'}</span><textarea value={chiText} onChange={(e) => setChiText(e.target.value)} rows={2} dir="ltr" className="w-full rounded-xl border border-outline-variant bg-surface-container-lowest p-3 font-mono text-on-surface outline-none focus:border-primary" /></label>
+        </div>
+        <button type="button" onClick={runInference} className="min-h-11 rounded-full brand-gradient px-4 font-semibold text-white">{fa ? 'اجرای آزمون‌ها' : 'Run tests'}</button>
+        {inference?.error && <p role="alert" className="rounded-xl bg-error-container/50 p-3 text-body-small text-on-surface">{inference.error}</p>}
+        {inference && !inference.error && (
+          <dl className="grid gap-2 sm:grid-cols-2">
+            {inference.one && <div className="rounded-xl bg-surface-container-high/70 p-3"><dt className="text-label-medium text-on-surface-variant">{fa ? 't تک‌نمونه‌ای' : 'One-sample t'}</dt><dd className="tnum mt-1 font-mono text-body-medium font-semibold text-on-surface" dir="ltr">t={fmt(inference.one.t)} · df={fmt(inference.one.df)} · p={fmt(inference.one.pTwoTailed)}</dd></div>}
+            {inference.welch && <div className="rounded-xl bg-surface-container-high/70 p-3"><dt className="text-label-medium text-on-surface-variant">{fa ? 't ولش دو گروه' : 'Welch two-sample t'}</dt><dd className="tnum mt-1 font-mono text-body-medium font-semibold text-on-surface" dir="ltr">t={fmt(inference.welch.t)} · df={fmt(inference.welch.df)} · p={fmt(inference.welch.pTwoTailed)}</dd></div>}
+            {inference.anova && <div className="rounded-xl bg-surface-container-high/70 p-3"><dt className="text-label-medium text-on-surface-variant">ANOVA</dt><dd className="tnum mt-1 font-mono text-body-medium font-semibold text-on-surface" dir="ltr">F={fmt(inference.anova.f)} · p={fmt(inference.anova.pValue)} · η²={fmt(inference.anova.etaSquared)}</dd></div>}
+            {inference.chi && <div className="rounded-xl bg-surface-container-high/70 p-3"><dt className="text-label-medium text-on-surface-variant">{fa ? 'کای‌دو استقلال' : 'Chi-square independence'}</dt><dd className="tnum mt-1 font-mono text-body-medium font-semibold text-on-surface" dir="ltr">χ²={fmt(inference.chi.chi2)} · df={inference.chi.df} · p={fmt(inference.chi.pValue)}</dd></div>}
+            {inference.multi && <div className="rounded-xl bg-surface-container-high/70 p-3 sm:col-span-2"><dt className="text-label-medium text-on-surface-variant">{fa ? 'رگرسیون (چندگانه) روی جفت‌های x,y' : 'Regression on the x,y pairs'}</dt><dd className="tnum mt-1 font-mono text-body-medium font-semibold text-on-surface" dir="ltr">β = [{inference.multi.coefficients.map(fmt).join(', ')}] · R²={fmt(inference.multi.rSquared)}</dd></div>}
+          </dl>
+        )}
+      </section>
     </div>
   );
 }

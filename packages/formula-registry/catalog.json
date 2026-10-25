@@ -367,9 +367,21 @@
     "erlang_b_blocking",
     "initial_bearing_distance",
     "destination_point",
-    "wind_triangle"
+    "wind_triangle",
+    "age_and_date_difference",
+    "date_add_days",
+    "discount_and_tax_price",
+    "tip_and_split_bill",
+    "weighted_gpa",
+    "pregnancy_due_date",
+    "iran_net_salary_configurable",
+    "mehrieh_indexed_value",
+    "diyah_percent_amount",
+    "linear_programming_2var",
+    "recipe_scaling",
+    "fuel_cost_trip"
   ],
-  "implemented_count": 366,
+  "implemented_count": 378,
   "sections": [
     {
       "id": "sec_01",
@@ -392,7 +404,7 @@
         "درصد",
         "لگاریتم"
       ],
-      "implemented_formula_count": 29,
+      "implemented_formula_count": 32,
       "implemented_formula_ids": [
         "gcd_lcm",
         "prime_factor",
@@ -422,7 +434,10 @@
         "percent_application",
         "set_operations",
         "scientific_notation",
-        "inverse_proportion"
+        "inverse_proportion",
+        "age_and_date_difference",
+        "date_add_days",
+        "recipe_scaling"
       ]
     },
     {
@@ -584,7 +599,7 @@
         "مارکوف",
         "ترکیبیات"
       ],
-      "implemented_formula_count": 25,
+      "implemented_formula_count": 26,
       "implemented_formula_ids": [
         "descriptive_stats",
         "normal_dist",
@@ -610,7 +625,8 @@
         "odds_probability",
         "moving_average",
         "median_absolute_deviation",
-        "harmonic_mean"
+        "harmonic_mean",
+        "weighted_gpa"
       ]
     },
     {
@@ -648,11 +664,12 @@
         "TSP",
         "PSO/ژنتیک"
       ],
-      "implemented_formula_count": 3,
+      "implemented_formula_count": 4,
       "implemented_formula_ids": [
         "economic_order_quantity",
         "gradient_descent_quadratic",
-        "fractional_knapsack"
+        "fractional_knapsack",
+        "linear_programming_2var"
       ]
     },
     {
@@ -872,7 +889,7 @@
         "هاردی-واینبرگ",
         "فارماکوکینتیک"
       ],
-      "implemented_formula_count": 21,
+      "implemented_formula_count": 22,
       "implemented_formula_ids": [
         "bmi",
         "logistic_growth",
@@ -894,7 +911,8 @@
         "serum_osmolality",
         "coriolis_parameter",
         "lapse_rate_atmosphere",
-        "moment_magnitude"
+        "moment_magnitude",
+        "pregnancy_due_date"
       ]
     },
     {
@@ -1012,7 +1030,7 @@
         "GARCH",
         "درخت دوجمله‌ای"
       ],
-      "implemented_formula_count": 21,
+      "implemented_formula_count": 27,
       "implemented_formula_ids": [
         "compound_interest",
         "loan_payment",
@@ -1034,7 +1052,13 @@
         "savings_goal_time",
         "bond_price",
         "fisher_real_return",
-        "rule_of_72"
+        "rule_of_72",
+        "discount_and_tax_price",
+        "tip_and_split_bill",
+        "iran_net_salary_configurable",
+        "mehrieh_indexed_value",
+        "diyah_percent_amount",
+        "fuel_cost_trip"
       ]
     },
     {
@@ -42428,6 +42452,1523 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "difficulty": "advanced",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "age_and_date_difference",
+      "name_fa": "سن دقیق و اختلاف دو تاریخ (میلادی)",
+      "name_en": "Exact Age & Date Difference (Gregorian)",
+      "category_path": [
+        "ریاضیات",
+        "حساب و نظریه اعداد"
+      ],
+      "tags": [
+        "سن",
+        "تاریخ",
+        "age",
+        "date"
+      ],
+      "description_fa": "سن دقیق (سال/ماه/روز) و اختلاف کامل دو تاریخ میلادی.",
+      "variables": [
+        {
+          "name": "birth_year",
+          "label_fa": "سال تولد",
+          "label_en": "Birth year",
+          "type": "number",
+          "unit": null,
+          "default": 2000,
+          "required": true,
+          "min": 1,
+          "max": 9999
+        },
+        {
+          "name": "birth_month",
+          "label_fa": "ماه تولد",
+          "label_en": "Birth month",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 1,
+          "max": 12
+        },
+        {
+          "name": "birth_day",
+          "label_fa": "روز تولد",
+          "label_en": "Birth day",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 1,
+          "max": 31
+        },
+        {
+          "name": "ref_year",
+          "label_fa": "سال تاریخ مرجع",
+          "label_en": "Reference year",
+          "type": "number",
+          "unit": null,
+          "default": 2025,
+          "required": true,
+          "min": 1,
+          "max": 9999
+        },
+        {
+          "name": "ref_month",
+          "label_fa": "ماه مرجع",
+          "label_en": "Reference month",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 1,
+          "max": 12
+        },
+        {
+          "name": "ref_day",
+          "label_fa": "روز مرجع",
+          "label_en": "Reference day",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 1,
+          "max": 31
+        }
+      ],
+      "outputs": [
+        {
+          "name": "years",
+          "label_fa": "سال",
+          "label_en": "Years",
+          "unit": null
+        },
+        {
+          "name": "months",
+          "label_fa": "ماه",
+          "label_en": "Months",
+          "unit": null
+        },
+        {
+          "name": "days",
+          "label_fa": "روز",
+          "label_en": "Days",
+          "unit": null
+        },
+        {
+          "name": "total_days",
+          "label_fa": "مجموع روزها",
+          "label_en": "Total Days",
+          "unit": null
+        },
+        {
+          "name": "weekday_birth",
+          "label_fa": "روز هفته تولد",
+          "label_en": "Birth Weekday",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\Delta d = \\mathrm{days}(date_2)-\\mathrm{days}(date_1)",
+      "compute_js": "module:apps/web/phase9-formulas.js#age_and_date_difference",
+      "steps_generator": "module:apps/web/phase9-formulas.js#age_and_date_difference",
+      "plot_spec": null,
+      "examples": [
+        {
+          "birth_year": 2000,
+          "birth_month": 1,
+          "birth_day": 1,
+          "ref_year": 2025,
+          "ref_month": 1,
+          "ref_day": 1
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "birth_year": 2000,
+            "birth_month": 1,
+            "birth_day": 1,
+            "ref_year": 2025,
+            "ref_month": 1,
+            "ref_day": 1
+          },
+          "expected": {
+            "years": 25,
+            "months": 0,
+            "days": 0,
+            "total_days": 9131
+          }
+        },
+        {
+          "input": {
+            "birth_year": 1990,
+            "birth_month": 6,
+            "birth_day": 15,
+            "ref_year": 2024,
+            "ref_month": 3,
+            "ref_day": 20
+          },
+          "expected": {
+            "years": 33,
+            "months": 9,
+            "days": 5,
+            "total_days": 12332
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "date_add_days",
+      "name_fa": "افزودن روز به تاریخ",
+      "name_en": "Add Days to a Date",
+      "category_path": [
+        "ریاضیات",
+        "حساب و نظریه اعداد"
+      ],
+      "tags": [
+        "تاریخ",
+        "مهلت",
+        "date add",
+        "deadline"
+      ],
+      "description_fa": "تاریخِ چند روز بعد یا قبل از یک تاریخ میلادی (عدد منفی یعنی گذشته).",
+      "variables": [
+        {
+          "name": "year",
+          "label_fa": "سال",
+          "label_en": "Year",
+          "type": "number",
+          "unit": null,
+          "default": 2025,
+          "required": true,
+          "min": 1,
+          "max": 9999
+        },
+        {
+          "name": "month",
+          "label_fa": "ماه",
+          "label_en": "Month",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 1,
+          "max": 12
+        },
+        {
+          "name": "day",
+          "label_fa": "روز",
+          "label_en": "Day",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 1,
+          "max": 31
+        },
+        {
+          "name": "delta_days",
+          "label_fa": "روزهای افزوده (می‌تواند منفی باشد)",
+          "label_en": "Days to add",
+          "type": "number",
+          "unit": null,
+          "default": 90,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "result_date",
+          "label_fa": "تاریخ نتیجه",
+          "label_en": "Result Date",
+          "unit": null
+        },
+        {
+          "name": "weekday",
+          "label_fa": "روز هفته",
+          "label_en": "Weekday",
+          "unit": null
+        }
+      ],
+      "formula_latex": "date_{new}=date+\\Delta days",
+      "compute_js": "module:apps/web/phase9-formulas.js#date_add_days",
+      "steps_generator": "module:apps/web/phase9-formulas.js#date_add_days",
+      "plot_spec": null,
+      "examples": [
+        {
+          "year": 2024,
+          "month": 2,
+          "day": 28,
+          "delta_days": 1
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "year": 2024,
+            "month": 2,
+            "day": 28,
+            "delta_days": 1
+          },
+          "expected": {
+            "result_date": "2024-02-29"
+          }
+        },
+        {
+          "input": {
+            "year": 2025,
+            "month": 1,
+            "day": 1,
+            "delta_days": -1
+          },
+          "expected": {
+            "result_date": "2024-12-31"
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "discount_and_tax_price",
+      "name_fa": "قیمت پس از تخفیف و مالیات",
+      "name_en": "Price After Discount & Tax",
+      "category_path": [
+        "مالی و اقتصاد",
+        "بهره و وام"
+      ],
+      "tags": [
+        "تخفیف",
+        "مالیات",
+        "قیمت",
+        "discount",
+        "tax"
+      ],
+      "description_fa": "قیمت نهایی پس از درصد تخفیف و سپس افزودن درصد مالیات/ارزش افزوده.",
+      "variables": [
+        {
+          "name": "price",
+          "label_fa": "قیمت اولیه",
+          "label_en": "Original price",
+          "type": "number",
+          "unit": null,
+          "default": 1000000,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "discount_percent",
+          "label_fa": "درصد تخفیف",
+          "label_en": "Discount %",
+          "type": "number",
+          "unit": "%",
+          "default": 20,
+          "required": true,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "name": "tax_percent",
+          "label_fa": "درصد مالیات",
+          "label_en": "Tax %",
+          "type": "number",
+          "unit": "%",
+          "default": 10,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "after_discount",
+          "label_fa": "پس از تخفیف",
+          "label_en": "After Discount",
+          "unit": null
+        },
+        {
+          "name": "final_price",
+          "label_fa": "قیمت نهایی",
+          "label_en": "Final Price",
+          "unit": null
+        },
+        {
+          "name": "you_save",
+          "label_fa": "مبلغ صرفه‌جویی نسبت به قیمت اولیه (بدون مالیات)",
+          "label_en": "You Save",
+          "unit": null
+        }
+      ],
+      "formula_latex": "P_f=P(1-d)(1+t)",
+      "compute_js": "module:apps/web/phase9-formulas.js#discount_and_tax_price",
+      "steps_generator": "module:apps/web/phase9-formulas.js#discount_and_tax_price",
+      "plot_spec": null,
+      "examples": [
+        {
+          "price": 100,
+          "discount_percent": 20,
+          "tax_percent": 10
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "price": 100,
+            "discount_percent": 20,
+            "tax_percent": 10
+          },
+          "expected": {
+            "after_discount": 80,
+            "final_price": 88
+          }
+        },
+        {
+          "input": {
+            "price": 250,
+            "discount_percent": 0,
+            "tax_percent": 9
+          },
+          "expected": {
+            "final_price": 272.5
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "tip_and_split_bill",
+      "name_fa": "انعام و تقسیم صورت‌حساب",
+      "name_en": "Tip & Bill Splitting",
+      "category_path": [
+        "مالی و اقتصاد",
+        "بهره و وام"
+      ],
+      "tags": [
+        "انعام",
+        "تقسیم",
+        "رستوران",
+        "tip",
+        "split"
+      ],
+      "description_fa": "مبلغ انعام، مجموع قابل پرداخت و سهم هر نفر.",
+      "variables": [
+        {
+          "name": "bill",
+          "label_fa": "مبلغ صورت‌حساب",
+          "label_en": "Bill amount",
+          "type": "number",
+          "unit": null,
+          "default": 850000,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "tip_percent",
+          "label_fa": "درصد انعام",
+          "label_en": "Tip %",
+          "type": "number",
+          "unit": "%",
+          "default": 10,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "people",
+          "label_fa": "تعداد نفرات",
+          "label_en": "People",
+          "type": "number",
+          "unit": null,
+          "default": 4,
+          "required": true,
+          "min": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "tip_amount",
+          "label_fa": "مبلغ انعام",
+          "label_en": "Tip Amount",
+          "unit": null
+        },
+        {
+          "name": "total",
+          "label_fa": "مجموع",
+          "label_en": "Total",
+          "unit": null
+        },
+        {
+          "name": "per_person",
+          "label_fa": "سهم هر نفر",
+          "label_en": "Per Person",
+          "unit": null
+        }
+      ],
+      "formula_latex": "share=\\frac{bill(1+tip)}{n}",
+      "compute_js": "module:apps/web/phase9-formulas.js#tip_and_split_bill",
+      "steps_generator": "module:apps/web/phase9-formulas.js#tip_and_split_bill",
+      "plot_spec": null,
+      "examples": [
+        {
+          "bill": 100,
+          "tip_percent": 10,
+          "people": 4
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "bill": 100,
+            "tip_percent": 10,
+            "people": 4
+          },
+          "expected": {
+            "tip_amount": 10,
+            "total": 110,
+            "per_person": 27.5
+          }
+        },
+        {
+          "input": {
+            "bill": 90,
+            "tip_percent": 0,
+            "people": 3
+          },
+          "expected": {
+            "per_person": 30
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "weighted_gpa",
+      "name_fa": "معدل وزنی (GPA)",
+      "name_en": "Weighted GPA / Average",
+      "category_path": [
+        "ریاضیات",
+        "آمار و احتمال"
+      ],
+      "tags": [
+        "معدل",
+        "GPA",
+        "نمره",
+        "دانشگاه"
+      ],
+      "description_fa": "معدل وزنی از فهرست نمره‌ها و واحدها (مثلاً نمره‌ها: 18,19,14 و واحدها: 3,2,3).",
+      "variables": [
+        {
+          "name": "grades",
+          "label_fa": "فهرست نمره‌ها",
+          "label_en": "Grades list",
+          "type": "text",
+          "unit": null,
+          "default": "18, 19, 14, 20",
+          "required": true
+        },
+        {
+          "name": "credits",
+          "label_fa": "فهرست واحدها",
+          "label_en": "Credits list",
+          "type": "text",
+          "unit": null,
+          "default": "3, 2, 3, 1",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "weighted_gpa",
+          "label_fa": "معدل وزنی",
+          "label_en": "Weighted Gpa",
+          "unit": null
+        },
+        {
+          "name": "total_credits",
+          "label_fa": "مجموع واحدها",
+          "label_en": "Total Credits",
+          "unit": null
+        },
+        {
+          "name": "simple_mean",
+          "label_fa": "میانگین ساده نمره‌ها",
+          "label_en": "Simple Mean",
+          "unit": null
+        }
+      ],
+      "formula_latex": "GPA=\\frac{\\sum g_i c_i}{\\sum c_i}",
+      "compute_js": "module:apps/web/phase9-formulas.js#weighted_gpa",
+      "steps_generator": "module:apps/web/phase9-formulas.js#weighted_gpa",
+      "plot_spec": null,
+      "examples": [
+        {
+          "grades": "20, 10",
+          "credits": "3, 1"
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "grades": "20, 10",
+            "credits": "3, 1"
+          },
+          "expected": {
+            "weighted_gpa": 17.5,
+            "total_credits": 4
+          }
+        },
+        {
+          "input": {
+            "grades": "18, 19, 14, 20",
+            "credits": "3, 2, 3, 1"
+          },
+          "expected": {
+            "weighted_gpa": 17.111111
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "pregnancy_due_date",
+      "name_fa": "تاریخ تقریبی زایمان و سن بارداری",
+      "name_en": "Pregnancy Due Date & Gestational Age",
+      "category_path": [
+        "زیست و سلامت",
+        "سلامت"
+      ],
+      "tags": [
+        "بارداری",
+        "زایمان",
+        "due date",
+        "pregnancy"
+      ],
+      "description_fa": "قاعدهٔ نگل: ۲۸۰ روز پس از اولین روز آخرین قاعدگی (LMP)؛ فقط برآورد آموزشی است، نه جایگزین پزشک.",
+      "variables": [
+        {
+          "name": "lmp_year",
+          "label_fa": "سال LMP",
+          "label_en": "LMP year",
+          "type": "number",
+          "unit": null,
+          "default": 2025,
+          "required": true,
+          "min": 1900,
+          "max": 2200
+        },
+        {
+          "name": "lmp_month",
+          "label_fa": "ماه LMP",
+          "label_en": "LMP month",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 1,
+          "max": 12
+        },
+        {
+          "name": "lmp_day",
+          "label_fa": "روز LMP",
+          "label_en": "LMP day",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 1,
+          "max": 31
+        },
+        {
+          "name": "ref_year",
+          "label_fa": "سال امروز/مرجع",
+          "label_en": "Reference year",
+          "type": "number",
+          "unit": null,
+          "default": 2025,
+          "required": true,
+          "min": 1900,
+          "max": 2200
+        },
+        {
+          "name": "ref_month",
+          "label_fa": "ماه مرجع",
+          "label_en": "Reference month",
+          "type": "number",
+          "unit": null,
+          "default": 4,
+          "required": true,
+          "min": 1,
+          "max": 12
+        },
+        {
+          "name": "ref_day",
+          "label_fa": "روز مرجع",
+          "label_en": "Reference day",
+          "type": "number",
+          "unit": null,
+          "default": 9,
+          "required": true,
+          "min": 1,
+          "max": 31
+        }
+      ],
+      "outputs": [
+        {
+          "name": "due_date",
+          "label_fa": "تاریخ تقریبی زایمان",
+          "label_en": "Due Date",
+          "unit": null
+        },
+        {
+          "name": "gestational_weeks",
+          "label_fa": "سن بارداری (هفته)",
+          "label_en": "Gestational Weeks",
+          "unit": null
+        },
+        {
+          "name": "gestational_days_extra",
+          "label_fa": "روز اضافهٔ سن بارداری",
+          "label_en": "Extra Days",
+          "unit": null
+        },
+        {
+          "name": "days_until_due",
+          "label_fa": "روز تا زایمان (در تاریخ مرجع)",
+          "label_en": "Days Until Due",
+          "unit": null
+        }
+      ],
+      "formula_latex": "EDD=LMP+280\\ days",
+      "compute_js": "module:apps/web/phase9-formulas.js#pregnancy_due_date",
+      "steps_generator": "module:apps/web/phase9-formulas.js#pregnancy_due_date",
+      "plot_spec": null,
+      "examples": [
+        {
+          "lmp_year": 2025,
+          "lmp_month": 1,
+          "lmp_day": 1,
+          "ref_year": 2025,
+          "ref_month": 4,
+          "ref_day": 9
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "lmp_year": 2025,
+            "lmp_month": 1,
+            "lmp_day": 1,
+            "ref_year": 2025,
+            "ref_month": 4,
+            "ref_day": 9
+          },
+          "expected": {
+            "due_date": "2025-10-08",
+            "gestational_weeks": 14,
+            "gestational_days_extra": 0
+          }
+        },
+        {
+          "input": {
+            "lmp_year": 2024,
+            "lmp_month": 6,
+            "lmp_day": 1,
+            "ref_year": 2024,
+            "ref_month": 6,
+            "ref_day": 29
+          },
+          "expected": {
+            "due_date": "2025-03-08",
+            "gestational_weeks": 4
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "iran_net_salary_configurable",
+      "name_fa": "حقوق خالص با نرخ‌های قابل تنظیم (دستمزد ایران)",
+      "name_en": "Net Salary — Configurable Rates (Iran Payroll)",
+      "category_path": [
+        "مالی و اقتصاد",
+        "بهره و وام"
+      ],
+      "tags": [
+        "حقوق",
+        "دستمزد",
+        "مالیات",
+        "بیمه",
+        "ایران",
+        "salary"
+      ],
+      "description_fa": "حقوق ناخالص به خالص با نرخ بیمه و مالیات و سقف معافیتِ قابل ویرایش توسط کاربر؛ نرخ‌های قانونی سالانه تغییر می‌کنند و اینجا پیش‌فرضِ قابل تغییرند، نه قانون قطعی.",
+      "variables": [
+        {
+          "name": "gross",
+          "label_fa": "حقوق ناخالص ماهانه",
+          "label_en": "Gross monthly salary",
+          "type": "number",
+          "unit": null,
+          "default": 200000000,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "insurance_percent",
+          "label_fa": "درصد بیمه سهم کارمند",
+          "label_en": "Employee insurance %",
+          "type": "number",
+          "unit": "%",
+          "default": 7,
+          "required": true,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "name": "tax_percent",
+          "label_fa": "درصد مالیات مؤثر",
+          "label_en": "Effective tax %",
+          "type": "number",
+          "unit": "%",
+          "default": 10,
+          "required": true,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "name": "tax_exempt",
+          "label_fa": "معافیت مالیاتی ماهانه",
+          "label_en": "Monthly tax exemption",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "other_deductions",
+          "label_fa": "سایر کسورات",
+          "label_en": "Other deductions",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "insurance_amount",
+          "label_fa": "مبلغ بیمه",
+          "label_en": "Insurance Amount",
+          "unit": null
+        },
+        {
+          "name": "income_tax",
+          "label_fa": "مالیات",
+          "label_en": "Income Tax",
+          "unit": null
+        },
+        {
+          "name": "net_salary",
+          "label_fa": "حقوق خالص",
+          "label_en": "Net Salary",
+          "unit": null
+        }
+      ],
+      "formula_latex": "Net=G-I-T-D",
+      "compute_js": "module:apps/web/phase9-formulas.js#iran_net_salary_configurable",
+      "steps_generator": "module:apps/web/phase9-formulas.js#iran_net_salary_configurable",
+      "plot_spec": null,
+      "examples": [
+        {
+          "gross": 1000,
+          "insurance_percent": 7,
+          "tax_percent": 10,
+          "tax_exempt": 0,
+          "other_deductions": 0
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "gross": 1000,
+            "insurance_percent": 7,
+            "tax_percent": 10,
+            "tax_exempt": 0,
+            "other_deductions": 0
+          },
+          "expected": {
+            "insurance_amount": 70,
+            "income_tax": 100,
+            "net_salary": 830
+          }
+        },
+        {
+          "input": {
+            "gross": 1000,
+            "insurance_percent": 7,
+            "tax_percent": 10,
+            "tax_exempt": 400,
+            "other_deductions": 0
+          },
+          "expected": {
+            "income_tax": 60,
+            "net_salary": 870
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "mehrieh_indexed_value",
+      "name_fa": "مهریه به نرخ روز (شاخص)",
+      "name_en": "Indexed Mehrieh (Dowry) Value",
+      "category_path": [
+        "مالی و اقتصاد",
+        "بهره و وام"
+      ],
+      "tags": [
+        "مهریه",
+        "شاخص",
+        "ایران",
+        "mehrieh"
+      ],
+      "description_fa": "مبلغ به‌روزشده = اصل مبلغ × (شاخص سال پرداخت ÷ شاخص سال عقد). هر دو شاخص ورودی کاربرند و باید از جدول رسمی گرفته شوند.",
+      "variables": [
+        {
+          "name": "principal",
+          "label_fa": "اصل مبلغ مهریه",
+          "label_en": "Principal amount",
+          "type": "number",
+          "unit": null,
+          "default": 100000000,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "index_marriage",
+          "label_fa": "شاخص سال عقد",
+          "label_en": "Index at marriage",
+          "type": "number",
+          "unit": null,
+          "default": 50,
+          "required": true,
+          "min": 0.000001
+        },
+        {
+          "name": "index_payment",
+          "label_fa": "شاخص سال پرداخت",
+          "label_en": "Index at payment",
+          "type": "number",
+          "unit": null,
+          "default": 200,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "updated_value",
+          "label_fa": "مبلغ به نرخ روز",
+          "label_en": "Updated Value",
+          "unit": null
+        },
+        {
+          "name": "multiplier",
+          "label_fa": "ضریب افزایش",
+          "label_en": "Multiplier",
+          "unit": null
+        }
+      ],
+      "formula_latex": "V=P\\times\\frac{I_{pay}}{I_{marriage}}",
+      "compute_js": "module:apps/web/phase9-formulas.js#mehrieh_indexed_value",
+      "steps_generator": "module:apps/web/phase9-formulas.js#mehrieh_indexed_value",
+      "plot_spec": null,
+      "examples": [
+        {
+          "principal": 100,
+          "index_marriage": 50,
+          "index_payment": 200
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "principal": 100,
+            "index_marriage": 50,
+            "index_payment": 200
+          },
+          "expected": {
+            "updated_value": 400,
+            "multiplier": 4
+          }
+        },
+        {
+          "input": {
+            "principal": 110,
+            "index_marriage": 100,
+            "index_payment": 100
+          },
+          "expected": {
+            "updated_value": 110
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "diyah_percent_amount",
+      "name_fa": "درصد از مبلغ کامل (دیه و مشابه)",
+      "name_en": "Percentage of a Full Amount (Diyah-style)",
+      "category_path": [
+        "مالی و اقتصاد",
+        "بهره و وام"
+      ],
+      "tags": [
+        "دیه",
+        "درصد",
+        "غرامت",
+        "ایران"
+      ],
+      "description_fa": "محاسبهٔ یک درصد مشخص از مبلغ کامل اعلام‌شدهٔ یک سال؛ مبلغ کامل ورودی کاربر است چون سالانه رسماً اعلام می‌شود.",
+      "variables": [
+        {
+          "name": "full_amount",
+          "label_fa": "مبلغ کامل (ورودی کاربر)",
+          "label_en": "Full amount (user input)",
+          "type": "number",
+          "unit": null,
+          "default": 1000000000,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "percent",
+          "label_fa": "درصد مورد نظر",
+          "label_en": "Percent",
+          "type": "number",
+          "unit": "%",
+          "default": 1,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "amount",
+          "label_fa": "مبلغ این درصد",
+          "label_en": "Amount",
+          "unit": null
+        },
+        {
+          "name": "one_percent",
+          "label_fa": "مبلغ یک درصد",
+          "label_en": "One Percent",
+          "unit": null
+        }
+      ],
+      "formula_latex": "A=F\\times\\frac{p}{100}",
+      "compute_js": "module:apps/web/phase9-formulas.js#diyah_percent_amount",
+      "steps_generator": "module:apps/web/phase9-formulas.js#diyah_percent_amount",
+      "plot_spec": null,
+      "examples": [
+        {
+          "full_amount": 1000,
+          "percent": 1
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "full_amount": 1000,
+            "percent": 1
+          },
+          "expected": {
+            "amount": 10,
+            "one_percent": 10
+          }
+        },
+        {
+          "input": {
+            "full_amount": 2000,
+            "percent": 2.5
+          },
+          "expected": {
+            "amount": 50
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "linear_programming_2var",
+      "name_fa": "برنامه‌ریزی خطی دو متغیره (بیشینه‌سازی)",
+      "name_en": "Linear Programming — Maximise (2 Variables)",
+      "category_path": [
+        "ریاضیات",
+        "بهینه‌سازی"
+      ],
+      "tags": [
+        "برنامه‌ریزی خطی",
+        "LP",
+        "بهینه‌سازی",
+        "simplex"
+      ],
+      "description_fa": "بیشینه‌کردن c₁x+c₂y با سه قید خطی aᵢx+bᵢy≤rᵢ و x,y≥۰؛ جواب بهینه در یک رأس ناحیهٔ مجاز است.",
+      "variables": [
+        {
+          "name": "c1",
+          "label_fa": "ضریب x در تابع هدف c₁",
+          "label_en": "Objective c1",
+          "type": "number",
+          "unit": null,
+          "default": 3,
+          "required": true
+        },
+        {
+          "name": "c2",
+          "label_fa": "ضریب y در تابع هدف c₂",
+          "label_en": "Objective c2",
+          "type": "number",
+          "unit": null,
+          "default": 5,
+          "required": true
+        },
+        {
+          "name": "a1",
+          "label_fa": "قید ۱: a₁",
+          "label_en": "Constraint 1 a",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "b1",
+          "label_fa": "قید ۱: b₁",
+          "label_en": "Constraint 1 b",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "r1",
+          "label_fa": "قید ۱: سمت راست r₁",
+          "label_en": "Constraint 1 rhs",
+          "type": "number",
+          "unit": null,
+          "default": 4,
+          "required": true
+        },
+        {
+          "name": "a2",
+          "label_fa": "قید ۲: a₂",
+          "label_en": "Constraint 2 a",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "b2",
+          "label_fa": "قید ۲: b₂",
+          "label_en": "Constraint 2 b",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true
+        },
+        {
+          "name": "r2",
+          "label_fa": "قید ۲: سمت راست r₂",
+          "label_en": "Constraint 2 rhs",
+          "type": "number",
+          "unit": null,
+          "default": 12,
+          "required": true
+        },
+        {
+          "name": "a3",
+          "label_fa": "قید ۳: a₃",
+          "label_en": "Constraint 3 a",
+          "type": "number",
+          "unit": null,
+          "default": 3,
+          "required": true
+        },
+        {
+          "name": "b3",
+          "label_fa": "قید ۳: b₃",
+          "label_en": "Constraint 3 b",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true
+        },
+        {
+          "name": "r3",
+          "label_fa": "قید ۳: سمت راست r₃",
+          "label_en": "Constraint 3 rhs",
+          "type": "number",
+          "unit": null,
+          "default": 18,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "x_opt",
+          "label_fa": "x بهینه",
+          "label_en": "Optimal X",
+          "unit": null
+        },
+        {
+          "name": "y_opt",
+          "label_fa": "y بهینه",
+          "label_en": "Optimal Y",
+          "unit": null
+        },
+        {
+          "name": "objective_value",
+          "label_fa": "مقدار بهینه تابع هدف",
+          "label_en": "Objective Value",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\max\\ c_1x+c_2y\\quad s.t.\\ Ax\\le r,\\ x,y\\ge0",
+      "compute_js": "module:apps/web/phase9-formulas.js#linear_programming_2var",
+      "steps_generator": "module:apps/web/phase9-formulas.js#linear_programming_2var",
+      "plot_spec": null,
+      "examples": [
+        {
+          "c1": 3,
+          "c2": 5,
+          "a1": 1,
+          "b1": 0,
+          "r1": 4,
+          "a2": 0,
+          "b2": 2,
+          "r2": 12,
+          "a3": 3,
+          "b3": 2,
+          "r3": 18
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "c1": 3,
+            "c2": 5,
+            "a1": 1,
+            "b1": 0,
+            "r1": 4,
+            "a2": 0,
+            "b2": 2,
+            "r2": 12,
+            "a3": 3,
+            "b3": 2,
+            "r3": 18
+          },
+          "expected": {
+            "x_opt": 2,
+            "y_opt": 6,
+            "objective_value": 36
+          }
+        },
+        {
+          "input": {
+            "c1": 1,
+            "c2": 1,
+            "a1": 1,
+            "b1": 1,
+            "r1": 4,
+            "a2": 1,
+            "b2": 0,
+            "r2": 10,
+            "a3": 0,
+            "b3": 1,
+            "r3": 10
+          },
+          "expected": {
+            "objective_value": 4
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "advanced",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "recipe_scaling",
+      "name_fa": "مقیاس‌کردن دستور آشپزی",
+      "name_en": "Recipe Scaling",
+      "category_path": [
+        "ریاضیات",
+        "حساب و نظریه اعداد"
+      ],
+      "tags": [
+        "آشپزی",
+        "مقیاس",
+        "recipe",
+        "cooking"
+      ],
+      "description_fa": "مقدار یک ماده وقتی تعداد نفرات دستور عوض می‌شود.",
+      "variables": [
+        {
+          "name": "amount",
+          "label_fa": "مقدار ماده در دستور اصلی",
+          "label_en": "Ingredient amount in original",
+          "type": "number",
+          "unit": null,
+          "default": 200,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "original_servings",
+          "label_fa": "نفرات دستور اصلی",
+          "label_en": "Original servings",
+          "type": "number",
+          "unit": null,
+          "default": 4,
+          "required": true,
+          "min": 0.000001
+        },
+        {
+          "name": "desired_servings",
+          "label_fa": "نفرات مورد نظر",
+          "label_en": "Desired servings",
+          "type": "number",
+          "unit": null,
+          "default": 6,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "scaled_amount",
+          "label_fa": "مقدار جدید ماده",
+          "label_en": "Scaled Amount",
+          "unit": null
+        },
+        {
+          "name": "scale_factor",
+          "label_fa": "ضریب مقیاس",
+          "label_en": "Scale Factor",
+          "unit": null
+        }
+      ],
+      "formula_latex": "amount_{new}=amount\\times\\frac{servings_{new}}{servings_{orig}}",
+      "compute_js": "module:apps/web/phase9-formulas.js#recipe_scaling",
+      "steps_generator": "module:apps/web/phase9-formulas.js#recipe_scaling",
+      "plot_spec": null,
+      "examples": [
+        {
+          "amount": 200,
+          "original_servings": 4,
+          "desired_servings": 6
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "amount": 200,
+            "original_servings": 4,
+            "desired_servings": 6
+          },
+          "expected": {
+            "scaled_amount": 300,
+            "scale_factor": 1.5
+          }
+        },
+        {
+          "input": {
+            "amount": 100,
+            "original_servings": 2,
+            "desired_servings": 1
+          },
+          "expected": {
+            "scaled_amount": 50
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "fuel_cost_trip",
+      "name_fa": "هزینه و مصرف سوخت سفر",
+      "name_en": "Trip Fuel Cost & Consumption",
+      "category_path": [
+        "مالی و اقتصاد",
+        "بهره و وام"
+      ],
+      "tags": [
+        "سوخت",
+        "سفر",
+        "بنزین",
+        "fuel",
+        "trip"
+      ],
+      "description_fa": "لیتر مصرفی و هزینهٔ سفر از روی مسافت، مصرف خودرو (لیتر در ۱۰۰ کیلومتر) و قیمت هر لیتر.",
+      "variables": [
+        {
+          "name": "distance_km",
+          "label_fa": "مسافت (km)",
+          "label_en": "Distance km",
+          "type": "number",
+          "unit": "km",
+          "default": 450,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "consumption_per_100km",
+          "label_fa": "مصرف (لیتر در ۱۰۰ کیلومتر)",
+          "label_en": "Consumption L/100km",
+          "type": "number",
+          "unit": null,
+          "default": 8,
+          "required": true,
+          "min": 0.000001
+        },
+        {
+          "name": "price_per_liter",
+          "label_fa": "قیمت هر لیتر",
+          "label_en": "Price per liter",
+          "type": "number",
+          "unit": null,
+          "default": 3000,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "liters",
+          "label_fa": "سوخت مصرفی (لیتر)",
+          "label_en": "Liters",
+          "unit": null
+        },
+        {
+          "name": "total_cost",
+          "label_fa": "هزینه کل",
+          "label_en": "Total Cost",
+          "unit": null
+        },
+        {
+          "name": "cost_per_km",
+          "label_fa": "هزینه هر کیلومتر",
+          "label_en": "Cost Per Km",
+          "unit": null
+        }
+      ],
+      "formula_latex": "L=\\frac{d\\times c}{100},\\quad Cost=L\\times p",
+      "compute_js": "module:apps/web/phase9-formulas.js#fuel_cost_trip",
+      "steps_generator": "module:apps/web/phase9-formulas.js#fuel_cost_trip",
+      "plot_spec": null,
+      "examples": [
+        {
+          "distance_km": 200,
+          "consumption_per_100km": 10,
+          "price_per_liter": 5
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "distance_km": 200,
+            "consumption_per_100km": 10,
+            "price_per_liter": 5
+          },
+          "expected": {
+            "liters": 20,
+            "total_cost": 100
+          }
+        },
+        {
+          "input": {
+            "distance_km": 450,
+            "consumption_per_100km": 8,
+            "price_per_liter": 3000
+          },
+          "expected": {
+            "liters": 36,
+            "total_cost": 108000
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
       "version": "1.0.0",
       "validated": true
     }

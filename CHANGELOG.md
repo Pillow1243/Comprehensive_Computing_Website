@@ -4,6 +4,23 @@ All notable changes to SolveEverything are documented here. This project follows
 
 ## [Unreleased]
 
+## [5.0.0] - 2026-10-25
+
+### Added
+- **Advanced lab on every formula page**: inverse solving for any numeric variable (expanding-bracket bisection through the trusted worker), live sliders plus a quiet auto-compute mode, ±10% one-at-a-time sensitivity (tornado) analysis, seeded Monte-Carlo uncertainty propagation with histogram and P5/P95, an SI dimensional-analysis view for inputs/outputs, a step debugger (play/pause, step slider) for worked solutions, and a verification code (`SE-…`) with Python reproduction, Anki and embed exports.
+- **Symbolic CAS tool** (`/tools/cas/`): a self-contained AST differentiator/integrator (no `eval`, no server), f(x)=target solving, root/sign charts and an RK4 ODE solver.
+- **Calculation pipelines** (`/tools/pipeline/`): chain any registry formulas so one solver's output feeds the next solver's input, with per-step intermediate results.
+- **Advanced graphing** (`/tools/graph3d/`): rotating 3D surfaces z=f(x,y), polar, parametric and implicit f(x,y)=0 plots on the safe expression engine.
+- **Check My Work** (`/tools/check-work/`): line-by-line verification of a student's own solution with first-inconsistency detection and misconception classification (sign/arithmetic/non-equivalent/final mismatch), photo reference import, a scratch pad and read-aloud feedback.
+- **Iran desk** (`/tools/iran/`): exact arithmetic Jalali↔Gregorian conversion, Jalali age, and configurable net-salary / indexed-mehrieh / percentage-of-full-amount calculators whose statutory rates and indices are explicit user inputs (never hard-coded as current law).
+- **No-code formula builder** (`/tools/formula-builder/`): create calculators from safe expressions, keep them on-device, and share/import them as re-validated JSON.
+- **Projectile virtual lab** (`/tools/simulator/`), **inferential statistics** (Welch and one-sample t-tests, one-way ANOVA, chi-square independence, multiple regression, CSV/TXT import) in the Statistics Lab, **voice input** in the word-problem assistant, and **portable checksummed backup/restore** in Settings.
+- **12 new solvers (378 total, 880 declared cases)** in `apps/web/phase9-formulas.js`: exact Gregorian age/date difference, add-days-to-date, discount+tax price, tip & bill split, weighted GPA, pregnancy due date, configurable Iran net salary, indexed mehrieh, percentage of a full amount, two-variable linear programming, recipe scaling and trip fuel cost.
+
+### Notes
+- Statutory rates, official indices and live market data are intentionally *not* baked in or fetched from unverified sources; the Iran-desk tools take them as explicit inputs and say so in the UI.
+- Scientific review status is unchanged: formulas remain `not_reviewed` until a qualified reviewer and credible sources are recorded per formula. The new verification code fingerprints a calculation; it is not independent scientific endorsement.
+
 ## [4.1.0] - 2026-10-25
 
 ### Added

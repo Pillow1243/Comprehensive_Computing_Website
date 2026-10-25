@@ -18,6 +18,8 @@ export interface FormulaInputProps {
   /** When true the system keyboard stays closed; the math keyboard is used. */
   mathKeyboard?: boolean;
   helper?: string;
+  /** Show a live range slider under numeric fields (v5 what-if exploration). */
+  showSlider?: boolean;
 }
 
 /**
@@ -29,7 +31,7 @@ export interface FormulaInputProps {
  * · angle fields    → ° / rad toggle, converted to degrees before computing
  */
 export const FormulaInput = forwardRef<HTMLInputElement, FormulaInputProps>(function FormulaInput(
-  { variable, value, onChange, error, onFocus, angleUnit, onAngleUnitChange, mathKeyboard, helper },
+  { variable, value, onChange, error, onFocus, angleUnit, onAngleUnitChange, mathKeyboard, helper, showSlider },
   ref,
 ) {
   const { lang, t } = useI18n();
@@ -45,7 +47,14 @@ export const FormulaInput = forwardRef<HTMLInputElement, FormulaInputProps>(func
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [variable.name]);
 
+  const numericValue = Number(value);
+  const sliderDefault = typeof variable.default === 'number' ? variable.default : Number.isFinite(numericValue) ? numericValue : 0;
+  const sliderMin = variable.min ?? Math.min(0, sliderDefault - Math.abs(sliderDefault || 10));
+  const sliderMax = variable.max ?? Math.max(sliderDefault + Math.abs(sliderDefault || 10), sliderDefault * 2, sliderMin + 1);
+  const sliderStep = variable.step ?? Math.max((sliderMax - sliderMin) / 200, Number.EPSILON);
+
   return (
+    <div>
     <TextField
       ref={ref}
       id={`input-${variable.name}`}
@@ -73,5 +82,19 @@ export const FormulaInput = forwardRef<HTMLInputElement, FormulaInputProps>(func
           : undefined
       }
     />
+    {showSlider && isNumeric && sliderMax > sliderMin && (
+      <input
+        type="range"
+        aria-label={variableLabel(variable, lang)}
+        min={sliderMin}
+        max={sliderMax}
+        step={sliderStep}
+        value={Number.isFinite(numericValue) ? Math.min(sliderMax, Math.max(sliderMin, numericValue)) : sliderDefault}
+        onChange={(event) => onChange(event.target.value)}
+        className="mt-1 w-full accent-primary"
+        dir="ltr"
+      />
+    )}
+    </div>
   );
 });

@@ -2,12 +2,17 @@
 
 import {
   AudioWaveform,
+  Box,
+  ClipboardCheck,
+  Landmark,
+  Workflow,
   BarChart3,
   BookMarked,
   Briefcase,
   Dumbbell,
   FlaskConical,
   GraduationCap,
+  Hammer,
   Grid3x3,
   LineChart,
   MessagesSquare,
@@ -22,6 +27,10 @@ import {
 } from 'lucide-react';
 
 const map: Record<string, LucideIcon> = {
+  Box,
+  ClipboardCheck,
+  Landmark,
+  Workflow,
   Ruler,
   FlaskConical,
   Grid3x3,
@@ -32,6 +41,7 @@ const map: Record<string, LucideIcon> = {
   MessagesSquare,
   Dumbbell,
   GraduationCap,
+  Hammer,
   Briefcase,
   Sigma,
   Shapes,
