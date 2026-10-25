@@ -21,6 +21,7 @@ const readSystem = (): ResolvedTheme =>
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const theme = useAppStore((state) => state.settings.theme);
+  const accent = useAppStore((state) => state.settings.accent);
   const updateSettings = useAppStore((state) => state.updateSettings);
   const [system, setSystem] = useState<ResolvedTheme>('dark');
 
@@ -33,6 +34,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const resolved: ResolvedTheme = theme === 'system' ? system : theme;
+
+  useEffect(() => {
+    document.documentElement.dataset.accent = accent ?? 'violet';
+  }, [accent]);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -76,6 +81,8 @@ export const themeBootstrapScript = `
     var theme = raw ? (JSON.parse(raw).state || {}).settings?.theme || 'dark' : 'dark';
     var dark = theme === 'dark' || (theme === 'system' && !window.matchMedia('(prefers-color-scheme: light)').matches);
     document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    var accent = raw ? (JSON.parse(raw).state || {}).settings?.accent || 'violet' : 'violet';
+    document.documentElement.dataset.accent = accent;
     document.documentElement.classList.toggle('dark', dark);
     document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
   }catch(e){

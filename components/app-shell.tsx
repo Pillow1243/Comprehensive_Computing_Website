@@ -17,6 +17,17 @@ const QuickStartFab = dynamic(() => import('@/components/quick-start-fab').then(
   ssr: false,
 });
 
+// v4.1 experience layer — all lazy so the first-load budget is untouched.
+const CommandPalette = dynamic(() => import('@/components/command-palette').then((m) => m.CommandPalette), {
+  ssr: false,
+});
+const ShortcutsDialog = dynamic(() => import('@/components/shortcuts-dialog').then((m) => m.ShortcutsDialog), {
+  ssr: false,
+});
+const BackToTop = dynamic(() => import('@/components/back-to-top').then((m) => m.BackToTop), {
+  ssr: false,
+});
+
 /**
  * App chrome: top app bar, bottom navigation, offline banner and the
  * quick-start FAB. Formula pages render their own action bar and CTA.
@@ -50,6 +61,9 @@ export function AppShell({ children }: { children: ReactNode }) {
         <PageTransition>{children}</PageTransition>
       </main>
       {showFab && <QuickStartFab />}
+      <BackToTop />
+      <CommandPalette />
+      <ShortcutsDialog />
       <BottomNav />
     </div>
   );

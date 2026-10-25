@@ -4,18 +4,21 @@ import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowLeft,
+  ArrowRight,
   Bookmark,
   BookmarkCheck,
   Calculator,
   Check,
   Copy,
   Download,
+  Footprints,
   FunctionSquare,
   History,
   Info,
   LineChart,
   ListOrdered,
   MoreVertical,
+  Pin,
   Share2,
   Sparkles,
   Trash2,
@@ -36,7 +39,6 @@ import { ConfirmDialog } from '@/components/ui/dialog';
 import { computeFormula } from '@/lib/compute-client';
 import {
   formulaName,
-  relatedFormulas,
   type Formula,
 } from '@/lib/formulas';
 import { useI18n } from '@/lib/i18n';
@@ -44,7 +46,15 @@ import { useAppStore, type HistoryEntry } from '@/lib/store';
 import { useVisualViewport } from '@/lib/hooks';
 import { assertFiniteOutputs, describeError, validateInputs, type RawInputs } from '@/lib/validation';
 import { reportError } from '@/lib/telemetry';
-import { calculationAsCsv, calculationAsJson, downloadTextFile } from '@/lib/calculation-export';
+import {
+  calculationAsCsv,
+  calculationAsJson,
+  calculationAsLatex,
+  calculationAsMarkdown,
+  downloadTextFile,
+  type CalculationExportRecord,
+} from '@/lib/calculation-export';
+import { nextStepFormulas, relatedFormulasV4 } from '@/lib/related';
 import { withBasePath } from '@/lib/base-path';
 import { cn, copyToClipboard, formatNumber, groupByDate, haptic, shareContent } from '@/lib/utils';
 
@@ -97,6 +107,7 @@ export function FormulaSolver({
   const settings = useAppStore((state) => state.settings);
   const history = useAppStore((state) => state.history);
   const addHistory = useAppStore((state) => state.addHistory);
+  const addWorkspaceItem = useAppStore((state) => state.addWorkspaceItem);
   const deleteHistory = useAppStore((state) => state.deleteHistory);
   const clearFormulaHistory = useAppStore((state) => state.clearFormulaHistory);
   const pushRecent = useAppStore((state) => state.pushRecent);
@@ -268,9 +279,16 @@ export function FormulaSolver({
     else if (outcome === 'failed') toast.error(t('shareNotSupported'));
   };
 
-  const exportCalculation = (format: 'json' | 'csv') => {
-    if (!result) return;
-    const record = {
+  const reportLabels = () => ({
+    inputs: t('reportInputs'),
+    outputs: t('reportOutputs'),
+    steps: t('stepsTitle'),
+    generatedWith: t('reportGenerated'),
+  });
+
+  const buildRecord = (): CalculationExportRecord | null => {
+    if (!result) return null;
+    return {
       formula_id: formula.id,
       formula_name: formulaName(formula, lang),
       formula_latex: formula.formula_latex,
@@ -281,13 +299,46 @@ export function FormulaSolver({
       steps: result.steps ?? [],
       created_at: new Date().toISOString(),
     };
+  };
+
+  const exportCalculation = (format: 'json' | 'csv' | 'md' | 'tex') => {
+    const record = buildRecord();
+    if (!record) return;
     const stamp = record.created_at.replaceAll(':', '-');
+    const base = `solveeverything-${formula.id}-${stamp}`;
     if (format === 'json') {
-      downloadTextFile(calculationAsJson(record), 'application/json;charset=utf-8', `solveeverything-${formula.id}-${stamp}.json`);
+      downloadTextFile(calculationAsJson(record), 'application/json;charset=utf-8', `${base}.json`);
+    } else if (format === 'csv') {
+      downloadTextFile(calculationAsCsv(record), 'text/csv;charset=utf-8', `${base}.csv`);
+    } else if (format === 'md') {
+      downloadTextFile(calculationAsMarkdown(record, reportLabels()), 'text/markdown;charset=utf-8', `${base}.md`);
     } else {
-      downloadTextFile(calculationAsCsv(record), 'text/csv;charset=utf-8', `solveeverything-${formula.id}-${stamp}.csv`);
+      downloadTextFile(calculationAsLatex(record, reportLabels()), 'text/x-tex;charset=utf-8', `${base}.tex`);
     }
     toast.success(t('exportReady'));
+    setMenuOpen(false);
+  };
+
+  const copyCalculationMarkdown = () => {
+    const record = buildRecord();
+    if (!record) return;
+    void copyToClipboard(calculationAsMarkdown(record, reportLabels())).then((ok) =>
+      toast[ok ? 'success' : 'error'](ok ? t('copiedToClipboard') : t('copy')),
+    );
+    setMenuOpen(false);
+  };
+
+  const saveResultToWorkspace = () => {
+    const record = buildRecord();
+    if (!record || !result) return;
+    addWorkspaceItem({
+      title: record.formula_name,
+      note: '',
+      formulaId: formula.id,
+      inputs: preparedInputs,
+      values: result.values,
+    });
+    toast.success(t('savedToWorkspace'));
     setMenuOpen(false);
   };
 
@@ -390,6 +441,42 @@ export function FormulaSolver({
               >
                 <Download className="h-4 w-4" aria-hidden="true" />
                 {t('exportCsv')}
+              </button>
+              <button
+                type="button"
+                disabled={!result}
+                onClick={() => exportCalculation('md')}
+                className="flex min-h-12 w-full items-center gap-3 px-4 text-body-medium text-on-surface hover:bg-on-surface/5 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <Download className="h-4 w-4" aria-hidden="true" />
+                {t('exportMarkdown')}
+              </button>
+              <button
+                type="button"
+                disabled={!result}
+                onClick={() => exportCalculation('tex')}
+                className="flex min-h-12 w-full items-center gap-3 px-4 text-body-medium text-on-surface hover:bg-on-surface/5 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <Download className="h-4 w-4" aria-hidden="true" />
+                {t('exportLatex')}
+              </button>
+              <button
+                type="button"
+                disabled={!result}
+                onClick={copyCalculationMarkdown}
+                className="flex min-h-12 w-full items-center gap-3 px-4 text-body-medium text-on-surface hover:bg-on-surface/5 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <Copy className="h-4 w-4" aria-hidden="true" />
+                {t('copyMarkdown')}
+              </button>
+              <button
+                type="button"
+                disabled={!result}
+                onClick={saveResultToWorkspace}
+                className="flex min-h-12 w-full items-center gap-3 px-4 text-body-medium text-on-surface hover:bg-on-surface/5 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                <Pin className="h-4 w-4" aria-hidden="true" />
+                {t('saveToWorkspace')}
               </button>
               <button
                 type="button"
@@ -710,9 +797,9 @@ export function FormulaSolver({
 
         {/* Related */}
         <section className="mt-6">
-          <h3 className="mb-2 text-title-small font-semibold text-on-surface">{t('suggested')}</h3>
+          <h3 className="mb-2 text-title-small font-semibold text-on-surface">{t('relatedTitle')}</h3>
           <div className="chip-rail">
-            {relatedFormulas(formula).map((related) => (
+            {relatedFormulasV4(formula).map((related) => (
               <Link
                 key={related.id}
                 href={`/formula/${related.id}/`}
@@ -723,6 +810,36 @@ export function FormulaSolver({
             ))}
           </div>
         </section>
+
+        {/* Next learning steps */}
+        {nextStepFormulas(formula).length > 0 && (
+          <section className="mt-6">
+            <h3 className="mb-2 flex items-center gap-1.5 text-title-small font-semibold text-on-surface">
+              <Footprints className="h-4 w-4 text-primary" aria-hidden="true" />
+              {t('nextStepsTitle')}
+            </h3>
+            <div className="grid gap-2">
+              {nextStepFormulas(formula).map((next, index) => (
+                <Link
+                  key={next.id}
+                  href={`/formula/${next.id}/`}
+                  className="card-lift gradient-border-soft flex items-center gap-3 rounded-2xl px-3.5 py-3"
+                >
+                  <span
+                    aria-hidden="true"
+                    className="tnum flex h-7 w-7 shrink-0 items-center justify-center rounded-full brand-gradient text-label-medium font-bold text-white"
+                  >
+                    {index + 1}.
+                  </span>
+                  <span className="min-w-0 flex-1 truncate text-body-medium font-medium text-on-surface">
+                    {formulaName(next, lang)}
+                  </span>
+                  <ArrowRight className="h-4 w-4 shrink-0 text-primary rtl:rotate-180" aria-hidden="true" />
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         <div className="h-32" />
       </div>

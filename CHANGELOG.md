@@ -4,6 +4,22 @@ All notable changes to SolveEverything are documented here. This project follows
 
 ## [Unreleased]
 
+## [4.1.0] - 2026-10-25
+
+### Added
+- **Command palette (Ctrl/⌘+K)** — a keyboard-first quick jump available on every page: smart formula search with per-result match reasons («مترادف», «املای نزدیک», …), all tools, one-key actions (daily challenge, word-problem assistant, random solver, settings, shortcuts help) and did-you-mean recovery. The top-bar search button progressively upgrades into a palette trigger once the lazy chunk loads; without it, it still navigates to /search.
+- **Six accent colours** (violet, ocean, emerald, sunset, rose, amber) that re-tone the primary palette, brand gradients and the aurora backdrop in both themes via `data-accent` tokens. Picker lives in Settings → Appearance; the choice persists on-device and is applied before first paint by the bootstrap script (store migrated to persist v5, user data preserved).
+- **A living home screen**: one-shot What's-New card per release, a daily-challenge card with XP level ring + answer streak, a continue-learning card that resumes the learning path with the most momentum, popular-search chips in the hero, a Ctrl+K key-cap hint, staggered pop-in stat pills and IntersectionObserver scroll-reveal for below-the-fold sections.
+- **Celebrations**: a dependency-free, reduced-motion-aware canvas confetti (`lib/confetti.ts`, brand-token colours) fires when the daily challenge or a perfect practice round finishes and when a learning path is completed (with a toast).
+- Keyboard-shortcuts cheat sheet (`?` anywhere outside text fields, or from the palette) and a floating back-to-top button on long pages.
+- First unit tests for the v4 libraries (expression evaluator, matrix, data lab, smart search, quiz engine, related/next-step ranking, word-problem routing, learning paths, Markdown/LaTeX reports) plus an i18n parity guard.
+
+### Changed
+- **Persian localisation completed**: 144 message keys added in v4.0.0 existed only in English, so every new page rendered raw key names in the Persian UI. The fa and en dictionaries are now in exact parity (404 keys each) and a regression test (`tests/unit/i18n-parity.test.ts`) keeps them that way.
+- Search page now runs real queries through smart search (Persian/English synonyms + bounded-edit-distance typo tolerance) with reason badges on result cards and «منظورتان این بود…؟» suggestion chips; the empty query keeps the classic browse ranking.
+- Formula pages use the scored v4 related-formula ranking under a «فرمول‌های مرتبط» heading, gain a numbered «گام‌های بعدی یادگیری» ladder, and the actions menu now offers Markdown/LaTeX report downloads, copy-as-Markdown and save-to-workspace in addition to JSON/CSV.
+- Gradient headline text slowly pans; new shared CSS primitives (gradient borders, hover shine sweeps, key caps, pop/XP-float motion, scroll reveal) are pure CSS. Every new interactive surface (palette, banners, cards, dialogs) is a lazy chunk, and the English/Arabic dictionaries (~7 KB gzip) now load on demand from `lib/dictionaries.ts` — Persian stays inlined for SSR — so first-load JS actually *shrinks* to 197.6 KB gzip (v4.0.0: 199.2 KB) despite the new UI.
+
 ## [4.0.0] - 2026-10-25
 
 ### Added

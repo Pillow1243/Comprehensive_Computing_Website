@@ -13,7 +13,7 @@
 
 **Solve any equation, step by step.** A Persian/English client-first scientific calculator for mathematics, physics, chemistry, engineering, statistics, and finance—built to work offline and deploy as a static site.
 
-**Live demo:** [Pillow1243.github.io/Comprehensive_Computing_Website](https://Pillow1243.github.io/Comprehensive_Computing_Website/) · **Status:** v4.0.0 · **Implemented:** 366 formula calculators with 856 declared computational test cases, plus a unit converter (13 categories, 95 units), a molar-mass tool, an interactive periodic table and a physical-constants reference. Computational tests are not independent scientific review; each formula page shows its review status and sources.
+**Live demo:** [Pillow1243.github.io/Comprehensive_Computing_Website](https://Pillow1243.github.io/Comprehensive_Computing_Website/) · **Status:** v4.1.0 · **Implemented:** 366 formula calculators with 856 declared computational test cases, plus a unit converter (13 categories, 95 units), a molar-mass tool, an interactive periodic table and a physical-constants reference. Computational tests are not independent scientific review; each formula page shows its review status and sources.
 
 > The GitHub Pages workflow is ready, but the repository owner must select **Settings → Pages → GitHub Actions** and deploy from `main` before the live URL is available. See [Deployment](docs/DEPLOYMENT.md).
 

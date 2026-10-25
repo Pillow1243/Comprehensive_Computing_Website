@@ -9,6 +9,7 @@ import { CategoryCard } from '@/components/category-card';
 import { FormulaCard } from '@/components/formula-card';
 import { SearchField } from '@/components/search-field';
 import { ToolCard } from '@/components/tool-card';
+import { Reveal } from '@/components/reveal';
 import {
   CATEGORIES,
   FORMULAS,
@@ -31,8 +32,23 @@ const InstallBanner = dynamic(() => import('@/components/install-banner').then((
   ssr: false,
 });
 
+// v4.1 home cards — personalised from the on-device store, so they stream in
+// after hydration instead of competing with the hero for first paint.
+const WhatsNewBanner = dynamic(() => import('@/components/whats-new-banner').then((m) => m.WhatsNewBanner), {
+  ssr: false,
+});
+const DailyChallengeCard = dynamic(
+  () => import('@/components/daily-challenge-card').then((m) => m.DailyChallengeCard),
+  { ssr: false },
+);
+const ContinueLearningCard = dynamic(
+  () => import('@/components/continue-learning-card').then((m) => m.ContinueLearningCard),
+  { ssr: false },
+);
+
 const fallbackRecent = ['quadratic', 'ph', 'pythagorean', 'compound_interest'];
 const fallbackSuggested = ['heron', 'ohm_circuit', 'normal_dist', 'kinematics'];
+const popularIds = ['quadratic', 'compound_interest', 'bmi', 'pythagorean'];
 
 export function HomePage({ buildDay }: { buildDay: number }) {
   const { t, lang } = useI18n();
@@ -97,10 +113,14 @@ export function HomePage({ buildDay }: { buildDay: number }) {
           </p>
 
           <div className="mt-4 flex flex-wrap gap-1.5">
-            {stats.map((stat) => {
+            {stats.map((stat, statIndex) => {
               const Icon = stat.icon;
               return (
-                <span key={stat.label} className="data-pill">
+                <span
+                  key={stat.label}
+                  className="data-pill anim-pop"
+                  style={{ animationDelay: `${statIndex * 90}ms` }}
+                >
                   <Icon className="h-3.5 w-3.5" aria-hidden="true" />
                   <span className="tnum font-semibold text-on-surface">{stat.value}</span>
                   {stat.label}
@@ -143,8 +163,35 @@ export function HomePage({ buildDay }: { buildDay: number }) {
               {t('surpriseMe')}
             </button>
           </div>
+
+          <div className="mt-4 flex flex-wrap items-center gap-1.5">
+            <span className="text-label-small text-on-surface-variant">{t('popularSearches')}:</span>
+            {popularIds
+              .map((id) => getFormula(id))
+              .filter((formula): formula is NonNullable<typeof formula> => Boolean(formula))
+              .map((formula) => (
+                <Link
+                  key={formula.id}
+                  href={`/formula/${formula.id}/`}
+                  className="data-pill card-lift hover:text-on-surface"
+                >
+                  {formulaName(formula, lang)}
+                </Link>
+              ))}
+          </div>
+
+          <p className="mt-3 hidden items-center gap-1.5 text-label-small text-on-surface-variant sm:flex">
+            <kbd className="key-cap">Ctrl</kbd>
+            <span aria-hidden="true">+</span>
+            <kbd className="key-cap">K</kbd>
+            {t('commandPalette')}
+          </p>
         </div>
       </section>
+
+      <WhatsNewBanner />
+
+      <DailyChallengeCard />
 
       <InstallBanner />
 
@@ -170,7 +217,8 @@ export function HomePage({ buildDay }: { buildDay: number }) {
       </section>
 
       {/* Spotlight */}
-      <section aria-labelledby="spotlight-heading" className="space-y-2">
+      <Reveal>
+            <section aria-labelledby="spotlight-heading" className="space-y-2">
         <h2 id="spotlight-heading" className="text-title-large font-semibold text-on-surface">
           {t('spotlight')}
         </h2>
@@ -198,9 +246,11 @@ export function HomePage({ buildDay }: { buildDay: number }) {
             </div>
           </Link>
       </section>
+      </Reveal>
 
       {/* Categories */}
-      <section aria-labelledby="categories-heading">
+      <Reveal>
+            <section aria-labelledby="categories-heading">
         <div className="mb-2.5 flex items-end justify-between">
           <h2 id="categories-heading" className="text-title-large font-semibold text-on-surface">
             {t('categories')}
@@ -218,9 +268,13 @@ export function HomePage({ buildDay }: { buildDay: number }) {
           ))}
         </div>
       </section>
+      </Reveal>
+
+      <ContinueLearningCard />
 
       {/* Difficulty distribution */}
-      <section aria-labelledby="difficulty-heading" className="rounded-2xl border border-outline-variant bg-surface-container p-4">
+      <Reveal>
+            <section aria-labelledby="difficulty-heading" className="rounded-2xl border border-outline-variant bg-surface-container p-4">
         <h2 id="difficulty-heading" className="text-title-small font-semibold text-on-surface">
           {t('difficulty')}
         </h2>
@@ -244,9 +298,11 @@ export function HomePage({ buildDay }: { buildDay: number }) {
           </span>
         </div>
       </section>
+      </Reveal>
 
       {/* Recent */}
-      <section aria-labelledby="recent-heading">
+      <Reveal>
+            <section aria-labelledby="recent-heading">
         <div className="mb-2.5 flex items-end justify-between">
           <h2 id="recent-heading" className="text-title-large font-semibold text-on-surface">
             {t('recent')}
@@ -274,9 +330,11 @@ export function HomePage({ buildDay }: { buildDay: number }) {
           ))}
         </div>
       </section>
+      </Reveal>
 
       {/* Suggested */}
-      <section aria-labelledby="suggested-heading">
+      <Reveal>
+            <section aria-labelledby="suggested-heading">
         <h2 id="suggested-heading" className="mb-2.5 text-title-large font-semibold text-on-surface">
           {t('suggested')}
         </h2>
@@ -286,6 +344,7 @@ export function HomePage({ buildDay }: { buildDay: number }) {
           ))}
         </div>
       </section>
+      </Reveal>
 
       <footer className="space-y-1 border-t border-outline-variant pt-4 text-center text-body-small text-on-surface-variant">
         <p className="flex items-center justify-center gap-1">

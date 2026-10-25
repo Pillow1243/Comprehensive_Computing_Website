@@ -14,6 +14,7 @@ import {
   type QuizDifficulty,
   type QuizQuestion,
 } from '@/lib/quiz';
+import { burstConfetti } from '@/lib/confetti';
 import { useAppStore, useHydrated } from '@/lib/store';
 import { formatNumber, cn, haptic } from '@/lib/utils';
 
@@ -74,7 +75,12 @@ export default function PracticePage() {
   const next = () => {
     if (index + 1 >= questions.length) {
       setFinished(true);
-      if (mode === 'daily') markDailyDone(today);
+      if (mode === 'daily') {
+        markDailyDone(today);
+        burstConfetti();
+      } else if (roundScore === questions.length) {
+        burstConfetti();
+      }
     } else {
       setIndex(index + 1);
       setPicked(null);

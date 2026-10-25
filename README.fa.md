@@ -5,7 +5,7 @@
 [![CI](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/ci.yml/badge.svg)](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/ci.yml)
 [![GitHub Pages](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/deploy-pages.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-4.0.0-informational.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-4.1.0-informational.svg)](CHANGELOG.md)
 [![CodeQL](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/codeql.yml/badge.svg)](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/codeql.yml)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Pillow1243/Comprehensive_Computing_Website/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Pillow1243/Comprehensive_Computing_Website)
 ![PWA](https://img.shields.io/badge/PWA-%D9%86%D8%B5%D8%A8%E2%80%8C%D8%B4%D8%AF%D9%86%DB%8C%20%7C%20%D8%A2%D9%81%D9%84%D8%A7%DB%8C%D9%86-7c5cff)
@@ -13,7 +13,7 @@
 
 **هر معادله‌ای را گام‌به‌گام حل کن.** ماشین‌حساب علمی فارسی/انگلیسی برای ریاضی، فیزیک، شیمی، مهندسی، آمار و مالی؛ کلاینت‌محور، قابل نصب و آماده کار آفلاین.
 
-**دمو:** [Pillow1243.github.io/Comprehensive_Computing_Website](https://Pillow1243.github.io/Comprehensive_Computing_Website/) · **وضعیت:** نسخه ۴.۰.۰ · **پیاده‌سازی‌شده:** ۳۶۶ محاسبه‌گر فرمول با ۸۵۶ مورد تست محاسباتی، به‌همراه مبدل یکا (۱۳ دسته، ۹۵ یکا)، ابزار جرم مولی، جدول تناوبی تعاملی و مرجع ثابت‌های فیزیکی. آزمون کد به‌معنی بازبینی مستقل علمی نیست؛ وضعیت هر فرمول و منابعش جداگانه نمایش داده می‌شود.
+**دمو:** [Pillow1243.github.io/Comprehensive_Computing_Website](https://Pillow1243.github.io/Comprehensive_Computing_Website/) · **وضعیت:** نسخه ۴.۱.۰ · **پیاده‌سازی‌شده:** ۳۶۶ محاسبه‌گر فرمول با ۸۵۶ مورد تست محاسباتی، به‌همراه مبدل یکا (۱۳ دسته، ۹۵ یکا)، ابزار جرم مولی، جدول تناوبی تعاملی و مرجع ثابت‌های فیزیکی. آزمون کد به‌معنی بازبینی مستقل علمی نیست؛ وضعیت هر فرمول و منابعش جداگانه نمایش داده می‌شود.
 
 > Workflow استقرار آماده است، اما مالک ریپو باید یک‌بار از مسیر **Settings → Pages → GitHub Actions** منبع Pages را فعال کند و سپس از `main` انتشار دهد. راهنما: [استقرار](docs/DEPLOYMENT.md).
 

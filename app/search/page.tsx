@@ -7,6 +7,17 @@ import { EmptyState } from '@/components/ui/states';
 import { FormulaCard } from '@/components/formula-card';
 import { SearchField } from '@/components/search-field';
 import { CATEGORIES, rankedSearch, type Difficulty } from '@/lib/formulas';
+import { smartSearch, suggestCorrections, type SmartReason } from '@/lib/smart-search';
+
+const REASON_KEYS: Record<SmartReason, string> = {
+  exact: 'reasonExact',
+  name: 'reasonName',
+  tag: 'reasonTag',
+  synonym: 'reasonSynonym',
+  fuzzy: 'reasonFuzzy',
+  category: 'reasonCategory',
+  id: 'reasonId',
+};
 import { useI18n } from '@/lib/i18n';
 import { categorySegment } from '@/lib/category-names';
 import { useAppStore } from '@/lib/store';
@@ -38,15 +49,46 @@ export default function SearchPage() {
 
   const deferred = useDeferredValue(debounced);
 
+  // v4.1: real queries go through smart search (synonyms + typo tolerance,
+  // with a machine-readable reason per result); the empty query keeps the
+  // classic browse-everything ranking.
+  const smartResults = useMemo(
+    () =>
+      deferred.trim()
+        ? smartSearch(deferred, {
+            category: category === 'all' ? undefined : category,
+            difficulty: level,
+            bookmarks,
+            onlyBookmarked: onlyBookmarks,
+          })
+        : null,
+    [deferred, category, level, bookmarks, onlyBookmarks],
+  );
+
   const results = useMemo(
     () =>
-      rankedSearch(deferred, {
-        category: category === 'all' ? undefined : category,
-        difficulty: level,
-        bookmarks,
-        onlyBookmarked: onlyBookmarks,
-      }),
-    [deferred, category, level, bookmarks, onlyBookmarks],
+      smartResults
+        ? smartResults.map((result) => result.formula)
+        : rankedSearch(deferred, {
+            category: category === 'all' ? undefined : category,
+            difficulty: level,
+            bookmarks,
+            onlyBookmarked: onlyBookmarks,
+          }),
+    [smartResults, deferred, category, level, bookmarks, onlyBookmarks],
+  );
+
+  const reasonById = useMemo(() => {
+    const map = new Map<string, SmartReason>();
+    for (const result of smartResults ?? []) {
+      if (result.reasons[0]) map.set(result.formula.id, result.reasons[0]);
+    }
+    return map;
+  }, [smartResults]);
+
+  const suggestions = useMemo(
+    () => (deferred.trim() && results.length < 3 ? suggestCorrections(deferred) : []),
+    [deferred, results.length],
   );
 
   return (
@@ -78,12 +120,35 @@ export default function SearchPage() {
       <div className="px-4">
         <p className="mb-2 text-label-medium text-on-surface-variant" aria-live="polite">
           {t('resultsCount', { count: results.length })}
+          {smartResults && <span className="ms-2 text-primary">· {t('resultsSmartHint')}</span>}
         </p>
+
+        {suggestions.length > 0 && (
+          <div className="mb-3 flex flex-wrap items-center gap-1.5">
+            <span className="text-label-large text-on-surface">{t('didYouMean')}</span>
+            {suggestions.map((suggestion) => (
+              <Chip
+                key={suggestion}
+                onClick={() => {
+                  setQuery(suggestion);
+                  setDebounced(suggestion);
+                }}
+              >
+                <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+                {suggestion}
+              </Chip>
+            ))}
+          </div>
+        )}
 
         {results.length > 0 ? (
           <div className="space-y-2">
             {results.map((formula) => (
-              <FormulaCard key={formula.id} formula={formula} />
+              <FormulaCard
+                key={formula.id}
+                formula={formula}
+                badge={reasonById.get(formula.id) ? t(REASON_KEYS[reasonById.get(formula.id)!]) : undefined}
+              />
             ))}
           </div>
         ) : (
