@@ -16,7 +16,7 @@ import {
   Type,
   Vibrate,
 } from 'lucide-react';
-import { toast } from 'sonner';
+import { toast } from '@/lib/toast';
 import { useTheme } from '@/lib/theme';
 import { useInstall } from '@/lib/install';
 import { useI18n, type Language } from '@/lib/i18n';

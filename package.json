@@ -3,7 +3,7 @@
   "version": "3.0.0",
   "private": false,
   "type": "module",
-  "description": "SolveEverything v3 \u2014 offline-first scientific formula solver, unit converter, periodic table and constants reference (Next.js static export)",
+  "description": "SolveEverything v3 — offline-first scientific formula solver, unit converter, periodic table and constants reference (Next.js static export)",
   "scripts": {
     "predev": "npm run build:workers && npm run build:index",
     "dev": "next dev --hostname 0.0.0.0",
@@ -40,7 +40,6 @@
     "postcss": "^8.5.6",
     "react": "19.3.1",
     "react-dom": "19.3.1",
-    "sonner": "^2.0.7",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^3.4.17",
     "zustand": "^5.0.8"

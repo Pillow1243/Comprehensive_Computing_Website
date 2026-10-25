@@ -1,5 +1,6 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
@@ -7,9 +8,14 @@ import { useI18n } from '@/lib/i18n';
 import { TopAppBar } from '@/components/top-app-bar';
 import { BottomNav } from '@/components/bottom-nav';
 import { OfflineBanner } from '@/components/offline-banner';
-import { QuickStartFab } from '@/components/quick-start-fab';
 import { PageTransition } from '@/components/page-transition';
 import { AppBackdrop } from '@/components/app-backdrop';
+
+// Secondary chrome is split into its own chunk: it never paints with the first
+// screen, so it must not compete with the hero for the critical path.
+const QuickStartFab = dynamic(() => import('@/components/quick-start-fab').then((m) => m.QuickStartFab), {
+  ssr: false,
+});
 
 /**
  * App chrome: top app bar, bottom navigation, offline banner and the

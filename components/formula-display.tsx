@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Copy, Maximize2, X } from 'lucide-react';
-import { toast } from 'sonner';
+import { toast } from '@/lib/toast';
 import { cn, copyToClipboard } from '@/lib/utils';
 import { useI18n } from '@/lib/i18n';
 
@@ -26,9 +26,12 @@ export function FormulaDisplay({ latex, displayMode = true, className, compact =
 
   const [html, setHtml] = useState<string | null>(null);
 
-  // KaTeX (~45 KB gzip) is fetched on demand so it never blocks first paint.
+  // KaTeX (~45 KB gzip) and its stylesheet are fetched on demand, so neither
+  // the library nor 23 KB of KaTeX CSS sits on the critical path of pages that
+  // never render a formula.
   useEffect(() => {
     let cancelled = false;
+    void import('katex/dist/katex.min.css');
     import('katex')
       .then((module) => {
         if (cancelled) return;

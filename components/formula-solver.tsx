@@ -19,7 +19,7 @@ import {
   Trash2,
   TriangleRight,
 } from 'lucide-react';
-import { toast } from 'sonner';
+import { toast } from '@/lib/toast';
 import { Button, IconButton } from '@/components/ui/button';
 import { Chip } from '@/components/ui/chip';
 import { FormulaDisplay } from '@/components/formula-display';

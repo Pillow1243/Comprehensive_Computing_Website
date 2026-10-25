@@ -1,12 +1,12 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useState } from 'react';
 import { ArrowRight, ChevronRight, Dices, ShieldCheck, Sparkles, Wifi, Zap } from 'lucide-react';
 import { CategoryCard } from '@/components/category-card';
 import { FormulaCard } from '@/components/formula-card';
-import { InstallBanner } from '@/components/install-banner';
 import { SearchField } from '@/components/search-field';
 import { ToolCard } from '@/components/tool-card';
 import {
@@ -24,6 +24,12 @@ import { FormulaDescription } from '@/components/formula-description';
 import { useI18n } from '@/lib/i18n';
 import { useAppStore, useHydrated } from '@/lib/store';
 import { cn, formatNumber } from '@/lib/utils';
+
+// The install prompt is below the fold and depends on `beforeinstallprompt`,
+// so it is fetched after the first screen has painted.
+const InstallBanner = dynamic(() => import('@/components/install-banner').then((m) => m.InstallBanner), {
+  ssr: false,
+});
 
 const fallbackRecent = ['quadratic', 'ph', 'pythagorean', 'compound_interest'];
 const fallbackSuggested = ['heron', 'ohm_circuit', 'normal_dist', 'kinematics'];

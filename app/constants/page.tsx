@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { Check, Copy, Search } from 'lucide-react';
-import { toast } from 'sonner';
+import { toast } from '@/lib/toast';
 import { useI18n } from '@/lib/i18n';
 import { CONSTANTS, CONSTANT_GROUPS, type PhysicalConstant } from '@/lib/constants';
 import { cn, formatNumber } from '@/lib/utils';

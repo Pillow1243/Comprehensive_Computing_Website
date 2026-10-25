@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, type ReactNode } from 'react';
-import { Toaster, toast } from 'sonner';
+import { Toaster, toast } from '@/lib/toast';
 import { ThemeProvider } from '@/lib/theme';
 import { I18nProvider } from '@/lib/i18n';
 import { InstallProvider } from '@/lib/install';
@@ -9,7 +9,6 @@ import { NetworkContext, type NetworkState } from '@/lib/network';
 import { rehydrateStore, useAppStore } from '@/lib/store';
 import { startWebVitals } from '@/lib/telemetry';
 import { withBasePath, BASE_PATH } from '@/lib/base-path';
-import { useTheme } from '@/lib/theme';
 
 /** Reads persisted zustand state after mount, then flips the hydration flag. */
 function StoreHydrator() {
@@ -78,29 +77,6 @@ function ServiceWorkerManager() {
   return null;
 }
 
-function ThemedToaster() {
-  const { resolved } = useTheme();
-  return (
-    <Toaster
-      theme={resolved}
-      position="top-center"
-      offset={16}
-      closeButton
-      duration={3200}
-      toastOptions={{
-        classNames: {
-          toast:
-            'font-sans !rounded-xl !bg-surface-container-high !text-on-surface !border !border-outline-variant !shadow-elevation-3',
-          title: '!text-title-small !font-medium',
-          description: '!text-body-small !text-on-surface-variant',
-          actionButton: '!bg-primary !text-on-primary !rounded-full',
-          closeButton: '!bg-surface-container-highest !text-on-surface !border-outline-variant',
-        },
-      }}
-    />
-  );
-}
-
 export function Providers({ children }: { children: ReactNode }) {
   const [network, setNetwork] = useState<NetworkState>({ online: true, canWorkOffline: false });
 
@@ -114,7 +90,7 @@ export function Providers({ children }: { children: ReactNode }) {
               <WebVitalsReporter />
               <ServiceWorkerManager />
               {children}
-              <ThemedToaster />
+              <Toaster />
             </NetworkContext.Provider>
         </InstallProvider>
       </I18nProvider>

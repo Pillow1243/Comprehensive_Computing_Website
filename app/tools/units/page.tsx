@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { ArrowLeftRight, Copy } from 'lucide-react';
-import { toast } from 'sonner';
+import { toast } from '@/lib/toast';
 import { useI18n } from '@/lib/i18n';
 import { formatNumber } from '@/lib/utils';
 import {
