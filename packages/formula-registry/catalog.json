@@ -290,9 +290,35 @@
     "wind_chill",
     "heat_index",
     "dew_point",
-    "wind_power_density"
+    "wind_power_density",
+    "polar_rectangular",
+    "matrix_eigen_2x2",
+    "ncr_npr",
+    "harmonic_mean",
+    "newton_cooling_law",
+    "critical_angle",
+    "spring_mass_frequency",
+    "solenoid_field",
+    "photon_energy",
+    "calorimetry_mixing",
+    "empirical_formula",
+    "raoult_law",
+    "torsion_shaft",
+    "column_buckling_euler",
+    "wheatstone_bridge",
+    "convection_heat_transfer",
+    "bond_price",
+    "fisher_real_return",
+    "rule_of_72",
+    "egfr_ckd_epi",
+    "bsa_dubois",
+    "anion_gap",
+    "serum_osmolality",
+    "coriolis_parameter",
+    "lapse_rate_atmosphere",
+    "moment_magnitude"
   ],
-  "implemented_count": 289,
+  "implemented_count": 315,
   "sections": [
     {
       "id": "sec_01",
@@ -399,7 +425,7 @@
         "بردارها dot/cross",
         "تبدیل مختصات"
       ],
-      "implemented_formula_count": 33,
+      "implemented_formula_count": 34,
       "implemented_formula_ids": [
         "trig_triangle_law_of_cosines",
         "law_of_sines",
@@ -433,7 +459,8 @@
         "parabola_geometry",
         "hyperbola_geometry",
         "angle_conversion",
-        "similar_triangles"
+        "similar_triangles",
+        "polar_rectangular"
       ]
     },
     {
@@ -478,7 +505,7 @@
         "کمترین مربعات",
         "گرام-اشمیت"
       ],
-      "implemented_formula_count": 9,
+      "implemented_formula_count": 10,
       "implemented_formula_ids": [
         "matrix_2x2",
         "vector_dot_angle",
@@ -488,7 +515,8 @@
         "vector_3d_cross",
         "matrix_inverse_3x3",
         "vector_magnitude_3d",
-        "vector_projection"
+        "vector_projection",
+        "matrix_eigen_2x2"
       ]
     },
     {
@@ -505,7 +533,7 @@
         "مارکوف",
         "ترکیبیات"
       ],
-      "implemented_formula_count": 24,
+      "implemented_formula_count": 25,
       "implemented_formula_ids": [
         "descriptive_stats",
         "normal_dist",
@@ -530,7 +558,8 @@
         "sample_size_proportion",
         "odds_probability",
         "moving_average",
-        "median_absolute_deviation"
+        "median_absolute_deviation",
+        "harmonic_mean"
       ]
     },
     {
@@ -546,10 +575,11 @@
         "مرتب‌سازی و Big-O",
         "DFA/NFA"
       ],
-      "implemented_formula_count": 2,
+      "implemented_formula_count": 3,
       "implemented_formula_ids": [
         "boolean_logic",
-        "recurrence_sequence"
+        "recurrence_sequence",
+        "ncr_npr"
       ]
     },
     {
@@ -600,7 +630,7 @@
         "نسبیت",
         "کوانتوم و هسته‌ای"
       ],
-      "implemented_formula_count": 60,
+      "implemented_formula_count": 66,
       "implemented_formula_ids": [
         "kinematics",
         "newton_energy",
@@ -661,7 +691,13 @@
         "de_broglie_wavelength",
         "bohr_energy",
         "rydberg_wavelength",
-        "heisenberg_uncertainty"
+        "heisenberg_uncertainty",
+        "newton_cooling_law",
+        "critical_angle",
+        "spring_mass_frequency",
+        "solenoid_field",
+        "photon_energy",
+        "calorimetry_mixing"
       ]
     },
     {
@@ -680,7 +716,7 @@
         "بیر-لامبرت",
         "مایکلیس-منتن"
       ],
-      "implemented_formula_count": 32,
+      "implemented_formula_count": 34,
       "implemented_formula_ids": [
         "ph",
         "molarity",
@@ -713,7 +749,9 @@
         "first_order_kinetics",
         "activation_energy_two_temp",
         "cell_emf",
-        "electrolysis_time"
+        "electrolysis_time",
+        "empirical_formula",
+        "raoult_law"
       ]
     },
     {
@@ -731,7 +769,7 @@
         "سه‌فاز و ترانس",
         "چرخ‌دنده و شافت"
       ],
-      "implemented_formula_count": 21,
+      "implemented_formula_count": 25,
       "implemented_formula_ids": [
         "beam_simple",
         "stress_strain",
@@ -753,7 +791,11 @@
         "op_amp_gain",
         "nyquist_sampling",
         "pid_controller",
-        "first_order_step_response"
+        "first_order_step_response",
+        "torsion_shaft",
+        "column_buckling_euler",
+        "wheatstone_bridge",
+        "convection_heat_transfer"
       ]
     },
     {
@@ -767,7 +809,7 @@
         "هاردی-واینبرگ",
         "فارماکوکینتیک"
       ],
-      "implemented_formula_count": 14,
+      "implemented_formula_count": 21,
       "implemented_formula_ids": [
         "bmi",
         "logistic_growth",
@@ -782,7 +824,14 @@
         "wind_chill",
         "heat_index",
         "dew_point",
-        "wind_power_density"
+        "wind_power_density",
+        "egfr_ckd_epi",
+        "bsa_dubois",
+        "anion_gap",
+        "serum_osmolality",
+        "coriolis_parameter",
+        "lapse_rate_atmosphere",
+        "moment_magnitude"
       ]
     },
     {
@@ -883,7 +932,7 @@
         "GARCH",
         "درخت دوجمله‌ای"
       ],
-      "implemented_formula_count": 18,
+      "implemented_formula_count": 21,
       "implemented_formula_ids": [
         "compound_interest",
         "loan_payment",
@@ -902,7 +951,10 @@
         "inflation_adjust",
         "break_even",
         "markup_margin",
-        "savings_goal_time"
+        "savings_goal_time",
+        "bond_price",
+        "fisher_real_return",
+        "rule_of_72"
       ]
     },
     {
@@ -32608,6 +32660,2809 @@
           },
           "expected": {
             "power_density": 76.5625
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "polar_rectangular",
+      "name_fa": "تبدیل مختصات قطبی و دکارتی",
+      "name_en": "Polar ↔ Rectangular Coordinates",
+      "category_path": [
+        "ریاضیات",
+        "هندسه و مثلثات"
+      ],
+      "tags": [
+        "مختصات قطبی",
+        "دکارتی",
+        "polar"
+      ],
+      "description_fa": "تبدیل طول و زاویه قطبی به مختصات دکارتی و بازگشت آن، همراه با فاصله از مبدأ.",
+      "variables": [
+        {
+          "name": "r",
+          "label_fa": "شعاع (r)",
+          "label_en": "Radius",
+          "type": "number",
+          "unit": null,
+          "default": 5,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "theta",
+          "label_fa": "زاویه (درجه)",
+          "label_en": "Angle",
+          "type": "number",
+          "unit": "deg",
+          "default": 53.130102,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "x",
+          "label_fa": "مختصه x",
+          "label_en": "X",
+          "unit": null
+        },
+        {
+          "name": "y",
+          "label_fa": "مختصه y",
+          "label_en": "Y",
+          "unit": null
+        },
+        {
+          "name": "magnitude",
+          "label_fa": "فاصله از مبدأ",
+          "label_en": "Magnitude",
+          "unit": null
+        },
+        {
+          "name": "theta_deg",
+          "label_fa": "زاویه استاندارد",
+          "label_en": "Theta Deg",
+          "unit": "deg"
+        }
+      ],
+      "formula_latex": "x=r\\cos\\theta,\\quad y=r\\sin\\theta,\\quad r=\\sqrt{x^{2}+y^{2}}",
+      "compute_js": "module:apps/web/phase7-formulas.js#polar_rectangular",
+      "steps_generator": "module:apps/web/phase7-formulas.js#polar_rectangular",
+      "plot_spec": null,
+      "examples": [
+        {
+          "r": 5,
+          "theta": 53.130102
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "r": 5,
+            "theta": 53.130102
+          },
+          "expected": {
+            "x": 3,
+            "y": 4,
+            "magnitude": 5,
+            "theta_deg": 53.130102
+          }
+        },
+        {
+          "input": {
+            "r": 2,
+            "theta": 90
+          },
+          "expected": {
+            "x": 1.2246468e-16,
+            "y": 2,
+            "magnitude": 2,
+            "theta_deg": 90
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "matrix_eigen_2x2",
+      "name_fa": "مقادیر ویژه ماتریس ۲×۲",
+      "name_en": "Eigenvalues of a 2×2 Matrix",
+      "category_path": [
+        "ریاضیات",
+        "جبر خطی"
+      ],
+      "tags": [
+        "مقدار ویژه",
+        "دترمینان",
+        "eigenvalue"
+      ],
+      "description_fa": "مقادیر ویژه یک ماتریس ۲×۲ از طریق رد و دترمینان، با بررسی وجود جواب حقیقی.",
+      "variables": [
+        {
+          "name": "a",
+          "label_fa": "درایه a₁₁",
+          "label_en": "a₁₁",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true
+        },
+        {
+          "name": "b",
+          "label_fa": "درایه a₁₂",
+          "label_en": "a₁₂",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "c",
+          "label_fa": "درایه a₂₁",
+          "label_en": "a₂₁",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "d",
+          "label_fa": "درایه a₂₂",
+          "label_en": "a₂₂",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "lambda1",
+          "label_fa": "مقدار ویژه بزرگ‌تر",
+          "label_en": "Lambda1",
+          "unit": null
+        },
+        {
+          "name": "lambda2",
+          "label_fa": "مقدار ویژه کوچک‌تر",
+          "label_en": "Lambda2",
+          "unit": null
+        },
+        {
+          "name": "trace",
+          "label_fa": "رد ماتریس",
+          "label_en": "Trace",
+          "unit": null
+        },
+        {
+          "name": "determinant",
+          "label_fa": "دترمینان",
+          "label_en": "Determinant",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\lambda_{1,2}=\\frac{\\operatorname{tr}A\\pm\\sqrt{(\\operatorname{tr}A)^{2}-4\\det A}}{2}",
+      "compute_js": "module:apps/web/phase7-formulas.js#matrix_eigen_2x2",
+      "steps_generator": "module:apps/web/phase7-formulas.js#matrix_eigen_2x2",
+      "plot_spec": null,
+      "examples": [
+        {
+          "a": 2,
+          "b": 1,
+          "c": 1,
+          "d": 2
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "a": 2,
+            "b": 1,
+            "c": 1,
+            "d": 2
+          },
+          "expected": {
+            "lambda1": 3,
+            "lambda2": 1,
+            "trace": 4,
+            "determinant": 3
+          }
+        },
+        {
+          "input": {
+            "a": 4,
+            "b": 1,
+            "c": 2,
+            "d": 3
+          },
+          "expected": {
+            "lambda1": 5,
+            "lambda2": 2,
+            "trace": 7,
+            "determinant": 10
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "ncr_npr",
+      "name_fa": "ترکیب و جایگشت",
+      "name_en": "Combinations & Permutations",
+      "category_path": [
+        "ریاضیات",
+        "ریاضیات گسسته"
+      ],
+      "tags": [
+        "ترکیب",
+        "جایگشت",
+        "nCr"
+      ],
+      "description_fa": "تعداد حالت‌های انتخاب r از n شیء، با و بدون اهمیت ترتیب.",
+      "variables": [
+        {
+          "name": "n",
+          "label_fa": "تعداد کل (n)",
+          "label_en": "n",
+          "type": "number",
+          "unit": null,
+          "default": 10,
+          "required": true,
+          "min": 0,
+          "max": 200
+        },
+        {
+          "name": "r",
+          "label_fa": "تعداد انتخاب (r)",
+          "label_en": "r",
+          "type": "number",
+          "unit": null,
+          "default": 3,
+          "required": true,
+          "min": 0,
+          "max": 200
+        }
+      ],
+      "outputs": [
+        {
+          "name": "combinations",
+          "label_fa": "ترکیب nCr",
+          "label_en": "Combinations",
+          "unit": null
+        },
+        {
+          "name": "permutations",
+          "label_fa": "جایگشت nPr",
+          "label_en": "Permutations",
+          "unit": null
+        },
+        {
+          "name": "factorial_n",
+          "label_fa": "n!",
+          "label_en": "Factorial N",
+          "unit": null
+        }
+      ],
+      "formula_latex": "{}_nC_r=\\frac{n!}{r!\\,(n-r)!},\\qquad {}_nP_r=\\frac{n!}{(n-r)!}",
+      "compute_js": "module:apps/web/phase7-formulas.js#ncr_npr",
+      "steps_generator": "module:apps/web/phase7-formulas.js#ncr_npr",
+      "plot_spec": null,
+      "examples": [
+        {
+          "n": 10,
+          "r": 3
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "n": 10,
+            "r": 3
+          },
+          "expected": {
+            "combinations": 120,
+            "permutations": 720,
+            "factorial_n": 3628800
+          }
+        },
+        {
+          "input": {
+            "n": 52,
+            "r": 5
+          },
+          "expected": {
+            "combinations": 2598960,
+            "permutations": 311875200,
+            "factorial_n": 8.0658175e+67
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "harmonic_mean",
+      "name_fa": "میانگین هارمونیک و هندسی",
+      "name_en": "Harmonic & Geometric Mean",
+      "category_path": [
+        "ریاضیات",
+        "آمار و احتمال"
+      ],
+      "tags": [
+        "میانگین",
+        "هارمونیک",
+        "geometric mean"
+      ],
+      "description_fa": "سه میانگین یک فهرست عددی؛ هارمونیک برای نرخ‌ها و هندسی برای رشدهای نسبی درست است.",
+      "variables": [
+        {
+          "name": "values",
+          "label_fa": "فهرست اعداد (با کاما)",
+          "label_en": "Values",
+          "type": "text",
+          "unit": null,
+          "default": "4, 9, 16",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "harmonic_mean",
+          "label_fa": "میانگین هارمونیک",
+          "label_en": "Harmonic Mean",
+          "unit": null
+        },
+        {
+          "name": "geometric_mean",
+          "label_fa": "میانگین هندسی",
+          "label_en": "Geometric Mean",
+          "unit": null
+        },
+        {
+          "name": "arithmetic_mean",
+          "label_fa": "میانگین حسابی",
+          "label_en": "Arithmetic Mean",
+          "unit": null
+        },
+        {
+          "name": "count",
+          "label_fa": "تعداد داده",
+          "label_en": "Count",
+          "unit": null
+        }
+      ],
+      "formula_latex": "H=\\frac{n}{\\sum 1/x_i},\\qquad G=\\sqrt[n]{\\prod x_i}",
+      "compute_js": "module:apps/web/phase7-formulas.js#harmonic_mean",
+      "steps_generator": "module:apps/web/phase7-formulas.js#harmonic_mean",
+      "plot_spec": null,
+      "examples": [
+        {
+          "values": "4, 9, 16"
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "values": "4, 9, 16"
+          },
+          "expected": {
+            "harmonic_mean": 7.081967,
+            "geometric_mean": 8.320335,
+            "arithmetic_mean": 9.666667,
+            "count": 3
+          }
+        },
+        {
+          "input": {
+            "values": "2, 8"
+          },
+          "expected": {
+            "harmonic_mean": 3.2,
+            "geometric_mean": 4,
+            "arithmetic_mean": 5,
+            "count": 2
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "newton_cooling_law",
+      "name_fa": "قانون سرد شدن نیوتن",
+      "name_en": "Newton's Law of Cooling",
+      "category_path": [
+        "فیزیک",
+        "ترمودینامیک"
+      ],
+      "tags": [
+        "سرد شدن",
+        "دمای تعادل",
+        "cooling"
+      ],
+      "description_fa": "دمای جسم پس از گذشت زمان، وقتی با محیط اطراف به تعادل حرارتی می‌رسد.",
+      "variables": [
+        {
+          "name": "t0",
+          "label_fa": "دمای اولیه (°C)",
+          "label_en": "Initial temperature",
+          "type": "number",
+          "unit": "°C",
+          "default": 90,
+          "required": true
+        },
+        {
+          "name": "t_env",
+          "label_fa": "دمای محیط (°C)",
+          "label_en": "Ambient temperature",
+          "type": "number",
+          "unit": "°C",
+          "default": 20,
+          "required": true
+        },
+        {
+          "name": "k",
+          "label_fa": "ثابت سرد شدن (1/min)",
+          "label_en": "Cooling constant",
+          "type": "number",
+          "unit": null,
+          "default": 0.05,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "minutes",
+          "label_fa": "زمان (دقیقه)",
+          "label_en": "Time",
+          "type": "number",
+          "unit": "min",
+          "default": 30,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "temperature",
+          "label_fa": "دما پس از زمان",
+          "label_en": "Temperature",
+          "unit": "°C"
+        },
+        {
+          "name": "temperature_drop",
+          "label_fa": "افت دما",
+          "label_en": "Temperature Drop",
+          "unit": "°C"
+        },
+        {
+          "name": "time_constant",
+          "label_fa": "ثابت زمانی",
+          "label_en": "Time Constant",
+          "unit": "min"
+        }
+      ],
+      "formula_latex": "T(t)=T_{\\text{env}}+(T_0-T_{\\text{env}})e^{-kt}",
+      "compute_js": "module:apps/web/phase7-formulas.js#newton_cooling_law",
+      "steps_generator": "module:apps/web/phase7-formulas.js#newton_cooling_law",
+      "plot_spec": null,
+      "examples": [
+        {
+          "t0": 90,
+          "t_env": 20,
+          "k": 0.05,
+          "minutes": 30
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "t0": 90,
+            "t_env": 20,
+            "k": 0.05,
+            "minutes": 30
+          },
+          "expected": {
+            "temperature": 35.619111,
+            "temperature_drop": 54.380889,
+            "time_constant": 20
+          }
+        },
+        {
+          "input": {
+            "t0": 100,
+            "t_env": 25,
+            "k": 0.1,
+            "minutes": 10
+          },
+          "expected": {
+            "temperature": 52.590958,
+            "temperature_drop": 47.409042,
+            "time_constant": 10
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "critical_angle",
+      "name_fa": "زاویه بحرانی بازتاب کلی",
+      "name_en": "Critical Angle of Total Internal Reflection",
+      "category_path": [
+        "فیزیک",
+        "اپتیک"
+      ],
+      "tags": [
+        "بازتاب کلی",
+        "ضریب شکست",
+        "critical angle"
+      ],
+      "description_fa": "بیشترین زاویه فرود که نور هنوز از محیط غلیظ به رقیق عبور می‌کند؛ فراتر از آن بازتاب کلی رخ می‌دهد.",
+      "variables": [
+        {
+          "name": "n1",
+          "label_fa": "ضریب شکست محیط اول",
+          "label_en": "n₁",
+          "type": "number",
+          "unit": null,
+          "default": 1.5,
+          "required": true,
+          "min": 1
+        },
+        {
+          "name": "n2",
+          "label_fa": "ضریب شکست محیط دوم",
+          "label_en": "n₂",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "critical_angle_deg",
+          "label_fa": "زاویه بحرانی",
+          "label_en": "Critical Angle Deg",
+          "unit": "deg"
+        },
+        {
+          "name": "critical_angle_rad",
+          "label_fa": "زاویه بحرانی",
+          "label_en": "Critical Angle Rad",
+          "unit": "rad"
+        },
+        {
+          "name": "sin_critical",
+          "label_fa": "سینوس زاویه بحرانی",
+          "label_en": "Sin Critical",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\theta_c=\\arcsin\\!\\left(\\frac{n_2}{n_1}\\right)",
+      "compute_js": "module:apps/web/phase7-formulas.js#critical_angle",
+      "steps_generator": "module:apps/web/phase7-formulas.js#critical_angle",
+      "plot_spec": null,
+      "examples": [
+        {
+          "n1": 1.5,
+          "n2": 1
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "n1": 1.5,
+            "n2": 1
+          },
+          "expected": {
+            "critical_angle_deg": 41.810315,
+            "critical_angle_rad": 0.729728,
+            "sin_critical": 0.666667
+          }
+        },
+        {
+          "input": {
+            "n1": 2.42,
+            "n2": 1
+          },
+          "expected": {
+            "critical_angle_deg": 24.407469,
+            "critical_angle_rad": 0.425991,
+            "sin_critical": 0.413223
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "spring_mass_frequency",
+      "name_fa": "فرکانس نوسان جرم و فنر",
+      "name_en": "Spring–Mass Oscillation Frequency",
+      "category_path": [
+        "فیزیک",
+        "مکانیک کلاسیک"
+      ],
+      "tags": [
+        "فرکانس",
+        "فنر",
+        "نوسان"
+      ],
+      "description_fa": "فرکانس طبیعی، فرکانس زاویه‌ای و دوره تناوب یک جرم روی فنر ایده‌آل.",
+      "variables": [
+        {
+          "name": "k",
+          "label_fa": "ثابت فنر (N/m)",
+          "label_en": "Spring constant",
+          "type": "number",
+          "unit": "N/m",
+          "default": 100,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "m",
+          "label_fa": "جرم (kg)",
+          "label_en": "Mass",
+          "type": "number",
+          "unit": "kg",
+          "default": 1,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "frequency",
+          "label_fa": "فرکانس",
+          "label_en": "Frequency",
+          "unit": "Hz"
+        },
+        {
+          "name": "angular_frequency",
+          "label_fa": "فرکانس زاویه‌ای",
+          "label_en": "Angular Frequency",
+          "unit": "rad/s"
+        },
+        {
+          "name": "period",
+          "label_fa": "دوره تناوب",
+          "label_en": "Period",
+          "unit": "s"
+        }
+      ],
+      "formula_latex": "f=\\frac{1}{2\\pi}\\sqrt{\\frac{k}{m}},\\qquad T=2\\pi\\sqrt{\\frac{m}{k}}",
+      "compute_js": "module:apps/web/phase7-formulas.js#spring_mass_frequency",
+      "steps_generator": "module:apps/web/phase7-formulas.js#spring_mass_frequency",
+      "plot_spec": null,
+      "examples": [
+        {
+          "k": 100,
+          "m": 1
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "k": 100,
+            "m": 1
+          },
+          "expected": {
+            "frequency": 1.591549,
+            "angular_frequency": 10,
+            "period": 0.628319
+          }
+        },
+        {
+          "input": {
+            "k": 50,
+            "m": 2
+          },
+          "expected": {
+            "frequency": 0.795775,
+            "angular_frequency": 5,
+            "period": 1.256637
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "solenoid_field",
+      "name_fa": "میدان مغناطیسی سیم‌پیچ",
+      "name_en": "Magnetic Field of a Solenoid",
+      "category_path": [
+        "فیزیک",
+        "الکترومغناطیس"
+      ],
+      "tags": [
+        "سیم‌پیچ",
+        "میدان مغناطیسی",
+        "solenoid"
+      ],
+      "description_fa": "شدت میدان مغناطیسی داخل یک سیم‌پیچ بلند برحسب تعداد دور، طول و جریان.",
+      "variables": [
+        {
+          "name": "turns",
+          "label_fa": "تعداد دور (N)",
+          "label_en": "Turns",
+          "type": "number",
+          "unit": null,
+          "default": 1000,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "length",
+          "label_fa": "طول سیم‌پیچ (m)",
+          "label_en": "Length",
+          "type": "number",
+          "unit": "m",
+          "default": 0.5,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "current",
+          "label_fa": "جریان (A)",
+          "label_en": "Current",
+          "type": "number",
+          "unit": "A",
+          "default": 2,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "b_field",
+          "label_fa": "میدان B",
+          "label_en": "B Field",
+          "unit": "T"
+        },
+        {
+          "name": "h_field",
+          "label_fa": "شدت میدان H",
+          "label_en": "H Field",
+          "unit": "A/m"
+        },
+        {
+          "name": "turns_per_meter",
+          "label_fa": "دور بر متر",
+          "label_en": "Turns Per Meter",
+          "unit": null
+        }
+      ],
+      "formula_latex": "B=\\mu_0\\frac{N}{L}I",
+      "compute_js": "module:apps/web/phase7-formulas.js#solenoid_field",
+      "steps_generator": "module:apps/web/phase7-formulas.js#solenoid_field",
+      "plot_spec": null,
+      "examples": [
+        {
+          "turns": 1000,
+          "length": 0.5,
+          "current": 2
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "turns": 1000,
+            "length": 0.5,
+            "current": 2
+          },
+          "expected": {
+            "b_field": 0.005026548,
+            "h_field": 4000,
+            "turns_per_meter": 2000
+          }
+        },
+        {
+          "input": {
+            "turns": 500,
+            "length": 0.25,
+            "current": 1
+          },
+          "expected": {
+            "b_field": 0.002513274,
+            "h_field": 2000,
+            "turns_per_meter": 2000
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "photon_energy",
+      "name_fa": "انرژی فوتون",
+      "name_en": "Photon Energy",
+      "category_path": [
+        "فیزیک",
+        "فیزیک مدرن"
+      ],
+      "tags": [
+        "فوتون",
+        "طول موج",
+        "انرژی"
+      ],
+      "description_fa": "انرژی و فرکانس یک فوتون از روی طول موج آن، بر حسب ژول و الکترون‌ولت.",
+      "variables": [
+        {
+          "name": "wavelength_nm",
+          "label_fa": "طول موج (nm)",
+          "label_en": "Wavelength",
+          "type": "number",
+          "unit": "nm",
+          "default": 500,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "energy_j",
+          "label_fa": "انرژی",
+          "label_en": "Energy J",
+          "unit": "J"
+        },
+        {
+          "name": "energy_ev",
+          "label_fa": "انرژی",
+          "label_en": "Energy Ev",
+          "unit": "eV"
+        },
+        {
+          "name": "frequency",
+          "label_fa": "فرکانس",
+          "label_en": "Frequency",
+          "unit": "Hz"
+        }
+      ],
+      "formula_latex": "E=\\frac{hc}{\\lambda}=h\\nu",
+      "compute_js": "module:apps/web/phase7-formulas.js#photon_energy",
+      "steps_generator": "module:apps/web/phase7-formulas.js#photon_energy",
+      "plot_spec": null,
+      "examples": [
+        {
+          "wavelength_nm": 500
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "wavelength_nm": 500
+          },
+          "expected": {
+            "energy_j": 3.9728917e-19,
+            "energy_ev": 2.479684,
+            "frequency": 599584920000000
+          }
+        },
+        {
+          "input": {
+            "wavelength_nm": 121.5
+          },
+          "expected": {
+            "energy_j": 1.6349349e-18,
+            "energy_ev": 10.204461,
+            "frequency": 2467427600000000
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "calorimetry_mixing",
+      "name_fa": "دمای تعادل دو مایع",
+      "name_en": "Calorimetry — Mixture Equilibrium",
+      "category_path": [
+        "فیزیک",
+        "ترمودینامیک"
+      ],
+      "tags": [
+        "کالری‌متری",
+        "گرما",
+        "تعادل"
+      ],
+      "description_fa": "دمای نهایی و گرمای مبادله‌شده وقتی دو جسم با دماهای مختلف در یک ظرف عایق مخلوط می‌شوند.",
+      "variables": [
+        {
+          "name": "m1",
+          "label_fa": "جرم اول (kg)",
+          "label_en": "Mass 1",
+          "type": "number",
+          "unit": "kg",
+          "default": 0.2,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "c1",
+          "label_fa": "گرمای ویژه اول (J/kg·K)",
+          "label_en": "Specific heat 1",
+          "type": "number",
+          "unit": null,
+          "default": 4186,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "t1",
+          "label_fa": "دمای اول (°C)",
+          "label_en": "Temperature 1",
+          "type": "number",
+          "unit": "°C",
+          "default": 90,
+          "required": true
+        },
+        {
+          "name": "m2",
+          "label_fa": "جرم دوم (kg)",
+          "label_en": "Mass 2",
+          "type": "number",
+          "unit": "kg",
+          "default": 0.3,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "c2",
+          "label_fa": "گرمای ویژه دوم (J/kg·K)",
+          "label_en": "Specific heat 2",
+          "type": "number",
+          "unit": null,
+          "default": 4186,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "t2",
+          "label_fa": "دمای دوم (°C)",
+          "label_en": "Temperature 2",
+          "type": "number",
+          "unit": "°C",
+          "default": 20,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "final_temperature",
+          "label_fa": "دمای تعادل",
+          "label_en": "Final Temperature",
+          "unit": "°C"
+        },
+        {
+          "name": "heat_transferred",
+          "label_fa": "گرمای مبادله‌شده",
+          "label_en": "Heat Transferred",
+          "unit": "J"
+        },
+        {
+          "name": "hot_capacity",
+          "label_fa": "ظرفیت گرمایی جسم اول",
+          "label_en": "Hot Capacity",
+          "unit": "J/K"
+        }
+      ],
+      "formula_latex": "T_f=\\frac{m_1c_1T_1+m_2c_2T_2}{m_1c_1+m_2c_2}",
+      "compute_js": "module:apps/web/phase7-formulas.js#calorimetry_mixing",
+      "steps_generator": "module:apps/web/phase7-formulas.js#calorimetry_mixing",
+      "plot_spec": null,
+      "examples": [
+        {
+          "m1": 0.2,
+          "c1": 4186,
+          "t1": 90,
+          "m2": 0.3,
+          "c2": 4186,
+          "t2": 20
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "m1": 0.2,
+            "c1": 4186,
+            "t1": 90,
+            "m2": 0.3,
+            "c2": 4186,
+            "t2": 20
+          },
+          "expected": {
+            "final_temperature": 48,
+            "heat_transferred": 35162.4,
+            "hot_capacity": 837.2
+          }
+        },
+        {
+          "input": {
+            "m1": 0.1,
+            "c1": 385,
+            "t1": 300,
+            "m2": 0.4,
+            "c2": 4186,
+            "t2": 290
+          },
+          "expected": {
+            "final_temperature": 290.224765,
+            "heat_transferred": 376.346547,
+            "hot_capacity": 38.5
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "empirical_formula",
+      "name_fa": "فرمول تجربی از درصد جرمی",
+      "name_en": "Empirical Formula from Mass Data",
+      "category_path": [
+        "شیمی",
+        "استوکیومتری"
+      ],
+      "tags": [
+        "فرمول تجربی",
+        "استوکیومتری",
+        "مول"
+      ],
+      "description_fa": "نسبت ساده‌ترین اعداد صحیح دو عنصر از روی جرم و جرم مولی آن‌ها.",
+      "variables": [
+        {
+          "name": "symbol_a",
+          "label_fa": "نماد عنصر اول",
+          "label_en": "Symbol A",
+          "type": "text",
+          "unit": null,
+          "default": "H",
+          "required": true
+        },
+        {
+          "name": "mass_a",
+          "label_fa": "جرم عنصر اول (g)",
+          "label_en": "Mass A",
+          "type": "number",
+          "unit": "g",
+          "default": 0.1119,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "molar_a",
+          "label_fa": "جرم مولی عنصر اول",
+          "label_en": "Molar mass A",
+          "type": "number",
+          "unit": "g/mol",
+          "default": 1.008,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "symbol_b",
+          "label_fa": "نماد عنصر دوم",
+          "label_en": "Symbol B",
+          "type": "text",
+          "unit": null,
+          "default": "O",
+          "required": true
+        },
+        {
+          "name": "mass_b",
+          "label_fa": "جرم عنصر دوم (g)",
+          "label_en": "Mass B",
+          "type": "number",
+          "unit": "g",
+          "default": 0.8881,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "molar_b",
+          "label_fa": "جرم مولی عنصر دوم",
+          "label_en": "Molar mass B",
+          "type": "number",
+          "unit": "g/mol",
+          "default": 16,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "moles_a",
+          "label_fa": "مول عنصر اول",
+          "label_en": "Moles A",
+          "unit": "mol"
+        },
+        {
+          "name": "moles_b",
+          "label_fa": "مول عنصر دوم",
+          "label_en": "Moles B",
+          "unit": "mol"
+        },
+        {
+          "name": "ratio_a",
+          "label_fa": "نسبت عنصر اول",
+          "label_en": "Ratio A",
+          "unit": null
+        },
+        {
+          "name": "ratio_b",
+          "label_fa": "نسبت عنصر دوم",
+          "label_en": "Ratio B",
+          "unit": null
+        },
+        {
+          "name": "formula",
+          "label_fa": "فرمول تجربی",
+          "label_en": "Formula",
+          "unit": null
+        }
+      ],
+      "formula_latex": "n_i=\\frac{m_i}{M_i},\\qquad \\text{ratio}=\\frac{n_i}{n_{\\min}}",
+      "compute_js": "module:apps/web/phase7-formulas.js#empirical_formula",
+      "steps_generator": "module:apps/web/phase7-formulas.js#empirical_formula",
+      "plot_spec": null,
+      "examples": [
+        {
+          "symbol_a": "H",
+          "mass_a": 0.1119,
+          "molar_a": 1.008,
+          "symbol_b": "O",
+          "mass_b": 0.8881,
+          "molar_b": 16
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "symbol_a": "H",
+            "mass_a": 0.1119,
+            "molar_a": 1.008,
+            "symbol_b": "O",
+            "mass_b": 0.8881,
+            "molar_b": 16
+          },
+          "expected": {
+            "moles_a": 0.111012,
+            "moles_b": 0.055506,
+            "ratio_a": 2,
+            "ratio_b": 1
+          }
+        },
+        {
+          "input": {
+            "symbol_a": "C",
+            "mass_a": 0.2727,
+            "molar_a": 12.011,
+            "symbol_b": "O",
+            "mass_b": 0.7273,
+            "molar_b": 15.999
+          },
+          "expected": {
+            "moles_a": 0.022704,
+            "moles_b": 0.045459,
+            "ratio_a": 1,
+            "ratio_b": 2.0022
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "raoult_law",
+      "name_fa": "قانون راؤلت",
+      "name_en": "Raoult's Law",
+      "category_path": [
+        "شیمی",
+        "تعادل"
+      ],
+      "tags": [
+        "فشار بخار",
+        "محلول",
+        "raoult"
+      ],
+      "description_fa": "کاهش فشار بخار حلال در محلول ایده‌آل برحسب کسر مولی حلال.",
+      "variables": [
+        {
+          "name": "x_solvent",
+          "label_fa": "کسر مولی حلال",
+          "label_en": "Mole fraction",
+          "type": "number",
+          "unit": null,
+          "default": 0.9,
+          "required": true,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "p0",
+          "label_fa": "فشار بخار حلال خالص",
+          "label_en": "Vapour pressure of pure solvent",
+          "type": "number",
+          "unit": "kPa",
+          "default": 23.8,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "vapour_pressure",
+          "label_fa": "فشار بخار محلول",
+          "label_en": "Vapour Pressure",
+          "unit": "kPa"
+        },
+        {
+          "name": "pressure_drop",
+          "label_fa": "کاهش فشار بخار",
+          "label_en": "Pressure Drop",
+          "unit": "kPa"
+        },
+        {
+          "name": "relative_lowering",
+          "label_fa": "کاهش نسبی",
+          "label_en": "Relative Lowering",
+          "unit": null
+        }
+      ],
+      "formula_latex": "P=x_{\\text{solvent}}P^{\\circ},\\qquad \\Delta P=(1-x)P^{\\circ}",
+      "compute_js": "module:apps/web/phase7-formulas.js#raoult_law",
+      "steps_generator": "module:apps/web/phase7-formulas.js#raoult_law",
+      "plot_spec": null,
+      "examples": [
+        {
+          "x_solvent": 0.9,
+          "p0": 23.8
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "x_solvent": 0.9,
+            "p0": 23.8
+          },
+          "expected": {
+            "vapour_pressure": 21.42,
+            "pressure_drop": 2.38,
+            "relative_lowering": 0.1
+          }
+        },
+        {
+          "input": {
+            "x_solvent": 0.75,
+            "p0": 100
+          },
+          "expected": {
+            "vapour_pressure": 75,
+            "pressure_drop": 25,
+            "relative_lowering": 0.25
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "torsion_shaft",
+      "name_fa": "پیچش شفت گرد",
+      "name_en": "Torsion of a Circular Shaft",
+      "category_path": [
+        "مهندسی",
+        "استاتیک"
+      ],
+      "tags": [
+        "پیچش",
+        "تنش برشی",
+        "shaft"
+      ],
+      "description_fa": "تنش برشی، ممان قطبی و زاویه پیچش یک شفت توپر تحت گشتاور.",
+      "variables": [
+        {
+          "name": "torque",
+          "label_fa": "گشتاور (N·m)",
+          "label_en": "Torque",
+          "type": "number",
+          "unit": "N·m",
+          "default": 500,
+          "required": true
+        },
+        {
+          "name": "diameter_mm",
+          "label_fa": "قطر (mm)",
+          "label_en": "Diameter",
+          "type": "number",
+          "unit": "mm",
+          "default": 40,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "length_m",
+          "label_fa": "طول (m)",
+          "label_en": "Length",
+          "type": "number",
+          "unit": "m",
+          "default": 1,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "g_gpa",
+          "label_fa": "ضریب برشی G (GPa)",
+          "label_en": "Shear modulus",
+          "type": "number",
+          "unit": "GPa",
+          "default": 79.3,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "shear_stress_mpa",
+          "label_fa": "تنش برشی",
+          "label_en": "Shear Stress Mpa",
+          "unit": "MPa"
+        },
+        {
+          "name": "polar_moment",
+          "label_fa": "ممان قطبی J",
+          "label_en": "Polar Moment",
+          "unit": "m⁴"
+        },
+        {
+          "name": "twist_deg",
+          "label_fa": "زاویه پیچش",
+          "label_en": "Twist Deg",
+          "unit": "deg"
+        },
+        {
+          "name": "twist_rad",
+          "label_fa": "twist_rad",
+          "label_en": "Twist Rad",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\tau=\\frac{Tr}{J},\\qquad J=\\frac{\\pi d^{4}}{32},\\qquad \\theta=\\frac{TL}{GJ}",
+      "compute_js": "module:apps/web/phase7-formulas.js#torsion_shaft",
+      "steps_generator": "module:apps/web/phase7-formulas.js#torsion_shaft",
+      "plot_spec": null,
+      "examples": [
+        {
+          "torque": 500,
+          "diameter_mm": 40,
+          "length_m": 1,
+          "g_gpa": 79.3
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "torque": 500,
+            "diameter_mm": 40,
+            "length_m": 1,
+            "g_gpa": 79.3
+          },
+          "expected": {
+            "shear_stress_mpa": 39.788736,
+            "polar_moment": 2.5132741e-7,
+            "twist_deg": 1.437406,
+            "twist_rad": 0.025087475
+          }
+        },
+        {
+          "input": {
+            "torque": 120,
+            "diameter_mm": 25,
+            "length_m": 0.8,
+            "g_gpa": 26
+          },
+          "expected": {
+            "shear_stress_mpa": 39.113919,
+            "polar_moment": 3.834952e-8,
+            "twist_deg": 5.516461,
+            "twist_rad": 0.096280416
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "column_buckling_euler",
+      "name_fa": "کمانش ستون (اولر)",
+      "name_en": "Euler Column Buckling",
+      "category_path": [
+        "مهندسی",
+        "استاتیک"
+      ],
+      "tags": [
+        "کمانش",
+        "ستون",
+        "buckling"
+      ],
+      "description_fa": "بار بحرانی کمانش یک ستون ایده‌آل برحسب سختی خمشی و طول مؤثر.",
+      "variables": [
+        {
+          "name": "e_gpa",
+          "label_fa": "مدول یانگ E (GPa)",
+          "label_en": "Young modulus",
+          "type": "number",
+          "unit": "GPa",
+          "default": 200,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "i_cm4",
+          "label_fa": "ممان اینرسی I (cm⁴)",
+          "label_en": "Second moment of area",
+          "type": "number",
+          "unit": "cm⁴",
+          "default": 1000,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "length_m",
+          "label_fa": "طول ستون (m)",
+          "label_en": "Length",
+          "type": "number",
+          "unit": "m",
+          "default": 3,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "k_factor",
+          "label_fa": "ضریب طول مؤثر K",
+          "label_en": "Effective length factor",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "critical_load_kn",
+          "label_fa": "بار بحرانی",
+          "label_en": "Critical Load Kn",
+          "unit": "kN"
+        },
+        {
+          "name": "critical_load_n",
+          "label_fa": "بار بحرانی",
+          "label_en": "Critical Load N",
+          "unit": "N"
+        },
+        {
+          "name": "effective_length",
+          "label_fa": "طول مؤثر",
+          "label_en": "Effective Length",
+          "unit": "m"
+        }
+      ],
+      "formula_latex": "P_{cr}=\\frac{\\pi^{2}EI}{(KL)^{2}}",
+      "compute_js": "module:apps/web/phase7-formulas.js#column_buckling_euler",
+      "steps_generator": "module:apps/web/phase7-formulas.js#column_buckling_euler",
+      "plot_spec": null,
+      "examples": [
+        {
+          "e_gpa": 200,
+          "i_cm4": 1000,
+          "length_m": 3,
+          "k_factor": 1
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "e_gpa": 200,
+            "i_cm4": 1000,
+            "length_m": 3,
+            "k_factor": 1
+          },
+          "expected": {
+            "critical_load_kn": 2193.245422,
+            "critical_load_n": 2193245.422464,
+            "effective_length": 3
+          }
+        },
+        {
+          "input": {
+            "e_gpa": 70,
+            "i_cm4": 500,
+            "length_m": 2,
+            "k_factor": 2
+          },
+          "expected": {
+            "critical_load_kn": 215.897596,
+            "critical_load_n": 215897.596274,
+            "effective_length": 4
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "wheatstone_bridge",
+      "name_fa": "پل وتستون",
+      "name_en": "Wheatstone Bridge",
+      "category_path": [
+        "مهندسی",
+        "مدار و الکترونیک"
+      ],
+      "tags": [
+        "پل وتستون",
+        "مقاومت",
+        "bridge"
+      ],
+      "description_fa": "مقاومت مجهول در پل متعادل، از نسبت سه بازوی معلوم.",
+      "variables": [
+        {
+          "name": "r1",
+          "label_fa": "بازوی R₁ (Ω)",
+          "label_en": "R₁",
+          "type": "number",
+          "unit": "Ω",
+          "default": 100,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "r2",
+          "label_fa": "بازوی R₂ (Ω)",
+          "label_en": "R₂",
+          "type": "number",
+          "unit": "Ω",
+          "default": 200,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "r3",
+          "label_fa": "بازوی R₃ (Ω)",
+          "label_en": "R₃",
+          "type": "number",
+          "unit": "Ω",
+          "default": 150,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "unknown_resistance",
+          "label_fa": "مقاومت مجهول",
+          "label_en": "Unknown Resistance",
+          "unit": "Ω"
+        },
+        {
+          "name": "ratio_arms",
+          "label_fa": "نسبت بازوها",
+          "label_en": "Ratio Arms",
+          "unit": null
+        },
+        {
+          "name": "conductance",
+          "label_fa": "رسانایی",
+          "label_en": "Conductance",
+          "unit": "S"
+        }
+      ],
+      "formula_latex": "R_x=\\frac{R_2R_3}{R_1}\\quad\\text{(balanced)}",
+      "compute_js": "module:apps/web/phase7-formulas.js#wheatstone_bridge",
+      "steps_generator": "module:apps/web/phase7-formulas.js#wheatstone_bridge",
+      "plot_spec": null,
+      "examples": [
+        {
+          "r1": 100,
+          "r2": 200,
+          "r3": 150
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "r1": 100,
+            "r2": 200,
+            "r3": 150
+          },
+          "expected": {
+            "unknown_resistance": 300,
+            "ratio_arms": 2,
+            "conductance": 0.003333333
+          }
+        },
+        {
+          "input": {
+            "r1": 120,
+            "r2": 120,
+            "r3": 470
+          },
+          "expected": {
+            "unknown_resistance": 470,
+            "ratio_arms": 1,
+            "conductance": 0.00212766
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "convection_heat_transfer",
+      "name_fa": "انتقال حرارت جابه‌جایی",
+      "name_en": "Convective Heat Transfer",
+      "category_path": [
+        "مهندسی",
+        "انتقال حرارت"
+      ],
+      "tags": [
+        "جابه‌جایی",
+        "ضریب انتقال حرارت",
+        "convection"
+      ],
+      "description_fa": "آهنگ انتقال حرارت از یک سطح به سیال، همراه با شارش حرارتی و مقاومت جابه‌جایی.",
+      "variables": [
+        {
+          "name": "h",
+          "label_fa": "ضریب جابه‌جایی (W/m²·K)",
+          "label_en": "Convection coefficient",
+          "type": "number",
+          "unit": null,
+          "default": 25,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "area",
+          "label_fa": "مساحت سطح (m²)",
+          "label_en": "Area",
+          "type": "number",
+          "unit": "m²",
+          "default": 2,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "t_surface",
+          "label_fa": "دمای سطح (°C)",
+          "label_en": "Surface temperature",
+          "type": "number",
+          "unit": "°C",
+          "default": 80,
+          "required": true
+        },
+        {
+          "name": "t_fluid",
+          "label_fa": "دمای سیال (°C)",
+          "label_en": "Fluid temperature",
+          "type": "number",
+          "unit": "°C",
+          "default": 25,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "heat_rate",
+          "label_fa": "آهنگ انتقال حرارت",
+          "label_en": "Heat Rate",
+          "unit": "W"
+        },
+        {
+          "name": "heat_flux",
+          "label_fa": "شارش حرارتی",
+          "label_en": "Heat Flux",
+          "unit": "W/m²"
+        },
+        {
+          "name": "resistance",
+          "label_fa": "مقاومت جابه‌جایی",
+          "label_en": "Resistance",
+          "unit": "K/W"
+        }
+      ],
+      "formula_latex": "q=hA(T_s-T_\\infty)",
+      "compute_js": "module:apps/web/phase7-formulas.js#convection_heat_transfer",
+      "steps_generator": "module:apps/web/phase7-formulas.js#convection_heat_transfer",
+      "plot_spec": null,
+      "examples": [
+        {
+          "h": 25,
+          "area": 2,
+          "t_surface": 80,
+          "t_fluid": 25
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "h": 25,
+            "area": 2,
+            "t_surface": 80,
+            "t_fluid": 25
+          },
+          "expected": {
+            "heat_rate": 2750,
+            "heat_flux": 1375,
+            "resistance": 0.02
+          }
+        },
+        {
+          "input": {
+            "h": 10,
+            "area": 1.5,
+            "t_surface": 60,
+            "t_fluid": 20
+          },
+          "expected": {
+            "heat_rate": 600,
+            "heat_flux": 400,
+            "resistance": 0.066666667
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "bond_price",
+      "name_fa": "قیمت اوراق قرضه",
+      "name_en": "Bond Price",
+      "category_path": [
+        "مالی و اقتصاد",
+        "سرمایه‌گذاری"
+      ],
+      "tags": [
+        "اوراق",
+        "بازده",
+        "bond"
+      ],
+      "description_fa": "ارزش فعلی کوپن‌ها و مبلغ اسمی اوراق با نرخ بازده بازار، و بازده جاری.",
+      "variables": [
+        {
+          "name": "face",
+          "label_fa": "مبلغ اسمی",
+          "label_en": "Face value",
+          "type": "number",
+          "unit": "currency",
+          "default": 1000,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "coupon_rate",
+          "label_fa": "نرخ کوپن سالانه (٪)",
+          "label_en": "Coupon rate",
+          "type": "number",
+          "unit": "%",
+          "default": 5,
+          "required": true
+        },
+        {
+          "name": "years",
+          "label_fa": "سررسید (سال)",
+          "label_en": "Years to maturity",
+          "type": "number",
+          "unit": "time",
+          "default": 10,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "yield_rate",
+          "label_fa": "بازده بازار (٪)",
+          "label_en": "Yield to maturity",
+          "type": "number",
+          "unit": "%",
+          "default": 6,
+          "required": true
+        },
+        {
+          "name": "m",
+          "label_fa": "تعداد پرداخت در سال",
+          "label_en": "Payments per year",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true,
+          "min": 1,
+          "max": 12
+        }
+      ],
+      "outputs": [
+        {
+          "name": "price",
+          "label_fa": "قیمت اوراق",
+          "label_en": "Price",
+          "unit": null
+        },
+        {
+          "name": "current_yield",
+          "label_fa": "بازده جاری",
+          "label_en": "Current Yield",
+          "unit": "%"
+        },
+        {
+          "name": "total_coupons",
+          "label_fa": "مجموع کوپن‌ها",
+          "label_en": "Total Coupons",
+          "unit": null
+        },
+        {
+          "name": "periods",
+          "label_fa": "تعداد دوره",
+          "label_en": "Periods",
+          "unit": null
+        }
+      ],
+      "formula_latex": "P=\\sum_{k=1}^{n}\\frac{C/m}{(1+y/m)^{k}}+\\frac{F}{(1+y/m)^{n}}",
+      "compute_js": "module:apps/web/phase7-formulas.js#bond_price",
+      "steps_generator": "module:apps/web/phase7-formulas.js#bond_price",
+      "plot_spec": null,
+      "examples": [
+        {
+          "face": 1000,
+          "coupon_rate": 5,
+          "years": 10,
+          "yield_rate": 6,
+          "m": 2
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "face": 1000,
+            "coupon_rate": 5,
+            "years": 10,
+            "yield_rate": 6,
+            "m": 2
+          },
+          "expected": {
+            "price": 925.6126,
+            "current_yield": 5.401828,
+            "total_coupons": 500,
+            "periods": 20
+          }
+        },
+        {
+          "input": {
+            "face": 1000,
+            "coupon_rate": 8,
+            "years": 5,
+            "yield_rate": 8,
+            "m": 1
+          },
+          "expected": {
+            "price": 1000,
+            "current_yield": 8,
+            "total_coupons": 400,
+            "periods": 5
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "fisher_real_return",
+      "name_fa": "بازده حقیقی فیشر",
+      "name_en": "Fisher Real Return",
+      "category_path": [
+        "مالی و اقتصاد",
+        "سرمایه‌گذاری"
+      ],
+      "tags": [
+        "تورم",
+        "بازده حقیقی",
+        "fisher"
+      ],
+      "description_fa": "تبدیل بازده اسمی به بازده حقیقی با حذف اثر تورم (رابطه دقیق فیشر).",
+      "variables": [
+        {
+          "name": "nominal",
+          "label_fa": "بازده اسمی (٪)",
+          "label_en": "Nominal return",
+          "type": "number",
+          "unit": "%",
+          "default": 10,
+          "required": true
+        },
+        {
+          "name": "inflation",
+          "label_fa": "تورم (٪)",
+          "label_en": "Inflation",
+          "type": "number",
+          "unit": "%",
+          "default": 7,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "real_return",
+          "label_fa": "بازده حقیقی",
+          "label_en": "Real Return",
+          "unit": "%"
+        },
+        {
+          "name": "approximate_return",
+          "label_fa": "تقریب r − π",
+          "label_en": "Approximate Return",
+          "unit": "%"
+        },
+        {
+          "name": "erosion",
+          "label_fa": "افت قدرت خرید",
+          "label_en": "Erosion",
+          "unit": "%"
+        }
+      ],
+      "formula_latex": "r_{\\text{real}}=\\frac{1+r_{\\text{nom}}}{1+\\pi}-1",
+      "compute_js": "module:apps/web/phase7-formulas.js#fisher_real_return",
+      "steps_generator": "module:apps/web/phase7-formulas.js#fisher_real_return",
+      "plot_spec": null,
+      "examples": [
+        {
+          "nominal": 10,
+          "inflation": 7
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "nominal": 10,
+            "inflation": 7
+          },
+          "expected": {
+            "real_return": 2.803738,
+            "approximate_return": 3,
+            "erosion": 6.542056
+          }
+        },
+        {
+          "input": {
+            "nominal": 5,
+            "inflation": 2
+          },
+          "expected": {
+            "real_return": 2.941176,
+            "approximate_return": 3,
+            "erosion": 1.960784
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "rule_of_72",
+      "name_fa": "قانون ۷۲ (دوبرابر شدن سرمایه)",
+      "name_en": "Rule of 72",
+      "category_path": [
+        "مالی و اقتصاد",
+        "بهره و وام"
+      ],
+      "tags": [
+        "دوبرابر شدن",
+        "بهره مرکب",
+        "rule of 72"
+      ],
+      "description_fa": "سال‌های لازم برای دوبرابر شدن سرمایه با نرخ رشد ثابت؛ همراه با مقدار دقیق.",
+      "variables": [
+        {
+          "name": "rate",
+          "label_fa": "نرخ رشد سالانه (٪)",
+          "label_en": "Annual growth",
+          "type": "number",
+          "unit": "%",
+          "default": 8,
+          "required": true,
+          "min": 0.0001
+        }
+      ],
+      "outputs": [
+        {
+          "name": "years_rule",
+          "label_fa": "تخمین قانون ۷۲",
+          "label_en": "Years Rule",
+          "unit": "time"
+        },
+        {
+          "name": "years_exact",
+          "label_fa": "مقدار دقیق",
+          "label_en": "Years Exact",
+          "unit": "time"
+        },
+        {
+          "name": "doubling_growth",
+          "label_fa": "ضریب رشد لازم",
+          "label_en": "Doubling Growth",
+          "unit": null
+        }
+      ],
+      "formula_latex": "t_{72}=\\frac{72}{r},\\qquad t_{\\text{exact}}=\\frac{\\ln 2}{\\ln(1+r)}",
+      "compute_js": "module:apps/web/phase7-formulas.js#rule_of_72",
+      "steps_generator": "module:apps/web/phase7-formulas.js#rule_of_72",
+      "plot_spec": null,
+      "examples": [
+        {
+          "rate": 8
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "rate": 8
+          },
+          "expected": {
+            "years_rule": 9,
+            "years_exact": 9.006468,
+            "doubling_growth": 2
+          }
+        },
+        {
+          "input": {
+            "rate": 6
+          },
+          "expected": {
+            "years_rule": 12,
+            "years_exact": 11.895661,
+            "doubling_growth": 2
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "egfr_ckd_epi",
+      "name_fa": "فیلتراسیون گلومرولی (CKD-EPI)",
+      "name_en": "eGFR (CKD-EPI 2021)",
+      "category_path": [
+        "زیست و سلامت",
+        "سلامت"
+      ],
+      "tags": [
+        "کلیه",
+        "eGFR",
+        "creatinine"
+      ],
+      "description_fa": "برآورد نرخ فیلتراسیون گلومرولی از کراتینین، سن و جنسیت با معادله CKD-EPI ۲۰۲۱.",
+      "variables": [
+        {
+          "name": "creatinine",
+          "label_fa": "کراتینین سرم (mg/dL)",
+          "label_en": "Serum creatinine",
+          "type": "number",
+          "unit": "mg/dL",
+          "default": 1,
+          "required": true,
+          "min": 0.1
+        },
+        {
+          "name": "age",
+          "label_fa": "سن (سال)",
+          "label_en": "Age",
+          "type": "number",
+          "unit": "year",
+          "default": 40,
+          "required": true,
+          "min": 18,
+          "max": 120
+        },
+        {
+          "name": "female",
+          "label_fa": "زن هستم",
+          "label_en": "Female",
+          "type": "boolean",
+          "unit": null,
+          "default": false,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "egfr",
+          "label_fa": "eGFR",
+          "label_en": "Egfr",
+          "unit": "mL/min/1.73m²"
+        },
+        {
+          "name": "stage",
+          "label_fa": "طبقه‌بندی KDIGO",
+          "label_en": "Stage",
+          "unit": null
+        },
+        {
+          "name": "kappa",
+          "label_fa": "κ معادله",
+          "label_en": "Kappa",
+          "unit": null
+        }
+      ],
+      "formula_latex": "eGFR=142\\cdot\\min(S/\\kappa,1)^{\\alpha}\\cdot\\max(S/\\kappa,1)^{-1.2}\\cdot0.9938^{\\text{age}}",
+      "compute_js": "module:apps/web/phase7-formulas.js#egfr_ckd_epi",
+      "steps_generator": "module:apps/web/phase7-formulas.js#egfr_ckd_epi",
+      "plot_spec": null,
+      "examples": [
+        {
+          "creatinine": 1,
+          "age": 40,
+          "female": false
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "creatinine": 1,
+            "age": 40,
+            "female": false
+          },
+          "expected": {
+            "egfr": 97.5751,
+            "kappa": 0.9
+          }
+        },
+        {
+          "input": {
+            "creatinine": 0.8,
+            "age": 65,
+            "female": true
+          },
+          "expected": {
+            "egfr": 81.7171,
+            "kappa": 0.7
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "bsa_dubois",
+      "name_fa": "سطح بدن (دوبوا)",
+      "name_en": "Body Surface Area (Du Bois)",
+      "category_path": [
+        "زیست و سلامت",
+        "سلامت"
+      ],
+      "tags": [
+        "سطح بدن",
+        "BSA",
+        "دوز دارو"
+      ],
+      "description_fa": "برآورد سطح بدن از قد و وزن، پرکاربرد در محاسبه دوز دارو و شاخص قلبی.",
+      "variables": [
+        {
+          "name": "height_cm",
+          "label_fa": "قد (cm)",
+          "label_en": "Height",
+          "type": "number",
+          "unit": "cm",
+          "default": 170,
+          "required": true,
+          "min": 50
+        },
+        {
+          "name": "weight_kg",
+          "label_fa": "وزن (kg)",
+          "label_en": "Weight",
+          "type": "number",
+          "unit": "kg",
+          "default": 70,
+          "required": true,
+          "min": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "bsa",
+          "label_fa": "سطح بدن",
+          "label_en": "Bsa",
+          "unit": "m²"
+        },
+        {
+          "name": "bmi",
+          "label_fa": "شاخص توده بدنی",
+          "label_en": "Bmi",
+          "unit": "kg/m²"
+        },
+        {
+          "name": "lean_factor",
+          "label_fa": "نسبت سطح به وزن",
+          "label_en": "Lean Factor",
+          "unit": null
+        }
+      ],
+      "formula_latex": "BSA=0.007184\\,H^{0.725}W^{0.425}",
+      "compute_js": "module:apps/web/phase7-formulas.js#bsa_dubois",
+      "steps_generator": "module:apps/web/phase7-formulas.js#bsa_dubois",
+      "plot_spec": null,
+      "examples": [
+        {
+          "height_cm": 170,
+          "weight_kg": 70
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "height_cm": 170,
+            "weight_kg": 70
+          },
+          "expected": {
+            "bsa": 1.809708,
+            "bmi": 24.2215,
+            "lean_factor": 0.025853
+          }
+        },
+        {
+          "input": {
+            "height_cm": 160,
+            "weight_kg": 55
+          },
+          "expected": {
+            "bsa": 1.563174,
+            "bmi": 21.4844,
+            "lean_factor": 0.028421
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "anion_gap",
+      "name_fa": "شکاف آنیونی",
+      "name_en": "Anion Gap",
+      "category_path": [
+        "زیست و سلامت",
+        "سلامت"
+      ],
+      "tags": [
+        "الکترولیت",
+        "آنین گپ",
+        "anion gap"
+      ],
+      "description_fa": "شکاف آنیونی و نسخه اصلاح‌شده با آلبومین، برای ارزیابی اختلالات اسید-باز.",
+      "variables": [
+        {
+          "name": "sodium",
+          "label_fa": "سدیم (mEq/L)",
+          "label_en": "Sodium",
+          "type": "number",
+          "unit": "mEq/L",
+          "default": 140,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "chloride",
+          "label_fa": "کلر (mEq/L)",
+          "label_en": "Chloride",
+          "type": "number",
+          "unit": "mEq/L",
+          "default": 102,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "bicarbonate",
+          "label_fa": "بی‌کربنات (mEq/L)",
+          "label_en": "Bicarbonate",
+          "type": "number",
+          "unit": "mEq/L",
+          "default": 24,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "albumin",
+          "label_fa": "آلبومین (g/dL)",
+          "label_en": "Albumin",
+          "type": "number",
+          "unit": "g/dL",
+          "default": 4,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "anion_gap",
+          "label_fa": "شکاف آنیونی",
+          "label_en": "Anion Gap",
+          "unit": "mEq/L"
+        },
+        {
+          "name": "corrected_gap",
+          "label_fa": "شکاف اصلاح‌شده",
+          "label_en": "Corrected Gap",
+          "unit": "mEq/L"
+        },
+        {
+          "name": "interpretation",
+          "label_fa": "تفسیر",
+          "label_en": "Interpretation",
+          "unit": null
+        }
+      ],
+      "formula_latex": "AG=Na-(Cl+HCO_3),\\qquad AG_c=AG+2.5(4-\\text{Alb})",
+      "compute_js": "module:apps/web/phase7-formulas.js#anion_gap",
+      "steps_generator": "module:apps/web/phase7-formulas.js#anion_gap",
+      "plot_spec": null,
+      "examples": [
+        {
+          "sodium": 140,
+          "chloride": 102,
+          "bicarbonate": 24,
+          "albumin": 4
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "sodium": 140,
+            "chloride": 102,
+            "bicarbonate": 24,
+            "albumin": 4
+          },
+          "expected": {
+            "anion_gap": 14,
+            "corrected_gap": 14
+          }
+        },
+        {
+          "input": {
+            "sodium": 132,
+            "chloride": 90,
+            "bicarbonate": 18,
+            "albumin": 3
+          },
+          "expected": {
+            "anion_gap": 24,
+            "corrected_gap": 26.5
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "serum_osmolality",
+      "name_fa": "اسمولالیته سرم",
+      "name_en": "Serum Osmolality",
+      "category_path": [
+        "زیست و سلامت",
+        "سلامت"
+      ],
+      "tags": [
+        "اسمولالیته",
+        "سدیم",
+        "osmolality"
+      ],
+      "description_fa": "برآورد اسمولالیته سرم از سدیم، گلوکز و نیتروژن اوره خون.",
+      "variables": [
+        {
+          "name": "sodium",
+          "label_fa": "سدیم (mEq/L)",
+          "label_en": "Sodium",
+          "type": "number",
+          "unit": "mEq/L",
+          "default": 140,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "glucose",
+          "label_fa": "گلوکز (mg/dL)",
+          "label_en": "Glucose",
+          "type": "number",
+          "unit": "mg/dL",
+          "default": 90,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "bun",
+          "label_fa": "اوره خون (mg/dL)",
+          "label_en": "BUN",
+          "type": "number",
+          "unit": "mg/dL",
+          "default": 14,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "osmolality",
+          "label_fa": "اسمولالیته",
+          "label_en": "Osmolality",
+          "unit": "mOsm/kg"
+        },
+        {
+          "name": "effective",
+          "label_fa": "اسمولالیته مؤثر",
+          "label_en": "Effective",
+          "unit": "mOsm/kg"
+        },
+        {
+          "name": "tonicity_gap",
+          "label_fa": "سهم اوره",
+          "label_en": "Tonicity Gap",
+          "unit": null
+        }
+      ],
+      "formula_latex": "Osm=2[Na]+\\frac{[Glu]}{18}+\\frac{[BUN]}{2.8}",
+      "compute_js": "module:apps/web/phase7-formulas.js#serum_osmolality",
+      "steps_generator": "module:apps/web/phase7-formulas.js#serum_osmolality",
+      "plot_spec": null,
+      "examples": [
+        {
+          "sodium": 140,
+          "glucose": 90,
+          "bun": 14
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "sodium": 140,
+            "glucose": 90,
+            "bun": 14
+          },
+          "expected": {
+            "osmolality": 290,
+            "effective": 285,
+            "tonicity_gap": 5
+          }
+        },
+        {
+          "input": {
+            "sodium": 125,
+            "glucose": 180,
+            "bun": 28
+          },
+          "expected": {
+            "osmolality": 270,
+            "effective": 260,
+            "tonicity_gap": 10
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "coriolis_parameter",
+      "name_fa": "پارامتر کوریولیس",
+      "name_en": "Coriolis Parameter",
+      "category_path": [
+        "زمین و محیط",
+        "جو و اقلیم"
+      ],
+      "tags": [
+        "کوریولیس",
+        "عرض جغرافیایی",
+        "coriolis"
+      ],
+      "description_fa": "نیروی کوریولیس برحسب عرض جغرافیایی؛ تعیین‌کننده جهت چرخش توفان‌ها.",
+      "variables": [
+        {
+          "name": "latitude",
+          "label_fa": "عرض جغرافیایی (درجه)",
+          "label_en": "Latitude",
+          "type": "number",
+          "unit": "deg",
+          "default": 45,
+          "required": true,
+          "min": -90,
+          "max": 90
+        }
+      ],
+      "outputs": [
+        {
+          "name": "coriolis_parameter",
+          "label_fa": "پارامتر f",
+          "label_en": "Coriolis Parameter",
+          "unit": "1/s"
+        },
+        {
+          "name": "beta",
+          "label_fa": "β (تغییر f با عرض)",
+          "label_en": "Beta",
+          "unit": null
+        },
+        {
+          "name": "rossby_hours",
+          "label_fa": "مقیاس زمانی روزبی",
+          "label_en": "Rossby Hours",
+          "unit": "h"
+        }
+      ],
+      "formula_latex": "f=2\\Omega\\sin\\varphi",
+      "compute_js": "module:apps/web/phase7-formulas.js#coriolis_parameter",
+      "steps_generator": "module:apps/web/phase7-formulas.js#coriolis_parameter",
+      "plot_spec": null,
+      "examples": [
+        {
+          "latitude": 45
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "latitude": 45
+          },
+          "expected": {
+            "coriolis_parameter": 0.0001031261,
+            "beta": 1.6186798e-11,
+            "rossby_hours": 16.9242
+          }
+        },
+        {
+          "input": {
+            "latitude": 0
+          },
+          "expected": {
+            "coriolis_parameter": 0,
+            "beta": 2.289159e-11,
+            "rossby_hours": 0
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "lapse_rate_atmosphere",
+      "name_fa": "افت دما و فشار با ارتفاع",
+      "name_en": "Atmospheric Lapse Rate",
+      "category_path": [
+        "زمین و محیط",
+        "جو و اقلیم"
+      ],
+      "tags": [
+        "ارتفاع",
+        "جو",
+        "lapse rate"
+      ],
+      "description_fa": "دمای هوا و فشار تقریبی در ارتفاع مشخص با آهنگ افت استاندارد ۶٫۵ درجه بر کیلومتر.",
+      "variables": [
+        {
+          "name": "t0",
+          "label_fa": "دمای سطح (°C)",
+          "label_en": "Surface temperature",
+          "type": "number",
+          "unit": "°C",
+          "default": 25,
+          "required": true
+        },
+        {
+          "name": "altitude",
+          "label_fa": "ارتفاع (m)",
+          "label_en": "Altitude",
+          "type": "number",
+          "unit": "m",
+          "default": 1500,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "p0",
+          "label_fa": "فشار سطح (hPa)",
+          "label_en": "Surface pressure",
+          "type": "number",
+          "unit": "hPa",
+          "default": 1013.25,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "temperature",
+          "label_fa": "دما در ارتفاع",
+          "label_en": "Temperature",
+          "unit": "°C"
+        },
+        {
+          "name": "pressure",
+          "label_fa": "فشار هوا",
+          "label_en": "Pressure",
+          "unit": "hPa"
+        },
+        {
+          "name": "density_ratio",
+          "label_fa": "نسبت چگالی هوا",
+          "label_en": "Density Ratio",
+          "unit": null
+        }
+      ],
+      "formula_latex": "T=T_0-\\Gamma h,\\qquad P=P_0\\left(1-\\frac{\\Gamma h}{T_0}\\right)^{gM/ R\\Gamma}",
+      "compute_js": "module:apps/web/phase7-formulas.js#lapse_rate_atmosphere",
+      "steps_generator": "module:apps/web/phase7-formulas.js#lapse_rate_atmosphere",
+      "plot_spec": null,
+      "examples": [
+        {
+          "t0": 25,
+          "altitude": 1500,
+          "p0": 1013.25
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "t0": 25,
+            "altitude": 1500,
+            "p0": 1013.25
+          },
+          "expected": {
+            "temperature": 15.25,
+            "pressure": 850.7918,
+            "density_ratio": 0.868053
+          }
+        },
+        {
+          "input": {
+            "t0": 15,
+            "altitude": 3000,
+            "p0": 1000
+          },
+          "expected": {
+            "temperature": -4.5,
+            "pressure": 691.9148,
+            "density_ratio": 0.742138
+          }
+        }
+      ],
+      "references": [],
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "moment_magnitude",
+      "name_fa": "بزرگای گشتاوری زمین‌لرزه",
+      "name_en": "Moment Magnitude (Mw)",
+      "category_path": [
+        "زمین و محیط",
+        "زلزله"
+      ],
+      "tags": [
+        "زمین‌لرزه",
+        "گشتاور لرزه‌ای",
+        "magnitude"
+      ],
+      "description_fa": "تبدیل گشتاور لرزه‌ای به بزرگای گشتاوری و انرژی آزادشده؛ مقیاس استاندارد امروز seismology.",
+      "variables": [
+        {
+          "name": "m0",
+          "label_fa": "گشتاور لرزه‌ای M₀ (N·m)",
+          "label_en": "Seismic moment",
+          "type": "number",
+          "unit": "N·m",
+          "default": 10000000000000000000,
+          "required": true,
+          "min": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "moment_magnitude",
+          "label_fa": "بزرگای گشتاوری",
+          "label_en": "Moment Magnitude",
+          "unit": null
+        },
+        {
+          "name": "energy_j",
+          "label_fa": "انرژی آزادشده",
+          "label_en": "Energy J",
+          "unit": "J"
+        },
+        {
+          "name": "tonnes_tnt",
+          "label_fa": "معادل TNT",
+          "label_en": "Tonnes Tnt",
+          "unit": "ton"
+        }
+      ],
+      "formula_latex": "M_w=\\tfrac{2}{3}\\left(\\log_{10}M_0-9.1\\right),\\qquad \\log_{10}E=1.5M_w+4.8",
+      "compute_js": "module:apps/web/phase7-formulas.js#moment_magnitude",
+      "steps_generator": "module:apps/web/phase7-formulas.js#moment_magnitude",
+      "plot_spec": null,
+      "examples": [
+        {
+          "m0": 10000000000000000000
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "m0": 10000000000000000000
+          },
+          "expected": {
+            "moment_magnitude": 6.6,
+            "energy_j": 501187230000000,
+            "tonnes_tnt": 119786.6237
+          }
+        },
+        {
+          "input": {
+            "m0": 1e+22
+          },
+          "expected": {
+            "moment_magnitude": 8.6,
+            "energy_j": 501187230000000000,
+            "tonnes_tnt": 119786623.7159
           }
         }
       ],

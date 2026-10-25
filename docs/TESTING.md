@@ -4,7 +4,7 @@
 
 | Layer | Command | What it covers | Current status |
 |---|---|---|---|
-| Registry validation | `npm run validate-registry` | JSON Schema, unique ids, compute + steps present, ≥2 declared cases per formula, duplicate test inputs, finite outputs, manifest/`formula-index.json`/`formula-details.json` sync | 289 formulas, 702 cases, 29 catalog sections, in sync |
+| Registry validation | `npm run validate-registry` | JSON Schema, unique ids, compute + steps present, ≥2 declared cases per formula, duplicate test inputs, finite outputs, manifest/`formula-index.json`/`formula-details.json` sync | 315 formulas, 754 cases, 29 catalog sections, in sync |
 | Component + unit (Vitest) | `npm run test:unit` | Formula registry, compute core, input validation, formatting utils, tools data (units, chemistry, periodic table, constants), React components (RTL) and a full solver flow | 1 253 tests / 9 files |
 | Registry + engine (Node) | `node --test tests/*.test.mjs` | Safe expression parser, numerical derivative/integral/root tools, units, optional API failure behaviour, every declared formula case, security assertions | 1 002 assertions |
 | Bundle budget | `npm run budget` | gzip First Load JS, page-specific bytes, total JS, worker size | all budgets met |

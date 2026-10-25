@@ -13,7 +13,7 @@
 
 **Solve any equation, step by step.** A Persian/English client-first scientific calculator for mathematics, physics, chemistry, engineering, statistics, and finance—built to work offline and deploy as a static site.
 
-**Live demo:** [Pillow1243.github.io/Comprehensive_Computing_Website](https://Pillow1243.github.io/Comprehensive_Computing_Website/) · **Status:** v3.0.0 · **Implemented:** 289 formula solvers with 702 declared, automatically verified test cases, plus a unit converter (13 categories, 95 units), a molar-mass tool, an interactive periodic table and a physical-constants reference.
+**Live demo:** [Pillow1243.github.io/Comprehensive_Computing_Website](https://Pillow1243.github.io/Comprehensive_Computing_Website/) · **Status:** v3.1.0 · **Implemented:** 315 formula solvers with 754 declared, automatically verified test cases, plus a unit converter (13 categories, 95 units), a molar-mass tool, an interactive periodic table and a physical-constants reference.
 
 > The GitHub Pages workflow is ready, but the repository owner must select **Settings → Pages → GitHub Actions** and deploy from `main` before the live URL is available. See [Deployment](docs/DEPLOYMENT.md).
 
@@ -39,7 +39,7 @@ No build step is needed to try only the original PWA: `python3 -m http.server 80
 
 | Area | Available now | Scope / limitations |
 |---|---|---|
-| Formula solvers | 289 client-side formulas across mathematics, physics, chemistry, engineering, finance, computer science, health, astronomy and Earth science | The 500+ broad scientific catalog remains a roadmap target; see `ROADMAP.md`. |
+| Formula solvers | 315 client-side formulas across mathematics, physics, chemistry, engineering, finance, computer science, health, astronomy and Earth science | The 500+ broad scientific catalog remains a roadmap target; see `ROADMAP.md`. |
 | Steps and plots | Human-readable derivation steps, KaTeX rendering with text fallback, dynamic 2D Canvas plots | Advanced 3D, full symbolic CAS, and general-purpose plotting are future work. |
 | Tools | Unit converter (13 categories, 95 units), molar-mass/composition analyser (parentheses + hydrates), interactive 118-element periodic table, physical-constants reference, safe expression calculator, numeric derivative/integral/root tools and a practice quiz | The unit table is useful but not yet a complete dimensional-analysis system. |
 | Persistence | Local history, bookmarks, shareable formula links, print/PDF | No sign-in or server-side user history in the static Pages build. |
@@ -79,7 +79,7 @@ db/schema.sql                   PostgreSQL schema for future hosted features
 ## Run checks and build the Pages export
 
 ```bash
-npm run validate-registry     # 289 formulas, 702 cases, 29 catalog sections, manifests in sync
+npm run validate-registry     # 315 formulas, 754 cases, 29 catalog sections, manifests in sync
 npm run test:unit             # 1 262 Vitest tests (10 files: registry, engine, validation, utils, tools data, tools UI, components, solver flow, compute client, toast)
 npm test                      # test:unit + 1 002 Node registry/API/security assertions
 npm run build                 # Next static export → out/ (301 pages)
