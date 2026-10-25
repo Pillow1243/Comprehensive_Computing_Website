@@ -29,19 +29,19 @@
     "node": ">=20.9.0"
   },
   "dependencies": {
-    "@fontsource-variable/jetbrains-mono": "^5.2.8",
-    "@fontsource-variable/vazirmatn": "^5.2.8",
-    "autoprefixer": "^10.4.21",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource-variable/vazirmatn": "^5.3.0",
+    "autoprefixer": "^10.6.1",
     "clsx": "^2.1.1",
-    "katex": "^0.16.22",
-    "lucide-react": "^0.545.0",
+    "katex": "^0.19.0",
+    "lucide-react": "^1.61.0",
     "next": "16.4.3",
-    "postcss": "^8.5.6",
+    "postcss": "^8.5.31",
     "react": "19.3.1",
     "react-dom": "19.3.1",
-    "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^3.4.17",
-    "zustand": "^5.0.8"
+    "tailwind-merge": "^3.7.0",
+    "tailwindcss": "^4.3.3",
+    "zustand": "^5.0.16"
   },
   "devDependencies": {
     "@playwright/test": "1.64.1",
