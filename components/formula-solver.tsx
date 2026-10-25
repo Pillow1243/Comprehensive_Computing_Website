@@ -31,6 +31,7 @@ import { FormulaDisplay } from '@/components/formula-display';
 import { FormulaDescription } from '@/components/formula-description';
 import { categorySegment } from '@/lib/category-names';
 import { FormulaInput } from '@/components/formula-input';
+import { FormulaAdvanced } from '@/components/formula-advanced';
 import { DynamicPlot, type TrianglePatch } from '@/components/dynamic-plot';
 import { MathKeyboard } from '@/components/math-keyboard';
 import { ResultPanel, StepByStep } from '@/components/step-by-step';
@@ -122,6 +123,8 @@ export function FormulaSolver({
   const [computeError, setComputeError] = useState<{ title: string; message: string } | null>(null);
   const [computing, setComputing] = useState(false);
   const [keyboard, setKeyboard] = useState(false);
+  const [liveMode, setLiveMode] = useState(false);
+  const [showSliders, setShowSliders] = useState(false);
   const [activeField, setActiveField] = useState<string | null>(formula.variables[0]?.name ?? null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [deleteTarget, setDeleteTarget] = useState<HistoryEntry | null>(null);
@@ -147,6 +150,44 @@ export function FormulaSolver({
     }
     return prepared;
   }, [raw, formula.variables, angleUnits]);
+
+  /** Validate + compute arbitrary inputs without writing history (advanced lab, live mode). */
+  const computeValues = useCallback(
+    async (inputs: RawInputs): Promise<Record<string, unknown>> => {
+      const validation = validateInputs(formula, inputs, { lang });
+      if (!validation.ok) {
+        throw new Error(Object.values(validation.errors)[0] ?? 'Invalid inputs');
+      }
+      const computed = await computeFormula(formula, validation.values, { timeoutMs: 30_000 });
+      assertFiniteOutputs(formula, computed.values, validation.values);
+      return computed.values;
+    },
+    [formula, lang],
+  );
+
+  // Live mode: recompute quietly (no history writes) while the user drags/edits.
+  const liveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => {
+    if (!liveMode) return;
+    if (liveTimer.current) clearTimeout(liveTimer.current);
+    liveTimer.current = setTimeout(() => {
+      void (async () => {
+        try {
+          const validation = validateInputs(formula, preparedInputs, { lang });
+          if (!validation.ok) return;
+          const computed = await computeFormula(formula, validation.values, { timeoutMs: 30_000 });
+          assertFiniteOutputs(formula, computed.values, validation.values);
+          setResult(computed);
+          setComputeError(null);
+        } catch {
+          /* keep the last good result while typing */
+        }
+      })();
+    }, 450);
+    return () => {
+      if (liveTimer.current) clearTimeout(liveTimer.current);
+    };
+  }, [liveMode, preparedInputs, formula, lang]);
 
   const runCompute = useCallback(
     async (inputs: RawInputs = preparedInputs) => {
@@ -620,6 +661,7 @@ export function FormulaSolver({
                   angleUnit={angleUnits[variable.name] ?? 'deg'}
                   onAngleUnitChange={(unit) => setAngleUnits((current) => ({ ...current, [variable.name]: unit }))}
                   mathKeyboard
+                  showSlider={showSliders}
                 />
               ))}
             </div>
@@ -640,6 +682,12 @@ export function FormulaSolver({
                   {t('plot')}
                 </Chip>
               )}
+              <Chip selected={showSliders} onClick={() => setShowSliders((v) => !v)}>
+                {lang === 'en' ? 'Sliders' : 'اسلایدر زنده'}
+              </Chip>
+              <Chip selected={liveMode} onClick={() => setLiveMode((v) => !v)}>
+                {lang === 'en' ? 'Live compute' : 'محاسبه زنده'}
+              </Chip>
             </div>
 
             {computing && (
@@ -673,6 +721,19 @@ export function FormulaSolver({
                 </div>
               )}
             </div>
+
+            <FormulaAdvanced
+              formula={formula}
+              inputs={preparedInputs}
+              resultValues={result?.values ?? null}
+              computeValues={computeValues}
+              onApplyInputs={(next) => {
+                const merged: Record<string, string> = { ...raw };
+                for (const [key, value] of Object.entries(next)) merged[key] = String(value);
+                setRaw(merged);
+                void runCompute(next as RawInputs);
+              }}
+            />
           </section>
         )}
 

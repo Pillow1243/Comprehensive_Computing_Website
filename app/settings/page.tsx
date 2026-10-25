@@ -15,6 +15,7 @@ import {
   Smartphone,
   Trash2,
   Type,
+  Upload,
   Vibrate,
 } from 'lucide-react';
 import { toast } from '@/lib/toast';
@@ -26,6 +27,8 @@ import { Button } from '@/components/ui/button';
 import { ConfirmDialog } from '@/components/ui/dialog';
 import { APP_VERSION, REPO_URL } from '@/lib/version';
 import { cn, haptic } from '@/lib/utils';
+import { createBackup, parseBackup } from '@/lib/backup';
+import { downloadTextFile } from '@/lib/calculation-export';
 
 const accents: Array<{ value: AccentId; labelKey: string; swatch: string }> = [
   { value: 'violet', labelKey: 'accentViolet', swatch: 'linear-gradient(135deg,#8B7CFF,#C484FF 55%,#2DD4E8)' },
@@ -319,6 +322,63 @@ export default function SettingsPage() {
           <span className="tnum">{hydrated ? bookmarkCount : 0}</span>
         </div>
         <p className="text-body-small text-on-surface-variant">{t('signInHint')}</p>
+        <div className="flex flex-wrap gap-2">
+          <Button
+            variant="tonal"
+            size="sm"
+            onClick={() => {
+              const state = useAppStore.getState();
+              downloadTextFile(
+                createBackup(
+                  {
+                    settings: state.settings,
+                    history: state.history,
+                    bookmarks: state.bookmarks,
+                    recent: state.recent,
+                    practice: state.practice,
+                    learnDone: state.learnDone,
+                    workspace: state.workspace,
+                    whatsNewSeen: state.whatsNewSeen,
+                  },
+                  APP_VERSION,
+                ),
+                'application/json;charset=utf-8',
+                'solveeverything-backup.json',
+              );
+              toast.success(t('exportReady'));
+            }}
+          >
+            <Download className="h-4 w-4" aria-hidden="true" />
+            {lang === 'en' ? 'Export backup (JSON)' : 'خروجی پشتیبان (JSON)'}
+          </Button>
+          <label className="inline-flex min-h-10 cursor-pointer items-center gap-1.5 rounded-full border border-outline-variant px-3 text-label-medium text-on-surface">
+            <Upload className="h-4 w-4" aria-hidden="true" />
+            {lang === 'en' ? 'Restore backup' : 'بازیابی پشتیبان'}
+            <input
+              type="file"
+              accept="application/json,.json"
+              className="sr-only"
+              onChange={(event) => {
+                const file = event.target.files?.[0];
+                if (!file) return;
+                void file.text().then((content) => {
+                  try {
+                    const clean = parseBackup(content);
+                    useAppStore.setState(clean as unknown as Parameters<typeof useAppStore.setState>[0]);
+                    toast.success(t('saved'));
+                  } catch (error) {
+                    toast.error(error instanceof Error ? error.message : t('errorTitle'));
+                  }
+                });
+              }}
+            />
+          </label>
+        </div>
+        <p className="text-body-small text-on-surface-variant">
+          {lang === 'en'
+            ? 'Move this file to another device to carry your data with you. It is never uploaded anywhere.'
+            : 'این فایل را به دستگاه دیگر ببرید تا داده‌هایتان همراهتان باشد؛ هیچ‌جا بارگذاری نمی‌شود.'}
+        </p>
         <Button variant="danger" size="sm" onClick={() => setClearOpen(true)}>
           <Trash2 className="h-4 w-4" aria-hidden="true" />
           {t('clearCache')}

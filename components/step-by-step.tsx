@@ -1,24 +1,58 @@
 'use client';
 
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Pause, Play, RotateCcw, StepBack, StepForward } from 'lucide-react';
 import { cn, formatNumber } from '@/lib/utils';
 import { useI18n } from '@/lib/i18n';
 import { outputLabel, type Formula } from '@/lib/formulas';
 import { humanizeOutput } from '@/lib/output-labels';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export function StepByStep({ steps }: { steps: string[] }) {
-  const { t, dir } = useI18n();
+  const { t, dir, lang } = useI18n();
+  const [visibleCount, setVisibleCount] = useState(steps.length);
+  const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    setVisibleCount(steps.length);
+    setPlaying(false);
+  }, [steps]);
+
+  useEffect(() => {
+    if (!playing) return;
+    if (visibleCount >= steps.length) {
+      setPlaying(false);
+      return;
+    }
+    const timer = setTimeout(() => setVisibleCount((count) => Math.min(steps.length, count + 1)), 900);
+    return () => clearTimeout(timer);
+  }, [playing, visibleCount, steps.length]);
+
   if (!steps.length) {
     return <p className="px-1 py-6 text-body-medium text-on-surface-variant">{t('noSteps')}</p>;
   }
+  const current = Math.max(1, Math.min(visibleCount, steps.length));
+  const fa = lang !== 'en';
   return (
+    <div>
+      <div className="mb-3 rounded-2xl border border-outline-variant bg-surface-container p-3" aria-label={fa ? 'دیباگر گام‌ها' : 'Step debugger'}>
+        <div className="flex flex-wrap items-center gap-2">
+          <button type="button" onClick={() => { if (playing) { setPlaying(false); return; } if (visibleCount >= steps.length) setVisibleCount(1); setPlaying(true); }} className="flex min-h-10 items-center gap-1.5 rounded-full bg-primary-container px-3 text-label-large text-on-primary-container">
+            {playing ? <Pause className="h-4 w-4" aria-hidden="true" /> : <Play className="h-4 w-4" aria-hidden="true" />}
+            {playing ? (fa ? 'توقف' : 'Pause') : (fa ? 'پخش گام‌به‌گام' : 'Play steps')}
+          </button>
+          <button type="button" aria-label={fa ? 'گام قبل' : 'Previous step'} onClick={() => { setPlaying(false); setVisibleCount((c) => Math.max(1, c - 1)); }} className="flex h-10 w-10 items-center justify-center rounded-full text-on-surface-variant"><StepBack className="h-4.5 w-4.5 rtl:rotate-180" aria-hidden="true" /></button>
+          <button type="button" aria-label={fa ? 'گام بعد' : 'Next step'} onClick={() => { setPlaying(false); setVisibleCount((c) => Math.min(steps.length, c + 1)); }} className="flex h-10 w-10 items-center justify-center rounded-full text-on-surface-variant"><StepForward className="h-4.5 w-4.5 rtl:rotate-180" aria-hidden="true" /></button>
+          <button type="button" aria-label={fa ? 'نمایش همه' : 'Show all'} onClick={() => { setPlaying(false); setVisibleCount(steps.length); }} className="flex h-10 w-10 items-center justify-center rounded-full text-on-surface-variant"><RotateCcw className="h-4.5 w-4.5" aria-hidden="true" /></button>
+          <span className="tnum text-label-medium text-on-surface-variant">{current} / {steps.length}</span>
+        </div>
+        <input type="range" min={1} max={steps.length} value={current} onChange={(event) => { setPlaying(false); setVisibleCount(Number(event.target.value)); }} aria-label={fa ? 'اسلایدر گام‌ها' : 'Step slider'} className="mt-2 w-full accent-primary" dir="ltr" />
+      </div>
     <ol className="space-y-2.5" aria-label={t('stepsTitle')}>
-      {steps.map((step, index) => (
+      {steps.slice(0, visibleCount).map((step, index) => (
         <li
           key={`${index}-${step.slice(0, 12)}`}
           style={{ animationDelay: `${Math.min(index * 60, 400)}ms` }}
-          className="anim-fade-up flex gap-3 rounded-xl border border-outline-variant bg-surface-container p-3.5"
+          className={cn('anim-fade-up flex gap-3 rounded-xl border bg-surface-container p-3.5', index === visibleCount - 1 && visibleCount < steps.length ? 'border-primary ring-1 ring-primary' : 'border-outline-variant')}
         >
           <span
             aria-hidden="true"
@@ -38,6 +72,7 @@ export function StepByStep({ steps }: { steps: string[] }) {
         </li>
       ))}
     </ol>
+    </div>
   );
 }
 

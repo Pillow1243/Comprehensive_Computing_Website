@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
-import { ArrowUpRight, MessagesSquare, Sparkles, Wand2 } from 'lucide-react';
+import { ArrowUpRight, MessagesSquare, Mic, Sparkles, Wand2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Chip } from '@/components/ui/chip';
 import { EmptyState } from '@/components/ui/states';
@@ -43,6 +43,27 @@ export default function AssistantPage() {
   const [suggestions, setSuggestions] = useState<DisplaySuggestion[] | null>(null);
   const [numbers, setNumbers] = useState<number[]>([]);
   const [busy, setBusy] = useState(false);
+  const [listening, setListening] = useState(false);
+
+  const startVoice = () => {
+    const SpeechRecognition = (window as unknown as { SpeechRecognition?: new () => any; webkitSpeechRecognition?: new () => any }).SpeechRecognition
+      ?? (window as unknown as { webkitSpeechRecognition?: new () => any }).webkitSpeechRecognition;
+    if (!SpeechRecognition) return;
+    const recognition = new SpeechRecognition();
+    recognition.lang = lang === 'fa' ? 'fa-IR' : lang === 'ar' ? 'ar-SA' : 'en-US';
+    recognition.interimResults = false;
+    recognition.onresult = (event: { results: ArrayLike<ArrayLike<{ transcript: string }>> }) => {
+      const transcript = event.results?.[0]?.[0]?.transcript ?? '';
+      if (transcript) {
+        setProblem(transcript);
+        void analyze(transcript);
+      }
+    };
+    recognition.onend = () => setListening(false);
+    recognition.onerror = () => setListening(false);
+    setListening(true);
+    recognition.start();
+  };
 
   const examples = lang === 'fa' ? EXAMPLES_FA : EXAMPLES_EN;
 
@@ -108,10 +129,16 @@ export default function AssistantPage() {
             className="w-full rounded-2xl border border-outline-variant bg-surface-container p-3 text-body-large text-on-surface outline-none focus:border-primary"
           />
         </label>
-        <Button fullWidth size="lg" loading={busy} disabled={!hasText || busy} onClick={() => void analyze(problem)}>
-          <Wand2 className="h-5 w-5" aria-hidden="true" />
-          {t('analyzeProblem')}
-        </Button>
+        <div className="flex gap-2">
+          <Button fullWidth size="lg" loading={busy} disabled={!hasText || busy} onClick={() => void analyze(problem)} className="flex-1">
+            <Wand2 className="h-5 w-5" aria-hidden="true" />
+            {t('analyzeProblem')}
+          </Button>
+          <Button size="lg" variant="tonal" onClick={startVoice} disabled={listening} aria-label={lang === 'en' ? 'Voice input' : 'ورودی صوتی'}>
+            <Mic className="h-5 w-5" aria-hidden="true" />
+            {listening ? '…' : lang === 'en' ? 'Voice' : 'صوتی'}
+          </Button>
+        </div>
         <div>
           <p className="mb-1.5 text-label-medium text-on-surface-variant">{t('exampleProblems')}</p>
           <div className="flex flex-wrap gap-1.5">
