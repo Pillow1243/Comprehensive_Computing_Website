@@ -490,6 +490,15 @@
   }
 }
 
+@keyframes se-page-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes se-sheet-in {
   from {
     transform: translateY(100%);
@@ -517,6 +526,12 @@
 
   .anim-fade {
     animation: se-fade 0.2s linear both;
+  }
+
+  /* Page-level transition: opacity only, never a transform (see
+     components/page-transition.tsx). */
+  .anim-page-in {
+    animation: se-page-in 0.22s var(--ease-emphasized-decelerate) both;
   }
 
   .anim-scale-in {
