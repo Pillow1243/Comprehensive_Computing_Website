@@ -13,7 +13,7 @@
 
 **Solve any equation, step by step.** A Persian/English client-first scientific calculator for mathematics, physics, chemistry, engineering, statistics, and finance—built to work offline and deploy as a static site.
 
-**Live demo:** [Pillow1243.github.io/Comprehensive_Computing_Website](https://Pillow1243.github.io/Comprehensive_Computing_Website/) · **Status:** v3.1.0 · **Implemented:** 315 formula solvers with 754 declared, automatically verified test cases, plus a unit converter (13 categories, 95 units), a molar-mass tool, an interactive periodic table and a physical-constants reference.
+**Live demo:** [Pillow1243.github.io/Comprehensive_Computing_Website](https://Pillow1243.github.io/Comprehensive_Computing_Website/) · **Status:** v3.2.0 · **Implemented:** 315 formula calculators with 754 declared computational test cases, plus a unit converter (13 categories, 95 units), a molar-mass tool, an interactive periodic table and a physical-constants reference. Computational tests are not independent scientific review; each formula page shows its review status and sources.
 
 > The GitHub Pages workflow is ready, but the repository owner must select **Settings → Pages → GitHub Actions** and deploy from `main` before the live URL is available. See [Deployment](docs/DEPLOYMENT.md).
 
@@ -42,7 +42,7 @@ No build step is needed to try only the original PWA: `python3 -m http.server 80
 | Formula solvers | 315 client-side formulas across mathematics, physics, chemistry, engineering, finance, computer science, health, astronomy and Earth science | The 500+ broad scientific catalog remains a roadmap target; see `ROADMAP.md`. |
 | Steps and plots | Human-readable derivation steps, KaTeX rendering with text fallback, dynamic 2D Canvas plots | Advanced 3D, full symbolic CAS, and general-purpose plotting are future work. |
 | Tools | Unit converter (13 categories, 95 units), molar-mass/composition analyser (parentheses + hydrates), interactive 118-element periodic table, physical-constants reference, safe expression calculator, numeric derivative/integral/root tools and a practice quiz | The unit table is useful but not yet a complete dimensional-analysis system. |
-| Persistence | Local history, bookmarks, shareable formula links, print/PDF | No sign-in or server-side user history in the static Pages build. |
+| Persistence and exports | Local history/bookmarks, shareable formula links, JSON/CSV downloads, print/PDF | No sign-in or server-side user history in the static Pages build. |
 | Languages and devices | Persian/English/Arabic strings, RTL/LTR, seven mobile-first breakpoints, safe-area padding, touch targets | Full Arabic copy review and exhaustive device/browser certification are planned. |
 | Offline | Installable PWA; client calculations work without an API | Symbolic differentiation and future heavy solvers require the optional API. |
 | API | FastAPI + SymPy prototype, CORS allow-list, health/solver endpoints | Deploy separately; Pages cannot run Python, PostgreSQL, Redis, or background workers. |
@@ -50,13 +50,15 @@ No build step is needed to try only the original PWA: `python3 -m http.server 80
 ## Architecture
 
 ```text
-GitHub Pages (static export)
-  └── Next.js static shell at /Comprehensive_Computing_Website/
-        └── client PWA in /app/ (registry + safe engine + Canvas + localStorage)
-             └── optional HTTPS calls → separately hosted FastAPI/SymPy API
+GitHub Pages (Next.js static export)
+  └── App Router pages (prerendered home, tools, and individual formula routes)
+        ├── generated formula metadata + trusted solver modules from apps/web/
+        ├── Web Worker → calculations; localStorage → history/bookmarks/settings
+        ├── Service Worker → offline app shell and previously visited routes/assets
+        └── optional HTTPS requests → separately hosted FastAPI/SymPy API
 ```
 
-The static shell is a deployment bridge that preserves the proven zero-build PWA; it is not a claim of per-formula SSR. `NEXT_PUBLIC_API_URL` is a public API origin and must never contain a secret. If unset or unavailable, server-only actions show a clear explanation while local tools continue to work.
+The Next.js App Router is the shipped UI; `apps/web/` also retains the standalone PWA and the trusted formula/engine source modules consumed by the build. The static Pages build does not run Python, provide server-side accounts, or guarantee offline access to every formula route before it has been visited. `NEXT_PUBLIC_API_URL` is a public API origin and must never contain a secret. If the optional API is unset or unavailable, server-only actions should explain this while local tools continue to work.
 
 ## Project structure
 
@@ -79,15 +81,16 @@ db/schema.sql                   PostgreSQL schema for future hosted features
 ## Run checks and build the Pages export
 
 ```bash
+npm run audit                 # fail on known npm vulnerabilities
 npm run validate-registry     # 315 formulas, 754 cases, 29 catalog sections, manifests in sync
-npm run test:unit             # 1 262 Vitest tests (10 files: registry, engine, validation, utils, tools data, tools UI, components, solver flow, compute client, toast)
-npm test                      # test:unit + 1 002 Node registry/API/security assertions
-npm run build                 # Next static export → out/ (301 pages)
+npm run test:unit             # unit and component tests
+npm test                      # unit + registry/API/security cases
+npm run build                 # Next static export → out/
 npm run budget                # gzip JavaScript budgets: ≤200 KB home, ≤100 KB formula page, ≤500 KB total
 npm run test:all              # validate → all tests → build → budget
 npx playwright install chromium
-npm run test:e2e:ci           # 79 flows across desktop + 7 Android profiles
-npm run lighthouse:ci         # budgets in .lighthouserc.json (perf ≥ 0.9, a11y ≥ 0.95)
+npm run test:e2e:ci           # 81 browser tests across desktop + 7 Android profiles
+npm run lighthouse:ci         # CI-only browser audit and configured performance/accessibility budgets
 ```
 
 `npm run build` uses `output: 'export'`; it does not use deprecated `next export`. Playwright browsers are not installed in every sandbox, so browser suites run in CI; Lighthouse scores are only quoted from an actual browser run (see [the performance report](docs/performance-report.md)).

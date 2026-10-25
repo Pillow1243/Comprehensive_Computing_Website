@@ -209,6 +209,10 @@ for (const formula of FORMULAS) {
   }
   formula.examples ||= formula.tests?.slice(0,1).map(test=>({input:test.input,expected:test.expected}))||[];
   formula.references ||= [];
+  // Passing declared cases is a computational check, not independent scientific review.
+  formula.scientific_review_status ||= 'not_reviewed';
+  formula.reviewed_by ??= null;
+  formula.reviewed_at ??= null;
   formula.plot_spec ??= null;
   formula.compute_js ||= `module:apps/web/${moduleFileFor(formula.id)}#${formula.id}`;
   formula.steps_generator_ref ||= `module:apps/web/${moduleFileFor(formula.id)}#${formula.id}`;

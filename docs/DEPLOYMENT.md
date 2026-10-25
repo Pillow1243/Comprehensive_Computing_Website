@@ -2,7 +2,7 @@
 
 ## Architecture decision
 
-GitHub Pages hosts static files only; it does **not** run the FastAPI process, Python, SymPy, PostgreSQL, Redis, or a worker. The Pages build exports a Next.js static shell, and `scripts/prepare-static-app.mjs` copies the existing client-first PWA and Formula Registry into `public/app/`. The shell embeds that app at the repository root so the public URL stays clean. Ordinary formula solving, safe expression evaluation, unit conversions, plots, and local history run in the browser and continue to work offline.
+GitHub Pages hosts static files only; it does **not** run the FastAPI process, Python, SymPy, PostgreSQL, Redis, or a worker. The shipped UI is the Next.js App Router static export: it prerenders the home, tool, and individual formula pages. The trusted formula registry/solver source is under `apps/web/`, and the build generates compact metadata/detail manifests for the React UI. The standalone PWA source is also retained under `apps/web/`; it is not an iframe embedded by the Next.js root page. Ordinary formula solving, safe expression evaluation, unit conversions, plots, and local history run in the browser. Previously visited routes/assets are cached; first-time offline access to every formula page is not guaranteed.
 
 Operations that genuinely require a server use the optional FastAPI bridge. If its public base URL is absent or unreachable, the UI gives a clear “This operation requires a server” / «این عملیات نیاز به سرور دارد» message; it does not crash or silently send private inputs elsewhere.
 

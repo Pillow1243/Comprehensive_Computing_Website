@@ -4,6 +4,24 @@ All notable changes to SolveEverything are documented here. This project follows
 
 ## [Unreleased]
 
+## [3.2.0] - 2026-10-25
+
+### Added
+- Web Share Target route with same-origin formula-link handling, bounded input parsing, and safe search fallback for external shares.
+- JSON and CSV calculation exports with formula, inputs, unit metadata, outputs and steps; text cells are escaped against spreadsheet formula injection.
+- Explicit scientific-review metadata and source citation schema. Formula pages distinguish computationally tested code from independent domain review; no unverified citations were fabricated.
+- Automated npm audit gate in CI and Pages deployment; dependency tree updated and reports zero known advisories in the current lockfile.
+
+### Changed
+- Formula catalog synchronisation now derives section status and implemented counts from actual formula IDs.
+- Updated roadmap, testing, deployment, architecture, and performance documentation to reflect the current code and distinguish historical measurements.
+- Worker bundle target raised to ES2020 to match BigInt support and silence the previous ES2019 warning.
+- App, package and service-worker cache version bumped to 3.2.0.
+
+### Tested
+- `npm run test:all`: 1,378 Vitest tests, 1,082 Node tests, 330 static routes, and JavaScript budgets pass.
+- Playwright: 81 tests are listed; actual browser execution is left to CI / a Chromium-enabled environment.
+
 ## [3.1.0] - 2026-10-25
 
 ### Added

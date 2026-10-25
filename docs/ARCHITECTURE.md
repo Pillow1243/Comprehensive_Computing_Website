@@ -1,42 +1,48 @@
 # معماری SolveEverything
 
-## تصمیم کلیدی فاز ۱: Pages-compatible client-first build
-نسخه فعال همچنان موتور محاسباتی **کلاینت‌محور** است. برای استقرار روی GitHub Pages، یک shell استاتیک Next.js با `output: 'export'` اضافه شده است؛ `scripts/prepare-static-app.mjs` برنامه PWA موجود (`apps/web`) و `catalog.json` را در `public/app/` قرار می‌دهد و صفحه Next همان برنامه را در ریشه Pages میزبانی می‌کند. این bridge عمداً منطق محاسبه را بازنویسی یا به کلاینت وابسته به FastAPI نمی‌کند. جزئیات استقرار: `docs/DEPLOYMENT.md`.
+## سامانه‌ای که اکنون build و منتشر می‌شود
 
-## تصمیم کلیدی فاز ۰ (و چرایی)
-نسخه فاز ۰ به‌صورت **وب‌اپ استاتیک zero-build** (`apps/web`، ماژول‌های ES خالص) پیاده شده است:
-- دلیل: روی هر OS/مرورگری بدون build اجرا می‌شود، آفلاین (Service Worker) است، داخل Capacitor/Tauri بدون تغییر می‌نشیند و پیش‌نمایش/تست آن فوری است.
-- ماژول‌ها (`registry.js`, `phase1-formulas.js`, `engine.js`, `api.js`, `plot.js`) در سمت‌کاربر بارگذاری می‌شوند؛ registry کد رشته‌ای را `eval` نمی‌کند. Shell فعلی Next.js 16 هنوز یک bridge است، نه بازنویسی React/SSR: `app/page.tsx` میزبان PWA در `public/app/` است. مهاجرت به صفحات استاتیک اختصاصی/بین‌المللی هر فرمول و Schema.org MathSolver در فاز بعد انجام می‌شود.
-- محاسبات سبک سمت کاربر (زیر ۱۰۰ms، حریم خصوصی، آفلاین) و محاسبات سنگین (CAS/PDE/بهینه‌سازی بزرگ) سمت سرور FastAPI+SymPy با صف Celery/Redis انجام می‌شود — همان مرزبندی مشخصات.
+نسخه‌ی اصلی وب با Next.js App Router و `output: 'export'` ساخته می‌شود. صفحه‌های خانه، دسته‌ها، ابزارها و هر فرمول HTML استاتیک دارند؛ worker محاسباتی و Service Worker در مرورگر کار می‌کنند. `apps/web/registry.js` منبع توابع محاسباتی مورداعتماد است؛ JSON رجیستری هرگز به‌عنوان کد اجرا نمی‌شود. `scripts/build-formula-index.mjs` داده‌ی جست‌وجو و جزئیات را می‌سازد. `apps/web/` همچنین یک PWA مستقل قدیمی/بدون build را نگه می‌دارد؛ صفحه‌ی ریشه‌ی Next آن را iframe نمی‌کند.
 
-```
-Browser/PWA/Capacitor/Tauri
-  └─ Web App ── Registry (JSON/JS) ── Engine (parser, units) ── Plot (Canvas)
-        │ REST (فقط محاسبات سنگین)          localStorage: history/bookmarks/settings
-        ▼
-FastAPI Math Engine ── SymPy/SciPy/NumPy ── Celery+Redis (کارهای طولانی، WebSocket streaming در فاز۲)
-PostgreSQL (users, formulas, calculations…) ── Redis (cache/rate-limit) ── S3/MinIO (خروجی‌ها)
+```text
+Browser / installed PWA
+  ├─ Next.js static UI + generated formula manifests
+  ├─ Web Worker → trusted local solvers and numerical tools
+  ├─ localStorage → preferences, bookmarks, recent calculations, history
+  ├─ Service Worker → app shell and previously visited routes/assets
+  └─ optional HTTPS calls → separately deployed FastAPI prototype
+
+GitHub Pages → static files only
+FastAPI, PostgreSQL, Redis, authentication, background jobs → not deployed by Pages
 ```
 
-## خروجی‌های درخواستی — نقشه تحویل
-| # | خروجی | محل |
-|---|---|---|
-|۱|ساختار پروژه|`README.md` + همین سند|
-|۲|اسکیمای دیتابیس|`db/schema.sql` + `docs/DATABASE.md`|
-|۳|طراحی API|`docs/API.md` + `backend/main.py` (OpenAPI در `/docs`)|
-|۴|Registry/Solver/Renderer|`apps/web/registry.js` ،`engine.js` ،`plot.js`|
-|۵|سه فرمول نمونه با تست|قانون کسینوس، مشتق چندجمله‌ای، pH — در registry با فیلد `tests` + تست API در CI|
-|۶|wireframe صفحه فرمول|`docs/WIREFRAME.md`|
-|۷|صفحه اصلی و درخت دسته‌بندی|`apps/web` (sidebar + hero) و `docs/WIREFRAME.md`|
-|۸|auth و تاریخچه|تاریخچه/نشان‌شده‌ها در وب‌اپ (localStorage مهمان)؛ auth در `docs/API.md` (NextAuth + جدول users) — اتصال سروری فاز ۱|
-|۹|استراتژی تست|`docs/TESTING.md` + `tests/` (۳۷۲ تست Node؛ ۲۶۶ مورد تست فرمول)|
-|۱۰|Docker/CI|`docker-compose.yml`، `backend/Dockerfile`، `.github/workflows/ci.yml`|
-|۱۱|مشارکت|`CONTRIBUTING.md` + `docs/FORMULA_TEMPLATE.md`|
-|۱۲|برنامه فاز ۰|`docs/ROADMAP_PHASE0.md`|
-|۱۳|رسپانسیو/PWA|`docs/RESPONSIVE.md` + `styles.css` + `manifest.webmanifest` + `sw.js` + `infra/native-apps.md`|
+محاسبات محلی و نگهداری تاریخچه روی همان دستگاه انجام می‌شوند. اگر API جداگانه تنظیم نشده باشد، عملیات سروری باید شکست روشن بدهد؛ تنظیم URL عمومی API به‌معنی آن نیست که API واقعاً deploy یا production-ready شده است. Service Worker shell و مسیرهای بازدیدشده را cache می‌کند؛ آفلاین‌بودن هر صفحه‌ی فرمولِ بازنشده تضمین‌شده نیست.
 
-## کاتالوگ
-`packages/formula-registry/catalog.json`: ۲۹ بخش موضوعی و آیتم‌های برنامه‌ریزی‌شده؛ ۱۵۵ فرمول پیاده‌سازی‌شده با ۳۵۵ مورد تست اعلام‌شده. این کاتالوگ هنوز پیاده‌سازی کامل فهرست علمی (۵۰۰+) نیست.
+## وضعیت علمی کاتالوگ
 
-## امنیت
-پارسر عبارت کلاینتی بدون `eval` و پارسر AST نمادین allow-list شده برای API؛ سقف طول/پیچیدگی، rate-limit نمونه، CORS بر اساس `CORS_ORIGINS`، و CSP محدودکننده در متای HTML. GitHub Pages اجازه تنظیم هدرهای دلخواه (از جمله HSTS و `frame-ancestors`) را از repo نمی‌دهد؛ برای سیاست‌های قوی‌تر باید CDN/هاست پاسخ‌هدر‌پذیر جلوی Pages قرار گیرد. هیچ source string از Registry اجرا نمی‌شود؛ فقط توابع مورداعتماد ماژول‌ها.
+`packages/formula-registry/catalog.json` اکنون ۳۱۵ شناسه‌ی پیاده‌سازی‌شده در ۲۹ بخش دارد. هر فرمول موردهای محاسباتی خود را دارد، اما «عبور از تست کد» با «بازبینی علمی مستقل» یکی نیست. وضعیت علمی در `scientific_review_status` مستقل از `validated` ثبت می‌شود؛ مقدار `validated` تنها سازگاری کد با تست‌های اعلام‌شده را توصیف می‌کند. فرمولی را `domain_reviewed` نکنید مگر منبع HTTPS معتبر، بازبین مسئول و تاریخ واقعی بازبینی ثبت شده باشد.
+
+همگام‌سازی و اعتبارسنجی:
+
+```bash
+npm run sync-registry
+npm run build:index
+npm run validate-registry
+npm test
+```
+
+اسکریپت همگام‌سازی شمار پیاده‌سازی و وضعیت `planned`/`partial` هر بخش را از شناسه‌های واقعی محاسبه می‌کند. این کار تکمیل علمی یک حوزه را ادعا نمی‌کند.
+
+## اجزای اختیاری/نمونه
+
+`backend/main.py` یک prototype جداگانه‌ی FastAPI/SymPy است. `db/schema.sql` اسکیمای پیشنهادی برای قابلیت‌های آینده است، نه اثبات وجود حساب کاربری یا پایگاه داده‌ی فعال. rate limit فعلی process-local است و برای مقیاس چند نمونه کافی نیست. پیش از تولید باید deploy جدا، محدودیت منابع و timeout، rate limit مشترک Redis، تست یکپارچه، مانیتورینگ، سیاست داده/حریم خصوصی، backup/restore و بازبینی امنیتی انجام شود. جزئیات: [`DEPLOYMENT.md`](DEPLOYMENT.md)، [`API.md`](API.md)، [`DATABASE.md`](DATABASE.md).
+
+## امنیت و حریم خصوصی
+
+- expression parser و registry از `eval`/`new Function` استفاده نمی‌کنند.
+- worker lazy-load می‌شود؛ ورودی‌های محاسبه‌ی معمول به سرور ارسال نمی‌شوند.
+- لینک محاسبه ورودی‌ها را در query string کد می‌کند؛ کاربر نباید داده‌ی حساس را در لینک بگذارد.
+- CSP در خروجی استاتیک محدودیت‌هایی دارد؛ GitHub Pages کنترل کامل response headers را نمی‌دهد.
+- تاریخچه و نشان‌ها local-only هستند؛ ورود، sync ابری، telemetry فعال و حساب کاربری پیاده‌سازی‌شده نیستند.
+
+هر ادعای API عمومی، دسترس‌پذیری WCAG، ظرفیت هم‌زمانی یا عملکرد باید با deployment و اندازه‌گیری واقعی پشتیبانی شود؛ فایل معماری به‌تنهایی مدرک اجرای آن قابلیت نیست.

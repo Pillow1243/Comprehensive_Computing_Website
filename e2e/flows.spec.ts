@@ -24,6 +24,7 @@ test('home → category → formula → compute → steps → history', async ({
   await formulaLink.click();
   await expect(page).toHaveURL(/\/formula\/quadratic\/?$/);
   await expect(page.getByRole('heading', { name: /معادله درجه دو/ }).first()).toBeVisible();
+  await expect(page.getByRole('note', { name: 'وضعیت بازبینی علمی' })).toContainText('بازبینی مستقل علمی نشده‌اند');
 
   // Inputs use inputmode=decimal and no native keyboard surprises
   const coefficient = page.locator('#input-a');
@@ -104,6 +105,23 @@ test('long formula can be expanded full screen and copied', async ({ page, conte
   await expect(page.getByRole('dialog', { name: 'فرمول' })).toBeHidden();
 });
 
+test('PWA share target routes text into search without leaving the site', async ({ page }) => {
+  await page.goto('./share/?title=shared%20science%20question');
+  await expect(page).toHaveURL(/\/search\/\?q=shared%20science%20question$/);
+  await expect(page.getByRole('searchbox')).toHaveValue('shared science question');
+});
+
+test('calculation exports a downloadable JSON record after solving', async ({ page }) => {
+  await page.goto('./formula/quadratic/');
+  await page.getByRole('button', { name: 'محاسبه', exact: true }).last().click();
+  await expect(page.getByRole('region', { name: 'نتایج' })).toBeVisible({ timeout: 15_000 });
+  await page.getByRole('button', { name: 'عملیات بیشتر' }).click();
+  const downloadPromise = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'دریافت نتیجه به‌صورت JSON' }).click();
+  const download = await downloadPromise;
+  expect(download.suggestedFilename()).toMatch(/^solveeverything-quadratic-.*\.json$/);
+});
+
 test('share link encodes the current inputs', async ({ page, context }) => {
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await page.goto('./formula/pythagorean/');
@@ -141,6 +159,7 @@ test('manifest, icons and service worker are served from the repo sub-path', asy
   const manifest = await manifestResponse.json();
   expect(manifest.name).toContain('SolveEverything');
   expect(manifest.start_url).toBe('./');
+  expect(manifest.share_target.action).toBe('./share/');
   expect(manifest.icons.some((icon: { purpose?: string }) => icon.purpose === 'maskable')).toBe(true);
 
   const swResponse = await request.get('sw.js');

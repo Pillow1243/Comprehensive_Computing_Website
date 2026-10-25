@@ -24,14 +24,18 @@
     {input:{radius:2, angle:180}, expected:{area:6.283185}},
     {input:{radius:0.5, angle:90}, expected:{area:0.19635}}
   ],
-  references: [],
-  difficulty: 'basic', version: '1.0.0', validated: true,
+  references: [], // Add real HTTPS sources; do not invent citations.
+  scientific_review_status: 'not_reviewed',
+  reviewed_by: null, reviewed_at: null,
+  difficulty: 'basic', version: '1.0.0', validated: true, // computational cases pass; not expert review
   compute({radius, angle}) {
     const area = Math.PI * radius * radius * angle / 360;
     return {values:{area}, steps:[`A = πr²θ/360 = ${area}`]};
   }
 }
 ```
+
+`validated` فقط می‌گوید موردهای آزمایش محاسباتی رجیستری از کد عبور می‌کنند؛ این فیلد ادعای صحت علمی مستقل نیست. وضعیت `domain_reviewed` فقط پس از بازبینی واقعی یک متخصص، ثبت هویت/تاریخ بازبینی و افزودن حداقل یک مرجع HTTPS معتبر پذیرفته می‌شود. صفحات فرمول وضعیت را برای کاربر روشن می‌کنند.
 
 ## مشارکت‌کننده باید
 

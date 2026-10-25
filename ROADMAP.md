@@ -1,44 +1,54 @@
-# Roadmap
+# Roadmap — SolveEverything
 
-The long-form scientific catalog is a multi-release research and validation project, not a promise that every listed theorem or numerical algorithm is already production-ready. Formula counts below mean implemented, tested client-side entries; catalog topics may remain planned.
+This is a scientific calculator/workbench, not literally a solver for every possible problem. Counts describe the current local registry; they are not a measure of scientific completeness. Do not claim production readiness, expert review, or broad domain coverage unless the corresponding evidence exists.
 
-## Phase 0 — MVP (baseline)
-- [x] Client-first PWA, safe expression engine, dynamic 2D plots, bilingual RTL/LTR shell.
-- [x] 46 implemented and tested formulas; FastAPI/SymPy prototype and database schema.
+## Current baseline (2026-10-25)
 
-## Phase 1 — Publish and broaden the practical core (current)
-**Target:** four-week iteration; 200+ validated formulas; 300+ automated tests; Pages HTTPS release; dependable mobile experience.
+- 315 implemented client-side formula calculators, 754 declared computational cases, 29 catalog sections.
+- 14 sections currently have at least one calculator; 15 have none. Implemented entries in a section do not mean the whole discipline is covered.
+- Formula calculations run locally and work without an API. History and bookmarks use local storage.
+- GitHub Pages static export; optional FastAPI prototype is a separate service and is not deployed by the static site workflow.
+- Formula review metadata now separates computational test status from scientific review. Existing entries remain `not_reviewed`; sources must not be invented or bulk-filled without verification.
+- Verified in this checkout: `npm run test:all` passes (registry, 1,378 Vitest tests, 1,082 Node tests, static build of 330 routes, JS budgets). `npm run audit` reports zero known npm advisories. Playwright browser tests are listed in CI but were not executed in this review environment.
 
-- [x] Establish static-export build, exact repository `basePath`, deploy workflow, manual deployment/rollback docs.
-- [x] Make the client registry authoritative for common formulas; add explicit server-only API diagnostics and restrictive configurable CORS.
-- [x] Add 54 more client-side formulas (100 total), schema validation, catalog index, and four or more declared cases per new formula.
-- [x] Add five Playwright end-to-end scenarios, CI configuration, CodeQL, Scorecard, Dependabot, issue/PR templates, and repository policies.
-- [x] Preserve mobile-first CSS, safe-area handling, seven responsive breakpoints, touch target sizing, and PWA install metadata.
-- [ ] Enable Pages in repository Settings and confirm a successful deployment from `main`.
-- [ ] Run Lighthouse in the GitHub Actions browser environment; review and publish the collected scores (no truthful before/after measurement exists in the source checkout yet).
-- [ ] Grow from 100 to 200+ reviewed formulas, particularly core algebra/calculus/geometry, introductory physics/chemistry, and common engineering calculations.
-- [ ] Add dimensional validation and authoritative references to formulas before calling the catalog release-grade.
+## P0 — trust and safe release
 
-## Phase 2 — Scientific coverage and tooling
-- [ ] Reach 500+ validated formula entries across the full A–L topic map.
-- [ ] Add 3D plot surfaces, richer graphing, coordinate conversions, broader units/dimensional analysis, Arabic translations, and searchable topic tree.
-- [ ] Add a stable public API contract, generated JavaScript/Python SDKs, backend deployment guide, rate limiting backed by Redis, and integration tests.
-- [ ] Add formula detail pages with citations, examples, version history, and richer export (LaTeX/SVG/CSV/Markdown).
-- [ ] Package iOS/Android shells with Capacitor; validate in supported browser/device matrices.
+- [x] Add a real Web Share Target route; safely route same-origin formula links and treat external links as search text.
+- [x] Add JSON and CSV calculation downloads; protect exported text cells from spreadsheet formula injection.
+- [x] Upgrade vulnerable npm dependencies and gate CI/Pages publishing on `npm audit`.
+- [x] Add schema/registry support for citations, reviewer attribution, review date, and a separate scientific-review status.
+- [x] Clearly distinguish computational test cases from independent scientific review in formula pages and metadata.
+- [x] Regenerate catalog section status from actual implemented IDs and validate section counts.
+- [ ] Curate and independently verify sources, assumptions, units, and examples for every formula. Do not mark any entry `domain_reviewed` until a qualified reviewer and credible HTTPS sources are recorded.
+- [ ] Deploy the current Pages artifact from `main`, verify the live URL, and capture actual Lighthouse, accessibility, and browser-matrix results.
+- [ ] Add an independent formula-oracle/property-test set and unit/dimensional consistency checks; declared examples alone are not independent evidence.
 
-## Phase 3 — Advanced solvers
-- [ ] Move toward 1,000 formulas and dedicated SEO/static pages per formula.
-- [ ] Add reviewed symbolic/numeric solver coverage, ODE/PDE numerical methods, 3D interaction, accessibility audit, and performance budgets.
-- [ ] Add opt-in, privacy-reviewed telemetry and monitoring only after documented consent and data-retention policy.
-- [ ] Add Tauri desktop distribution after signing and update mechanisms are reviewed.
+## P1 — dependable scientific workbench
 
-## Phase 4 — Community and scale
-- [ ] Aim for 2,000+ formula entries with maintainer review, provenance, versioning, reproducibility, and automated generated tests.
-- [ ] Add user contributions/review workflows, training and practice features, and optional service plans only with a sustainable privacy/security model.
-- [ ] Reassess architecture, load tests, backup/restore drills, abuse prevention, and cost before claiming 100k concurrent-user capacity.
+- [ ] Define dimension vectors and canonical units for formula inputs/outputs; convert values consistently at the input boundary and reject incompatible dimensions.
+- [ ] Expand edge-case, numerical-stability, precision, uncertainty, and invalid-domain handling across all formulas.
+- [ ] Add end-to-end tests for exports, share handling, offline first/deep links, and supported browsers; run them in CI with reports retained.
+- [ ] Add automated WCAG 2.2 AA checks plus manual screen-reader, keyboard-only, zoom/reflow, contrast, and reduced-motion review.
+- [ ] Re-run Lighthouse after substantial changes; document the commit, environment, raw artifacts, and median results. The current historical performance report is not a measurement of this branch.
+- [ ] Improve formula-detail learning content: derivations, assumptions, worked examples, limitations, links to related concepts, and locale-specific SEO metadata.
+- [x] Add CSV/JSON calculation exports with quoted cells and spreadsheet-formula prefix protection.
+- [ ] Add LaTeX/SVG/Markdown report exports and reproducible calculation records.
 
-## Acceptance policy
+## P2 — breadth, APIs, and persistence
 
-- A formula is not “implemented” merely because its topic appears in the catalog. It needs a trusted solver, explicit domain checks, unit semantics, explanatory steps, references where appropriate, and automated tests.
-- Safety-critical, medical, financial, and structural-design formulas require independent domain review and prominent limitations.
-- Do not represent planned numerical algorithms (e.g. AKS, FEM, full CAS, general PDE solving) as complete when only a basic approximation or formula is available.
+- [ ] Fill the 17 empty sections based on user demand, with reviewed algorithms rather than placeholder formula counts. High-priority candidates: optimization, special functions, discrete mathematics, signal processing, scientific computing, time-series, robotics/orbits, and numerical methods.
+- [ ] Add 3D plotting, richer numerical root/ODE/PDE tools, coordinate transforms, and broader unit/constant coverage with independently tested methods.
+- [ ] Publish a versioned API contract and SDKs only after a separately hosted API has integration tests, time/resource limits, shared Redis-backed rate limits, monitoring, backup/restore, and abuse controls.
+- [ ] Add optional accounts/cloud sync, contribution review, and shared workspaces only with explicit consent, export/delete controls, documented retention, and a reviewed security model.
+- [ ] Finish Arabic scientific translation and test the language/RTL experience with native readers.
+
+## P3 — scale and governance
+
+- [ ] Grow toward 500 / 1,000 / 2,000 reviewed entries as a result of transparent editorial coverage plans—not as a standalone KPI.
+- [ ] Add formula provenance, semantic versioning, reviewer change history, reproducible test vectors, and community correction workflow.
+- [ ] Reassess static-site and API architecture, load test representative workloads, and measure cost before making any concurrency or reliability claims.
+- [ ] Consider native wrappers only after the mobile web experience and offline lifecycle are validated on real devices.
+
+## Non-goals until independently delivered
+
+Do not claim full CAS, general PDE/FEM solving, medical diagnosis/dosing, professional engineering certification, authenticated user sync, a deployed API, 100k concurrent capacity, or complete coverage of any named discipline when the implementation is only a prototype or a subset.

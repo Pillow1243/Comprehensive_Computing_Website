@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     default: 'SolveEverything — حل همه‌چیز گام‌به‌گام',
     template: '%s · SolveEverything',
   },
-  description: `SolveEverything یک حل‌کننده علمی گام‌به‌گام با ${FORMULAS.length} فرمول اعتبارسنجی‌شده در ریاضی، فیزیک، شیمی، مهندسی، مالی، کامپیوتر، سلامت، نجوم و محیط‌زیست است — آفلاین، دوزبانه و متن‌باز.`,
+  description: `SolveEverything یک ابزار محاسبات علمی گام‌به‌گام با ${FORMULAS.length} محاسبه‌گر آزمون‌شده در ریاضی، فیزیک، شیمی، مهندسی و رشته‌های دیگر است. وضعیت بازبینی علمی هر فرمول جداگانه نمایش داده می‌شود.`,
   applicationName: 'SolveEverything',
   manifest: `${BASE_PATH}/manifest.webmanifest`,
   icons: {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     type: 'website',
     title: 'SolveEverything — solve any equation, step by step',
     description:
-      `A client-first scientific solver: ${FORMULAS.length} validated formulas across ${CATEGORIES.length} disciplines, ${totalTests} verified cases, live plots, unit awareness and an offline PWA.`,
+      `An offline-first scientific calculator with ${FORMULAS.length} tested formula tools across ${CATEGORIES.length} disciplines and ${totalTests} declared test cases. Scientific review status is shown per formula.`,
     url: siteUrl,
     siteName: 'SolveEverything',
     locale: 'fa_IR',
