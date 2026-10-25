@@ -33,10 +33,10 @@ describe('ToolCard', () => {
     expect(screen.getByText('جدول تناوبی')).toBeInTheDocument();
   });
 
-  it('switches to English copy', () => {
+  it('switches to English copy', async () => {
     useAppStore.setState({ settings: { ...useAppStore.getState().settings, language: 'en' } });
     renderWithProviders(<ToolCard tool={getTool('chemistry')!} />);
-    expect(screen.getByText('Molar mass')).toBeInTheDocument();
+    expect(await screen.findByText('Molar mass')).toBeInTheDocument();
     useAppStore.setState({ settings: { ...useAppStore.getState().settings, language: 'fa' } });
   });
 });
@@ -50,11 +50,11 @@ describe('FormulaDescription', () => {
     });
   });
 
-  it('renders a generated English summary instead of Persian prose', () => {
+  it('renders a generated English summary instead of Persian prose', async () => {
     useAppStore.setState({ settings: { ...useAppStore.getState().settings, language: 'en' } });
     const formula = getFormula('pythagorean')!;
     renderWithProviders(<FormulaDescription formula={formula} />);
-    expect(screen.getByText(/step-by-step Pythagorean/i)).toBeInTheDocument();
+    expect(await screen.findByText(/step-by-step Pythagorean/i)).toBeInTheDocument();
     useAppStore.setState({ settings: { ...useAppStore.getState().settings, language: 'fa' } });
   });
 });

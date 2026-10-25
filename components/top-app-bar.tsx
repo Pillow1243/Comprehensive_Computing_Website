@@ -94,6 +94,14 @@ export function TopAppBar() {
             <Link
               href="/search"
               aria-label={t('search')}
+              onClick={(event) => {
+                // Progressive enhancement: once the lazy command palette has
+                // mounted, the search button opens it instead of navigating.
+                if ((window as Window & { __sePaletteReady?: boolean }).__sePaletteReady) {
+                  event.preventDefault();
+                  window.dispatchEvent(new CustomEvent('se:open-palette'));
+                }
+              }}
               className="state-layer flex h-12 w-12 items-center justify-center rounded-full text-on-surface-variant"
             >
               <Search className="h-6 w-6" aria-hidden="true" />
@@ -127,6 +135,14 @@ export function TopAppBar() {
             <Link
               href="/search"
               aria-label={t('search')}
+              onClick={(event) => {
+                // Progressive enhancement: once the lazy command palette has
+                // mounted, the search button opens it instead of navigating.
+                if ((window as Window & { __sePaletteReady?: boolean }).__sePaletteReady) {
+                  event.preventDefault();
+                  window.dispatchEvent(new CustomEvent('se:open-palette'));
+                }
+              }}
               className="state-layer flex h-12 w-12 items-center justify-center rounded-full text-on-surface-variant"
             >
               <Search className="h-6 w-6" aria-hidden="true" />

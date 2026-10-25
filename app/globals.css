@@ -174,6 +174,158 @@
   --el-actinide: 232 121 249;
 }
 
+
+/* ==========================================================================
+   Accent colours (v4.1) — `data-accent` on <html> re-tones the primary
+   family, brand gradients and the aurora mesh. `violet` is the base palette
+   above, so it needs no overrides. Surfaces stay untouched for contrast.
+   ========================================================================== */
+
+:root[data-accent='ocean'] {
+  --md-primary: 0 97 164;
+  --md-on-primary: 255 255 255;
+  --md-primary-container: 207 229 255;
+  --md-on-primary-container: 0 29 51;
+  --md-primary-fixed: 207 229 255;
+  --brand-a: 2 132 199;
+  --brand-b: 6 182 212;
+  --brand-c: 52 211 153;
+  --brand-glow: 14 165 233;
+  --mesh-1: 2 132 199;
+  --mesh-2: 6 182 212;
+  --mesh-3: 45 212 191;
+}
+:root[data-theme='dark'][data-accent='ocean'] {
+  --md-primary: 158 202 255;
+  --md-on-primary: 0 50 88;
+  --md-primary-container: 0 73 125;
+  --md-on-primary-container: 207 229 255;
+  --md-primary-fixed: 207 229 255;
+  --brand-a: 56 189 248;
+  --brand-b: 34 211 238;
+  --brand-c: 45 212 191;
+  --brand-glow: 56 189 248;
+  --mesh-1: 56 189 248;
+  --mesh-2: 34 211 238;
+  --mesh-3: 45 212 191;
+}
+
+:root[data-accent='emerald'] {
+  --md-primary: 0 108 76;
+  --md-on-primary: 255 255 255;
+  --md-primary-container: 137 248 199;
+  --md-on-primary-container: 0 33 20;
+  --md-primary-fixed: 137 248 199;
+  --brand-a: 5 150 105;
+  --brand-b: 16 185 129;
+  --brand-c: 132 204 22;
+  --brand-glow: 16 185 129;
+  --mesh-1: 5 150 105;
+  --mesh-2: 52 211 153;
+  --mesh-3: 163 230 53;
+}
+:root[data-theme='dark'][data-accent='emerald'] {
+  --md-primary: 95 218 168;
+  --md-on-primary: 0 56 37;
+  --md-primary-container: 0 81 56;
+  --md-on-primary-container: 137 248 199;
+  --md-primary-fixed: 137 248 199;
+  --brand-a: 52 211 153;
+  --brand-b: 74 222 128;
+  --brand-c: 163 230 53;
+  --brand-glow: 52 211 153;
+  --mesh-1: 52 211 153;
+  --mesh-2: 74 222 128;
+  --mesh-3: 163 230 53;
+}
+
+:root[data-accent='sunset'] {
+  --md-primary: 160 65 0;
+  --md-on-primary: 255 255 255;
+  --md-primary-container: 255 219 203;
+  --md-on-primary-container: 52 17 0;
+  --md-primary-fixed: 255 219 203;
+  --brand-a: 249 115 22;
+  --brand-b: 236 72 153;
+  --brand-c: 245 158 11;
+  --brand-glow: 249 115 22;
+  --mesh-1: 249 115 22;
+  --mesh-2: 244 114 182;
+  --mesh-3: 251 191 36;
+}
+:root[data-theme='dark'][data-accent='sunset'] {
+  --md-primary: 255 181 155;
+  --md-on-primary: 95 36 0;
+  --md-primary-container: 125 45 0;
+  --md-on-primary-container: 255 219 203;
+  --md-primary-fixed: 255 219 203;
+  --brand-a: 251 146 60;
+  --brand-b: 244 114 182;
+  --brand-c: 251 191 36;
+  --brand-glow: 251 146 60;
+  --mesh-1: 251 146 60;
+  --mesh-2: 244 114 182;
+  --mesh-3: 251 191 36;
+}
+
+:root[data-accent='rose'] {
+  --md-primary: 164 29 72;
+  --md-on-primary: 255 255 255;
+  --md-primary-container: 255 217 226;
+  --md-on-primary-container: 63 0 23;
+  --md-primary-fixed: 255 217 226;
+  --brand-a: 225 29 99;
+  --brand-b: 244 63 94;
+  --brand-c: 168 85 247;
+  --brand-glow: 251 113 133;
+  --mesh-1: 225 29 99;
+  --mesh-2: 251 113 133;
+  --mesh-3: 192 132 252;
+}
+:root[data-theme='dark'][data-accent='rose'] {
+  --md-primary: 255 176 196;
+  --md-on-primary: 94 17 48;
+  --md-primary-container: 127 29 67;
+  --md-on-primary-container: 255 217 226;
+  --md-primary-fixed: 255 217 226;
+  --brand-a: 251 113 133;
+  --brand-b: 244 114 182;
+  --brand-c: 192 132 252;
+  --brand-glow: 251 113 133;
+  --mesh-1: 251 113 133;
+  --mesh-2: 244 114 182;
+  --mesh-3: 192 132 252;
+}
+
+:root[data-accent='amber'] {
+  --md-primary: 133 93 0;
+  --md-on-primary: 255 255 255;
+  --md-primary-container: 255 223 158;
+  --md-on-primary-container: 38 26 0;
+  --md-primary-fixed: 255 223 158;
+  --brand-a: 245 158 11;
+  --brand-b: 249 115 22;
+  --brand-c: 234 179 8;
+  --brand-glow: 251 191 36;
+  --mesh-1: 245 158 11;
+  --mesh-2: 251 146 60;
+  --mesh-3: 250 204 21;
+}
+:root[data-theme='dark'][data-accent='amber'] {
+  --md-primary: 255 201 71;
+  --md-on-primary: 64 45 0;
+  --md-primary-container: 90 67 0;
+  --md-on-primary-container: 255 223 158;
+  --md-primary-fixed: 255 223 158;
+  --brand-a: 251 191 36;
+  --brand-b: 251 146 60;
+  --brand-c: 250 204 21;
+  --brand-glow: 251 191 36;
+  --mesh-1: 251 191 36;
+  --mesh-2: 251 146 60;
+  --mesh-3: 250 204 21;
+}
+
 /* ==========================================================================
    Base
    ========================================================================== */
@@ -683,7 +835,9 @@
   }
 
   .text-gradient {
-    background-image: linear-gradient(100deg, rgb(var(--brand-a)), rgb(var(--brand-b)) 55%, rgb(var(--brand-c)));
+    background-image: linear-gradient(100deg, rgb(var(--brand-a)), rgb(var(--brand-b)) 55%, rgb(var(--brand-c)), rgb(var(--brand-a)));
+    background-size: 220% 220%;
+    animation: se-gradient-pan 9s ease infinite;
     color: rgb(var(--brand-b));
   }
 
@@ -841,5 +995,118 @@
   ::-webkit-scrollbar-thumb:hover {
     background: rgb(var(--md-outline));
     background-clip: content-box;
+  }
+}
+
+/* ==========================================================================
+   v4.1 experience layer — scroll reveal, gradient borders, shine sweeps,
+   keyboard caps and pop motion. Pure CSS: zero first-load JS cost.
+   ========================================================================== */
+
+@keyframes se-pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  60% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes se-xp-float {
+  0% { transform: translateY(6px) scale(0.9); opacity: 0; }
+  25% { transform: translateY(0) scale(1.05); opacity: 1; }
+  70% { transform: translateY(-10px) scale(1); opacity: 1; }
+  100% { transform: translateY(-18px); opacity: 0; }
+}
+
+@layer utilities {
+  .anim-pop {
+    animation: se-pop 0.35s var(--ease-emphasized-decelerate) both;
+  }
+
+  .anim-xp-float {
+    animation: se-xp-float 1.4s var(--ease-emphasized-decelerate) both;
+  }
+
+  /* Scroll-reveal: JS arms below-the-fold blocks with .reveal-pending and
+     clears it when they enter the viewport (see components/reveal.tsx).
+     Without JS nothing is ever hidden. */
+  .reveal {
+    transition: opacity 0.55s var(--ease-emphasized-decelerate),
+      transform 0.55s var(--ease-emphasized-decelerate);
+  }
+
+  .reveal-pending {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@layer components {
+  /* Card wrapped in a living brand-gradient hairline. */
+  .gradient-border {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(rgb(var(--md-surface-container)), rgb(var(--md-surface-container))) padding-box,
+      linear-gradient(135deg, rgb(var(--brand-a) / 0.75), rgb(var(--brand-b) / 0.45) 50%, rgb(var(--brand-c) / 0.75)) border-box;
+  }
+
+  .gradient-border-soft {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(rgb(var(--md-surface-container) / 0.92), rgb(var(--md-surface-container) / 0.92)) padding-box,
+      linear-gradient(135deg, rgb(var(--brand-a) / 0.35), rgb(var(--md-outline-variant) / 0.6) 55%, rgb(var(--brand-c) / 0.35)) border-box;
+  }
+
+  /* Light sweep across interactive surfaces on hover. */
+  .shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shine::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 32%, rgb(255 255 255 / 0.16) 50%, transparent 68%);
+    transform: translateX(-130%);
+    transition: transform 0.85s var(--ease-emphasized);
+    pointer-events: none;
+  }
+
+  [dir='rtl'] .shine::after {
+    transform: translateX(130%);
+  }
+
+  .shine:hover::after {
+    transform: translateX(130%);
+  }
+
+  [dir='rtl'] .shine:hover::after {
+    transform: translateX(-130%);
+  }
+
+  /* Physical keyboard key cap (shortcuts, palette hints). */
+  .key-cap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.45rem;
+    height: 1.45rem;
+    padding-inline: 0.35rem;
+    border-radius: 0.4rem;
+    border: 1px solid rgb(var(--md-outline-variant));
+    border-bottom-width: 2px;
+    background: rgb(var(--md-surface-container-highest));
+    color: rgb(var(--md-on-surface-variant));
+    font-family: var(--font-jetbrains), ui-monospace, monospace;
+    font-size: 0.625rem;
+    font-weight: 600;
+    line-height: 1;
+    direction: ltr;
+  }
+}
+
+/* Gentle colour cross-fade when theme or accent changes. */
+@media (prefers-reduced-motion: no-preference) {
+  body {
+    transition: background-color 0.35s ease;
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "solve-everything",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "private": false,
   "type": "module",
   "description": "SolveEverything v3 — offline-first scientific formula solver, unit converter, periodic table and constants reference (Next.js static export)",

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import {
   Bookmark,
+  Check,
   Download,
   ExternalLink,
   Github,
@@ -20,11 +21,20 @@ import { toast } from '@/lib/toast';
 import { useTheme } from '@/lib/theme';
 import { useInstall } from '@/lib/install';
 import { useI18n, type Language } from '@/lib/i18n';
-import { useAppStore, useHydrated, type NumeralsSetting, type ThemeMode, type UnitSystem } from '@/lib/store';
+import { useAppStore, useHydrated, type AccentId, type NumeralsSetting, type ThemeMode, type UnitSystem } from '@/lib/store';
 import { Button } from '@/components/ui/button';
 import { ConfirmDialog } from '@/components/ui/dialog';
 import { APP_VERSION, REPO_URL } from '@/lib/version';
 import { cn, haptic } from '@/lib/utils';
+
+const accents: Array<{ value: AccentId; labelKey: string; swatch: string }> = [
+  { value: 'violet', labelKey: 'accentViolet', swatch: 'linear-gradient(135deg,#8B7CFF,#C484FF 55%,#2DD4E8)' },
+  { value: 'ocean', labelKey: 'accentOcean', swatch: 'linear-gradient(135deg,#0284C7,#22D3EE 55%,#2DD4BF)' },
+  { value: 'emerald', labelKey: 'accentEmerald', swatch: 'linear-gradient(135deg,#059669,#34D399 55%,#A3E635)' },
+  { value: 'sunset', labelKey: 'accentSunset', swatch: 'linear-gradient(135deg,#F97316,#EC4899 55%,#F59E0B)' },
+  { value: 'rose', labelKey: 'accentRose', swatch: 'linear-gradient(135deg,#E11D63,#FB7185 55%,#C084FC)' },
+  { value: 'amber', labelKey: 'accentAmber', swatch: 'linear-gradient(135deg,#F59E0B,#FB923C 55%,#FACC15)' },
+];
 
 function Segmented<T extends string>({
   options,
@@ -177,6 +187,50 @@ export default function SettingsPage() {
               { value: 'native', label: t('numeralsNative') },
             ]}
           />
+        </div>
+        <div>
+          <p className="mb-1.5 flex items-center gap-1.5 text-label-medium text-on-surface-variant">
+            <Palette className="h-3.5 w-3.5" aria-hidden="true" />
+            {t('accent')}
+          </p>
+          <p className="mb-3 text-body-small text-on-surface-variant">{t('accentHint')}</p>
+          <div className="flex flex-wrap gap-3" role="group" aria-label={t('accent')}>
+            {accents.map((accent) => {
+              const selected = settings.accent === accent.value;
+              return (
+                <button
+                  key={accent.value}
+                  type="button"
+                  aria-pressed={selected}
+                  aria-label={t(accent.labelKey)}
+                  title={t(accent.labelKey)}
+                  onClick={() => {
+                    haptic(12, settings.haptics);
+                    updateSettings({ accent: accent.value });
+                  }}
+                  className="group flex w-14 flex-col items-center gap-1.5"
+                >
+                  <span
+                    className={cn(
+                      'flex h-11 w-11 items-center justify-center rounded-full text-white shadow-elevation-1 transition-transform duration-200 group-active:scale-90',
+                      selected && 'ring-2 ring-primary ring-offset-2 ring-offset-surface-container',
+                    )}
+                    style={{ background: accent.swatch }}
+                  >
+                    {selected && <Check className="h-5 w-5" strokeWidth={3} aria-hidden="true" />}
+                  </span>
+                  <span
+                    className={cn(
+                      'text-label-small',
+                      selected ? 'font-bold text-on-surface' : 'text-on-surface-variant',
+                    )}
+                  >
+                    {t(accent.labelKey)}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       </Section>
 

@@ -8,9 +8,12 @@ import type { Language } from '@/lib/i18n';
 export type ThemeMode = 'system' | 'light' | 'dark';
 export type UnitSystem = 'SI' | 'Imperial';
 export type NumeralsSetting = 'latin' | 'native';
+/** Brand accent palettes (v4.1) — `data-accent` values in globals.css. */
+export type AccentId = 'violet' | 'ocean' | 'emerald' | 'sunset' | 'rose' | 'amber';
 
 export interface Settings {
   theme: ThemeMode;
+  accent: AccentId;
   language: Language;
   units: UnitSystem;
   decimals: number;
@@ -89,6 +92,7 @@ interface AppState {
 
 const defaultSettings: Settings = {
   theme: 'dark',
+  accent: 'violet',
   language: 'fa',
   units: 'SI',
   decimals: 6,
@@ -212,7 +216,7 @@ export const useAppStore = create<AppState>()(
     }),
     {
       name: 'solveeverything.store.v3',
-      version: 4,
+      version: 5,
       storage: createJSONStorage(() => localStorage),
       skipHydration: true,
       partialize: (state) => ({
@@ -229,6 +233,7 @@ export const useAppStore = create<AppState>()(
         const state = (persisted ?? {}) as Partial<AppState>;
         return {
           ...state,
+          settings: { ...defaultSettings, ...(state.settings ?? {}) },
           practice: { ...defaultPractice, ...(state.practice ?? {}) },
           learnDone: state.learnDone ?? [],
           workspace: state.workspace ?? [],

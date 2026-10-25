@@ -10,7 +10,16 @@ import { useI18n } from '@/lib/i18n';
 import { useAppStore } from '@/lib/store';
 import { cn, haptic } from '@/lib/utils';
 
-export function FormulaCard({ formula, compact = false }: { formula: FormulaMeta; compact?: boolean }) {
+export function FormulaCard({
+  formula,
+  compact = false,
+  badge,
+}: {
+  formula: FormulaMeta;
+  compact?: boolean;
+  /** Smart-search match reason chip (v4.1), e.g. «مترادف». */
+  badge?: string;
+}) {
   const { t, lang, isRtl } = useI18n();
   const meta = categoryMeta(formula.category_path[0]);
   const bookmarks = useAppStore((state) => state.bookmarks);
@@ -44,6 +53,11 @@ export function FormulaCard({ formula, compact = false }: { formula: FormulaMeta
             <span className="shrink-0 rounded-full bg-surface-container-highest px-1.5 py-0.5 text-label-small text-on-surface-variant">
               {t(formula.difficulty)}
             </span>
+            {badge && (
+              <span className="shrink-0 rounded-full bg-tertiary-container px-2 py-0.5 text-label-small font-medium text-on-tertiary-container">
+                {badge}
+              </span>
+            )}
           </span>
           {!compact && (
             <span className="mt-0.5 line-clamp-2 block text-body-small text-on-surface-variant">

@@ -7,6 +7,8 @@ import { ToolIcon } from '@/components/tool-icon';
 import { formulaName, getFormula } from '@/lib/formulas';
 import { useI18n } from '@/lib/i18n';
 import { LEARN_PATHS, pathProgress } from '@/lib/learn-paths';
+import { burstConfetti } from '@/lib/confetti';
+import { toast } from '@/lib/toast';
 import { useAppStore, useHydrated } from '@/lib/store';
 import { formatNumber, cn } from '@/lib/utils';
 
@@ -85,7 +87,16 @@ export default function LearnPage() {
                   <li key={formulaId} className="flex items-center gap-2 rounded-xl bg-surface-container-lowest/70 px-2.5 py-2">
                     <button
                       type="button"
-                      onClick={() => toggleLearnDone(formulaId)}
+                      onClick={() => {
+                        const becomesComplete =
+                          !manuallyDone &&
+                          pathProgress(path, new Set([...doneIds, formulaId])).completed;
+                        toggleLearnDone(formulaId);
+                        if (becomesComplete) {
+                          burstConfetti();
+                          toast.success(t('pathCompleted'));
+                        }
+                      }}
                       aria-pressed={manuallyDone}
                       aria-label={`${t('markDone')}: ${formulaName(formula, lang)}`}
                       className={cn(
