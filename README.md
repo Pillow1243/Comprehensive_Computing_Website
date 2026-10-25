@@ -13,7 +13,7 @@
 
 **Solve any equation, step by step.** A Persian/English client-first scientific calculator for mathematics, physics, chemistry, engineering, statistics, and finance—built to work offline and deploy as a static site.
 
-**Live demo:** [Pillow1243.github.io/Comprehensive_Computing_Website](https://Pillow1243.github.io/Comprehensive_Computing_Website/) · **Status:** v3.2.0 · **Implemented:** 315 formula calculators with 754 declared computational test cases, plus a unit converter (13 categories, 95 units), a molar-mass tool, an interactive periodic table and a physical-constants reference. Computational tests are not independent scientific review; each formula page shows its review status and sources.
+**Live demo:** [Pillow1243.github.io/Comprehensive_Computing_Website](https://Pillow1243.github.io/Comprehensive_Computing_Website/) · **Status:** v4.0.0 · **Implemented:** 366 formula calculators with 856 declared computational test cases, plus a unit converter (13 categories, 95 units), a molar-mass tool, an interactive periodic table and a physical-constants reference. Computational tests are not independent scientific review; each formula page shows its review status and sources.
 
 > The GitHub Pages workflow is ready, but the repository owner must select **Settings → Pages → GitHub Actions** and deploy from `main` before the live URL is available. See [Deployment](docs/DEPLOYMENT.md).
 
@@ -39,7 +39,7 @@ No build step is needed to try only the original PWA: `python3 -m http.server 80
 
 | Area | Available now | Scope / limitations |
 |---|---|---|
-| Formula solvers | 315 client-side formulas across mathematics, physics, chemistry, engineering, finance, computer science, health, astronomy and Earth science | The 500+ broad scientific catalog remains a roadmap target; see `ROADMAP.md`. |
+| Formula solvers | 366 client-side formulas across mathematics, physics, chemistry, engineering, finance, computer science, health, astronomy and Earth science | The 500+ broad scientific catalog remains a roadmap target; see `ROADMAP.md`. |
 | Steps and plots | Human-readable derivation steps, KaTeX rendering with text fallback, dynamic 2D Canvas plots | Advanced 3D, full symbolic CAS, and general-purpose plotting are future work. |
 | Tools | Unit converter (13 categories, 95 units), molar-mass/composition analyser (parentheses + hydrates), interactive 118-element periodic table, physical-constants reference, safe expression calculator, numeric derivative/integral/root tools and a practice quiz | The unit table is useful but not yet a complete dimensional-analysis system. |
 | Persistence and exports | Local history/bookmarks, shareable formula links, JSON/CSV downloads, print/PDF | No sign-in or server-side user history in the static Pages build. |
@@ -82,7 +82,7 @@ db/schema.sql                   PostgreSQL schema for future hosted features
 
 ```bash
 npm run audit                 # fail on known npm vulnerabilities
-npm run validate-registry     # 315 formulas, 754 cases, 29 catalog sections, manifests in sync
+npm run validate-registry     # 366 formulas, 856 cases, 29 catalog sections, manifests in sync
 npm run test:unit             # unit and component tests
 npm test                      # unit + registry/API/security cases
 npm run build                 # Next static export → out/

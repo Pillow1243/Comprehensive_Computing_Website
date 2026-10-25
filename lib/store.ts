@@ -28,11 +28,47 @@ export interface HistoryEntry {
   createdAt: number;
 }
 
+/** Practice (quiz) progress, stored locally — v4. */
+export interface PracticeState {
+  xp: number;
+  answered: number;
+  correct: number;
+  streak: number;
+  bestStreak: number;
+  lastPlayedDay: string | null;
+  dailyDoneDay: string | null;
+}
+
+/** A pinned item in the personal study workspace — v4. */
+export interface WorkspaceItem {
+  id: string;
+  title: string;
+  note: string;
+  formulaId: string | null;
+  inputs: Record<string, string | number | boolean>;
+  values: Record<string, unknown>;
+  createdAt: number;
+}
+
+export const defaultPractice: PracticeState = {
+  xp: 0,
+  answered: 0,
+  correct: 0,
+  streak: 0,
+  bestStreak: 0,
+  lastPlayedDay: null,
+  dailyDoneDay: null,
+};
+
 interface AppState {
   settings: Settings;
   history: HistoryEntry[];
   bookmarks: string[];
   recent: string[];
+  practice: PracticeState;
+  learnDone: string[];
+  workspace: WorkspaceItem[];
+  whatsNewSeen: string;
   hydrated: boolean;
   updateSettings: (patch: Partial<Settings>) => void;
   addHistory: (entry: Omit<HistoryEntry, 'id' | 'createdAt'>) => HistoryEntry;
@@ -41,6 +77,13 @@ interface AppState {
   clearFormulaHistory: (formulaId: string) => void;
   toggleBookmark: (formulaId: string) => boolean;
   pushRecent: (formulaId: string) => void;
+  recordPracticeAnswer: (correct: boolean, xp: number, dayKey: string) => void;
+  markDailyDone: (dayKey: string) => void;
+  toggleLearnDone: (formulaId: string) => boolean;
+  addWorkspaceItem: (item: Omit<WorkspaceItem, 'id' | 'createdAt'>) => WorkspaceItem;
+  updateWorkspaceItem: (id: string, patch: Partial<Pick<WorkspaceItem, 'title' | 'note'>>) => void;
+  deleteWorkspaceItem: (id: string) => void;
+  markWhatsNewSeen: (version: string) => void;
   clearAll: () => void;
 }
 
@@ -62,6 +105,10 @@ export const useAppStore = create<AppState>()(
       history: [],
       bookmarks: [],
       recent: [],
+      practice: defaultPractice,
+      learnDone: [],
+      workspace: [],
+      whatsNewSeen: '',
       hydrated: false,
 
       updateSettings: (patch) =>
@@ -105,11 +152,67 @@ export const useAppStore = create<AppState>()(
           recent: [formulaId, ...state.recent.filter((id) => id !== formulaId)].slice(0, 12),
         })),
 
-      clearAll: () => set({ history: [], bookmarks: [], recent: [], settings: defaultSettings }),
+      recordPracticeAnswer: (correct, xp, dayKey) =>
+        set((state) => {
+          // `streak` counts consecutive correct answers; a wrong answer resets it.
+          const streak = correct ? state.practice.streak + 1 : 0;
+          return {
+            practice: {
+              ...state.practice,
+              xp: state.practice.xp + (correct ? xp : 0),
+              answered: state.practice.answered + 1,
+              correct: state.practice.correct + (correct ? 1 : 0),
+              streak,
+              bestStreak: Math.max(state.practice.bestStreak, streak),
+              lastPlayedDay: dayKey,
+            },
+          };
+        }),
+
+      markDailyDone: (dayKey) =>
+        set((state) => ({ practice: { ...state.practice, dailyDoneDay: dayKey } })),
+
+      toggleLearnDone: (formulaId) => {
+        const exists = get().learnDone.includes(formulaId);
+        set((state) => ({
+          learnDone: exists
+            ? state.learnDone.filter((id) => id !== formulaId)
+            : [formulaId, ...state.learnDone],
+        }));
+        return !exists;
+      },
+
+      addWorkspaceItem: (item) => {
+        const record: WorkspaceItem = { ...item, id: uid(), createdAt: Date.now() };
+        set((state) => ({ workspace: [record, ...state.workspace].slice(0, 100) }));
+        return record;
+      },
+
+      updateWorkspaceItem: (id, patch) =>
+        set((state) => ({
+          workspace: state.workspace.map((item) => (item.id === id ? { ...item, ...patch } : item)),
+        })),
+
+      deleteWorkspaceItem: (id) =>
+        set((state) => ({ workspace: state.workspace.filter((item) => item.id !== id) })),
+
+      markWhatsNewSeen: (version) => set({ whatsNewSeen: version }),
+
+      clearAll: () =>
+        set({
+          history: [],
+          bookmarks: [],
+          recent: [],
+          learnDone: [],
+          workspace: [],
+          whatsNewSeen: '',
+          practice: defaultPractice,
+          settings: defaultSettings,
+        }),
     }),
     {
       name: 'solveeverything.store.v3',
-      version: 3,
+      version: 4,
       storage: createJSONStorage(() => localStorage),
       skipHydration: true,
       partialize: (state) => ({
@@ -117,8 +220,21 @@ export const useAppStore = create<AppState>()(
         history: state.history,
         bookmarks: state.bookmarks,
         recent: state.recent,
+        practice: state.practice,
+        learnDone: state.learnDone,
+        workspace: state.workspace,
+        whatsNewSeen: state.whatsNewSeen,
       }),
-      migrate: (persisted) => persisted as AppState,
+      migrate: (persisted) => {
+        const state = (persisted ?? {}) as Partial<AppState>;
+        return {
+          ...state,
+          practice: { ...defaultPractice, ...(state.practice ?? {}) },
+          learnDone: state.learnDone ?? [],
+          workspace: state.workspace ?? [],
+          whatsNewSeen: state.whatsNewSeen ?? '',
+        } as AppState;
+      },
       onRehydrateStorage: () => (state) => {
         state?.hydrated;
         useAppStore.setState({ hydrated: true });

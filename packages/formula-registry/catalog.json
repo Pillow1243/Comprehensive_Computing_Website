@@ -1,6 +1,6 @@
 {
   "project": "SolveEverything",
-  "version": "2.2.0",
+  "version": "3.0.0",
   "implemented_formula_ids": [
     "gcd_lcm",
     "prime_factor",
@@ -316,9 +316,60 @@
     "serum_osmolality",
     "coriolis_parameter",
     "lapse_rate_atmosphere",
-    "moment_magnitude"
+    "moment_magnitude",
+    "economic_order_quantity",
+    "gradient_descent_quadratic",
+    "fractional_knapsack",
+    "gamma_function",
+    "beta_function",
+    "error_function",
+    "bessel_j0_j1",
+    "eulerian_number",
+    "derangements",
+    "stirling_bell_numbers",
+    "snr_decibel",
+    "nyquist_aliasing",
+    "moving_average_filter",
+    "dft_dominant_frequency",
+    "logistic_sigmoid_loss",
+    "confusion_matrix_metrics",
+    "softmax_cross_entropy",
+    "cosine_similarity_vectors",
+    "zero_sum_mixed_nash",
+    "expected_payoff_2x2",
+    "system_reliability",
+    "weibull_reliability",
+    "mtbf_availability",
+    "sma_forecast_trend",
+    "exponential_smoothing",
+    "autocorrelation_series",
+    "two_link_forward_kinematics",
+    "two_link_inverse_kinematics",
+    "differential_drive_kinematics",
+    "hohmann_transfer",
+    "euler_rotation_3d",
+    "perspective_projection",
+    "quaternion_axis_angle",
+    "image_psnr_mse",
+    "grayscale_histogram_stats",
+    "audio_file_size",
+    "music_note_frequency",
+    "rgb_color_convert",
+    "wcag_contrast_ratio",
+    "tempo_delay_times",
+    "rk4_decay_ode",
+    "lagrange_interpolation",
+    "newton_sqrt_iterations",
+    "fuzzy_membership",
+    "fuzzy_tnorm_operations",
+    "fuzzy_centroid_defuzz",
+    "queue_mm1",
+    "erlang_b_blocking",
+    "initial_bearing_distance",
+    "destination_point",
+    "wind_triangle"
   ],
-  "implemented_count": 315,
+  "implemented_count": 366,
   "sections": [
     {
       "id": "sec_01",
@@ -575,17 +626,20 @@
         "مرتب‌سازی و Big-O",
         "DFA/NFA"
       ],
-      "implemented_formula_count": 3,
+      "implemented_formula_count": 6,
       "implemented_formula_ids": [
         "boolean_logic",
         "recurrence_sequence",
-        "ncr_npr"
+        "ncr_npr",
+        "eulerian_number",
+        "derangements",
+        "stirling_bell_numbers"
       ]
     },
     {
       "id": "sec_08",
       "title_fa": "08 بهینه‌سازی",
-      "status": "planned",
+      "status": "partial",
       "planned_items": [
         "گرادیان نزولی/نیوتن/BFGS",
         "سیمپلکس LP",
@@ -594,13 +648,17 @@
         "TSP",
         "PSO/ژنتیک"
       ],
-      "implemented_formula_count": 0,
-      "implemented_formula_ids": []
+      "implemented_formula_count": 3,
+      "implemented_formula_ids": [
+        "economic_order_quantity",
+        "gradient_descent_quadratic",
+        "fractional_knapsack"
+      ]
     },
     {
       "id": "sec_09",
       "title_fa": "09 توابع خاص",
-      "status": "planned",
+      "status": "partial",
       "planned_items": [
         "گاما/بتا",
         "erf",
@@ -609,8 +667,13 @@
         "زتا/پلی‌لاگ",
         "لامبرت W"
       ],
-      "implemented_formula_count": 0,
-      "implemented_formula_ids": []
+      "implemented_formula_count": 4,
+      "implemented_formula_ids": [
+        "gamma_function",
+        "beta_function",
+        "error_function",
+        "bessel_j0_j1"
+      ]
     },
     {
       "id": "sec_10",
@@ -865,7 +928,7 @@
     {
       "id": "sec_15",
       "title_fa": "15 پردازش سیگنال",
-      "status": "planned",
+      "status": "partial",
       "planned_items": [
         "کانولوشن",
         "FFT/DFT",
@@ -874,13 +937,18 @@
         "کالمن",
         "مدولاسیون"
       ],
-      "implemented_formula_count": 0,
-      "implemented_formula_ids": []
+      "implemented_formula_count": 4,
+      "implemented_formula_ids": [
+        "snr_decibel",
+        "nyquist_aliasing",
+        "moving_average_filter",
+        "dft_dominant_frequency"
+      ]
     },
     {
       "id": "sec_16",
       "title_fa": "16 یادگیری ماشین",
-      "status": "planned",
+      "status": "partial",
       "planned_items": [
         "رگرسیون و لجستیک",
         "KNN/SVM/درخت",
@@ -889,13 +957,18 @@
         "Adam/SGD",
         "معیارها F1/ROC"
       ],
-      "implemented_formula_count": 0,
-      "implemented_formula_ids": []
+      "implemented_formula_count": 4,
+      "implemented_formula_ids": [
+        "logistic_sigmoid_loss",
+        "confusion_matrix_metrics",
+        "softmax_cross_entropy",
+        "cosine_similarity_vectors"
+      ]
     },
     {
       "id": "sec_17",
       "title_fa": "17 نظریه بازی",
-      "status": "planned",
+      "status": "partial",
       "planned_items": [
         "تعادل نش",
         "مینی‌مکس",
@@ -903,13 +976,16 @@
         "حراج ویکری",
         "معمای زندانی"
       ],
-      "implemented_formula_count": 0,
-      "implemented_formula_ids": []
+      "implemented_formula_count": 2,
+      "implemented_formula_ids": [
+        "zero_sum_mixed_nash",
+        "expected_payoff_2x2"
+      ]
     },
     {
       "id": "sec_18",
       "title_fa": "18 قابلیت اطمینان",
-      "status": "planned",
+      "status": "partial",
       "planned_items": [
         "MTBF/MTTR",
         "سری/موازی/k-out-of-n",
@@ -917,8 +993,12 @@
         "Cp/Cpk",
         "نمودار کنترل"
       ],
-      "implemented_formula_count": 0,
-      "implemented_formula_ids": []
+      "implemented_formula_count": 3,
+      "implemented_formula_ids": [
+        "system_reliability",
+        "weibull_reliability",
+        "mtbf_availability"
+      ]
     },
     {
       "id": "sec_19",
@@ -960,7 +1040,7 @@
     {
       "id": "sec_20",
       "title_fa": "20 سری زمانی",
-      "status": "planned",
+      "status": "partial",
       "planned_items": [
         "هموارسازی نمایی",
         "ARIMA/SARIMA",
@@ -968,13 +1048,17 @@
         "ADF/KPSS",
         "GARCH"
       ],
-      "implemented_formula_count": 0,
-      "implemented_formula_ids": []
+      "implemented_formula_count": 3,
+      "implemented_formula_ids": [
+        "sma_forecast_trend",
+        "exponential_smoothing",
+        "autocorrelation_series"
+      ]
     },
     {
       "id": "sec_21",
       "title_fa": "21 رباتیک و مداری",
-      "status": "planned",
+      "status": "partial",
       "planned_items": [
         "سینماتیک 2R/3R",
         "کوترنیون و اویلر",
@@ -982,13 +1066,18 @@
         "هومان و Δv",
         "PID"
       ],
-      "implemented_formula_count": 0,
-      "implemented_formula_ids": []
+      "implemented_formula_count": 4,
+      "implemented_formula_ids": [
+        "two_link_forward_kinematics",
+        "two_link_inverse_kinematics",
+        "differential_drive_kinematics",
+        "hohmann_transfer"
+      ]
     },
     {
       "id": "sec_22",
       "title_fa": "22 گرافیک ۳بعدی",
-      "status": "planned",
+      "status": "partial",
       "planned_items": [
         "تبدیل آفین",
         "کوترنیون/SLERP",
@@ -997,13 +1086,17 @@
         "برخورد Ray/AABB",
         "تبدیل رنگ"
       ],
-      "implemented_formula_count": 0,
-      "implemented_formula_ids": []
+      "implemented_formula_count": 3,
+      "implemented_formula_ids": [
+        "euler_rotation_3d",
+        "perspective_projection",
+        "quaternion_axis_angle"
+      ]
     },
     {
       "id": "sec_23",
       "title_fa": "23 پردازش تصویر و صدا",
-      "status": "planned",
+      "status": "partial",
       "planned_items": [
         "فیلتر گاوسی/سوبل",
         "Canny و Hough",
@@ -1011,8 +1104,12 @@
         "MFCC و Pitch",
         "فوریه ۲بعدی"
       ],
-      "implemented_formula_count": 0,
-      "implemented_formula_ids": []
+      "implemented_formula_count": 3,
+      "implemented_formula_ids": [
+        "image_psnr_mse",
+        "grayscale_histogram_stats",
+        "audio_file_size"
+      ]
     },
     {
       "id": "sec_24",
@@ -1038,7 +1135,7 @@
     {
       "id": "sec_25",
       "title_fa": "25 موسیقی و رنگ",
-      "status": "planned",
+      "status": "partial",
       "planned_items": [
         "فرکانس نت",
         "گام‌ها و کوک",
@@ -1046,13 +1143,18 @@
         "RGB↔HSL↔Lab",
         "Delta-E و کنتراست"
       ],
-      "implemented_formula_count": 0,
-      "implemented_formula_ids": []
+      "implemented_formula_count": 4,
+      "implemented_formula_ids": [
+        "music_note_frequency",
+        "rgb_color_convert",
+        "wcag_contrast_ratio",
+        "tempo_delay_times"
+      ]
     },
     {
       "id": "sec_26",
       "title_fa": "26 محاسبات علمی",
-      "status": "planned",
+      "status": "partial",
       "planned_items": [
         "مونت‌کارلو",
         "MCMC",
@@ -1060,13 +1162,17 @@
         "Krylov",
         "ریشه‌یابی چندمتغیره"
       ],
-      "implemented_formula_count": 0,
-      "implemented_formula_ids": []
+      "implemented_formula_count": 3,
+      "implemented_formula_ids": [
+        "rk4_decay_ode",
+        "lagrange_interpolation",
+        "newton_sqrt_iterations"
+      ]
     },
     {
       "id": "sec_27",
       "title_fa": "27 منطق فازی",
-      "status": "planned",
+      "status": "partial",
       "planned_items": [
         "تابع عضویت",
         "T-norm/S-norm",
@@ -1074,13 +1180,17 @@
         "کنترل فازی",
         "ANFIS"
       ],
-      "implemented_formula_count": 0,
-      "implemented_formula_ids": []
+      "implemented_formula_count": 3,
+      "implemented_formula_ids": [
+        "fuzzy_membership",
+        "fuzzy_tnorm_operations",
+        "fuzzy_centroid_defuzz"
+      ]
     },
     {
       "id": "sec_28",
       "title_fa": "28 نظریه صف",
-      "status": "planned",
+      "status": "partial",
       "planned_items": [
         "M/M/1",
         "M/M/c",
@@ -1088,13 +1198,16 @@
         "قانون لیتل",
         "تولد-مرگ"
       ],
-      "implemented_formula_count": 0,
-      "implemented_formula_ids": []
+      "implemented_formula_count": 2,
+      "implemented_formula_ids": [
+        "queue_mm1",
+        "erlang_b_blocking"
+      ]
     },
     {
       "id": "sec_29",
       "title_fa": "29 ناوبری",
-      "status": "planned",
+      "status": "partial",
       "planned_items": [
         "Haversine",
         "Vincenty",
@@ -1102,8 +1215,12 @@
         "مرکاتور",
         "مسیر دایره بزرگ"
       ],
-      "implemented_formula_count": 0,
-      "implemented_formula_ids": []
+      "implemented_formula_count": 3,
+      "implemented_formula_ids": [
+        "initial_bearing_distance",
+        "destination_point",
+        "wind_triangle"
+      ]
     }
   ],
   "schema_version": "1.1.0",
@@ -36413,6 +36530,5904 @@
       "reviewed_by": null,
       "reviewed_at": null,
       "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "economic_order_quantity",
+      "name_fa": "مقدار سفارش اقتصادی (EOQ)",
+      "name_en": "Economic Order Quantity",
+      "category_path": [
+        "ریاضیات",
+        "بهینه‌سازی"
+      ],
+      "tags": [
+        "موجودی",
+        "سفارش",
+        "EOQ",
+        "optimisation"
+      ],
+      "description_fa": "اندازه سفارشی که مجموع هزینه سفارش‌دهی و نگهداری موجودی را کمینه می‌کند.",
+      "variables": [
+        {
+          "name": "demand",
+          "label_fa": "تقاضای سالانه D (واحد)",
+          "label_en": "Annual demand",
+          "type": "number",
+          "unit": null,
+          "default": 10000,
+          "required": true,
+          "min": 1
+        },
+        {
+          "name": "order_cost",
+          "label_fa": "هزینه هر سفارش S",
+          "label_en": "Order cost",
+          "type": "number",
+          "unit": null,
+          "default": 50,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "holding_cost",
+          "label_fa": "هزینه نگهداری سالانه هر واحد H",
+          "label_en": "Holding cost / unit / year",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "optimal_quantity",
+          "label_fa": "مقدار سفارش بهینه Q*",
+          "label_en": "Optimal Quantity",
+          "unit": null
+        },
+        {
+          "name": "orders_per_year",
+          "label_fa": "سفارش در سال",
+          "label_en": "Orders Per Year",
+          "unit": null
+        },
+        {
+          "name": "minimum_total_cost",
+          "label_fa": "کمینه هزینه سالانه",
+          "label_en": "Minimum Total Cost",
+          "unit": null
+        },
+        {
+          "name": "cycle_days",
+          "label_fa": "طول چرخه سفارش (روز)",
+          "label_en": "Cycle Days",
+          "unit": null
+        }
+      ],
+      "formula_latex": "Q^{*}=\\sqrt{\\frac{2DS}{H}}",
+      "compute_js": "module:apps/web/phase8-formulas.js#economic_order_quantity",
+      "steps_generator": "module:apps/web/phase8-formulas.js#economic_order_quantity",
+      "plot_spec": null,
+      "examples": [
+        {
+          "demand": 10000,
+          "order_cost": 50,
+          "holding_cost": 2
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "demand": 10000,
+            "order_cost": 50,
+            "holding_cost": 2
+          },
+          "expected": {
+            "optimal_quantity": 707.106781,
+            "minimum_total_cost": 1414.213562
+          }
+        },
+        {
+          "input": {
+            "demand": 1200,
+            "order_cost": 30,
+            "holding_cost": 3
+          },
+          "expected": {
+            "optimal_quantity": 154.919334,
+            "minimum_total_cost": 464.758001
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "intermediate",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "gradient_descent_quadratic",
+      "name_fa": "گرادیان کاهشی روی تابع درجه دو",
+      "name_en": "Gradient Descent on a Quadratic",
+      "category_path": [
+        "ریاضیات",
+        "بهینه‌سازی"
+      ],
+      "tags": [
+        "بهینه‌سازی",
+        "گرادیان کاهشی",
+        "gradient descent"
+      ],
+      "description_fa": "دنبال کردن گام‌های گرادیان کاهشی برای کمینه‌سازی f(x)=(x−a)² و مشاهده نرخ همگرایی.",
+      "variables": [
+        {
+          "name": "a",
+          "label_fa": "نقطه کمینه a",
+          "label_en": "Minimum location",
+          "type": "number",
+          "unit": null,
+          "default": 3,
+          "required": true
+        },
+        {
+          "name": "x0",
+          "label_fa": "نقطه شروع x₀",
+          "label_en": "Starting point",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "learning_rate",
+          "label_fa": "نرخ یادگیری η",
+          "label_en": "Learning rate",
+          "type": "number",
+          "unit": null,
+          "default": 0.1,
+          "required": true,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "iterations",
+          "label_fa": "تعداد گام",
+          "label_en": "Iterations",
+          "type": "number",
+          "unit": null,
+          "default": 10,
+          "required": true,
+          "min": 1,
+          "max": 10000
+        }
+      ],
+      "outputs": [
+        {
+          "name": "x_final",
+          "label_fa": "x پس از گام‌ها",
+          "label_en": "X Final",
+          "unit": null
+        },
+        {
+          "name": "f_final",
+          "label_fa": "مقدار تابع در پایان",
+          "label_en": "F Final",
+          "unit": null
+        },
+        {
+          "name": "distance_to_minimum",
+          "label_fa": "فاصله تا کمینه",
+          "label_en": "Distance To Minimum",
+          "unit": null
+        }
+      ],
+      "formula_latex": "x_{k+1}=x_k-\\eta\\,f'(x_k)=x_k-2\\eta(x_k-a)",
+      "compute_js": "module:apps/web/phase8-formulas.js#gradient_descent_quadratic",
+      "steps_generator": "module:apps/web/phase8-formulas.js#gradient_descent_quadratic",
+      "plot_spec": null,
+      "examples": [
+        {
+          "a": 3,
+          "x0": 0,
+          "learning_rate": 0.1,
+          "iterations": 10
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "a": 3,
+            "x0": 0,
+            "learning_rate": 0.1,
+            "iterations": 10
+          },
+          "expected": {
+            "x_final": 2.677877,
+            "distance_to_minimum": 0.322123
+          }
+        },
+        {
+          "input": {
+            "a": -2,
+            "x0": 5,
+            "learning_rate": 0.25,
+            "iterations": 4
+          },
+          "expected": {
+            "x_final": -1.5625,
+            "f_final": 0.191406
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "intermediate",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "fractional_knapsack",
+      "name_fa": "کوله‌پشتی کسری (حریصانه)",
+      "name_en": "Fractional Knapsack (Greedy)",
+      "category_path": [
+        "ریاضیات",
+        "بهینه‌سازی"
+      ],
+      "tags": [
+        "کوله‌پشتی",
+        "حریصانه",
+        "knapsack"
+      ],
+      "description_fa": "بیشینه ارزش قابل حمل وقتی می‌توان بخشی از هر کالا را برداشت؛ ترتیب حریصانه بر اساس نسبت ارزش به وزن بهینه است.",
+      "variables": [
+        {
+          "name": "values",
+          "label_fa": "ارزش کالاها (با کاما)",
+          "label_en": "Values",
+          "type": "text",
+          "unit": null,
+          "default": "60, 100, 120",
+          "required": true
+        },
+        {
+          "name": "weights",
+          "label_fa": "وزن کالاها (با کاما)",
+          "label_en": "Weights",
+          "type": "text",
+          "unit": null,
+          "default": "10, 20, 30",
+          "required": true
+        },
+        {
+          "name": "capacity",
+          "label_fa": "ظرفیت کوله‌پشتی",
+          "label_en": "Capacity",
+          "type": "number",
+          "unit": null,
+          "default": 50,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "max_value",
+          "label_fa": "بیشینه ارزش",
+          "label_en": "Max Value",
+          "unit": null
+        },
+        {
+          "name": "used_weight",
+          "label_fa": "وزن استفاده‌شده",
+          "label_en": "Used Weight",
+          "unit": null
+        },
+        {
+          "name": "remaining_capacity",
+          "label_fa": "ظرفیت باقی‌مانده",
+          "label_en": "Remaining Capacity",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\max \\sum v_i x_i \\quad \\text{s.t.}\\quad \\sum w_i x_i \\le W",
+      "compute_js": "module:apps/web/phase8-formulas.js#fractional_knapsack",
+      "steps_generator": "module:apps/web/phase8-formulas.js#fractional_knapsack",
+      "plot_spec": null,
+      "examples": [
+        {
+          "values": "60, 100, 120",
+          "weights": "10, 20, 30",
+          "capacity": 50
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "values": "60, 100, 120",
+            "weights": "10, 20, 30",
+            "capacity": 50
+          },
+          "expected": {
+            "max_value": 240,
+            "used_weight": 50,
+            "remaining_capacity": 0
+          }
+        },
+        {
+          "input": {
+            "values": "10, 20",
+            "weights": "5, 5",
+            "capacity": 5
+          },
+          "expected": {
+            "max_value": 20,
+            "used_weight": 5
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "intermediate",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "gamma_function",
+      "name_fa": "تابع گاما",
+      "name_en": "Gamma Function",
+      "category_path": [
+        "ریاضیات",
+        "توابع خاص"
+      ],
+      "tags": [
+        "گاما",
+        "فاکتوریل تعمیم‌یافته",
+        "gamma"
+      ],
+      "description_fa": "تعمیم فاکتوریل به اعداد حقیقی مثبت با تقریب لانکسوز؛ برای عدد صحیح n داریم Γ(n)=(n−1)!.",
+      "variables": [
+        {
+          "name": "x",
+          "label_fa": "ورودی x (مثبت)",
+          "label_en": "x",
+          "type": "number",
+          "unit": null,
+          "default": 5,
+          "required": true,
+          "min": 0,
+          "max": 170
+        }
+      ],
+      "outputs": [
+        {
+          "name": "gamma",
+          "label_fa": "Γ(x)",
+          "label_en": "Gamma",
+          "unit": null
+        },
+        {
+          "name": "log_gamma",
+          "label_fa": "ln Γ(x)",
+          "label_en": "Log Gamma",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\Gamma(z)=\\int_0^{\\infty} t^{z-1} e^{-t}\\,dt",
+      "compute_js": "module:apps/web/phase8-formulas.js#gamma_function",
+      "steps_generator": "module:apps/web/phase8-formulas.js#gamma_function",
+      "plot_spec": null,
+      "examples": [
+        {
+          "x": 5
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "x": 5
+          },
+          "expected": {
+            "gamma": 24,
+            "log_gamma": 3.178054
+          }
+        },
+        {
+          "input": {
+            "x": 0.5
+          },
+          "expected": {
+            "gamma": 1.772454,
+            "log_gamma": 0.572365
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "advanced",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "beta_function",
+      "name_fa": "تابع بتا",
+      "name_en": "Beta Function",
+      "category_path": [
+        "ریاضیات",
+        "توابع خاص"
+      ],
+      "tags": [
+        "بتا",
+        "beta function"
+      ],
+      "description_fa": "تابع بتای اویلر از روی نسبت توابع گاما؛ پایه توزیع بتا در آمار بیزی.",
+      "variables": [
+        {
+          "name": "a",
+          "label_fa": "پارامتر a (مثبت)",
+          "label_en": "a",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "b",
+          "label_fa": "پارامتر b (مثبت)",
+          "label_en": "b",
+          "type": "number",
+          "unit": null,
+          "default": 3,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "beta",
+          "label_fa": "B(a,b)",
+          "label_en": "Beta",
+          "unit": null
+        },
+        {
+          "name": "log_beta",
+          "label_fa": "ln B(a,b)",
+          "label_en": "Log Beta",
+          "unit": null
+        }
+      ],
+      "formula_latex": "B(a,b)=\\frac{\\Gamma(a)\\Gamma(b)}{\\Gamma(a+b)}",
+      "compute_js": "module:apps/web/phase8-formulas.js#beta_function",
+      "steps_generator": "module:apps/web/phase8-formulas.js#beta_function",
+      "plot_spec": null,
+      "examples": [
+        {
+          "a": 2,
+          "b": 3
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "a": 2,
+            "b": 3
+          },
+          "expected": {
+            "beta": 0.083333
+          }
+        },
+        {
+          "input": {
+            "a": 0.5,
+            "b": 0.5
+          },
+          "expected": {
+            "beta": 3.141593
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "advanced",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "error_function",
+      "name_fa": "تابع خطا (erf)",
+      "name_en": "Error Function",
+      "category_path": [
+        "ریاضیات",
+        "توابع خاص"
+      ],
+      "tags": [
+        "تابع خطا",
+        "انتگرال گاوسی",
+        "erf"
+      ],
+      "description_fa": "انتگرال گاوسی نرمال‌شده؛ احتمال قرار گرفتن متغیر نرمال در بازه متقارن حول میانگین.",
+      "variables": [
+        {
+          "name": "x",
+          "label_fa": "ورودی x",
+          "label_en": "x",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "erf",
+          "label_fa": "erf(x)",
+          "label_en": "Erf",
+          "unit": null
+        },
+        {
+          "name": "erfc",
+          "label_fa": "erfc(x) = 1−erf(x)",
+          "label_en": "Erfc",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\operatorname{erf}(x)=\\frac{2}{\\sqrt{\\pi}}\\int_0^x e^{-t^2}\\,dt",
+      "compute_js": "module:apps/web/phase8-formulas.js#error_function",
+      "steps_generator": "module:apps/web/phase8-formulas.js#error_function",
+      "plot_spec": null,
+      "examples": [
+        {
+          "x": 0
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "x": 0
+          },
+          "expected": {
+            "erf": 0,
+            "erfc": 1
+          }
+        },
+        {
+          "input": {
+            "x": 1
+          },
+          "expected": {
+            "erf": 0.842701,
+            "erfc": 0.157299
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "advanced",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "bessel_j0_j1",
+      "name_fa": "توابع بسل J₀ و J₁",
+      "name_en": "Bessel Functions J0 & J1",
+      "category_path": [
+        "ریاضیات",
+        "توابع خاص"
+      ],
+      "tags": [
+        "بسل",
+        "معادله بسل",
+        "bessel"
+      ],
+      "description_fa": "توابع بسل نوع اول از سری توانی آن‌ها؛ جواب‌های ارتعاش غشای دایروی و مسائل موج استوانه‌ای.",
+      "variables": [
+        {
+          "name": "x",
+          "label_fa": "ورودی x (|x| ≤ 10)",
+          "label_en": "x",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": -10,
+          "max": 10
+        }
+      ],
+      "outputs": [
+        {
+          "name": "j0",
+          "label_fa": "J₀(x)",
+          "label_en": "J0",
+          "unit": null
+        },
+        {
+          "name": "j1",
+          "label_fa": "J₁(x)",
+          "label_en": "J1",
+          "unit": null
+        }
+      ],
+      "formula_latex": "J_0(x)=\\sum_{k\\ge0}\\frac{(-1)^k}{(k!)^2}\\Big(\\frac{x}{2}\\Big)^{2k}",
+      "compute_js": "module:apps/web/phase8-formulas.js#bessel_j0_j1",
+      "steps_generator": "module:apps/web/phase8-formulas.js#bessel_j0_j1",
+      "plot_spec": null,
+      "examples": [
+        {
+          "x": 0
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "x": 0
+          },
+          "expected": {
+            "j0": 1,
+            "j1": 0
+          }
+        },
+        {
+          "input": {
+            "x": 1
+          },
+          "expected": {
+            "j0": 0.765198,
+            "j1": 0.440051
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "advanced",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "eulerian_number",
+      "name_fa": "اعداد اویلری (شمارش فراز و فرود جایگشت)",
+      "name_en": "Eulerian Numbers",
+      "category_path": [
+        "ریاضیات",
+        "ریاضیات گسسته"
+      ],
+      "tags": [
+        "اویلری",
+        "جایگشت",
+        "eulerian",
+        "descent"
+      ],
+      "description_fa": "تعداد جایگشت‌های n عضو با دقیقاً m «فرود» (جایی که عنصر بعدی کوچک‌تر است)؛ مجموع هر ردیف برابر n! است.",
+      "variables": [
+        {
+          "name": "n",
+          "label_fa": "تعداد عضو n (۱ تا ۱۲)",
+          "label_en": "n",
+          "type": "number",
+          "unit": null,
+          "default": 4,
+          "required": true,
+          "min": 1,
+          "max": 12
+        },
+        {
+          "name": "m",
+          "label_fa": "تعداد فرود m (۰ تا n−۱)",
+          "label_en": "Descents m",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 0,
+          "max": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "eulerian",
+          "label_fa": "عدد اویلری A(n,m)",
+          "label_en": "Eulerian",
+          "unit": null
+        },
+        {
+          "name": "row_sum",
+          "label_fa": "مجموع ردیف = n!",
+          "label_en": "Row Sum",
+          "unit": null
+        },
+        {
+          "name": "share_percent",
+          "label_fa": "سهم از همه جایگشت‌ها (٪)",
+          "label_en": "Share Percent",
+          "unit": null
+        }
+      ],
+      "formula_latex": "A(n,m)=\\sum_{k=0}^{m+1}(-1)^k\\binom{n+1}{k}(m+1-k)^n",
+      "compute_js": "module:apps/web/phase8-formulas.js#eulerian_number",
+      "steps_generator": "module:apps/web/phase8-formulas.js#eulerian_number",
+      "plot_spec": null,
+      "examples": [
+        {
+          "n": 4,
+          "m": 1
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "n": 4,
+            "m": 1
+          },
+          "expected": {
+            "eulerian": 11,
+            "row_sum": 24
+          }
+        },
+        {
+          "input": {
+            "n": 5,
+            "m": 2
+          },
+          "expected": {
+            "eulerian": 66,
+            "row_sum": 120
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "derangements",
+      "name_fa": "پریش‌ها (جایگشت بدون نقطه ثابت)",
+      "name_en": "Derangements",
+      "category_path": [
+        "ریاضیات",
+        "ریاضیات گسسته"
+      ],
+      "tags": [
+        "پریش",
+        "جایگشت",
+        "derangement"
+      ],
+      "description_fa": "تعداد جایگشت‌هایی که هیچ عضوی سر جای خودش نیست — مسئله کلاسیک کلاه‌ها.",
+      "variables": [
+        {
+          "name": "n",
+          "label_fa": "تعداد عضو n (۰ تا ۱۸)",
+          "label_en": "n",
+          "type": "number",
+          "unit": null,
+          "default": 4,
+          "required": true,
+          "min": 0,
+          "max": 18
+        }
+      ],
+      "outputs": [
+        {
+          "name": "derangements",
+          "label_fa": "تعداد پریش !n",
+          "label_en": "Derangements",
+          "unit": null
+        },
+        {
+          "name": "probability",
+          "label_fa": "احتمال پریش تصادفی",
+          "label_en": "Probability",
+          "unit": null
+        },
+        {
+          "name": "factorial_n",
+          "label_fa": "n!",
+          "label_en": "Factorial N",
+          "unit": null
+        }
+      ],
+      "formula_latex": "!n=n!\\sum_{k=0}^{n}\\frac{(-1)^k}{k!}",
+      "compute_js": "module:apps/web/phase8-formulas.js#derangements",
+      "steps_generator": "module:apps/web/phase8-formulas.js#derangements",
+      "plot_spec": null,
+      "examples": [
+        {
+          "n": 4
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "n": 4
+          },
+          "expected": {
+            "derangements": 9,
+            "probability": 0.375
+          }
+        },
+        {
+          "input": {
+            "n": 5
+          },
+          "expected": {
+            "derangements": 44,
+            "probability": 0.366667
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "stirling_bell_numbers",
+      "name_fa": "اعداد استرلینگ نوع دوم و بل",
+      "name_en": "Stirling Numbers (2nd Kind) & Bell Numbers",
+      "category_path": [
+        "ریاضیات",
+        "ریاضیات گسسته"
+      ],
+      "tags": [
+        "استرلینگ",
+        "بل",
+        "افراز مجموعه",
+        "stirling"
+      ],
+      "description_fa": "افراز یک مجموعه n عضوی به k زیرمجموعه ناتهی و تعداد کل افرازها (عدد بل).",
+      "variables": [
+        {
+          "name": "n",
+          "label_fa": "اندازه مجموعه n (۰ تا ۱۵)",
+          "label_en": "n",
+          "type": "number",
+          "unit": null,
+          "default": 5,
+          "required": true,
+          "min": 0,
+          "max": 15
+        },
+        {
+          "name": "k",
+          "label_fa": "تعداد بلوک k",
+          "label_en": "k",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true,
+          "min": 0,
+          "max": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "stirling2",
+          "label_fa": "S(n,k)",
+          "label_en": "Stirling2",
+          "unit": null
+        },
+        {
+          "name": "bell_number",
+          "label_fa": "عدد بل Bₙ",
+          "label_en": "Bell Number",
+          "unit": null
+        },
+        {
+          "name": "surjections",
+          "label_fa": "تابع‌های پوشا k!·S(n,k)",
+          "label_en": "Surjections",
+          "unit": null
+        }
+      ],
+      "formula_latex": "S(n,k)=\\frac{1}{k!}\\sum_{j=0}^{k}(-1)^{k-j}\\binom{k}{j}j^n",
+      "compute_js": "module:apps/web/phase8-formulas.js#stirling_bell_numbers",
+      "steps_generator": "module:apps/web/phase8-formulas.js#stirling_bell_numbers",
+      "plot_spec": null,
+      "examples": [
+        {
+          "n": 5,
+          "k": 2
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "n": 5,
+            "k": 2
+          },
+          "expected": {
+            "stirling2": 15,
+            "bell_number": 52,
+            "surjections": 30
+          }
+        },
+        {
+          "input": {
+            "n": 4,
+            "k": 3
+          },
+          "expected": {
+            "stirling2": 6,
+            "bell_number": 15,
+            "surjections": 36
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "snr_decibel",
+      "name_fa": "نسبت سیگنال به نویز (SNR)",
+      "name_en": "Signal-to-Noise Ratio",
+      "category_path": [
+        "مهندسی",
+        "پردازش سیگنال"
+      ],
+      "tags": [
+        "نویز",
+        "دسی‌بل",
+        "SNR"
+      ],
+      "description_fa": "قدرت سیگنال نسبت به نویز، به‌صورت نسبت خطی و دسی‌بل.",
+      "variables": [
+        {
+          "name": "signal_power",
+          "label_fa": "توان سیگنال (W)",
+          "label_en": "Signal power",
+          "type": "number",
+          "unit": null,
+          "default": 100,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "noise_power",
+          "label_fa": "توان نویز (W)",
+          "label_en": "Noise power",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "snr_db",
+          "label_fa": "SNR (dB)",
+          "label_en": "Snr Db",
+          "unit": null
+        },
+        {
+          "name": "power_ratio",
+          "label_fa": "نسبت توان",
+          "label_en": "Power Ratio",
+          "unit": null
+        },
+        {
+          "name": "amplitude_ratio",
+          "label_fa": "نسبت دامنه",
+          "label_en": "Amplitude Ratio",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\mathrm{SNR}_{dB}=10\\log_{10}\\frac{P_s}{P_n}",
+      "compute_js": "module:apps/web/phase8-formulas.js#snr_decibel",
+      "steps_generator": "module:apps/web/phase8-formulas.js#snr_decibel",
+      "plot_spec": null,
+      "examples": [
+        {
+          "signal_power": 100,
+          "noise_power": 1
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "signal_power": 100,
+            "noise_power": 1
+          },
+          "expected": {
+            "snr_db": 20,
+            "power_ratio": 100,
+            "amplitude_ratio": 10
+          }
+        },
+        {
+          "input": {
+            "signal_power": 50,
+            "noise_power": 2
+          },
+          "expected": {
+            "snr_db": 13.9794,
+            "power_ratio": 25,
+            "amplitude_ratio": 5
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "nyquist_aliasing",
+      "name_fa": "نایکوئیست و فرکانس مستعار",
+      "name_en": "Nyquist Rate & Aliasing",
+      "category_path": [
+        "مهندسی",
+        "پردازش سیگنال"
+      ],
+      "tags": [
+        "نمونه‌برداری",
+        "نایکوئیست",
+        "aliasing"
+      ],
+      "description_fa": "کمترین نرخ نمونه‌برداری بدون اعوجاج و فرکانسی که سیگنالِ تند، پس از نمونه‌برداری به‌اشتباه دیده می‌شود.",
+      "variables": [
+        {
+          "name": "signal_freq",
+          "label_fa": "فرکانس سیگنال (Hz)",
+          "label_en": "Signal frequency",
+          "type": "number",
+          "unit": null,
+          "default": 700,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "sample_rate",
+          "label_fa": "نرخ نمونه‌برداری (Hz)",
+          "label_en": "Sample rate",
+          "type": "number",
+          "unit": null,
+          "default": 1000,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "nyquist_rate",
+          "label_fa": "نرخ نایکوئیست (Hz)",
+          "label_en": "Nyquist Rate",
+          "unit": null
+        },
+        {
+          "name": "nyquist_frequency",
+          "label_fa": "فرکانس نایکوئیست fs/2",
+          "label_en": "Nyquist Frequency",
+          "unit": null
+        },
+        {
+          "name": "alias_frequency",
+          "label_fa": "فرکانس مشاهده‌شده (مستعار)",
+          "label_en": "Alias Frequency",
+          "unit": null
+        }
+      ],
+      "formula_latex": "f_s \\ge 2 f_{max},\\qquad f_{alias}=\\big|f - \\mathrm{round}(f/f_s) f_s\\big|",
+      "compute_js": "module:apps/web/phase8-formulas.js#nyquist_aliasing",
+      "steps_generator": "module:apps/web/phase8-formulas.js#nyquist_aliasing",
+      "plot_spec": null,
+      "examples": [
+        {
+          "signal_freq": 700,
+          "sample_rate": 1000
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "signal_freq": 700,
+            "sample_rate": 1000
+          },
+          "expected": {
+            "nyquist_rate": 1400,
+            "nyquist_frequency": 500,
+            "alias_frequency": 300
+          }
+        },
+        {
+          "input": {
+            "signal_freq": 200,
+            "sample_rate": 1000
+          },
+          "expected": {
+            "alias_frequency": 200,
+            "nyquist_rate": 400
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "intermediate",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "moving_average_filter",
+      "name_fa": "فیلتر میانگین متحرک",
+      "name_en": "Moving-Average Filter",
+      "category_path": [
+        "مهندسی",
+        "پردازش سیگنال"
+      ],
+      "tags": [
+        "فیلتر",
+        "هموارسازی",
+        "moving average"
+      ],
+      "description_fa": "ساده‌ترین فیلتر پایین‌گذر دیجیتال: هر خروجی میانگین یک پنجره از نمونه‌های اخیر است.",
+      "variables": [
+        {
+          "name": "samples",
+          "label_fa": "نمونه‌ها (با کاما)",
+          "label_en": "Samples",
+          "type": "text",
+          "unit": null,
+          "default": "1, 2, 3, 4, 5",
+          "required": true
+        },
+        {
+          "name": "window",
+          "label_fa": "طول پنجره M",
+          "label_en": "Window length",
+          "type": "number",
+          "unit": null,
+          "default": 3,
+          "required": true,
+          "min": 1,
+          "max": 1000
+        }
+      ],
+      "outputs": [
+        {
+          "name": "first_output",
+          "label_fa": "نخستین خروجی",
+          "label_en": "First Output",
+          "unit": null
+        },
+        {
+          "name": "last_output",
+          "label_fa": "آخرین خروجی",
+          "label_en": "Last Output",
+          "unit": null
+        },
+        {
+          "name": "output_count",
+          "label_fa": "تعداد خروجی",
+          "label_en": "Output Count",
+          "unit": null
+        },
+        {
+          "name": "input_mean",
+          "label_fa": "میانگین ورودی",
+          "label_en": "Input Mean",
+          "unit": null
+        }
+      ],
+      "formula_latex": "y[n]=\\frac{1}{M}\\sum_{k=0}^{M-1} x[n-k]",
+      "compute_js": "module:apps/web/phase8-formulas.js#moving_average_filter",
+      "steps_generator": "module:apps/web/phase8-formulas.js#moving_average_filter",
+      "plot_spec": null,
+      "examples": [
+        {
+          "samples": "1, 2, 3, 4, 5",
+          "window": 3
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "samples": "1, 2, 3, 4, 5",
+            "window": 3
+          },
+          "expected": {
+            "first_output": 2,
+            "last_output": 4,
+            "output_count": 3
+          }
+        },
+        {
+          "input": {
+            "samples": "2, 4, 6, 8",
+            "window": 2
+          },
+          "expected": {
+            "first_output": 3,
+            "last_output": 7,
+            "output_count": 3
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "dft_dominant_frequency",
+      "name_fa": "فرکانس غالب با DFT",
+      "name_en": "Dominant Frequency via DFT",
+      "category_path": [
+        "مهندسی",
+        "پردازش سیگنال"
+      ],
+      "tags": [
+        "فوریه",
+        "طیف",
+        "DFT",
+        "FFT"
+      ],
+      "description_fa": "تبدیل فوریه گسسته سیگنال و یافتن مؤلفه فرکانسی با بیشترین دامنه.",
+      "variables": [
+        {
+          "name": "samples",
+          "label_fa": "نمونه‌ها (با کاما، حداکثر ۲۵۶)",
+          "label_en": "Samples",
+          "type": "text",
+          "unit": null,
+          "default": "0, 1, 0, -1",
+          "required": true
+        },
+        {
+          "name": "sample_rate",
+          "label_fa": "نرخ نمونه‌برداری (Hz)",
+          "label_en": "Sample rate",
+          "type": "number",
+          "unit": null,
+          "default": 4,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "dominant_freq_hz",
+          "label_fa": "فرکانس غالب (Hz)",
+          "label_en": "Dominant Freq Hz",
+          "unit": null
+        },
+        {
+          "name": "dominant_magnitude",
+          "label_fa": "بزرگی |X[k]|",
+          "label_en": "Dominant Magnitude",
+          "unit": null
+        },
+        {
+          "name": "dc_mean",
+          "label_fa": "میانگین (مؤلفه DC)",
+          "label_en": "Dc Mean",
+          "unit": null
+        },
+        {
+          "name": "bin_resolution_hz",
+          "label_fa": "تفکیک فرکانسی (Hz)",
+          "label_en": "Bin Resolution Hz",
+          "unit": null
+        }
+      ],
+      "formula_latex": "X[k]=\\sum_{n=0}^{N-1} x[n] e^{-i 2\\pi k n / N}",
+      "compute_js": "module:apps/web/phase8-formulas.js#dft_dominant_frequency",
+      "steps_generator": "module:apps/web/phase8-formulas.js#dft_dominant_frequency",
+      "plot_spec": null,
+      "examples": [
+        {
+          "samples": "0, 1, 0, -1",
+          "sample_rate": 4
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "samples": "0, 1, 0, -1",
+            "sample_rate": 4
+          },
+          "expected": {
+            "dominant_freq_hz": 1,
+            "dominant_magnitude": 2,
+            "dc_mean": 0
+          }
+        },
+        {
+          "input": {
+            "samples": "2, 2, 2, 2",
+            "sample_rate": 8
+          },
+          "expected": {
+            "dominant_freq_hz": 0,
+            "dominant_magnitude": 8,
+            "dc_mean": 2
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "advanced",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "logistic_sigmoid_loss",
+      "name_fa": "سیگموئید و زیان لگاریتمی",
+      "name_en": "Sigmoid & Log-Loss",
+      "category_path": [
+        "کامپیوتر و اطلاعات",
+        "یادگیری ماشین"
+      ],
+      "tags": [
+        "رگرسیون لجستیک",
+        "طبقه‌بندی",
+        "sigmoid"
+      ],
+      "description_fa": "تبدیل امتیاز خام به احتمال با سیگموئید و سنجش خطای پیش‌بینی با زیان لگاریتمی.",
+      "variables": [
+        {
+          "name": "z",
+          "label_fa": "امتیاز خام z (لوجیت)",
+          "label_en": "Logit",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "label",
+          "label_fa": "برچسب واقعی y (۰ یا ۱)",
+          "label_en": "True label",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "probability",
+          "label_fa": "احتمال p",
+          "label_en": "Probability",
+          "unit": null
+        },
+        {
+          "name": "log_loss",
+          "label_fa": "زیان لگاریتمی",
+          "label_en": "Log Loss",
+          "unit": null
+        },
+        {
+          "name": "predicted_class",
+          "label_fa": "کلاس پیش‌بینی‌شده",
+          "label_en": "Predicted Class",
+          "unit": null
+        },
+        {
+          "name": "odds",
+          "label_fa": "نسبت شانس p/(1−p)",
+          "label_en": "Odds",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\sigma(z)=\\frac{1}{1+e^{-z}},\\quad \\ell=-[y\\ln p + (1-y)\\ln(1-p)]",
+      "compute_js": "module:apps/web/phase8-formulas.js#logistic_sigmoid_loss",
+      "steps_generator": "module:apps/web/phase8-formulas.js#logistic_sigmoid_loss",
+      "plot_spec": null,
+      "examples": [
+        {
+          "z": 0,
+          "label": 1
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "z": 0,
+            "label": 1
+          },
+          "expected": {
+            "probability": 0.5,
+            "log_loss": 0.693147,
+            "predicted_class": 1,
+            "odds": 1
+          }
+        },
+        {
+          "input": {
+            "z": 2,
+            "label": 1
+          },
+          "expected": {
+            "probability": 0.880797,
+            "log_loss": 0.126928,
+            "odds": 7.389056
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "confusion_matrix_metrics",
+      "name_fa": "معیارهای ماتریس درهم‌ریختگی",
+      "name_en": "Confusion-Matrix Metrics",
+      "category_path": [
+        "کامپیوتر و اطلاعات",
+        "یادگیری ماشین"
+      ],
+      "tags": [
+        "دقت",
+        "بازخوانی",
+        "accuracy",
+        "F1"
+      ],
+      "description_fa": "صحت، دقت، بازخوانی، ویژگی و امتیاز F1 از چهار خانه ماتریس درهم‌ریختگی.",
+      "variables": [
+        {
+          "name": "tp",
+          "label_fa": "مثبت درست TP",
+          "label_en": "True positives",
+          "type": "number",
+          "unit": null,
+          "default": 40,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "fp",
+          "label_fa": "مثبت نادرست FP",
+          "label_en": "False positives",
+          "type": "number",
+          "unit": null,
+          "default": 10,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "tn",
+          "label_fa": "منفی درست TN",
+          "label_en": "True negatives",
+          "type": "number",
+          "unit": null,
+          "default": 45,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "fn",
+          "label_fa": "منفی نادرست FN",
+          "label_en": "False negatives",
+          "type": "number",
+          "unit": null,
+          "default": 5,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "accuracy",
+          "label_fa": "صحت",
+          "label_en": "Accuracy",
+          "unit": null
+        },
+        {
+          "name": "precision",
+          "label_fa": "دقت",
+          "label_en": "Precision",
+          "unit": null
+        },
+        {
+          "name": "recall",
+          "label_fa": "بازخوانی",
+          "label_en": "Recall",
+          "unit": null
+        },
+        {
+          "name": "specificity",
+          "label_fa": "ویژگی",
+          "label_en": "Specificity",
+          "unit": null
+        },
+        {
+          "name": "f1_score",
+          "label_fa": "امتیاز F1",
+          "label_en": "F1 Score",
+          "unit": null
+        }
+      ],
+      "formula_latex": "F_1=\\frac{2TP}{2TP+FP+FN}",
+      "compute_js": "module:apps/web/phase8-formulas.js#confusion_matrix_metrics",
+      "steps_generator": "module:apps/web/phase8-formulas.js#confusion_matrix_metrics",
+      "plot_spec": null,
+      "examples": [
+        {
+          "tp": 40,
+          "fp": 10,
+          "tn": 45,
+          "fn": 5
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "tp": 40,
+            "fp": 10,
+            "tn": 45,
+            "fn": 5
+          },
+          "expected": {
+            "accuracy": 0.85,
+            "precision": 0.8,
+            "recall": 0.888889,
+            "f1_score": 0.842105,
+            "specificity": 0.818182
+          }
+        },
+        {
+          "input": {
+            "tp": 10,
+            "fp": 0,
+            "tn": 10,
+            "fn": 0
+          },
+          "expected": {
+            "accuracy": 1,
+            "precision": 1,
+            "recall": 1,
+            "f1_score": 1
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "softmax_cross_entropy",
+      "name_fa": "سافتمکس و آنتروپی متقاطع",
+      "name_en": "Softmax & Cross-Entropy",
+      "category_path": [
+        "کامپیوتر و اطلاعات",
+        "یادگیری ماشین"
+      ],
+      "tags": [
+        "شبکه عصبی",
+        "طبقه‌بندی چندکلاسه",
+        "softmax"
+      ],
+      "description_fa": "تبدیل امتیاز کلاس‌ها به توزیع احتمال و زیان آنتروپی متقاطع برای برچسب درست.",
+      "variables": [
+        {
+          "name": "logits",
+          "label_fa": "امتیاز کلاس‌ها (با کاما)",
+          "label_en": "Logits",
+          "type": "text",
+          "unit": null,
+          "default": "2, 1, 0.1",
+          "required": true
+        },
+        {
+          "name": "label_index",
+          "label_fa": "اندیس کلاس درست (از ۰)",
+          "label_en": "True class index",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true,
+          "min": 0,
+          "max": 1000
+        }
+      ],
+      "outputs": [
+        {
+          "name": "label_probability",
+          "label_fa": "احتمال کلاس درست",
+          "label_en": "Label Probability",
+          "unit": null
+        },
+        {
+          "name": "cross_entropy",
+          "label_fa": "زیان آنتروپی متقاطع",
+          "label_en": "Cross Entropy",
+          "unit": null
+        },
+        {
+          "name": "predicted_index",
+          "label_fa": "اندیس پیش‌بینی‌شده",
+          "label_en": "Predicted Index",
+          "unit": null
+        },
+        {
+          "name": "max_probability",
+          "label_fa": "بیشترین احتمال",
+          "label_en": "Max Probability",
+          "unit": null
+        }
+      ],
+      "formula_latex": "p_i=\\frac{e^{z_i}}{\\sum_j e^{z_j}},\\quad \\ell=-\\ln p_y",
+      "compute_js": "module:apps/web/phase8-formulas.js#softmax_cross_entropy",
+      "steps_generator": "module:apps/web/phase8-formulas.js#softmax_cross_entropy",
+      "plot_spec": null,
+      "examples": [
+        {
+          "logits": "2, 1, 0.1",
+          "label_index": 0
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "logits": "2, 1, 0.1",
+            "label_index": 0
+          },
+          "expected": {
+            "predicted_index": 0
+          }
+        },
+        {
+          "input": {
+            "logits": "0, 0, 0",
+            "label_index": 2
+          },
+          "expected": {
+            "label_probability": 0.333333,
+            "cross_entropy": 1.098612
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "intermediate",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "cosine_similarity_vectors",
+      "name_fa": "شباهت کسینوسی بردارها",
+      "name_en": "Cosine Similarity of Vectors",
+      "category_path": [
+        "کامپیوتر و اطلاعات",
+        "یادگیری ماشین"
+      ],
+      "tags": [
+        "بردار",
+        "شباهت",
+        "cosine similarity",
+        "embedding"
+      ],
+      "description_fa": "زاویه بین دو بردار ویژگی؛ معیار استاندارد شباهت در جستجوی معنایی و سامانه‌های توصیه‌گر.",
+      "variables": [
+        {
+          "name": "vector_a",
+          "label_fa": "بردار اول (با کاما)",
+          "label_en": "Vector A",
+          "type": "text",
+          "unit": null,
+          "default": "1, 0",
+          "required": true
+        },
+        {
+          "name": "vector_b",
+          "label_fa": "بردار دوم (با کاما)",
+          "label_en": "Vector B",
+          "type": "text",
+          "unit": null,
+          "default": "0, 1",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "cosine_similarity",
+          "label_fa": "شباهت کسینوسی",
+          "label_en": "Cosine Similarity",
+          "unit": null
+        },
+        {
+          "name": "dot_product",
+          "label_fa": "ضرب داخلی",
+          "label_en": "Dot Product",
+          "unit": null
+        },
+        {
+          "name": "euclidean_distance",
+          "label_fa": "فاصله اقلیدسی",
+          "label_en": "Euclidean Distance",
+          "unit": null
+        },
+        {
+          "name": "angle_deg",
+          "label_fa": "زاویه (درجه)",
+          "label_en": "Angle Deg",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\cos\\theta=\\frac{a\\cdot b}{\\lVert a\\rVert\\,\\lVert b\\rVert}",
+      "compute_js": "module:apps/web/phase8-formulas.js#cosine_similarity_vectors",
+      "steps_generator": "module:apps/web/phase8-formulas.js#cosine_similarity_vectors",
+      "plot_spec": null,
+      "examples": [
+        {
+          "vector_a": "1, 0",
+          "vector_b": "0, 1"
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "vector_a": "1, 0",
+            "vector_b": "0, 1"
+          },
+          "expected": {
+            "cosine_similarity": 0,
+            "dot_product": 0,
+            "euclidean_distance": 1.414214,
+            "angle_deg": 90
+          }
+        },
+        {
+          "input": {
+            "vector_a": "3, 4",
+            "vector_b": "3, 4"
+          },
+          "expected": {
+            "cosine_similarity": 1,
+            "dot_product": 25,
+            "euclidean_distance": 0,
+            "angle_deg": 0
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "zero_sum_mixed_nash",
+      "name_fa": "تعادل نش آمیخته بازی مجموع‌صفر ۲×۲",
+      "name_en": "Mixed Nash Equilibrium (2×2 Zero-Sum)",
+      "category_path": [
+        "ریاضیات",
+        "نظریه بازی"
+      ],
+      "tags": [
+        "تعادل نش",
+        "بازی مجموع‌صفر",
+        "Nash"
+      ],
+      "description_fa": "احتمال‌های تعادلی و ارزش بازی برای بازی دونفره مجموع‌صفر با دو راهبرد برای هر بازیکن.",
+      "variables": [
+        {
+          "name": "a",
+          "label_fa": "پرداخت (بالا، چپ) a",
+          "label_en": "Payoff a (Up,Left)",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "b",
+          "label_fa": "پرداخت (بالا، راست) b",
+          "label_en": "Payoff b (Up,Right)",
+          "type": "number",
+          "unit": null,
+          "default": -1,
+          "required": true
+        },
+        {
+          "name": "c",
+          "label_fa": "پرداخت (پایین، چپ) c",
+          "label_en": "Payoff c (Down,Left)",
+          "type": "number",
+          "unit": null,
+          "default": -1,
+          "required": true
+        },
+        {
+          "name": "d",
+          "label_fa": "پرداخت (پایین، راست) d",
+          "label_en": "Payoff d (Down,Right)",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "row_prob_first",
+          "label_fa": "احتمال راهبرد اول سطر p",
+          "label_en": "Row Prob First",
+          "unit": null
+        },
+        {
+          "name": "col_prob_first",
+          "label_fa": "احتمال راهبرد اول ستون q",
+          "label_en": "Col Prob First",
+          "unit": null
+        },
+        {
+          "name": "game_value",
+          "label_fa": "ارزش بازی",
+          "label_en": "Game Value",
+          "unit": null
+        }
+      ],
+      "formula_latex": "p=\\frac{d-c}{a-b-c+d},\\qquad v=\\frac{ad-bc}{a-b-c+d}",
+      "compute_js": "module:apps/web/phase8-formulas.js#zero_sum_mixed_nash",
+      "steps_generator": "module:apps/web/phase8-formulas.js#zero_sum_mixed_nash",
+      "plot_spec": null,
+      "examples": [
+        {
+          "a": 1,
+          "b": -1,
+          "c": -1,
+          "d": 1
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "a": 1,
+            "b": -1,
+            "c": -1,
+            "d": 1
+          },
+          "expected": {
+            "row_prob_first": 0.5,
+            "col_prob_first": 0.5,
+            "game_value": 0
+          }
+        },
+        {
+          "input": {
+            "a": 3,
+            "b": 0,
+            "c": 0,
+            "d": 2
+          },
+          "expected": {
+            "row_prob_first": 0.4,
+            "col_prob_first": 0.4,
+            "game_value": 1.2
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "advanced",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "expected_payoff_2x2",
+      "name_fa": "پرداخت موردانتظار در بازی ۲×۲",
+      "name_en": "Expected Payoffs in a 2×2 Game",
+      "category_path": [
+        "ریاضیات",
+        "نظریه بازی"
+      ],
+      "tags": [
+        "بازی",
+        "پرداخت",
+        "معمای زندانی",
+        "payoff"
+      ],
+      "description_fa": "امید ریاضی پرداخت هر بازیکن وقتی هر دو با احتمال مشخصی راهبرد اول را برمی‌گزینند.",
+      "variables": [
+        {
+          "name": "ra",
+          "label_fa": "پرداخت سطر (۱،۱)",
+          "label_en": "Row payoff (1,1)",
+          "type": "number",
+          "unit": null,
+          "default": -1,
+          "required": true
+        },
+        {
+          "name": "rb",
+          "label_fa": "پرداخت سطر (۱،۲)",
+          "label_en": "Row payoff (1,2)",
+          "type": "number",
+          "unit": null,
+          "default": -3,
+          "required": true
+        },
+        {
+          "name": "rc",
+          "label_fa": "پرداخت سطر (۲،۱)",
+          "label_en": "Row payoff (2,1)",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "rd",
+          "label_fa": "پرداخت سطر (۲،۲)",
+          "label_en": "Row payoff (2,2)",
+          "type": "number",
+          "unit": null,
+          "default": -2,
+          "required": true
+        },
+        {
+          "name": "ca",
+          "label_fa": "پرداخت ستون (۱،۱)",
+          "label_en": "Column payoff (1,1)",
+          "type": "number",
+          "unit": null,
+          "default": -1,
+          "required": true
+        },
+        {
+          "name": "cb",
+          "label_fa": "پرداخت ستون (۱،۲)",
+          "label_en": "Column payoff (1,2)",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "cc",
+          "label_fa": "پرداخت ستون (۲،۱)",
+          "label_en": "Column payoff (2,1)",
+          "type": "number",
+          "unit": null,
+          "default": -3,
+          "required": true
+        },
+        {
+          "name": "cd",
+          "label_fa": "پرداخت ستون (۲،۲)",
+          "label_en": "Column payoff (2,2)",
+          "type": "number",
+          "unit": null,
+          "default": -2,
+          "required": true
+        },
+        {
+          "name": "p",
+          "label_fa": "احتمال راهبرد اول سطر p",
+          "label_en": "Row mixes p",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "q",
+          "label_fa": "احتمال راهبرد اول ستون q",
+          "label_en": "Column mixes q",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "row_expected",
+          "label_fa": "امید پرداخت بازیکن سطر",
+          "label_en": "Row Expected",
+          "unit": null
+        },
+        {
+          "name": "col_expected",
+          "label_fa": "امید پرداخت بازیکن ستون",
+          "label_en": "Col Expected",
+          "unit": null
+        },
+        {
+          "name": "joint_sum",
+          "label_fa": "مجموع دو پرداخت",
+          "label_en": "Joint Sum",
+          "unit": null
+        }
+      ],
+      "formula_latex": "E=pq\\,a+p(1-q)b+(1-p)q\\,c+(1-p)(1-q)d",
+      "compute_js": "module:apps/web/phase8-formulas.js#expected_payoff_2x2",
+      "steps_generator": "module:apps/web/phase8-formulas.js#expected_payoff_2x2",
+      "plot_spec": null,
+      "examples": [
+        {
+          "ra": -1,
+          "rb": -3,
+          "rc": 0,
+          "rd": -2,
+          "ca": -1,
+          "cb": 0,
+          "cc": -3,
+          "cd": -2,
+          "p": 1,
+          "q": 1
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "ra": -1,
+            "rb": -3,
+            "rc": 0,
+            "rd": -2,
+            "ca": -1,
+            "cb": 0,
+            "cc": -3,
+            "cd": -2,
+            "p": 1,
+            "q": 1
+          },
+          "expected": {
+            "row_expected": -1,
+            "col_expected": -1
+          }
+        },
+        {
+          "input": {
+            "ra": -1,
+            "rb": -3,
+            "rc": 0,
+            "rd": -2,
+            "ca": -1,
+            "cb": 0,
+            "cc": -3,
+            "cd": -2,
+            "p": 0.5,
+            "q": 0.5
+          },
+          "expected": {
+            "row_expected": -1.5,
+            "col_expected": -1.5
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "intermediate",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "system_reliability",
+      "name_fa": "قابلیت اطمینان سامانه سری، موازی و k از n",
+      "name_en": "Series / Parallel / k-out-of-n Reliability",
+      "category_path": [
+        "مهندسی",
+        "قابلیت اطمینان"
+      ],
+      "tags": [
+        "قابلیت اطمینان",
+        "افزونگی",
+        "reliability"
+      ],
+      "description_fa": "احتمال کارکرد سامانه از روی اطمینان هر قطعه در سه معماری کلاسیک افزونگی.",
+      "variables": [
+        {
+          "name": "reliabilities",
+          "label_fa": "اطمینان قطعه‌ها (۰ تا ۱، با کاما)",
+          "label_en": "Component reliabilities",
+          "type": "text",
+          "unit": null,
+          "default": "0.9, 0.9",
+          "required": true
+        },
+        {
+          "name": "k",
+          "label_fa": "حداقل قطعه سالم لازم k",
+          "label_en": "k (of n)",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 1,
+          "max": 100
+        }
+      ],
+      "outputs": [
+        {
+          "name": "series_reliability",
+          "label_fa": "اطمینان سری",
+          "label_en": "Series Reliability",
+          "unit": null
+        },
+        {
+          "name": "parallel_reliability",
+          "label_fa": "اطمینان موازی",
+          "label_en": "Parallel Reliability",
+          "unit": null
+        },
+        {
+          "name": "k_out_of_n_reliability",
+          "label_fa": "اطمینان k از n",
+          "label_en": "K Out Of N Reliability",
+          "unit": null
+        }
+      ],
+      "formula_latex": "R_s=\\prod R_i,\\qquad R_p=1-\\prod (1-R_i)",
+      "compute_js": "module:apps/web/phase8-formulas.js#system_reliability",
+      "steps_generator": "module:apps/web/phase8-formulas.js#system_reliability",
+      "plot_spec": null,
+      "examples": [
+        {
+          "reliabilities": "0.9, 0.9",
+          "k": 1
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "reliabilities": "0.9, 0.9",
+            "k": 1
+          },
+          "expected": {
+            "series_reliability": 0.81,
+            "parallel_reliability": 0.99,
+            "k_out_of_n_reliability": 0.99
+          }
+        },
+        {
+          "input": {
+            "reliabilities": "0.8, 0.9, 0.95",
+            "k": 2
+          },
+          "expected": {
+            "series_reliability": 0.684,
+            "parallel_reliability": 0.999,
+            "k_out_of_n_reliability": 0.967
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "intermediate",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "weibull_reliability",
+      "name_fa": "قابلیت اطمینان وایبول",
+      "name_en": "Weibull Reliability",
+      "category_path": [
+        "مهندسی",
+        "قابلیت اطمینان"
+      ],
+      "tags": [
+        "وایبول",
+        "عمر قطعه",
+        "weibull"
+      ],
+      "description_fa": "احتمال بقا تا زمان t، نرخ خرابی لحظه‌ای و امید عمر برای توزیع طول عمر وایبول.",
+      "variables": [
+        {
+          "name": "time",
+          "label_fa": "زمان مأموریت t",
+          "label_en": "Mission time",
+          "type": "number",
+          "unit": null,
+          "default": 1000,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "eta",
+          "label_fa": "عمر مشخصه η",
+          "label_en": "Characteristic life η",
+          "type": "number",
+          "unit": null,
+          "default": 1000,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "beta",
+          "label_fa": "پارامتر شکل β",
+          "label_en": "Shape β",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "reliability",
+          "label_fa": "قابلیت اطمینان R(t)",
+          "label_en": "Reliability",
+          "unit": null
+        },
+        {
+          "name": "failure_probability",
+          "label_fa": "احتمال خرابی F(t)",
+          "label_en": "Failure Probability",
+          "unit": null
+        },
+        {
+          "name": "hazard_rate",
+          "label_fa": "نرخ خرابی لحظه‌ای",
+          "label_en": "Hazard Rate",
+          "unit": null
+        },
+        {
+          "name": "mean_life",
+          "label_fa": "امید عمر",
+          "label_en": "Mean Life",
+          "unit": null
+        }
+      ],
+      "formula_latex": "R(t)=e^{-(t/\\eta)^{\\beta}}",
+      "compute_js": "module:apps/web/phase8-formulas.js#weibull_reliability",
+      "steps_generator": "module:apps/web/phase8-formulas.js#weibull_reliability",
+      "plot_spec": null,
+      "examples": [
+        {
+          "time": 1000,
+          "eta": 1000,
+          "beta": 2
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "time": 1000,
+            "eta": 1000,
+            "beta": 2
+          },
+          "expected": {
+            "reliability": 0.367879,
+            "failure_probability": 0.632121,
+            "hazard_rate": 0.002,
+            "mean_life": 886.226925
+          }
+        },
+        {
+          "input": {
+            "time": 500,
+            "eta": 1000,
+            "beta": 1
+          },
+          "expected": {
+            "reliability": 0.606531,
+            "hazard_rate": 0.001,
+            "mean_life": 1000
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "advanced",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "mtbf_availability",
+      "name_fa": "دسترس‌پذیری، MTBF و نرخ خرابی",
+      "name_en": "Availability, MTBF & Failure Rate",
+      "category_path": [
+        "مهندسی",
+        "قابلیت اطمینان"
+      ],
+      "tags": [
+        "MTBF",
+        "دسترس‌پذیری",
+        "availability"
+      ],
+      "description_fa": "دسترس‌پذیری ماندگار و اطمینان نمایی یک سامانه تعمیرپذیر در بازه مأموریت.",
+      "variables": [
+        {
+          "name": "mtbf_hours",
+          "label_fa": "میانگین زمان بین خرابی (h)",
+          "label_en": "MTBF (h)",
+          "type": "number",
+          "unit": null,
+          "default": 1000,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "mttr_hours",
+          "label_fa": "میانگین زمان تعمیر (h)",
+          "label_en": "MTTR (h)",
+          "type": "number",
+          "unit": null,
+          "default": 10,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "mission_hours",
+          "label_fa": "مدت مأموریت (h)",
+          "label_en": "Mission time (h)",
+          "type": "number",
+          "unit": null,
+          "default": 100,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "availability",
+          "label_fa": "دسترس‌پذیری",
+          "label_en": "Availability",
+          "unit": null
+        },
+        {
+          "name": "failure_rate_per_hour",
+          "label_fa": "نرخ خرابی λ (1/h)",
+          "label_en": "Failure Rate Per Hour",
+          "unit": null
+        },
+        {
+          "name": "mission_reliability",
+          "label_fa": "اطمینان در مأموریت",
+          "label_en": "Mission Reliability",
+          "unit": null
+        },
+        {
+          "name": "expected_failures",
+          "label_fa": "خرابی موردانتظار",
+          "label_en": "Expected Failures",
+          "unit": null
+        }
+      ],
+      "formula_latex": "A=\\frac{MTBF}{MTBF+MTTR},\\quad R(t)=e^{-t/MTBF}",
+      "compute_js": "module:apps/web/phase8-formulas.js#mtbf_availability",
+      "steps_generator": "module:apps/web/phase8-formulas.js#mtbf_availability",
+      "plot_spec": null,
+      "examples": [
+        {
+          "mtbf_hours": 1000,
+          "mttr_hours": 10,
+          "mission_hours": 100
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "mtbf_hours": 1000,
+            "mttr_hours": 10,
+            "mission_hours": 100
+          },
+          "expected": {
+            "availability": 0.990099,
+            "failure_rate_per_hour": 0.001,
+            "mission_reliability": 0.904837,
+            "expected_failures": 0.1
+          }
+        },
+        {
+          "input": {
+            "mtbf_hours": 500,
+            "mttr_hours": 25,
+            "mission_hours": 500
+          },
+          "expected": {
+            "availability": 0.952381,
+            "mission_reliability": 0.367879,
+            "expected_failures": 1
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "sma_forecast_trend",
+      "name_fa": "میانگین متحرک ساده و روند",
+      "name_en": "Simple Moving Average & Trend",
+      "category_path": [
+        "ریاضیات",
+        "سری زمانی"
+      ],
+      "tags": [
+        "پیش‌بینی",
+        "روند",
+        "SMA"
+      ],
+      "description_fa": "هموارسازی سری زمانی با میانگین متحرک، پیش‌بینی دوره بعد و شیب روند خطی کل سری.",
+      "variables": [
+        {
+          "name": "values",
+          "label_fa": "مقادیر سری (با کاما)",
+          "label_en": "Time series",
+          "type": "text",
+          "unit": null,
+          "default": "10, 12, 14, 16, 18",
+          "required": true
+        },
+        {
+          "name": "window",
+          "label_fa": "طول پنجره",
+          "label_en": "Window",
+          "type": "number",
+          "unit": null,
+          "default": 3,
+          "required": true,
+          "min": 1,
+          "max": 1000
+        }
+      ],
+      "outputs": [
+        {
+          "name": "sma_last",
+          "label_fa": "آخرین میانگین متحرک",
+          "label_en": "Sma Last",
+          "unit": null
+        },
+        {
+          "name": "forecast_next",
+          "label_fa": "پیش‌بینی دوره بعد",
+          "label_en": "Forecast Next",
+          "unit": null
+        },
+        {
+          "name": "sma_first",
+          "label_fa": "نخستین میانگین متحرک",
+          "label_en": "Sma First",
+          "unit": null
+        },
+        {
+          "name": "trend_slope",
+          "label_fa": "شیب روند (در هر دوره)",
+          "label_en": "Trend Slope",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\mathrm{SMA}_M=\\frac{1}{M}\\sum_{i=0}^{M-1} x_{t-i}",
+      "compute_js": "module:apps/web/phase8-formulas.js#sma_forecast_trend",
+      "steps_generator": "module:apps/web/phase8-formulas.js#sma_forecast_trend",
+      "plot_spec": null,
+      "examples": [
+        {
+          "values": "10, 12, 14, 16, 18",
+          "window": 3
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "values": "10, 12, 14, 16, 18",
+            "window": 3
+          },
+          "expected": {
+            "sma_last": 16,
+            "sma_first": 12,
+            "trend_slope": 2
+          }
+        },
+        {
+          "input": {
+            "values": "5, 5, 5, 5",
+            "window": 2
+          },
+          "expected": {
+            "sma_last": 5,
+            "trend_slope": 0
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "exponential_smoothing",
+      "name_fa": "هموارسازی نمایی ساده",
+      "name_en": "Simple Exponential Smoothing",
+      "category_path": [
+        "ریاضیات",
+        "سری زمانی"
+      ],
+      "tags": [
+        "پیش‌بینی",
+        "هموارسازی",
+        "exponential smoothing"
+      ],
+      "description_fa": "پیش‌بینی با وزن‌دهی نزولی نمایی به گذشته و سنجش خطای درون‌نمونه‌ای آن.",
+      "variables": [
+        {
+          "name": "values",
+          "label_fa": "مقادیر سری (با کاما)",
+          "label_en": "Time series",
+          "type": "text",
+          "unit": null,
+          "default": "10, 12, 14",
+          "required": true
+        },
+        {
+          "name": "alpha",
+          "label_fa": "ضریب هموارسازی α (۰ تا ۱)",
+          "label_en": "Smoothing α",
+          "type": "number",
+          "unit": null,
+          "default": 0.5,
+          "required": true,
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "smoothed_last",
+          "label_fa": "آخرین مقدار هموارشده",
+          "label_en": "Smoothed Last",
+          "unit": null
+        },
+        {
+          "name": "forecast_next",
+          "label_fa": "پیش‌بینی دوره بعد",
+          "label_en": "Forecast Next",
+          "unit": null
+        },
+        {
+          "name": "one_step_mse",
+          "label_fa": "MSE خطای یک‌گام جلو",
+          "label_en": "One Step Mse",
+          "unit": null
+        }
+      ],
+      "formula_latex": "s_t=\\alpha x_t + (1-\\alpha) s_{t-1}",
+      "compute_js": "module:apps/web/phase8-formulas.js#exponential_smoothing",
+      "steps_generator": "module:apps/web/phase8-formulas.js#exponential_smoothing",
+      "plot_spec": null,
+      "examples": [
+        {
+          "values": "10, 12, 14",
+          "alpha": 0.5
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "values": "10, 12, 14",
+            "alpha": 0.5
+          },
+          "expected": {
+            "smoothed_last": 12.5,
+            "forecast_next": 12.5,
+            "one_step_mse": 6.5
+          }
+        },
+        {
+          "input": {
+            "values": "8, 8, 8",
+            "alpha": 0.3
+          },
+          "expected": {
+            "smoothed_last": 8,
+            "one_step_mse": 0
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "autocorrelation_series",
+      "name_fa": "خودهمبستگی سری زمانی",
+      "name_en": "Autocorrelation (Lag 1 & 2)",
+      "category_path": [
+        "ریاضیات",
+        "سری زمانی"
+      ],
+      "tags": [
+        "خودهمبستگی",
+        "حافظه سری",
+        "autocorrelation"
+      ],
+      "description_fa": "اینکه مقدار امروز چقدر شبیه دیروز و پریروز است؛ ابزار پایه تشخیص الگو در سری‌های زمانی.",
+      "variables": [
+        {
+          "name": "values",
+          "label_fa": "مقادیر سری (حداقل ۴ مقدار)",
+          "label_en": "Time series",
+          "type": "text",
+          "unit": null,
+          "default": "1, 2, 3, 4",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "lag1",
+          "label_fa": "خودهمبستگی تأخیر ۱",
+          "label_en": "Lag1",
+          "unit": null
+        },
+        {
+          "name": "lag2",
+          "label_fa": "خودهمبستگی تأخیر ۲",
+          "label_en": "Lag2",
+          "unit": null
+        },
+        {
+          "name": "mean",
+          "label_fa": "میانگین",
+          "label_en": "Mean",
+          "unit": null
+        },
+        {
+          "name": "variance_population",
+          "label_fa": "واریانس جامعه",
+          "label_en": "Variance Population",
+          "unit": null
+        }
+      ],
+      "formula_latex": "r_k=\\frac{\\sum_{t>k}(x_t-\\bar{x})(x_{t-k}-\\bar{x})}{\\sum_t (x_t-\\bar{x})^2}",
+      "compute_js": "module:apps/web/phase8-formulas.js#autocorrelation_series",
+      "steps_generator": "module:apps/web/phase8-formulas.js#autocorrelation_series",
+      "plot_spec": null,
+      "examples": [
+        {
+          "values": "1, 2, 3, 4"
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "values": "1, 2, 3, 4"
+          },
+          "expected": {
+            "lag1": 0.25,
+            "lag2": -0.3,
+            "mean": 2.5,
+            "variance_population": 1.25
+          }
+        },
+        {
+          "input": {
+            "values": "1, 3, 1, 3"
+          },
+          "expected": {
+            "lag1": -0.75,
+            "lag2": 0.5
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "intermediate",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "two_link_forward_kinematics",
+      "name_fa": "سینماتیک مستقیم بازوی دولینکی",
+      "name_en": "Two-Link Forward Kinematics",
+      "category_path": [
+        "مهندسی",
+        "رباتیک"
+      ],
+      "tags": [
+        "بازوی رباتیک",
+        "سینماتیک",
+        "forward kinematics"
+      ],
+      "description_fa": "جای نوک بازوی صفحه‌ای دولینکی از روی زاویه دو مفصل.",
+      "variables": [
+        {
+          "name": "l1",
+          "label_fa": "طول لینک اول L₁",
+          "label_en": "Link 1 length",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "l2",
+          "label_fa": "طول لینک دوم L₂",
+          "label_en": "Link 2 length",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "theta1_deg",
+          "label_fa": "زاویه مفصل اول (درجه)",
+          "label_en": "Joint 1 angle",
+          "type": "number",
+          "unit": "deg",
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "theta2_deg",
+          "label_fa": "زاویه مفصل دوم نسبی (درجه)",
+          "label_en": "Joint 2 angle (relative)",
+          "type": "number",
+          "unit": "deg",
+          "default": 90,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "end_x",
+          "label_fa": "مختصه x نوک بازو",
+          "label_en": "End X",
+          "unit": null
+        },
+        {
+          "name": "end_y",
+          "label_fa": "مختصه y نوک بازو",
+          "label_en": "End Y",
+          "unit": null
+        },
+        {
+          "name": "elbow_x",
+          "label_fa": "مختصه x آرنج",
+          "label_en": "Elbow X",
+          "unit": null
+        },
+        {
+          "name": "elbow_y",
+          "label_fa": "مختصه y آرنج",
+          "label_en": "Elbow Y",
+          "unit": null
+        },
+        {
+          "name": "reach",
+          "label_fa": "فاصله نوک تا پایه",
+          "label_en": "Reach",
+          "unit": null
+        }
+      ],
+      "formula_latex": "x=L_1\\cos\\theta_1+L_2\\cos(\\theta_1+\\theta_2)",
+      "compute_js": "module:apps/web/phase8-formulas.js#two_link_forward_kinematics",
+      "steps_generator": "module:apps/web/phase8-formulas.js#two_link_forward_kinematics",
+      "plot_spec": null,
+      "examples": [
+        {
+          "l1": 1,
+          "l2": 1,
+          "theta1_deg": 0,
+          "theta2_deg": 90
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "l1": 1,
+            "l2": 1,
+            "theta1_deg": 0,
+            "theta2_deg": 90
+          },
+          "expected": {
+            "end_x": 1,
+            "end_y": 1,
+            "elbow_x": 1,
+            "elbow_y": 0,
+            "reach": 1.414214
+          }
+        },
+        {
+          "input": {
+            "l1": 2,
+            "l2": 1,
+            "theta1_deg": 90,
+            "theta2_deg": -90
+          },
+          "expected": {
+            "end_x": 1,
+            "end_y": 2,
+            "reach": 2.236068
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "two_link_inverse_kinematics",
+      "name_fa": "سینماتیک معکوس بازوی دولینکی",
+      "name_en": "Two-Link Inverse Kinematics",
+      "category_path": [
+        "مهندسی",
+        "رباتیک"
+      ],
+      "tags": [
+        "بازوی رباتیک",
+        "سینماتیک معکوس",
+        "inverse kinematics"
+      ],
+      "description_fa": "زاویه مفصل‌های لازم برای رساندن نوک بازو به نقطه هدف (شاخه آرنج مثبت).",
+      "variables": [
+        {
+          "name": "x",
+          "label_fa": "مختصه x هدف",
+          "label_en": "Target x",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "y",
+          "label_fa": "مختصه y هدف",
+          "label_en": "Target y",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "l1",
+          "label_fa": "طول لینک اول L₁",
+          "label_en": "Link 1 length",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "l2",
+          "label_fa": "طول لینک دوم L₂",
+          "label_en": "Link 2 length",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "theta1_deg",
+          "label_fa": "زاویه مفصل اول (درجه)",
+          "label_en": "Theta1 Deg",
+          "unit": null
+        },
+        {
+          "name": "theta2_deg",
+          "label_fa": "زاویه مفصل دوم (درجه)",
+          "label_en": "Theta2 Deg",
+          "unit": null
+        },
+        {
+          "name": "target_distance",
+          "label_fa": "فاصله هدف تا پایه",
+          "label_en": "Target Distance",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\cos\\theta_2=\\frac{x^2+y^2-L_1^2-L_2^2}{2L_1L_2}",
+      "compute_js": "module:apps/web/phase8-formulas.js#two_link_inverse_kinematics",
+      "steps_generator": "module:apps/web/phase8-formulas.js#two_link_inverse_kinematics",
+      "plot_spec": null,
+      "examples": [
+        {
+          "x": 1,
+          "y": 1,
+          "l1": 1,
+          "l2": 1
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "x": 1,
+            "y": 1,
+            "l1": 1,
+            "l2": 1
+          },
+          "expected": {
+            "theta1_deg": 0,
+            "theta2_deg": 90
+          }
+        },
+        {
+          "input": {
+            "x": 2,
+            "y": 0,
+            "l1": 1,
+            "l2": 1
+          },
+          "expected": {
+            "theta1_deg": 0,
+            "theta2_deg": 0,
+            "target_distance": 2
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "advanced",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "differential_drive_kinematics",
+      "name_fa": "سینماتیک ربات دیفرانسیلی",
+      "name_en": "Differential-Drive Kinematics",
+      "category_path": [
+        "مهندسی",
+        "رباتیک"
+      ],
+      "tags": [
+        "ربات چرخ‌دار",
+        "odomtry",
+        "differential drive"
+      ],
+      "description_fa": "سرعت خطی و زاویه‌ای ربات دوچرخ از سرعت چرخش چرخ‌های چپ و راست.",
+      "variables": [
+        {
+          "name": "wheel_radius",
+          "label_fa": "شعاع چرخ r (m)",
+          "label_en": "Wheel radius",
+          "type": "number",
+          "unit": "m",
+          "default": 0.1,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "track_width",
+          "label_fa": "فاصله دو چرخ L (m)",
+          "label_en": "Track width",
+          "type": "number",
+          "unit": "m",
+          "default": 0.5,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "omega_left",
+          "label_fa": "سرعت زاویه‌ای چرخ چپ (rad/s)",
+          "label_en": "Left wheel ω",
+          "type": "number",
+          "unit": null,
+          "default": 10,
+          "required": true
+        },
+        {
+          "name": "omega_right",
+          "label_fa": "سرعت زاویه‌ای چرخ راست (rad/s)",
+          "label_en": "Right wheel ω",
+          "type": "number",
+          "unit": null,
+          "default": 10,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "linear_velocity",
+          "label_fa": "سرعت خطی v (m/s)",
+          "label_en": "Linear Velocity",
+          "unit": null
+        },
+        {
+          "name": "angular_velocity",
+          "label_fa": "سرعت زاویه‌ای ω (rad/s)",
+          "label_en": "Angular Velocity",
+          "unit": null
+        },
+        {
+          "name": "curvature",
+          "label_fa": "انحنا κ = ω/v (1/m)",
+          "label_en": "Curvature",
+          "unit": null
+        },
+        {
+          "name": "left_speed",
+          "label_fa": "سرعت خطی چرخ چپ (m/s)",
+          "label_en": "Left Speed",
+          "unit": null
+        },
+        {
+          "name": "right_speed",
+          "label_fa": "سرعت خطی چرخ راست (m/s)",
+          "label_en": "Right Speed",
+          "unit": null
+        }
+      ],
+      "formula_latex": "v=\\frac{r(\\omega_R+\\omega_L)}{2},\\qquad \\omega=\\frac{r(\\omega_R-\\omega_L)}{L}",
+      "compute_js": "module:apps/web/phase8-formulas.js#differential_drive_kinematics",
+      "steps_generator": "module:apps/web/phase8-formulas.js#differential_drive_kinematics",
+      "plot_spec": null,
+      "examples": [
+        {
+          "wheel_radius": 0.1,
+          "track_width": 0.5,
+          "omega_left": 10,
+          "omega_right": 10
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "wheel_radius": 0.1,
+            "track_width": 0.5,
+            "omega_left": 10,
+            "omega_right": 10
+          },
+          "expected": {
+            "linear_velocity": 1,
+            "angular_velocity": 0,
+            "curvature": 0
+          }
+        },
+        {
+          "input": {
+            "wheel_radius": 0.1,
+            "track_width": 0.5,
+            "omega_left": 5,
+            "omega_right": 15
+          },
+          "expected": {
+            "linear_velocity": 1,
+            "angular_velocity": 2,
+            "curvature": 2
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "hohmann_transfer",
+      "name_fa": "انتقال هوهمان مداری",
+      "name_en": "Hohmann Transfer",
+      "category_path": [
+        "مهندسی",
+        "رباتیک"
+      ],
+      "tags": [
+        "مدار",
+        "مانور مداری",
+        "hohmann",
+        "delta-v"
+      ],
+      "description_fa": "کم‌مصرف‌ترین مانور دوضربه‌ای بین دو مدار دایروی هم‌صفحه و زمان انتقال آن.",
+      "variables": [
+        {
+          "name": "r1_km",
+          "label_fa": "شعاع مدار آغاز km",
+          "label_en": "Initial radius (km)",
+          "type": "number",
+          "unit": "km",
+          "default": 6778,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "r2_km",
+          "label_fa": "شعاع مدار هدف km",
+          "label_en": "Target radius (km)",
+          "type": "number",
+          "unit": "km",
+          "default": 42164,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "mu",
+          "label_fa": "پارامتر گرانشی μ (km³/s²)",
+          "label_en": "Gravitational parameter μ",
+          "type": "number",
+          "unit": null,
+          "default": 398600.4418,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "dv1_kms",
+          "label_fa": "ضربه اول Δv₁ (km/s)",
+          "label_en": "Dv1 Kms",
+          "unit": null
+        },
+        {
+          "name": "dv2_kms",
+          "label_fa": "ضربه دوم Δv₂ (km/s)",
+          "label_en": "Dv2 Kms",
+          "unit": null
+        },
+        {
+          "name": "dv_total_kms",
+          "label_fa": "مجموع Δv (km/s)",
+          "label_en": "Dv Total Kms",
+          "unit": null
+        },
+        {
+          "name": "transfer_time_hours",
+          "label_fa": "زمان انتقال (ساعت)",
+          "label_en": "Transfer Time Hours",
+          "unit": null
+        }
+      ],
+      "formula_latex": "a_t=\\frac{r_1+r_2}{2},\\qquad v=\\sqrt{\\mu\\Big(\\frac{2}{r}-\\frac{1}{a}\\Big)}",
+      "compute_js": "module:apps/web/phase8-formulas.js#hohmann_transfer",
+      "steps_generator": "module:apps/web/phase8-formulas.js#hohmann_transfer",
+      "plot_spec": null,
+      "examples": [
+        {
+          "r1_km": 10,
+          "r2_km": 40,
+          "mu": 1000
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "r1_km": 10,
+            "r2_km": 40,
+            "mu": 1000
+          },
+          "expected": {
+            "dv1_kms": 2.649111,
+            "dv_total_kms": 4.486833
+          }
+        },
+        {
+          "input": {
+            "r1_km": 10,
+            "r2_km": 10,
+            "mu": 1000
+          },
+          "expected": {
+            "dv1_kms": 0,
+            "dv_total_kms": 0
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "advanced",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "euler_rotation_3d",
+      "name_fa": "چرخش سه‌بعدی با زاویه‌های اویلر",
+      "name_en": "3D Euler Rotation (XYZ Order)",
+      "category_path": [
+        "کامپیوتر و اطلاعات",
+        "گرافیک سه‌بعدی"
+      ],
+      "tags": [
+        "چرخش",
+        "ماتریس چرخش",
+        "euler angles",
+        "3D"
+      ],
+      "description_fa": "چرخاندن یک نقطه با ترکیب چرخش‌های X سپس Y سپس Z (ماتریس Rz·Ry·Rx).",
+      "variables": [
+        {
+          "name": "x",
+          "label_fa": "مختصه x نقطه",
+          "label_en": "Point x",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "y",
+          "label_fa": "مختصه y نقطه",
+          "label_en": "Point y",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "z",
+          "label_fa": "مختصه z نقطه",
+          "label_en": "Point z",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "rx_deg",
+          "label_fa": "چرخش حول X (درجه)",
+          "label_en": "Rotation X",
+          "type": "number",
+          "unit": "deg",
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "ry_deg",
+          "label_fa": "چرخش حول Y (درجه)",
+          "label_en": "Rotation Y",
+          "type": "number",
+          "unit": "deg",
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "rz_deg",
+          "label_fa": "چرخش حول Z (درجه)",
+          "label_en": "Rotation Z",
+          "type": "number",
+          "unit": "deg",
+          "default": 90,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "x2",
+          "label_fa": "x چرخیده",
+          "label_en": "X2",
+          "unit": null
+        },
+        {
+          "name": "y2",
+          "label_fa": "y چرخیده",
+          "label_en": "Y2",
+          "unit": null
+        },
+        {
+          "name": "z2",
+          "label_fa": "z چرخیده",
+          "label_en": "Z2",
+          "unit": null
+        },
+        {
+          "name": "length",
+          "label_fa": "طول بردار (ثابت می‌ماند)",
+          "label_en": "Length",
+          "unit": null
+        }
+      ],
+      "formula_latex": "p' = R_z R_y R_x \\, p",
+      "compute_js": "module:apps/web/phase8-formulas.js#euler_rotation_3d",
+      "steps_generator": "module:apps/web/phase8-formulas.js#euler_rotation_3d",
+      "plot_spec": null,
+      "examples": [
+        {
+          "x": 1,
+          "y": 0,
+          "z": 0,
+          "rx_deg": 0,
+          "ry_deg": 0,
+          "rz_deg": 90
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "x": 1,
+            "y": 0,
+            "z": 0,
+            "rx_deg": 0,
+            "ry_deg": 0,
+            "rz_deg": 90
+          },
+          "expected": {
+            "x2": 0,
+            "y2": 1,
+            "z2": 0,
+            "length": 1
+          }
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 1,
+            "z": 0,
+            "rx_deg": 90,
+            "ry_deg": 0,
+            "rz_deg": 0
+          },
+          "expected": {
+            "x2": 0,
+            "y2": 0,
+            "z2": 1
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "perspective_projection",
+      "name_fa": "تصویر پرسپکتیو (NDC)",
+      "name_en": "Perspective Projection to NDC",
+      "category_path": [
+        "کامپیوتر و اطلاعات",
+        "گرافیک سه‌بعدی"
+      ],
+      "tags": [
+        "پرسپکتیو",
+        "رندر",
+        "projection",
+        "NDC"
+      ],
+      "description_fa": "نگاشت نقطه جلوی دوربین به مختصات دستگاه نرمال‌شده صفحه، همان‌طور که خط لوله گرافیکی انجام می‌دهد.",
+      "variables": [
+        {
+          "name": "x",
+          "label_fa": "مختصه x نسبت به دوربین",
+          "label_en": "Camera-space x",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "y",
+          "label_fa": "مختصه y نسبت به دوربین",
+          "label_en": "Camera-space y",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "depth",
+          "label_fa": "عمق جلوی دوربین d",
+          "label_en": "Depth in front",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "fov_deg",
+          "label_fa": "میدان دید عمودی (درجه)",
+          "label_en": "Vertical FOV",
+          "type": "number",
+          "unit": "deg",
+          "default": 90,
+          "required": true,
+          "min": 0,
+          "max": 179
+        },
+        {
+          "name": "aspect",
+          "label_fa": "نسبت تصویر (عرض/ارتفاع)",
+          "label_en": "Aspect ratio",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "near",
+          "label_fa": "صفحه نزدیک",
+          "label_en": "Near plane",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "far",
+          "label_fa": "صفحه دور",
+          "label_en": "Far plane",
+          "type": "number",
+          "unit": null,
+          "default": 11,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "x_ndc",
+          "label_fa": "x در NDC",
+          "label_en": "X Ndc",
+          "unit": null
+        },
+        {
+          "name": "y_ndc",
+          "label_fa": "y در NDC",
+          "label_en": "Y Ndc",
+          "unit": null
+        },
+        {
+          "name": "z_ndc",
+          "label_fa": "عمق در NDC",
+          "label_en": "Z Ndc",
+          "unit": null
+        }
+      ],
+      "formula_latex": "x_{ndc}=\\frac{f}{a}\\frac{x}{d},\\qquad f=\\frac{1}{\\tan(\\theta/2)}",
+      "compute_js": "module:apps/web/phase8-formulas.js#perspective_projection",
+      "steps_generator": "module:apps/web/phase8-formulas.js#perspective_projection",
+      "plot_spec": null,
+      "examples": [
+        {
+          "x": 1,
+          "y": 1,
+          "depth": 1,
+          "fov_deg": 90,
+          "aspect": 1,
+          "near": 1,
+          "far": 11
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "x": 1,
+            "y": 1,
+            "depth": 1,
+            "fov_deg": 90,
+            "aspect": 1,
+            "near": 1,
+            "far": 11
+          },
+          "expected": {
+            "x_ndc": 1,
+            "y_ndc": 1,
+            "z_ndc": -1
+          }
+        },
+        {
+          "input": {
+            "x": 0,
+            "y": 0,
+            "depth": 11,
+            "fov_deg": 90,
+            "aspect": 1,
+            "near": 1,
+            "far": 11
+          },
+          "expected": {
+            "x_ndc": 0,
+            "y_ndc": 0,
+            "z_ndc": 1
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "advanced",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "quaternion_axis_angle",
+      "name_fa": "کواترنیون از محور و زاویه",
+      "name_en": "Quaternion from Axis–Angle",
+      "category_path": [
+        "کامپیوتر و اطلاعات",
+        "گرافیک سه‌بعدی"
+      ],
+      "tags": [
+        "کواترنیون",
+        "چرخش بدون قفل",
+        "quaternion"
+      ],
+      "description_fa": "ساخت کواترنیون چرخش و اعمال آن روی یک بردار؛ نمایش استاندارد جهت‌گیری در موتورهای بازی و رباتیک.",
+      "variables": [
+        {
+          "name": "ax",
+          "label_fa": "مؤلفه x محور",
+          "label_en": "Axis x",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "ay",
+          "label_fa": "مؤلفه y محور",
+          "label_en": "Axis y",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "az",
+          "label_fa": "مؤلفه z محور",
+          "label_en": "Axis z",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "angle_deg",
+          "label_fa": "زاویه چرخش (درجه)",
+          "label_en": "Angle",
+          "type": "number",
+          "unit": "deg",
+          "default": 90,
+          "required": true
+        },
+        {
+          "name": "vx",
+          "label_fa": "مؤلفه x بردار",
+          "label_en": "Vector x",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "vy",
+          "label_fa": "مؤلفه y بردار",
+          "label_en": "Vector y",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "vz",
+          "label_fa": "مؤلفه z بردار",
+          "label_en": "Vector z",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "qx",
+          "label_fa": "qx",
+          "label_en": "Qx",
+          "unit": null
+        },
+        {
+          "name": "qy",
+          "label_fa": "qy",
+          "label_en": "Qy",
+          "unit": null
+        },
+        {
+          "name": "qz",
+          "label_fa": "qz",
+          "label_en": "Qz",
+          "unit": null
+        },
+        {
+          "name": "qw",
+          "label_fa": "qw",
+          "label_en": "Qw",
+          "unit": null
+        },
+        {
+          "name": "rotated_x",
+          "label_fa": "بردار چرخیده x",
+          "label_en": "Rotated X",
+          "unit": null
+        },
+        {
+          "name": "rotated_y",
+          "label_fa": "بردار چرخیده y",
+          "label_en": "Rotated Y",
+          "unit": null
+        },
+        {
+          "name": "rotated_z",
+          "label_fa": "بردار چرخیده z",
+          "label_en": "Rotated Z",
+          "unit": null
+        }
+      ],
+      "formula_latex": "q=\\big(\\hat{u}\\sin\\tfrac{\\theta}{2},\\; \\cos\\tfrac{\\theta}{2}\\big)",
+      "compute_js": "module:apps/web/phase8-formulas.js#quaternion_axis_angle",
+      "steps_generator": "module:apps/web/phase8-formulas.js#quaternion_axis_angle",
+      "plot_spec": null,
+      "examples": [
+        {
+          "ax": 0,
+          "ay": 0,
+          "az": 1,
+          "angle_deg": 90,
+          "vx": 1,
+          "vy": 0,
+          "vz": 0
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "ax": 0,
+            "ay": 0,
+            "az": 1,
+            "angle_deg": 90,
+            "vx": 1,
+            "vy": 0,
+            "vz": 0
+          },
+          "expected": {
+            "qx": 0,
+            "qy": 0,
+            "qz": 0.707107,
+            "qw": 0.707107,
+            "rotated_x": 0,
+            "rotated_y": 1,
+            "rotated_z": 0
+          }
+        },
+        {
+          "input": {
+            "ax": 0,
+            "ay": 1,
+            "az": 0,
+            "angle_deg": 180,
+            "vx": 1,
+            "vy": 0,
+            "vz": 0
+          },
+          "expected": {
+            "qy": 1,
+            "qw": 0,
+            "rotated_x": -1,
+            "rotated_y": 0,
+            "rotated_z": 0
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "advanced",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "image_psnr_mse",
+      "name_fa": "کیفیت تصویر: MSE و PSNR",
+      "name_en": "Image Quality: MSE & PSNR",
+      "category_path": [
+        "کامپیوتر و اطلاعات",
+        "پردازش تصویر و صدا"
+      ],
+      "tags": [
+        "کیفیت تصویر",
+        "فشرده‌سازی",
+        "PSNR"
+      ],
+      "description_fa": "سنجش اختلاف دو تصویر (یا دو بردار پیکسل) با میانگین مربع خطا و نسبت اوج سیگنال به نویز.",
+      "variables": [
+        {
+          "name": "original",
+          "label_fa": "پیکسل‌های اصل (با کاما)",
+          "label_en": "Original pixels",
+          "type": "text",
+          "unit": null,
+          "default": "0, 255",
+          "required": true
+        },
+        {
+          "name": "modified",
+          "label_fa": "پیکسل‌های تغییریافته (با کاما)",
+          "label_en": "Modified pixels",
+          "type": "text",
+          "unit": null,
+          "default": "0, 254",
+          "required": true
+        },
+        {
+          "name": "max_value",
+          "label_fa": "بیشینه مقدار پیکسل",
+          "label_en": "Max pixel value",
+          "type": "number",
+          "unit": null,
+          "default": 255,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mse",
+          "label_fa": "میانگین مربع خطا",
+          "label_en": "Mse",
+          "unit": null
+        },
+        {
+          "name": "rmse",
+          "label_fa": "ریشه میانگین مربع خطا",
+          "label_en": "Rmse",
+          "unit": null
+        },
+        {
+          "name": "psnr_db",
+          "label_fa": "PSNR (dB)",
+          "label_en": "Psnr Db",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\mathrm{PSNR}=10\\log_{10}\\frac{MAX^2}{MSE}",
+      "compute_js": "module:apps/web/phase8-formulas.js#image_psnr_mse",
+      "steps_generator": "module:apps/web/phase8-formulas.js#image_psnr_mse",
+      "plot_spec": null,
+      "examples": [
+        {
+          "original": "0, 255",
+          "modified": "0, 254",
+          "max_value": 255
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "original": "0, 255",
+            "modified": "0, 254",
+            "max_value": 255
+          },
+          "expected": {
+            "mse": 0.5,
+            "rmse": 0.707107
+          }
+        },
+        {
+          "input": {
+            "original": "10, 20",
+            "modified": "10, 20",
+            "max_value": 255
+          },
+          "expected": {
+            "mse": 0,
+            "psnr_db": 100
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "grayscale_histogram_stats",
+      "name_fa": "آمار و آنتروپی تصویر خاکستری",
+      "name_en": "Grayscale Statistics & Entropy",
+      "category_path": [
+        "کامپیوتر و اطلاعات",
+        "پردازش تصویر و صدا"
+      ],
+      "tags": [
+        "هیستوگرام",
+        "کنتراست",
+        "entropy"
+      ],
+      "description_fa": "روشنایی میانگین، کنتراست (انحراف معیار) و آنتروپی هیستوگرام یک برش از پیکسل‌های خاکستری.",
+      "variables": [
+        {
+          "name": "pixels",
+          "label_fa": "مقادیر پیکسل ۰ تا ۲۵۵ (با کاما)",
+          "label_en": "Pixel values 0–255",
+          "type": "text",
+          "unit": null,
+          "default": "0, 0, 255, 255",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mean",
+          "label_fa": "میانگین روشنایی",
+          "label_en": "Mean",
+          "unit": null
+        },
+        {
+          "name": "std_dev",
+          "label_fa": "انحراف معیار (کنتراست)",
+          "label_en": "Std Dev",
+          "unit": null
+        },
+        {
+          "name": "entropy_bits",
+          "label_fa": "آنتروپی (بیت)",
+          "label_en": "Entropy Bits",
+          "unit": null
+        },
+        {
+          "name": "dynamic_range",
+          "label_fa": "دامنه دینامیکی",
+          "label_en": "Dynamic Range",
+          "unit": null
+        },
+        {
+          "name": "pixel_count",
+          "label_fa": "تعداد پیکسل",
+          "label_en": "Pixel Count",
+          "unit": null
+        }
+      ],
+      "formula_latex": "H=-\\sum_i p_i \\log_2 p_i",
+      "compute_js": "module:apps/web/phase8-formulas.js#grayscale_histogram_stats",
+      "steps_generator": "module:apps/web/phase8-formulas.js#grayscale_histogram_stats",
+      "plot_spec": null,
+      "examples": [
+        {
+          "pixels": "0, 0, 255, 255"
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "pixels": "0, 0, 255, 255"
+          },
+          "expected": {
+            "mean": 127.5,
+            "std_dev": 127.5,
+            "entropy_bits": 1,
+            "dynamic_range": 255
+          }
+        },
+        {
+          "input": {
+            "pixels": "100, 100, 100"
+          },
+          "expected": {
+            "mean": 100,
+            "std_dev": 0,
+            "entropy_bits": 0,
+            "dynamic_range": 0
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "audio_file_size",
+      "name_fa": "حجم و بیت‌ریت صدای خام (PCM)",
+      "name_en": "Uncompressed Audio Size & Bitrate",
+      "category_path": [
+        "کامپیوتر و اطلاعات",
+        "پردازش تصویر و صدا"
+      ],
+      "tags": [
+        "صدا",
+        "نمونه‌برداری",
+        "PCM",
+        "bitrate"
+      ],
+      "description_fa": "حجم فایل صدای فشرده‌نشده از نرخ نمونه‌برداری، عمق بیت، کانال و مدت.",
+      "variables": [
+        {
+          "name": "sample_rate",
+          "label_fa": "نرخ نمونه‌برداری (Hz)",
+          "label_en": "Sample rate",
+          "type": "number",
+          "unit": null,
+          "default": 44100,
+          "required": true,
+          "min": 1
+        },
+        {
+          "name": "bit_depth",
+          "label_fa": "عمق بیت",
+          "label_en": "Bit depth",
+          "type": "number",
+          "unit": null,
+          "default": 16,
+          "required": true,
+          "min": 1,
+          "max": 64
+        },
+        {
+          "name": "channels",
+          "label_fa": "تعداد کانال",
+          "label_en": "Channels",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true,
+          "min": 1,
+          "max": 32
+        },
+        {
+          "name": "duration_sec",
+          "label_fa": "مدت (ثانیه)",
+          "label_en": "Duration (s)",
+          "type": "number",
+          "unit": "s",
+          "default": 60,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "bitrate_bps",
+          "label_fa": "بیت‌ریت (bit/s)",
+          "label_en": "Bitrate Bps",
+          "unit": null
+        },
+        {
+          "name": "size_bytes",
+          "label_fa": "حجم (بایت)",
+          "label_en": "Size Bytes",
+          "unit": null
+        },
+        {
+          "name": "size_mb",
+          "label_fa": "حجم (MB)",
+          "label_en": "Size Mb",
+          "unit": null
+        },
+        {
+          "name": "total_samples",
+          "label_fa": "تعداد نمونه در هر کانال",
+          "label_en": "Total Samples",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\text{bitrate}=f_s \\times \\text{bits} \\times \\text{channels}",
+      "compute_js": "module:apps/web/phase8-formulas.js#audio_file_size",
+      "steps_generator": "module:apps/web/phase8-formulas.js#audio_file_size",
+      "plot_spec": null,
+      "examples": [
+        {
+          "sample_rate": 44100,
+          "bit_depth": 16,
+          "channels": 2,
+          "duration_sec": 60
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "sample_rate": 44100,
+            "bit_depth": 16,
+            "channels": 2,
+            "duration_sec": 60
+          },
+          "expected": {
+            "bitrate_bps": 1411200,
+            "size_bytes": 10584000,
+            "size_mb": 10.584
+          }
+        },
+        {
+          "input": {
+            "sample_rate": 48000,
+            "bit_depth": 24,
+            "channels": 1,
+            "duration_sec": 10
+          },
+          "expected": {
+            "bitrate_bps": 1152000,
+            "size_bytes": 1440000
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "music_note_frequency",
+      "name_fa": "فرکانس نت از شماره MIDI",
+      "name_en": "Note Frequency from MIDI Number",
+      "category_path": [
+        "کامپیوتر و اطلاعات",
+        "موسیقی و رنگ"
+      ],
+      "tags": [
+        "موسیقی",
+        "کوک",
+        "MIDI",
+        "pitch"
+      ],
+      "description_fa": "فرکانس نت در کوک مساوی دوازده‌پرده‌ای؛ مبنا نت لا (A4 = ۴۴۰ هرتز، MIDI ۶۹).",
+      "variables": [
+        {
+          "name": "midi",
+          "label_fa": "شماره نت MIDI (۰ تا ۱۲۷)",
+          "label_en": "MIDI note number",
+          "type": "number",
+          "unit": null,
+          "default": 69,
+          "required": true,
+          "min": 0,
+          "max": 127
+        }
+      ],
+      "outputs": [
+        {
+          "name": "frequency_hz",
+          "label_fa": "فرکانس (Hz)",
+          "label_en": "Frequency Hz",
+          "unit": null
+        },
+        {
+          "name": "cents_from_a440",
+          "label_fa": "فاصله از A4 (سنت)",
+          "label_en": "Cents From A440",
+          "unit": null
+        },
+        {
+          "name": "octave",
+          "label_fa": "اکتاو",
+          "label_en": "Octave",
+          "unit": null
+        },
+        {
+          "name": "pitch_class",
+          "label_fa": "کلاس گام (۰=C)",
+          "label_en": "Pitch Class",
+          "unit": null
+        }
+      ],
+      "formula_latex": "f=440\\times 2^{(m-69)/12}",
+      "compute_js": "module:apps/web/phase8-formulas.js#music_note_frequency",
+      "steps_generator": "module:apps/web/phase8-formulas.js#music_note_frequency",
+      "plot_spec": null,
+      "examples": [
+        {
+          "midi": 69
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "midi": 69
+          },
+          "expected": {
+            "frequency_hz": 440,
+            "cents_from_a440": 0,
+            "octave": 4
+          }
+        },
+        {
+          "input": {
+            "midi": 60
+          },
+          "expected": {
+            "frequency_hz": 261.625565,
+            "cents_from_a440": -900,
+            "octave": 4,
+            "pitch_class": 0
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "rgb_color_convert",
+      "name_fa": "تبدیل رنگ RGB به HSL/HSV",
+      "name_en": "RGB to HSL/HSV & Hex",
+      "category_path": [
+        "کامپیوتر و اطلاعات",
+        "موسیقی و رنگ"
+      ],
+      "tags": [
+        "رنگ",
+        "RGB",
+        "HSL",
+        "hex"
+      ],
+      "description_fa": "فام، اشباع و روشنایی/ارزش یک رنگ RGB به‌همراه کد هگز آن برای وب.",
+      "variables": [
+        {
+          "name": "r",
+          "label_fa": "قرمز R (۰ تا ۲۵۵)",
+          "label_en": "Red",
+          "type": "number",
+          "unit": null,
+          "default": 255,
+          "required": true,
+          "min": 0,
+          "max": 255
+        },
+        {
+          "name": "g",
+          "label_fa": "سبز G (۰ تا ۲۵۵)",
+          "label_en": "Green",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true,
+          "min": 0,
+          "max": 255
+        },
+        {
+          "name": "b",
+          "label_fa": "آبی B (۰ تا ۲۵۵)",
+          "label_en": "Blue",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true,
+          "min": 0,
+          "max": 255
+        }
+      ],
+      "outputs": [
+        {
+          "name": "hue_deg",
+          "label_fa": "فام (درجه)",
+          "label_en": "Hue Deg",
+          "unit": null
+        },
+        {
+          "name": "saturation_hsl_pct",
+          "label_fa": "اشباع HSL (٪)",
+          "label_en": "Saturation Hsl Pct",
+          "unit": null
+        },
+        {
+          "name": "lightness_pct",
+          "label_fa": "روشنایی L (٪)",
+          "label_en": "Lightness Pct",
+          "unit": null
+        },
+        {
+          "name": "value_hsv_pct",
+          "label_fa": "ارزش V (٪)",
+          "label_en": "Value Hsv Pct",
+          "unit": null
+        },
+        {
+          "name": "hex",
+          "label_fa": "کد هگز",
+          "label_en": "Hex",
+          "unit": null
+        }
+      ],
+      "formula_latex": "H \\in [0,360),\\quad S,\\,L,\\,V \\in [0,100]\\%",
+      "compute_js": "module:apps/web/phase8-formulas.js#rgb_color_convert",
+      "steps_generator": "module:apps/web/phase8-formulas.js#rgb_color_convert",
+      "plot_spec": null,
+      "examples": [
+        {
+          "r": 255,
+          "g": 0,
+          "b": 0
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "r": 255,
+            "g": 0,
+            "b": 0
+          },
+          "expected": {
+            "hue_deg": 0,
+            "saturation_hsl_pct": 100,
+            "lightness_pct": 50,
+            "value_hsv_pct": 100,
+            "hex": "#FF0000"
+          }
+        },
+        {
+          "input": {
+            "r": 0,
+            "g": 255,
+            "b": 0
+          },
+          "expected": {
+            "hue_deg": 120,
+            "saturation_hsl_pct": 100,
+            "lightness_pct": 50,
+            "hex": "#00FF00"
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "wcag_contrast_ratio",
+      "name_fa": "نسبت کنتراست رنگ (WCAG)",
+      "name_en": "WCAG Colour Contrast Ratio",
+      "category_path": [
+        "کامپیوتر و اطلاعات",
+        "موسیقی و رنگ"
+      ],
+      "tags": [
+        "دسترسی‌پذیری",
+        "کنتراست",
+        "WCAG",
+        "accessibility"
+      ],
+      "description_fa": "خوانایی متن روی پس‌زمینه طبق استاندارد WCAG؛ برای متن عادی حداقل ۴.۵ و برای متن درشت ۳ لازم است.",
+      "variables": [
+        {
+          "name": "fg_r",
+          "label_fa": "قرمز متن",
+          "label_en": "Text red",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true,
+          "min": 0,
+          "max": 255
+        },
+        {
+          "name": "fg_g",
+          "label_fa": "سبز متن",
+          "label_en": "Text green",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true,
+          "min": 0,
+          "max": 255
+        },
+        {
+          "name": "fg_b",
+          "label_fa": "آبی متن",
+          "label_en": "Text blue",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true,
+          "min": 0,
+          "max": 255
+        },
+        {
+          "name": "bg_r",
+          "label_fa": "قرمز پس‌زمینه",
+          "label_en": "Background red",
+          "type": "number",
+          "unit": null,
+          "default": 255,
+          "required": true,
+          "min": 0,
+          "max": 255
+        },
+        {
+          "name": "bg_g",
+          "label_fa": "سبز پس‌زمینه",
+          "label_en": "Background green",
+          "type": "number",
+          "unit": null,
+          "default": 255,
+          "required": true,
+          "min": 0,
+          "max": 255
+        },
+        {
+          "name": "bg_b",
+          "label_fa": "آبی پس‌زمینه",
+          "label_en": "Background blue",
+          "type": "number",
+          "unit": null,
+          "default": 255,
+          "required": true,
+          "min": 0,
+          "max": 255
+        }
+      ],
+      "outputs": [
+        {
+          "name": "contrast_ratio",
+          "label_fa": "نسبت کنتراست",
+          "label_en": "Contrast Ratio",
+          "unit": null
+        },
+        {
+          "name": "luminance_fg",
+          "label_fa": "روشنایی نسبی متن",
+          "label_en": "Luminance Fg",
+          "unit": null
+        },
+        {
+          "name": "luminance_bg",
+          "label_fa": "روشنایی نسبی پس‌زمینه",
+          "label_en": "Luminance Bg",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\frac{L_1+0.05}{L_2+0.05}",
+      "compute_js": "module:apps/web/phase8-formulas.js#wcag_contrast_ratio",
+      "steps_generator": "module:apps/web/phase8-formulas.js#wcag_contrast_ratio",
+      "plot_spec": null,
+      "examples": [
+        {
+          "fg_r": 0,
+          "fg_g": 0,
+          "fg_b": 0,
+          "bg_r": 255,
+          "bg_g": 255,
+          "bg_b": 255
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "fg_r": 0,
+            "fg_g": 0,
+            "fg_b": 0,
+            "bg_r": 255,
+            "bg_g": 255,
+            "bg_b": 255
+          },
+          "expected": {
+            "contrast_ratio": 21,
+            "luminance_fg": 0,
+            "luminance_bg": 1
+          }
+        },
+        {
+          "input": {
+            "fg_r": 128,
+            "fg_g": 128,
+            "fg_b": 128,
+            "bg_r": 128,
+            "bg_g": 128,
+            "bg_b": 128
+          },
+          "expected": {
+            "contrast_ratio": 1
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "tempo_delay_times",
+      "name_fa": "زمان ضرب و تأخیر همگام با تمپو",
+      "name_en": "Tempo & Synced Delay Times",
+      "category_path": [
+        "کامپیوتر و اطلاعات",
+        "موسیقی و رنگ"
+      ],
+      "tags": [
+        "تمپو",
+        "BPM",
+        "delay",
+        "موسیقی"
+      ],
+      "description_fa": "مدت نت‌های سیاه، چنگ و دولاچنگ بر حسب میلی‌ثانیه برای تنظیم افکت دیلی روی ضرب آهنگ.",
+      "variables": [
+        {
+          "name": "bpm",
+          "label_fa": "تمپو (ضرب در دقیقه)",
+          "label_en": "Tempo (BPM)",
+          "type": "number",
+          "unit": null,
+          "default": 120,
+          "required": true,
+          "min": 1,
+          "max": 400
+        }
+      ],
+      "outputs": [
+        {
+          "name": "quarter_ms",
+          "label_fa": "دیرند نت سیاه (ms)",
+          "label_en": "Quarter Ms",
+          "unit": null
+        },
+        {
+          "name": "eighth_ms",
+          "label_fa": "نت چنگ (ms)",
+          "label_en": "Eighth Ms",
+          "unit": null
+        },
+        {
+          "name": "sixteenth_ms",
+          "label_fa": "دولاچنگ (ms)",
+          "label_en": "Sixteenth Ms",
+          "unit": null
+        },
+        {
+          "name": "dotted_eighth_ms",
+          "label_fa": "چنگ نقطه‌دار (ms)",
+          "label_en": "Dotted Eighth Ms",
+          "unit": null
+        },
+        {
+          "name": "beats_per_second",
+          "label_fa": "ضرب در ثانیه (Hz)",
+          "label_en": "Beats Per Second",
+          "unit": null
+        }
+      ],
+      "formula_latex": "t_{\\text{quarter}}=\\frac{60000}{\\mathrm{BPM}}",
+      "compute_js": "module:apps/web/phase8-formulas.js#tempo_delay_times",
+      "steps_generator": "module:apps/web/phase8-formulas.js#tempo_delay_times",
+      "plot_spec": null,
+      "examples": [
+        {
+          "bpm": 120
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "bpm": 120
+          },
+          "expected": {
+            "quarter_ms": 500,
+            "eighth_ms": 250,
+            "dotted_eighth_ms": 375,
+            "beats_per_second": 2
+          }
+        },
+        {
+          "input": {
+            "bpm": 60
+          },
+          "expected": {
+            "quarter_ms": 1000,
+            "eighth_ms": 500,
+            "dotted_eighth_ms": 750,
+            "beats_per_second": 1
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "rk4_decay_ode",
+      "name_fa": "حل عددی واپاشی با رانگه–کوتای مرتبه ۴",
+      "name_en": "RK4 for Exponential Decay ODE",
+      "category_path": [
+        "ریاضیات",
+        "محاسبات عددی"
+      ],
+      "tags": [
+        "معادله دیفرانسیل",
+        "رانگه کوتا",
+        "ODE",
+        "RK4"
+      ],
+      "description_fa": "حل گام‌به‌گام y′=−ky با روش RK4 و مقایسه مستقیم با جواب دقیق نمایی.",
+      "variables": [
+        {
+          "name": "y0",
+          "label_fa": "مقدار اولیه y₀",
+          "label_en": "Initial value",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "k",
+          "label_fa": "ثابت واپاشی k",
+          "label_en": "Decay constant",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "t_end",
+          "label_fa": "زمان پایانی",
+          "label_en": "End time",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "steps",
+          "label_fa": "تعداد گام",
+          "label_en": "Steps",
+          "type": "number",
+          "unit": null,
+          "default": 100,
+          "required": true,
+          "min": 1,
+          "max": 100000
+        }
+      ],
+      "outputs": [
+        {
+          "name": "y_rk4",
+          "label_fa": "تقریب RK4",
+          "label_en": "Y Rk4",
+          "unit": null
+        },
+        {
+          "name": "y_exact",
+          "label_fa": "جواب دقیق",
+          "label_en": "Y Exact",
+          "unit": null
+        },
+        {
+          "name": "abs_error",
+          "label_fa": "خطای مطلق",
+          "label_en": "Abs Error",
+          "unit": null
+        }
+      ],
+      "formula_latex": "y'=-ky,\\qquad y_{n+1}=y_n+\\frac{h}{6}(k_1+2k_2+2k_3+k_4)",
+      "compute_js": "module:apps/web/phase8-formulas.js#rk4_decay_ode",
+      "steps_generator": "module:apps/web/phase8-formulas.js#rk4_decay_ode",
+      "plot_spec": null,
+      "examples": [
+        {
+          "y0": 1,
+          "k": 1,
+          "t_end": 1,
+          "steps": 100
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "y0": 1,
+            "k": 1,
+            "t_end": 1,
+            "steps": 100
+          },
+          "expected": {
+            "y_exact": 0.367879,
+            "y_rk4": 0.367879
+          }
+        },
+        {
+          "input": {
+            "y0": 100,
+            "k": 0.5,
+            "t_end": 2,
+            "steps": 50
+          },
+          "expected": {
+            "y_exact": 36.787944
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "advanced",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "lagrange_interpolation",
+      "name_fa": "درون‌یابی لاگرانژ (سه نقطه)",
+      "name_en": "Lagrange Interpolation (3 Points)",
+      "category_path": [
+        "ریاضیات",
+        "محاسبات عددی"
+      ],
+      "tags": [
+        "درون‌یابی",
+        "چندجمله‌ای",
+        "interpolation"
+      ],
+      "description_fa": "چندجمله‌ای درجه دوی گذرنده از سه نقطه و مقدار آن در نقطه دلخواه.",
+      "variables": [
+        {
+          "name": "x1",
+          "label_fa": "x نقطه اول",
+          "label_en": "x₁",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "y1",
+          "label_fa": "y نقطه اول",
+          "label_en": "y₁",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "x2",
+          "label_fa": "x نقطه دوم",
+          "label_en": "x₂",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true
+        },
+        {
+          "name": "y2",
+          "label_fa": "y نقطه دوم",
+          "label_en": "y₂",
+          "type": "number",
+          "unit": null,
+          "default": 3,
+          "required": true
+        },
+        {
+          "name": "x3",
+          "label_fa": "x نقطه سوم",
+          "label_en": "x₃",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true
+        },
+        {
+          "name": "y3",
+          "label_fa": "y نقطه سوم",
+          "label_en": "y₃",
+          "type": "number",
+          "unit": null,
+          "default": 9,
+          "required": true
+        },
+        {
+          "name": "x_eval",
+          "label_fa": "نقطه ارزیابی x",
+          "label_en": "Evaluate at",
+          "type": "number",
+          "unit": null,
+          "default": 1.5,
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "interpolated_y",
+          "label_fa": "مقدار درون‌یابی‌شده P(x)",
+          "label_en": "Interpolated Y",
+          "unit": null
+        },
+        {
+          "name": "basis1",
+          "label_fa": "پایه لاگرانژ L₁(x)",
+          "label_en": "Basis1",
+          "unit": null
+        },
+        {
+          "name": "basis2",
+          "label_fa": "پایه لاگرانژ L₂(x)",
+          "label_en": "Basis2",
+          "unit": null
+        },
+        {
+          "name": "basis3",
+          "label_fa": "پایه لاگرانژ L₃(x)",
+          "label_en": "Basis3",
+          "unit": null
+        }
+      ],
+      "formula_latex": "P(x)=\\sum_i y_i \\prod_{j\\ne i} \\frac{x-x_j}{x_i-x_j}",
+      "compute_js": "module:apps/web/phase8-formulas.js#lagrange_interpolation",
+      "steps_generator": "module:apps/web/phase8-formulas.js#lagrange_interpolation",
+      "plot_spec": null,
+      "examples": [
+        {
+          "x1": 0,
+          "y1": 1,
+          "x2": 1,
+          "y2": 3,
+          "x3": 2,
+          "y3": 9,
+          "x_eval": 1.5
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "x1": 0,
+            "y1": 1,
+            "x2": 1,
+            "y2": 3,
+            "x3": 2,
+            "y3": 9,
+            "x_eval": 1.5
+          },
+          "expected": {
+            "interpolated_y": 5.5
+          }
+        },
+        {
+          "input": {
+            "x1": 1,
+            "y1": 1,
+            "x2": 2,
+            "y2": 4,
+            "x3": 3,
+            "y3": 9,
+            "x_eval": 2.5
+          },
+          "expected": {
+            "interpolated_y": 6.25
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "intermediate",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "newton_sqrt_iterations",
+      "name_fa": "جذرگیری با روش نیوتن",
+      "name_en": "Square Root by Newton Iteration",
+      "category_path": [
+        "ریاضیات",
+        "محاسبات عددی"
+      ],
+      "tags": [
+        "ریشه‌یابی",
+        "نیوتن",
+        "جذر",
+        "newton method"
+      ],
+      "description_fa": "همان الگوریتم بابلی: میانگین حدس و a تقسیم بر حدس، با همگرایی درجه دو.",
+      "variables": [
+        {
+          "name": "a",
+          "label_fa": "عدد زیر رادیکال a",
+          "label_en": "Radicand a",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "x0",
+          "label_fa": "حدس اولیه x₀",
+          "label_en": "Initial guess",
+          "type": "number",
+          "unit": null,
+          "default": 1,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "iterations",
+          "label_fa": "تعداد تکرار",
+          "label_en": "Iterations",
+          "type": "number",
+          "unit": null,
+          "default": 5,
+          "required": true,
+          "min": 1,
+          "max": 1000
+        }
+      ],
+      "outputs": [
+        {
+          "name": "sqrt_approx",
+          "label_fa": "تقریب جذر",
+          "label_en": "Sqrt Approx",
+          "unit": null
+        },
+        {
+          "name": "true_sqrt",
+          "label_fa": "جذر ماشین",
+          "label_en": "True Sqrt",
+          "unit": null
+        },
+        {
+          "name": "abs_error",
+          "label_fa": "خطای مطلق",
+          "label_en": "Abs Error",
+          "unit": null
+        },
+        {
+          "name": "residual",
+          "label_fa": "باقیمانده x²−a",
+          "label_en": "Residual",
+          "unit": null
+        }
+      ],
+      "formula_latex": "x_{n+1}=\\frac{1}{2}\\Big(x_n+\\frac{a}{x_n}\\Big)",
+      "compute_js": "module:apps/web/phase8-formulas.js#newton_sqrt_iterations",
+      "steps_generator": "module:apps/web/phase8-formulas.js#newton_sqrt_iterations",
+      "plot_spec": null,
+      "examples": [
+        {
+          "a": 2,
+          "x0": 1,
+          "iterations": 5
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "a": 2,
+            "x0": 1,
+            "iterations": 5
+          },
+          "expected": {
+            "sqrt_approx": 1.414214,
+            "true_sqrt": 1.414214
+          }
+        },
+        {
+          "input": {
+            "a": 9,
+            "x0": 1,
+            "iterations": 6
+          },
+          "expected": {
+            "sqrt_approx": 3
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "fuzzy_membership",
+      "name_fa": "توابع عضویت مثلثی و گاوسی",
+      "name_en": "Triangular & Gaussian Membership",
+      "category_path": [
+        "کامپیوتر و اطلاعات",
+        "منطق فازی"
+      ],
+      "tags": [
+        "فازی",
+        "عضویت",
+        "fuzzy",
+        "membership"
+      ],
+      "description_fa": "درجه تعلق مقدار x به یک مجموعه فازی با دو شکل کلاسیک تابع عضویت.",
+      "variables": [
+        {
+          "name": "x",
+          "label_fa": "مقدار ورودی x",
+          "label_en": "Input x",
+          "type": "number",
+          "unit": null,
+          "default": 5,
+          "required": true
+        },
+        {
+          "name": "a",
+          "label_fa": "پای چپ مثلث a",
+          "label_en": "Left foot a",
+          "type": "number",
+          "unit": null,
+          "default": 0,
+          "required": true
+        },
+        {
+          "name": "b",
+          "label_fa": "قله مثلث / مرکز گاوسی b",
+          "label_en": "Peak / centre b",
+          "type": "number",
+          "unit": null,
+          "default": 5,
+          "required": true
+        },
+        {
+          "name": "c",
+          "label_fa": "پای راست مثلث c",
+          "label_en": "Right foot c",
+          "type": "number",
+          "unit": null,
+          "default": 10,
+          "required": true
+        },
+        {
+          "name": "sigma",
+          "label_fa": "پهنای گاوسی σ",
+          "label_en": "Gaussian σ",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "triangular",
+          "label_fa": "عضویت مثلثی",
+          "label_en": "Triangular",
+          "unit": null
+        },
+        {
+          "name": "gaussian",
+          "label_fa": "عضویت گاوسی",
+          "label_en": "Gaussian",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\mu_{\\triangle}(x)=\\max\\Big(0,\\min\\big(\\tfrac{x-a}{b-a},\\tfrac{c-x}{c-b}\\big)\\Big)",
+      "compute_js": "module:apps/web/phase8-formulas.js#fuzzy_membership",
+      "steps_generator": "module:apps/web/phase8-formulas.js#fuzzy_membership",
+      "plot_spec": null,
+      "examples": [
+        {
+          "x": 5,
+          "a": 0,
+          "b": 5,
+          "c": 10,
+          "sigma": 2
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "x": 5,
+            "a": 0,
+            "b": 5,
+            "c": 10,
+            "sigma": 2
+          },
+          "expected": {
+            "triangular": 1,
+            "gaussian": 1
+          }
+        },
+        {
+          "input": {
+            "x": 2.5,
+            "a": 0,
+            "b": 5,
+            "c": 10,
+            "sigma": 2
+          },
+          "expected": {
+            "triangular": 0.5,
+            "gaussian": 0.457833
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "fuzzy_tnorm_operations",
+      "name_fa": "عملگرهای فازی (t-نرم و t-هم‌نرم)",
+      "name_en": "Fuzzy t-Norm & t-Conorm",
+      "category_path": [
+        "کامپیوتر و اطلاعات",
+        "منطق فازی"
+      ],
+      "tags": [
+        "فازی",
+        "اشتراک و اجتماع",
+        "t-norm"
+      ],
+      "description_fa": "تعمیم «و» و «یا» منطقی روی درجه‌های عضویت: مینیمم، ضرب، ماکزیمم و جمع احتمالاتی.",
+      "variables": [
+        {
+          "name": "mu_a",
+          "label_fa": "عضویت اول μA (۰ تا ۱)",
+          "label_en": "μA",
+          "type": "number",
+          "unit": null,
+          "default": 0.7,
+          "required": true,
+          "min": 0,
+          "max": 1
+        },
+        {
+          "name": "mu_b",
+          "label_fa": "عضویت دوم μB (۰ تا ۱)",
+          "label_en": "μB",
+          "type": "number",
+          "unit": null,
+          "default": 0.4,
+          "required": true,
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "and_min",
+          "label_fa": "و (مینیمم)",
+          "label_en": "And Min",
+          "unit": null
+        },
+        {
+          "name": "and_product",
+          "label_fa": "و (ضرب)",
+          "label_en": "And Product",
+          "unit": null
+        },
+        {
+          "name": "or_max",
+          "label_fa": "یا (ماکزیمم)",
+          "label_en": "Or Max",
+          "unit": null
+        },
+        {
+          "name": "or_probabilistic",
+          "label_fa": "یا (جمع احتمالاتی)",
+          "label_en": "Or Probabilistic",
+          "unit": null
+        },
+        {
+          "name": "not_a",
+          "label_fa": "متمم اول",
+          "label_en": "Not A",
+          "unit": null
+        }
+      ],
+      "formula_latex": "a \\oplus b = a + b - ab",
+      "compute_js": "module:apps/web/phase8-formulas.js#fuzzy_tnorm_operations",
+      "steps_generator": "module:apps/web/phase8-formulas.js#fuzzy_tnorm_operations",
+      "plot_spec": null,
+      "examples": [
+        {
+          "mu_a": 0.7,
+          "mu_b": 0.4
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "mu_a": 0.7,
+            "mu_b": 0.4
+          },
+          "expected": {
+            "and_min": 0.4,
+            "and_product": 0.28,
+            "or_max": 0.7,
+            "or_probabilistic": 0.82,
+            "not_a": 0.3
+          }
+        },
+        {
+          "input": {
+            "mu_a": 1,
+            "mu_b": 0
+          },
+          "expected": {
+            "and_min": 0,
+            "and_product": 0,
+            "or_max": 1,
+            "or_probabilistic": 1,
+            "not_a": 0
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "fuzzy_centroid_defuzz",
+      "name_fa": "غیرفازی‌سازی به روش مرکز ثقل",
+      "name_en": "Centroid Defuzzification",
+      "category_path": [
+        "کامپیوتر و اطلاعات",
+        "منطق فازی"
+      ],
+      "tags": [
+        "فازی",
+        "کنترلر فازی",
+        "defuzzification"
+      ],
+      "description_fa": "تبدیل خروجی فازی (چند تک‌مقدار با درجه عضویت) به یک عدد قطعی با میانگین وزن‌دار.",
+      "variables": [
+        {
+          "name": "singletons",
+          "label_fa": "مقادیر خروجی (با کاما)",
+          "label_en": "Output singletons",
+          "type": "text",
+          "unit": null,
+          "default": "10, 20, 30",
+          "required": true
+        },
+        {
+          "name": "weights",
+          "label_fa": "درجه‌های عضویت (با کاما)",
+          "label_en": "Membership degrees",
+          "type": "text",
+          "unit": null,
+          "default": "0.2, 0.5, 0.3",
+          "required": true
+        }
+      ],
+      "outputs": [
+        {
+          "name": "centroid",
+          "label_fa": "خروجی قطعی (مرکز ثقل)",
+          "label_en": "Centroid",
+          "unit": null
+        },
+        {
+          "name": "weight_sum",
+          "label_fa": "مجموع وزن‌ها",
+          "label_en": "Weight Sum",
+          "unit": null
+        },
+        {
+          "name": "max_membership_value",
+          "label_fa": "خروجی با بیشترین عضویت",
+          "label_en": "Max Membership Value",
+          "unit": null
+        }
+      ],
+      "formula_latex": "z^{*}=\\frac{\\sum \\mu_i z_i}{\\sum \\mu_i}",
+      "compute_js": "module:apps/web/phase8-formulas.js#fuzzy_centroid_defuzz",
+      "steps_generator": "module:apps/web/phase8-formulas.js#fuzzy_centroid_defuzz",
+      "plot_spec": null,
+      "examples": [
+        {
+          "singletons": "10, 20, 30",
+          "weights": "0.2, 0.5, 0.3"
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "singletons": "10, 20, 30",
+            "weights": "0.2, 0.5, 0.3"
+          },
+          "expected": {
+            "centroid": 21,
+            "weight_sum": 1,
+            "max_membership_value": 20
+          }
+        },
+        {
+          "input": {
+            "singletons": "0, 100",
+            "weights": "1, 1"
+          },
+          "expected": {
+            "centroid": 50,
+            "weight_sum": 2
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "basic",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "queue_mm1",
+      "name_fa": "صف M/M/1 و قانون لیتل",
+      "name_en": "M/M/1 Queue & Little’s Law",
+      "category_path": [
+        "ریاضیات",
+        "نظریه صف"
+      ],
+      "tags": [
+        "صف",
+        "زمان انتظار",
+        "queue",
+        "M/M/1"
+      ],
+      "description_fa": "میانگین تعداد مشتری و زمان انتظار در ساده‌ترین صف تک‌خدمت‌دهنده با ورود پواسنی.",
+      "variables": [
+        {
+          "name": "lambda",
+          "label_fa": "نرخ ورود λ (در واحد زمان)",
+          "label_en": "Arrival rate λ",
+          "type": "number",
+          "unit": null,
+          "default": 8,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "mu",
+          "label_fa": "نرخ خدمت μ (در واحد زمان)",
+          "label_en": "Service rate μ",
+          "type": "number",
+          "unit": null,
+          "default": 10,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "utilization",
+          "label_fa": "بهره‌برداری ρ",
+          "label_en": "Utilization",
+          "unit": null
+        },
+        {
+          "name": "mean_number",
+          "label_fa": "میانگین تعداد در سامانه L",
+          "label_en": "Mean Number",
+          "unit": null
+        },
+        {
+          "name": "mean_queue",
+          "label_fa": "میانگین طول صف Lq",
+          "label_en": "Mean Queue",
+          "unit": null
+        },
+        {
+          "name": "mean_wait",
+          "label_fa": "میانگین کل زمان W",
+          "label_en": "Mean Wait",
+          "unit": null
+        },
+        {
+          "name": "mean_queue_wait",
+          "label_fa": "میانگین انتظار در صف Wq",
+          "label_en": "Mean Queue Wait",
+          "unit": null
+        },
+        {
+          "name": "prob_empty",
+          "label_fa": "احتمال خالی بودن P₀",
+          "label_en": "Prob Empty",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\rho=\\frac{\\lambda}{\\mu},\\qquad W=\\frac{1}{\\mu-\\lambda},\\qquad L=\\lambda W",
+      "compute_js": "module:apps/web/phase8-formulas.js#queue_mm1",
+      "steps_generator": "module:apps/web/phase8-formulas.js#queue_mm1",
+      "plot_spec": null,
+      "examples": [
+        {
+          "lambda": 8,
+          "mu": 10
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "lambda": 8,
+            "mu": 10
+          },
+          "expected": {
+            "utilization": 0.8,
+            "mean_number": 4,
+            "mean_queue": 3.2,
+            "mean_wait": 0.5,
+            "mean_queue_wait": 0.4,
+            "prob_empty": 0.2
+          }
+        },
+        {
+          "input": {
+            "lambda": 2,
+            "mu": 4
+          },
+          "expected": {
+            "utilization": 0.5,
+            "mean_number": 1,
+            "mean_queue": 0.5,
+            "mean_wait": 0.5,
+            "mean_queue_wait": 0.25
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "intermediate",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "erlang_b_blocking",
+      "name_fa": "احتمال مسدودی ارلانگ B",
+      "name_en": "Erlang B Blocking Probability",
+      "category_path": [
+        "ریاضیات",
+        "نظریه صف"
+      ],
+      "tags": [
+        "ارلانگ",
+        "ظرفیت تماس",
+        "Erlang B",
+        "blocking"
+      ],
+      "description_fa": "احتمال رد شدن درخواست وقتی همه N خدمت‌دهنده مشغول‌اند؛ مبنای ظرفیت‌سنجی مراکز تماس و شبکه‌ها.",
+      "variables": [
+        {
+          "name": "traffic_erlang",
+          "label_fa": "ترافیک عرضه‌شده A (ارلانگ)",
+          "label_en": "Offered traffic A",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "servers",
+          "label_fa": "تعداد خدمت‌دهنده N",
+          "label_en": "Servers N",
+          "type": "number",
+          "unit": null,
+          "default": 2,
+          "required": true,
+          "min": 1,
+          "max": 10000
+        }
+      ],
+      "outputs": [
+        {
+          "name": "blocking_probability",
+          "label_fa": "احتمال مسدودی",
+          "label_en": "Blocking Probability",
+          "unit": null
+        },
+        {
+          "name": "carried_traffic",
+          "label_fa": "ترافیک عبوری (ارلانگ)",
+          "label_en": "Carried Traffic",
+          "unit": null
+        },
+        {
+          "name": "occupancy",
+          "label_fa": "اشغال میانگین هر خدمت‌دهنده",
+          "label_en": "Occupancy",
+          "unit": null
+        }
+      ],
+      "formula_latex": "B(0)=1,\\qquad B(n)=\\frac{A\\,B(n-1)}{n+A\\,B(n-1)}",
+      "compute_js": "module:apps/web/phase8-formulas.js#erlang_b_blocking",
+      "steps_generator": "module:apps/web/phase8-formulas.js#erlang_b_blocking",
+      "plot_spec": null,
+      "examples": [
+        {
+          "traffic_erlang": 1,
+          "servers": 1
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "traffic_erlang": 1,
+            "servers": 1
+          },
+          "expected": {
+            "blocking_probability": 0.5,
+            "carried_traffic": 0.5,
+            "occupancy": 0.5
+          }
+        },
+        {
+          "input": {
+            "traffic_erlang": 2,
+            "servers": 2
+          },
+          "expected": {
+            "blocking_probability": 0.4,
+            "carried_traffic": 1.2,
+            "occupancy": 0.6
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "advanced",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "initial_bearing_distance",
+      "name_fa": "سمت اولیه و فاصله دایره عظیمه",
+      "name_en": "Initial Bearing & Great-Circle Distance",
+      "category_path": [
+        "زمین و محیط",
+        "ناوبری"
+      ],
+      "tags": [
+        "ناوبری",
+        "سمت",
+        "GPS",
+        "bearing"
+      ],
+      "description_fa": "جهت شروع حرکت روی کوتاه‌ترین مسیر سطح زمین بین دو مختصات جغرافیایی و طول آن مسیر.",
+      "variables": [
+        {
+          "name": "lat1",
+          "label_fa": "عرض مبدأ (درجه)",
+          "label_en": "Start latitude",
+          "type": "number",
+          "unit": "deg",
+          "default": 0,
+          "required": true,
+          "min": -90,
+          "max": 90
+        },
+        {
+          "name": "lon1",
+          "label_fa": "طول مبدأ (درجه)",
+          "label_en": "Start longitude",
+          "type": "number",
+          "unit": "deg",
+          "default": 0,
+          "required": true,
+          "min": -180,
+          "max": 180
+        },
+        {
+          "name": "lat2",
+          "label_fa": "عرض مقصد (درجه)",
+          "label_en": "End latitude",
+          "type": "number",
+          "unit": "deg",
+          "default": 0,
+          "required": true,
+          "min": -90,
+          "max": 90
+        },
+        {
+          "name": "lon2",
+          "label_fa": "طول مقصد (درجه)",
+          "label_en": "End longitude",
+          "type": "number",
+          "unit": "deg",
+          "default": 90,
+          "required": true,
+          "min": -180,
+          "max": 180
+        }
+      ],
+      "outputs": [
+        {
+          "name": "bearing_deg",
+          "label_fa": "سمت اولیه (درجه)",
+          "label_en": "Bearing Deg",
+          "unit": null
+        },
+        {
+          "name": "back_azimuth_deg",
+          "label_fa": "سمت بازگشت تقریبی",
+          "label_en": "Back Azimuth Deg",
+          "unit": null
+        },
+        {
+          "name": "distance_km",
+          "label_fa": "فاصله دایره عظیمه (km)",
+          "label_en": "Distance Km",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\theta=\\operatorname{atan2}(\\sin\\Delta\\lambda\\cos\\varphi_2,\\; \\cos\\varphi_1\\sin\\varphi_2-\\sin\\varphi_1\\cos\\varphi_2\\cos\\Delta\\lambda)",
+      "compute_js": "module:apps/web/phase8-formulas.js#initial_bearing_distance",
+      "steps_generator": "module:apps/web/phase8-formulas.js#initial_bearing_distance",
+      "plot_spec": null,
+      "examples": [
+        {
+          "lat1": 0,
+          "lon1": 0,
+          "lat2": 0,
+          "lon2": 90
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "lat1": 0,
+            "lon1": 0,
+            "lat2": 0,
+            "lon2": 90
+          },
+          "expected": {
+            "bearing_deg": 90,
+            "back_azimuth_deg": 270
+          }
+        },
+        {
+          "input": {
+            "lat1": 0,
+            "lon1": 0,
+            "lat2": 90,
+            "lon2": 0
+          },
+          "expected": {
+            "bearing_deg": 0
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "intermediate",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "destination_point",
+      "name_fa": "نقطه مقصد از سمت و فاصله",
+      "name_en": "Destination Point from Bearing & Distance",
+      "category_path": [
+        "زمین و محیط",
+        "ناوبری"
+      ],
+      "tags": [
+        "ناوبری",
+        "مختصات مقصد",
+        "destination"
+      ],
+      "description_fa": "مختصاتی که پس از پیمودن فاصله مشخص در سمت داده‌شده روی سطح زمین به آن می‌رسیم.",
+      "variables": [
+        {
+          "name": "lat",
+          "label_fa": "عرض شروع (درجه)",
+          "label_en": "Start latitude",
+          "type": "number",
+          "unit": "deg",
+          "default": 0,
+          "required": true,
+          "min": -90,
+          "max": 90
+        },
+        {
+          "name": "lon",
+          "label_fa": "طول شروع (درجه)",
+          "label_en": "Start longitude",
+          "type": "number",
+          "unit": "deg",
+          "default": 0,
+          "required": true,
+          "min": -180,
+          "max": 180
+        },
+        {
+          "name": "bearing_deg",
+          "label_fa": "سمت حرکت (درجه)",
+          "label_en": "Bearing",
+          "type": "number",
+          "unit": "deg",
+          "default": 90,
+          "required": true
+        },
+        {
+          "name": "distance_km",
+          "label_fa": "فاصله (km)",
+          "label_en": "Distance",
+          "type": "number",
+          "unit": "km",
+          "default": 10007.543398,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "dest_lat",
+          "label_fa": "عرض مقصد (درجه)",
+          "label_en": "Dest Lat",
+          "unit": null
+        },
+        {
+          "name": "dest_lon",
+          "label_fa": "طول مقصد (درجه)",
+          "label_en": "Dest Lon",
+          "unit": null
+        },
+        {
+          "name": "angular_distance_deg",
+          "label_fa": "فاصله زاویه‌ای (درجه)",
+          "label_en": "Angular Distance Deg",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\varphi_2=\\arcsin(\\sin\\varphi_1\\cos\\delta+\\cos\\varphi_1\\sin\\delta\\cos\\theta)",
+      "compute_js": "module:apps/web/phase8-formulas.js#destination_point",
+      "steps_generator": "module:apps/web/phase8-formulas.js#destination_point",
+      "plot_spec": null,
+      "examples": [
+        {
+          "lat": 0,
+          "lon": 0,
+          "bearing_deg": 90,
+          "distance_km": 10007.543398
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "lat": 0,
+            "lon": 0,
+            "bearing_deg": 90,
+            "distance_km": 10007.543398
+          },
+          "expected": {
+            "dest_lat": 0,
+            "dest_lon": 90
+          }
+        },
+        {
+          "input": {
+            "lat": 0,
+            "lon": 0,
+            "bearing_deg": 0,
+            "distance_km": 10007.543398
+          },
+          "expected": {
+            "dest_lat": 90
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "intermediate",
+      "version": "1.0.0",
+      "validated": true
+    },
+    {
+      "id": "wind_triangle",
+      "name_fa": "مثلث باد (هدینگ و سرعت زمینی)",
+      "name_en": "Wind Triangle (Heading & Ground Speed)",
+      "category_path": [
+        "زمین و محیط",
+        "ناوبری"
+      ],
+      "tags": [
+        "هوانوردی",
+        "باد",
+        "wind triangle",
+        "heading"
+      ],
+      "description_fa": "هدینگی که خلبان باید بگیرد تا روی مسیر مطلوب بماند و سرعت واقعی نسبت به زمین.",
+      "variables": [
+        {
+          "name": "course_deg",
+          "label_fa": "مسیر مطلوب (درجه)",
+          "label_en": "Desired course",
+          "type": "number",
+          "unit": "deg",
+          "default": 90,
+          "required": true
+        },
+        {
+          "name": "tas",
+          "label_fa": "سرعت هوایی واقعی TAS",
+          "label_en": "True airspeed",
+          "type": "number",
+          "unit": null,
+          "default": 100,
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "wind_from_deg",
+          "label_fa": "جهت وزش باد از (درجه)",
+          "label_en": "Wind from",
+          "type": "number",
+          "unit": "deg",
+          "default": 270,
+          "required": true
+        },
+        {
+          "name": "wind_speed",
+          "label_fa": "سرعت باد (هم‌واحد TAS)",
+          "label_en": "Wind speed",
+          "type": "number",
+          "unit": null,
+          "default": 20,
+          "required": true,
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "heading_deg",
+          "label_fa": "هدینگ لازم (درجه)",
+          "label_en": "Heading Deg",
+          "unit": null
+        },
+        {
+          "name": "ground_speed",
+          "label_fa": "سرعت زمینی",
+          "label_en": "Ground Speed",
+          "unit": null
+        },
+        {
+          "name": "correction_deg",
+          "label_fa": "زاویه تصحیح باد (درجه)",
+          "label_en": "Correction Deg",
+          "unit": null
+        },
+        {
+          "name": "along_track_wind",
+          "label_fa": "مؤلفه باد روی مسیر (+ یعنی باد موافق)",
+          "label_en": "Along Track Wind",
+          "unit": null
+        }
+      ],
+      "formula_latex": "\\sin(\\mathrm{WCA})=-\\frac{W}{V}\\sin(\\text{wind}-\\text{course})",
+      "compute_js": "module:apps/web/phase8-formulas.js#wind_triangle",
+      "steps_generator": "module:apps/web/phase8-formulas.js#wind_triangle",
+      "plot_spec": null,
+      "examples": [
+        {
+          "course_deg": 90,
+          "tas": 100,
+          "wind_from_deg": 270,
+          "wind_speed": 20
+        }
+      ],
+      "tests": [
+        {
+          "input": {
+            "course_deg": 90,
+            "tas": 100,
+            "wind_from_deg": 270,
+            "wind_speed": 20
+          },
+          "expected": {
+            "heading_deg": 90,
+            "ground_speed": 120,
+            "correction_deg": 0
+          }
+        },
+        {
+          "input": {
+            "course_deg": 0,
+            "tas": 100,
+            "wind_from_deg": 270,
+            "wind_speed": 20
+          },
+          "expected": {
+            "heading_deg": 348.463041,
+            "ground_speed": 97.97959
+          }
+        }
+      ],
+      "references": [],
+      "scientific_review_status": "not_reviewed",
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "difficulty": "advanced",
       "version": "1.0.0",
       "validated": true
     }

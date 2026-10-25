@@ -7,7 +7,7 @@
  *
  * Bump CACHE_VERSION on every release; old caches are removed on activate.
  */
-const CACHE_VERSION = 'v3.2.0';
+const CACHE_VERSION = 'v4.0.0';
 const SHELL_CACHE = `se-shell-${CACHE_VERSION}`;
 const ASSET_CACHE = `se-assets-${CACHE_VERSION}`;
 const DATA_CACHE = `se-data-${CACHE_VERSION}`;
@@ -22,6 +22,13 @@ const SHELL_URLS = [
   './tools/',
   './tools/units/',
   './tools/chemistry/',
+  './tools/graph/',
+  './tools/matrix/',
+  './tools/statistics/',
+  './tools/assistant/',
+  './practice/',
+  './learn/',
+  './workspace/',
   './periodic-table/',
   './constants/',
   './history/',

@@ -47,6 +47,21 @@ export const CATEGORY_EN: Record<string, string> = {
   کیهانشناسی: 'Cosmology',
   زلزله: 'Seismology',
   'جو و اقلیم': 'Atmosphere & climate',
+  'بهینه‌سازی': 'Optimisation',
+  'توابع خاص': 'Special functions',
+  'نظریه بازی': 'Game theory',
+  'سری زمانی': 'Time series',
+  'محاسبات عددی': 'Numerical methods',
+  'نظریه صف': 'Queueing theory',
+  'پردازش سیگنال': 'Signal processing',
+  'قابلیت اطمینان': 'Reliability engineering',
+  رباتیک: 'Robotics & orbits',
+  'یادگیری ماشین': 'Machine learning',
+  'گرافیک سه‌بعدی': '3D graphics',
+  'پردازش تصویر و صدا': 'Image & audio processing',
+  'موسیقی و رنگ': 'Music & colour',
+  'منطق فازی': 'Fuzzy logic',
+  ناوبری: 'Navigation',
 };
 
 /** Translate one Persian segment, falling back to the original string. */

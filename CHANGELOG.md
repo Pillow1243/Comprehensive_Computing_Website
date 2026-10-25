@@ -4,6 +4,30 @@ All notable changes to SolveEverything are documented here. This project follows
 
 ## [Unreleased]
 
+## [4.0.0] - 2026-10-25
+
+### Added
+- **51 new solvers (366 total, 856 declared cases)** in an eighth content pack (`apps/web/phase8-formulas.js`). Every one of the 29 catalog sections now has implemented formulas for the first time: optimisation (EOQ, gradient descent, fractional knapsack), special functions (Γ, B, erf, Bessel J₀/J₁), signal processing (SNR, Nyquist/aliasing, moving-average filter, DFT), machine learning (logistic loss, confusion-matrix metrics, softmax/cross-entropy, cosine similarity), game theory (mixed Nash, expected payoffs), reliability (series/parallel/k-out-of-n, Weibull, MTBF/availability), time series (SMA forecast, exponential smoothing, autocorrelation), robotics & orbits (2-link FK/IK, differential drive, Hohmann transfer), 3D graphics (Euler rotation, perspective projection, quaternions), image & audio (PSNR, histogram entropy, PCM size), music & colour (MIDI pitch, RGB↔HSL/hex, WCAG contrast, tempo delays), numerical methods (RK4, Lagrange interpolation, Newton sqrt), fuzzy logic (membership, t-norms, centroid defuzzification), queueing (M/M/1, Erlang B), navigation (bearing, destination point, wind triangle) and extra discrete maths (Eulerian numbers, derangements, Stirling/Bell).
+- **Graphing calculator** (`/tools/graph/`): up to three functions on a pan/zoom Canvas with live derivative curves, integral shading, root markers and point analysis, powered by a TypeScript port of the safe expression parser (`lib/expression.ts`, implicit multiplication included).
+- **Matrix lab** (`/tools/matrix/`): add/subtract/multiply/transpose/inverse, determinant, trace, rank, Frobenius norm, 2×2 eigenvalues and Gaussian-elimination linear solves up to 4×4 in the UI (library supports 6×6).
+- **Statistics & data lab** (`/tools/statistics/`): paste-a-dataset descriptive statistics, Freedman–Diaconis histogram with mean marker, IQR outliers, and two-column scatter + least-squares regression with prediction.
+- **Word-problem assistant** (`/tools/assistant/`): offline natural-language matching that extracts numbers (Latin/Persian digits and number words), applies hand-checked keyword rules for 19 classic problem shapes, falls back to smart search, and deep-links into the solver with inputs prefilled.
+- **Smart search library** (`lib/smart-search.ts`): Persian/English synonym expansion, bounded edit-distance typo tolerance, id subsequence matching, match reasons and “did you mean” suggestions — all on-device.
+- **Practice & quiz** (`/practice/`): twelve exact-answer question generators with bilingual worked explanations, XP, levels, answer streaks and a deterministic daily challenge (seeded by local calendar day).
+- **Learning paths** (`/learn/`): eight curated ladders through the registry with progress derived from local history/completed steps.
+- **Workspace** (`/workspace/`): pin calculations from history, add notes, and export the whole desk as one Markdown report. Calculation exports gain **Markdown and LaTeX reports** next to the existing JSON/CSV.
+- Related-formula recommendations are now score-based (`lib/related.ts`).
+
+### Changed
+- Catalog section mapping is exact: engineering/CS/Earth sections now list only their core topics while the fifteen new topics own their sections; section counts sum exactly to the 366 implemented formulas with no double counting.
+- Lazy-JS budget raised 500 → 560 KB gzip for the new worker solvers and seven lazy tool pages; the first-load budget (≤ 200 KB) is unchanged and still met.
+- Client store migrated to persist version 4 (practice progress, learning progress, workspace); existing settings/history/bookmarks are preserved by migration.
+- App, package and service-worker cache version bumped to **4.0.0**; the service worker precaches the seven new routes.
+
+### Tested
+- Registry validation: 366 formulas, 856 declared cases, 29/29 catalog sections implemented, manifests in sync.
+- `npm test`: 1,584 Vitest + 1,235 Node tests pass; static export builds all new routes; JS budgets pass.
+
 ## [3.2.0] - 2026-10-25
 
 ### Added

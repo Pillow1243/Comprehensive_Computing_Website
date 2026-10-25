@@ -5,7 +5,7 @@ import { I18nProvider } from '@/lib/i18n';
 import { ThemeProvider } from '@/lib/theme';
 import { ToolCard } from '@/components/tool-card';
 import { FormulaDescription } from '@/components/formula-description';
-import { TOOLS } from '@/lib/tools';
+import { getTool } from '@/lib/tools';
 import { getFormula } from '@/lib/formulas';
 import { useAppStore } from '@/lib/store';
 
@@ -19,7 +19,7 @@ const renderWithProviders = (ui: ReactNode) => render(<Providers>{ui}</Providers
 
 describe('ToolCard', () => {
   it('links to the tool route and renders Persian copy by default', () => {
-    renderWithProviders(<ToolCard tool={TOOLS[0]} />);
+    renderWithProviders(<ToolCard tool={getTool('units')!} />);
     const link = screen.getByRole('link');
     expect(link.getAttribute('href')).toContain('/tools/units');
     expect(screen.getByText('تبدیل یکا')).toBeInTheDocument();
@@ -27,7 +27,7 @@ describe('ToolCard', () => {
   });
 
   it('renders the compact variant with the same destination', () => {
-    renderWithProviders(<ToolCard tool={TOOLS[2]} compact />);
+    renderWithProviders(<ToolCard tool={getTool('periodic-table')!} compact />);
     const link = screen.getByRole('link');
     expect(link.getAttribute('href')).toContain('/periodic-table');
     expect(screen.getByText('جدول تناوبی')).toBeInTheDocument();
@@ -35,7 +35,7 @@ describe('ToolCard', () => {
 
   it('switches to English copy', () => {
     useAppStore.setState({ settings: { ...useAppStore.getState().settings, language: 'en' } });
-    renderWithProviders(<ToolCard tool={TOOLS[1]} />);
+    renderWithProviders(<ToolCard tool={getTool('chemistry')!} />);
     expect(screen.getByText('Molar mass')).toBeInTheDocument();
     useAppStore.setState({ settings: { ...useAppStore.getState().settings, language: 'fa' } });
   });
