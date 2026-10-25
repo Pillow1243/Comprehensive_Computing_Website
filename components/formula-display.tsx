@@ -8,6 +8,11 @@ import { useI18n } from '@/lib/i18n';
 
 export interface FormulaDisplayProps {
   latex: string;
+  /**
+   * KaTeX markup rendered at build time (see `lib/latex.ts`). When present the
+   * formula is part of the first paint and the browser never downloads KaTeX.
+   */
+  html?: string;
   displayMode?: boolean;
   className?: string;
   /** Hide the copy/expand chrome for dense lists. */
@@ -15,46 +20,27 @@ export interface FormulaDisplayProps {
 }
 
 /**
- * KaTeX renderer with the mobile overflow problem solved (requirement 2.6):
+ * Formula surface with the mobile overflow problem solved (requirement 2.6):
  * horizontal scroll with snap, a full-screen expander for long formulas, and
  * long-press-to-copy. LaTeX itself always stays LTR.
+ *
+ * The markup is rendered at build time and passed in, so this component only
+ * adds the interaction chrome and never pulls a math renderer into the bundle.
  */
-export function FormulaDisplay({ latex, displayMode = true, className, compact = false }: FormulaDisplayProps) {
+export function FormulaDisplay({
+  latex,
+  html: prerenderedHtml,
+  displayMode = true,
+  className,
+  compact = false,
+}: FormulaDisplayProps) {
   const { t } = useI18n();
   const [expanded, setExpanded] = useState(false);
   const pressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const [html, setHtml] = useState<string | null>(null);
-
-  // KaTeX (~45 KB gzip) and its stylesheet are fetched on demand, so neither
-  // the library nor 23 KB of KaTeX CSS sits on the critical path of pages that
-  // never render a formula.
-  useEffect(() => {
-    let cancelled = false;
-    void import('katex/dist/katex.min.css');
-    import('katex')
-      .then((module) => {
-        if (cancelled) return;
-        const katex = module.default ?? module;
-        try {
-          setHtml(
-            katex.renderToString(latex, {
-              displayMode,
-              throwOnError: false,
-              strict: 'ignore',
-              trust: false,
-              output: 'html',
-            }),
-          );
-        } catch {
-          setHtml(null);
-        }
-      })
-      .catch(() => !cancelled && setHtml(null));
-    return () => {
-      cancelled = true;
-    };
-  }, [latex, displayMode]);
+  // Pages that statically export their formulas pass the build-time markup in;
+  // nothing else needs KaTeX, so the renderer is not imported at all any more.
+  const html = prerenderedHtml || null;
 
   useEffect(() => {
     if (!expanded) return;

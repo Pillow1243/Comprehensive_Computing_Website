@@ -78,7 +78,17 @@ const readQueryInputs = (formula: Formula): Record<string, string> | null => {
   return touched ? base : null;
 };
 
-export function FormulaSolver({ formula }: { formula: Formula }) {
+export function FormulaSolver({
+  formula,
+  formulaHtml,
+  description,
+}: {
+  formula: Formula;
+  /** Build-time KaTeX markup for the hero (see `lib/latex.ts`). */
+  formulaHtml?: string;
+  /** Build-time Persian summary, so the hero is complete on the first paint. */
+  description?: string;
+}) {
   const { t, lang } = useI18n();
   const { keyboardOpen } = useVisualViewport();
   const settings = useAppStore((state) => state.settings);
@@ -420,10 +430,10 @@ export function FormulaSolver({ formula }: { formula: Formula }) {
           </p>
           <h2 className="text-headline-small font-semibold text-on-surface">{formulaName(formula, lang)}</h2>
           <p className="mt-1 text-body-medium text-on-surface-variant">
-            <FormulaDescription formula={formula} />
+            <FormulaDescription formula={formula} initialText={description} />
           </p>
           <div className="mt-3">
-            <FormulaDisplay latex={formula.formula_latex} />
+            <FormulaDisplay latex={formula.formula_latex} html={formulaHtml} />
           </div>
         </section>
 
