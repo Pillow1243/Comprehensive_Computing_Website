@@ -177,6 +177,12 @@ try {
             const node = items[1]?.node ?? items[0]?.node;
             return node ? `LCP element ${String(node.snippet ?? node.selector ?? '').slice(0, 200)}` : 'LCP element n/a';
           })(),
+          (() => {
+            const timings = (lhr.audits['user-timings']?.details?.items ?? [])
+              .filter((item) => String(item.name ?? '').startsWith('LCPDIAG'))
+              .map((item) => item.name.replace('LCPDIAG ', ''));
+            return timings.length ? `LCP probe ${timings.slice(-2).join(' || ')}` : '';
+          })(),
           blocking.length ? `render-blocking ${blocking.join(' | ')}` : '',
           mainThread.length ? `main thread ${mainThread.join(' | ')}` : '',
           slowest.length ? `largest responses ${slowest.join(' | ')}` : '',

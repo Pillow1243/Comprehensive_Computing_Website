@@ -20,6 +20,33 @@ function StoreHydrator() {
   return null;
 }
 
+function LcpProbe() {
+  useEffect(() => {
+    if (typeof PerformanceObserver === 'undefined') return;
+    try {
+      const observer = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        const last = entries[entries.length - 1] as PerformanceEntry & {
+          element?: Element | null;
+          size?: number;
+        };
+        const el = last.element;
+        const label = el
+          ? `${el.tagName.toLowerCase()}#${el.id}.${String(el.className).slice(0, 48)} "${(el.textContent ?? '').trim().slice(0, 40)}"`
+          : 'no-element';
+        performance.measure(`LCPDIAG ${Math.round(last.startTime)}ms size=${Math.round(last.size ?? 0)} ${label}`, {
+          start: last.startTime,
+          end: last.startTime,
+        });
+      });
+      observer.observe({ type: 'largest-contentful-paint', buffered: true });
+    } catch {
+      /* not supported */
+    }
+  }, []);
+  return null;
+}
+
 function NetworkWatcher({ onChange }: { onChange: (state: NetworkState) => void }) {
   useEffect(() => {
     const update = () =>
@@ -88,6 +115,7 @@ export function Providers({ children }: { children: ReactNode }) {
               <StoreHydrator />
               <NetworkWatcher onChange={setNetwork} />
               <WebVitalsReporter />
+      <LcpProbe />
               <ServiceWorkerManager />
               {children}
               <Toaster />
