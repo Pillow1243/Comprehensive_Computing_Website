@@ -1,9 +1,9 @@
 {
   "name": "solve-everything",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "private": false,
   "type": "module",
-  "description": "SolveEverything v2 \u2014 offline-first, Material 3 scientific formula solver (Next.js static export)",
+  "description": "SolveEverything v3 \u2014 offline-first scientific formula solver, unit converter, periodic table and constants reference (Next.js static export)",
   "scripts": {
     "predev": "npm run build:workers && npm run build:index",
     "dev": "next dev --hostname 0.0.0.0",

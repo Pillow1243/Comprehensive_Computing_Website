@@ -2,6 +2,10 @@
 // Runtime solvers are trusted module functions; this registry never evaluates source strings.
 import {PHASE1_FORMULAS} from './phase1-formulas.js';
 import {PHASE2_FORMULAS} from './phase2-formulas.js';
+import {PHASE3_FORMULAS} from './phase3-formulas.js';
+import {PHASE4_FORMULAS} from './phase4-formulas.js';
+import {PHASE5_FORMULAS} from './phase5-formulas.js';
+import {PHASE6_FORMULAS} from './phase6-formulas.js';
 import {EXTRA_TESTS} from './extra-tests.js';
 const N=(name,label_fa,label_en,unit,def,opts={})=>({name,label_fa,label_en,type:opts.type||'number',unit:unit||null,default:def,required:true,min:opts.min,max:opts.max,step:opts.step});
 const out=(v,steps)=>({values:v,steps});
@@ -170,12 +174,18 @@ export const FORMULAS=[
   compute({a,b,c,d}){const det=a*d-b*c,tr=a+d,disc=tr*tr-4*det;let vals={determinant:r(det),trace:tr};let s=[`det = ${a}×${d} − ${b}×${c} = ${r(det)}`];if(det!==0){vals.inverse=`[[${r(d/det)}, ${r(-b/det)}], [${r(-c/det)}, ${r(a/det)}]]`;s.push(`A⁻¹ = (1/${r(det)}) × [[${d}, ${-b}], [${-c}, ${a}]] = ${vals.inverse}`);}if(disc>=0){vals.eigenvalues=`${r((tr+Math.sqrt(disc))/2)}, ${r((tr-Math.sqrt(disc))/2)}`;s.push(`مقادیر ویژه: λ = ${vals.eigenvalues}`);}return out(vals,s);}},
  ...PHASE1_FORMULAS,
  ...PHASE2_FORMULAS,
+ ...PHASE3_FORMULAS,
+ ...PHASE4_FORMULAS,
+ ...PHASE5_FORMULAS,
+ ...PHASE6_FORMULAS,
 ];
 
 // Complete schema metadata while keeping executable solvers as trusted module functions.
-const phase1Ids=new Set(PHASE1_FORMULAS.map(formula=>formula.id));
-const phase2Ids=new Set(PHASE2_FORMULAS.map(formula=>formula.id));
-function moduleFileFor(id){ if(phase1Ids.has(id))return 'phase1-formulas.js'; if(phase2Ids.has(id))return 'phase2-formulas.js'; return 'registry.js'; }
+const moduleFiles=new Map();
+for(const [file,pack] of [['phase1-formulas.js',PHASE1_FORMULAS],['phase2-formulas.js',PHASE2_FORMULAS],['phase3-formulas.js',PHASE3_FORMULAS],['phase4-formulas.js',PHASE4_FORMULAS],['phase5-formulas.js',PHASE5_FORMULAS],['phase6-formulas.js',PHASE6_FORMULAS]]){
+  for(const formula of pack) moduleFiles.set(formula.id,file);
+}
+function moduleFileFor(id){ return moduleFiles.get(id) || 'registry.js'; }
 for (const formula of FORMULAS) {
   // Every formula must ship at least two automated cases (see docs/FORMULA_TEMPLATE.md).
   const extra=EXTRA_TESTS[formula.id];

@@ -5,7 +5,7 @@
 [![CI](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/ci.yml/badge.svg)](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/ci.yml)
 [![GitHub Pages](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/deploy-pages.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-2.0.0-informational.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-3.0.0-informational.svg)](CHANGELOG.md)
 [![CodeQL](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/codeql.yml/badge.svg)](https://github.com/Pillow1243/Comprehensive_Computing_Website/actions/workflows/codeql.yml)
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Pillow1243/Comprehensive_Computing_Website/badge)](https://securityscorecards.dev/viewer/?uri=github.com/Pillow1243/Comprehensive_Computing_Website)
 ![PWA](https://img.shields.io/badge/PWA-installable%20%7C%20offline-ready-7c5cff)
@@ -13,7 +13,7 @@
 
 **Solve any equation, step by step.** A Persian/English client-first scientific calculator for mathematics, physics, chemistry, engineering, statistics, and finance—built to work offline and deploy as a static site.
 
-**Live demo:** [Pillow1243.github.io/Comprehensive_Computing_Website](https://Pillow1243.github.io/Comprehensive_Computing_Website/) · **Status:** v2.0.0 · **Implemented:** 155 formula solvers with 430 declared, automatically verified test cases.
+**Live demo:** [Pillow1243.github.io/Comprehensive_Computing_Website](https://Pillow1243.github.io/Comprehensive_Computing_Website/) · **Status:** v3.0.0 · **Implemented:** 289 formula solvers with 702 declared, automatically verified test cases, plus a unit converter (13 categories, 95 units), a molar-mass tool, an interactive periodic table and a physical-constants reference.
 
 > The GitHub Pages workflow is ready, but the repository owner must select **Settings → Pages → GitHub Actions** and deploy from `main` before the live URL is available. See [Deployment](docs/DEPLOYMENT.md).
 
@@ -39,11 +39,11 @@ No build step is needed to try only the original PWA: `python3 -m http.server 80
 
 | Area | Available now | Scope / limitations |
 |---|---|---|
-| Formula solvers | 155 client-side formulas across core math, geometry, calculus, statistics, physics, chemistry, engineering, finance, health and computer science | The 500+ broad scientific catalog remains a roadmap target; see `ROADMAP.md`. |
+| Formula solvers | 289 client-side formulas across mathematics, physics, chemistry, engineering, finance, computer science, health, astronomy and Earth science | The 500+ broad scientific catalog remains a roadmap target; see `ROADMAP.md`. |
 | Steps and plots | Human-readable derivation steps, KaTeX rendering with text fallback, dynamic 2D Canvas plots | Advanced 3D, full symbolic CAS, and general-purpose plotting are future work. |
-| Tools | Safe scientific expression calculator, numeric derivative/integral/root tools, unit converter, practice quiz | The unit table is useful but not yet a complete dimensional-analysis system. |
+| Tools | Unit converter (13 categories, 95 units), molar-mass/composition analyser (parentheses + hydrates), interactive 118-element periodic table, physical-constants reference, safe expression calculator, numeric derivative/integral/root tools and a practice quiz | The unit table is useful but not yet a complete dimensional-analysis system. |
 | Persistence | Local history, bookmarks, shareable formula links, print/PDF | No sign-in or server-side user history in the static Pages build. |
-| Languages and devices | Persian/English toggle, RTL/LTR, seven mobile-first breakpoints, safe-area padding, touch targets | Arabic localization and exhaustive device/browser certification are planned. |
+| Languages and devices | Persian/English/Arabic strings, RTL/LTR, seven mobile-first breakpoints, safe-area padding, touch targets | Full Arabic copy review and exhaustive device/browser certification are planned. |
 | Offline | Installable PWA; client calculations work without an API | Symbolic differentiation and future heavy solvers require the optional API. |
 | API | FastAPI + SymPy prototype, CORS allow-list, health/solver endpoints | Deploy separately; Pages cannot run Python, PostgreSQL, Redis, or background workers. |
 
@@ -79,11 +79,11 @@ db/schema.sql                   PostgreSQL schema for future hosted features
 ## Run checks and build the Pages export
 
 ```bash
-npm run validate-registry     # 155 formulas, 430 cases, 29 catalog sections, manifests in sync
-npm run test:unit             # 690 Vitest tests (7 files: registry, engine, validation, utils, components, solver flow, compute client)
-npm test                      # test:unit + 596 Node registry/API/security assertions
-npm run build                 # Next static export → out/ (162 pages)
-npm run budget                # gzip JavaScript budgets: 192.3 KB home / 200, 20.6 KB formula page / 100
+npm run validate-registry     # 289 formulas, 702 cases, 29 catalog sections, manifests in sync
+npm run test:unit             # 1 252 Vitest tests (9 files: registry, engine, validation, utils, tools data, tools UI, components, solver flow, compute client)
+npm test                      # test:unit + 1 002 Node registry/API/security assertions
+npm run build                 # Next static export → out/ (301 pages)
+npm run budget                # gzip JavaScript budgets: ≤200 KB home, ≤100 KB formula page, ≤500 KB total
 npm run test:all              # validate → all tests → build → budget
 npx playwright install chromium
 npm run test:e2e:ci           # 79 flows across desktop + 7 Android profiles

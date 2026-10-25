@@ -11,13 +11,17 @@ const sectionMatches={
   sec_04:f=>f.category_path?.[1]==='حساب دیفرانسیل',
   sec_05:f=>f.category_path?.[1]==='جبر خطی',
   sec_06:f=>f.category_path?.[1]==='آمار و احتمال',
+  sec_07:f=>f.category_path?.[1]==='ریاضیات گسسته',
+  sec_13:f=>['زمین و محیط','زیست و سلامت'].includes(f.category_path?.[0]),
+  sec_14:f=>f.category_path?.[0]==='کامپیوتر و اطلاعات',
   sec_10:f=>f.category_path?.[0]==='فیزیک',
   sec_11:f=>f.category_path?.[0]==='شیمی',
   sec_12:f=>f.category_path?.[0]==='مهندسی',
   sec_19:f=>f.category_path?.[0]==='مالی و اقتصاد',
+  sec_24:f=>f.category_path?.[0]==='نجوم و فضا',
 };
 
-catalog.version='1.2.0';
+catalog.version='2.1.0';
 catalog.schema_version='1.0.0';
 catalog.implemented_formula_ids=FORMULAS.map(formula=>formula.id);
 catalog.implemented_count=FORMULAS.length;

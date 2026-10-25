@@ -8,13 +8,14 @@ import { FormulaCard } from '@/components/formula-card';
 import { SearchField } from '@/components/search-field';
 import { CATEGORIES, rankedSearch, type Difficulty } from '@/lib/formulas';
 import { useI18n } from '@/lib/i18n';
+import { categorySegment } from '@/lib/category-names';
 import { useAppStore } from '@/lib/store';
 import { debounce } from '@/lib/utils';
 
 const levels: Array<'all' | Difficulty> = ['all', 'basic', 'intermediate', 'advanced'];
 
 export default function SearchPage() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const [query, setQuery] = useState('');
   const [debounced, setDebounced] = useState('');
   const [category, setCategory] = useState<string>('all');
@@ -58,7 +59,7 @@ export default function SearchPage() {
           </Chip>
           {CATEGORIES.map((item) => (
             <Chip key={item.id} selected={category === item.id} onClick={() => setCategory(item.id)}>
-              {item.fa}
+              {categorySegment(item.fa, lang)}
             </Chip>
           ))}
         </div>

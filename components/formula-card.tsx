@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { Bookmark, BookmarkCheck, ChevronLeft, ChevronRight } from 'lucide-react';
 import { toast } from 'sonner';
 import { CategoryIcon } from '@/components/icons';
-import { categoryMeta, formulaDescription, formulaName, type FormulaMeta } from '@/lib/formulas';
+import { categoryMeta, formulaName, type FormulaMeta } from '@/lib/formulas';
+import { FormulaDescription } from '@/components/formula-description';
 import { useI18n } from '@/lib/i18n';
 import { useAppStore } from '@/lib/store';
 import { cn, haptic } from '@/lib/utils';
@@ -22,6 +23,7 @@ export function FormulaCard({ formula, compact = false }: { formula: FormulaMeta
     <div className="group relative">
       <Link
         href={`/formula/${formula.id}/`}
+        prefetch={false}
         className={cn(
           'flex items-center gap-3 rounded-xl border border-outline-variant bg-surface-container p-3.5 pe-12',
           'transition-colors hover:bg-surface-container-high focus-visible:bg-surface-container-high',
@@ -45,7 +47,7 @@ export function FormulaCard({ formula, compact = false }: { formula: FormulaMeta
           </span>
           {!compact && (
             <span className="mt-0.5 line-clamp-2 block text-body-small text-on-surface-variant">
-              {formulaDescription(formula, lang)}
+              <FormulaDescription formula={formula} />
             </span>
           )}
         </span>

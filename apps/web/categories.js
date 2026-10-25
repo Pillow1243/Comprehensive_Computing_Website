@@ -7,4 +7,6 @@ export const CATEGORIES=[
  {id:'finance',fa:'مالی و اقتصاد',en:'Finance',icon:'💰',children:['بهره و وام','سرمایه‌گذاری']},
  {id:'cs',fa:'کامپیوتر و اطلاعات',en:'CS & Information',icon:'💻',children:['نظریه اطلاعات','ترکیبیات']},
  {id:'health',fa:'زیست و سلامت',en:'Bio & Health',icon:'🧬',children:['سلامت','رشد و اپیدمی']},
+ {id:'astronomy',fa:'نجوم و فضا',en:'Astronomy & Space',icon:'🔭',children:['حرکت مداری','کیهان‌شناسی']},
+ {id:'earth',fa:'زمین و محیط',en:'Earth & Environment',icon:'🌍',children:['جو و اقلیم','زلزله']},
 ];

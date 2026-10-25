@@ -10,6 +10,7 @@ import { EmptyState } from '@/components/ui/states';
 import { CATEGORIES, categoryMeta, difficultyCounts, formulasInCategory } from '@/lib/formulas';
 import { rankedSearch, type Difficulty } from '@/lib/formulas';
 import { useI18n } from '@/lib/i18n';
+import { categorySegment } from '@/lib/category-names';
 import { useAppStore } from '@/lib/store';
 import { cn, haptic } from '@/lib/utils';
 
@@ -154,7 +155,7 @@ export default function CategoriesPage() {
                       return (
                         <div key={child}>
                           <p className="mb-1.5 text-label-medium font-medium uppercase tracking-wide text-on-surface-variant">
-                            {child}
+                            {categorySegment(child, lang)}
                           </p>
                           <div className="space-y-1.5">
                             {childFormulas.map((formula) => (

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { ArrowLeft, Search, Settings, Sigma } from 'lucide-react';
+import { ArrowLeft, Search, Settings, Sigma, Wrench } from 'lucide-react';
 import { cn, haptic } from '@/lib/utils';
 import { useI18n } from '@/lib/i18n';
 import { useAppStore } from '@/lib/store';
@@ -13,6 +13,11 @@ const titles: Record<string, string> = {
   '/search': 'search',
   '/history': 'history',
   '/settings': 'settings',
+  '/tools': 'tools',
+  '/tools/units': 'unitConverter',
+  '/tools/chemistry': 'molarMass',
+  '/periodic-table': 'periodicTable',
+  '/constants': 'constantsRef',
 };
 
 /**
@@ -73,6 +78,13 @@ export function TopAppBar() {
             </Link>
             <div className="flex-1" />
             <Link
+              href="/tools"
+              aria-label={t('tools')}
+              className="state-layer flex h-12 w-12 items-center justify-center rounded-full text-on-surface-variant"
+            >
+              <Wrench className="h-6 w-6" aria-hidden="true" />
+            </Link>
+            <Link
               href="/search"
               aria-label={t('search')}
               className="state-layer flex h-12 w-12 items-center justify-center rounded-full text-on-surface-variant"
@@ -98,6 +110,13 @@ export function TopAppBar() {
               <ArrowLeft className="h-6 w-6 rtl:rotate-180" aria-hidden="true" />
             </button>
             <h1 className="flex-1 truncate pe-2 text-title-large text-on-surface">{title}</h1>
+            <Link
+              href="/tools"
+              aria-label={t('tools')}
+              className="state-layer flex h-12 w-12 items-center justify-center rounded-full text-on-surface-variant"
+            >
+              <Wrench className="h-6 w-6" aria-hidden="true" />
+            </Link>
             <Link
               href="/search"
               aria-label={t('search')}

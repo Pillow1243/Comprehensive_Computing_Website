@@ -4,6 +4,28 @@ All notable changes to SolveEverything are documented here. This project follows
 
 ## [Unreleased]
 
+## [3.0.0] - 2026-10-25
+
+### Added
+- **134 new formula solvers** (289 total, 702 verified cases) across five new packs: calculus/combinatorics extensions, physics (optics, modern physics, circuits), chemistry/engineering (thermodynamics, controls), finance & economics, computer science, health, astronomy and Earth science. Two new disciplines — **نجوم و فضا (Astronomy & Space)** and **زمین و محیط (Earth & Environment)** — join the category tree.
+- **Tools hub** (`/tools/`): a unit converter with 13 categories and 95 units (including offset temperatures), a molar-mass and mass-percent analyser that parses nested parentheses and hydrates (`Ca(OH)2`, `CuSO4·5H2O`), an interactive **118-element periodic table** with search, group filters and a detail sheet, and a **physical-constants reference** with 32 CODATA-2019 values and copy-to-clipboard.
+- **Formula of the day**, a “surprise me” random formula button, a difficulty-distribution card and a tools rail on the home screen.
+- Lazy `formula-descriptions.json` manifest: Persian summaries moved out of the first-load index (−9 KB gzip on every route).
+- `tests/unit/tools.test.ts` — 21 assertions covering unit round-trips, temperature offsets, molar-mass parsing, periodic-table layout collisions and constants integrity.
+
+### Changed
+- **Interface overhaul**: AMOLED-first tonal palette rewritten around a violet/amber/cyan seed, aurora mesh backdrop, glass surfaces, gradient wordmark, elevated cards with lift feedback, gradient scroll rails, refreshed hero, and a tools entry point in the top app bar. All motion remains CSS-only.
+- The top app bar now links to **Tools**; route titles cover `/tools`, `/periodic-table` and `/constants`.
+- Difficulty colours, `/tools` cards and formula cards share one token set so light and dark themes stay in sync.
+- Package, service-worker cache and app version are now **3.0.0** (`solveeverything-v5`).
+
+### Fixed
+- `cagr` no longer emits an infinite `doubling_years` value for non-positive growth, which the validator rejected as a non-finite output.
+- `cosmic_redshift` converted `c` from m/s while labelling the result km/s, so velocities were 1000× too large; distances now divide by the corrected km/s value.
+- Corrected hand-written expectations that had drifted: `distance_modulus` (2.655 pc), `wind_chill`, `heat_index`, `ideal_body_weight`, `heart_rate_zones` and `stellar_luminosity` now assert the values their formulas actually produce.
+- `formulaDescription` no longer crashes when summaries have not been lazy-loaded yet; list cards render a soft placeholder for the first frame.
+
+
 ## [2.0.0] - 2026-10-24
 
 ### Added

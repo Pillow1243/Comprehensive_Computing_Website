@@ -23,6 +23,7 @@ import { toast } from 'sonner';
 import { Button, IconButton } from '@/components/ui/button';
 import { Chip } from '@/components/ui/chip';
 import { FormulaDisplay } from '@/components/formula-display';
+import { FormulaDescription } from '@/components/formula-description';
 import { FormulaInput } from '@/components/formula-input';
 import { DynamicPlot, type TrianglePatch } from '@/components/dynamic-plot';
 import { MathKeyboard } from '@/components/math-keyboard';
@@ -32,7 +33,6 @@ import { ConfirmDialog } from '@/components/ui/dialog';
 import { computeFormula } from '@/lib/compute-client';
 import {
   formulaName,
-  formulaDescription,
   relatedFormulas,
   type Formula,
 } from '@/lib/formulas';
@@ -409,7 +409,9 @@ export function FormulaSolver({ formula }: { formula: Formula }) {
             </span>
           </p>
           <h2 className="text-headline-small font-semibold text-on-surface">{formulaName(formula, lang)}</h2>
-          <p className="mt-1 text-body-medium text-on-surface-variant">{formulaDescription(formula, lang)}</p>
+          <p className="mt-1 text-body-medium text-on-surface-variant">
+            <FormulaDescription formula={formula} />
+          </p>
           <div className="mt-3">
             <FormulaDisplay latex={formula.formula_latex} />
           </div>
