@@ -160,6 +160,7 @@ try {
           `TBT ${ms('total-blocking-time')} ms`,
           `CLS ${(lhr.audits['cumulative-layout-shift']?.numericValue ?? 0).toFixed(3)}`,
           lcpNode ? `LCP element ${String(lcpNode.snippet ?? lcpNode.selector ?? '').slice(0, 160)}` : '',
+          `LCP audit ${JSON.stringify(lhr.audits['largest-contentful-paint-element']?.details ?? null).slice(0, 320)}`,
           blocking.length ? `render-blocking ${blocking.join(' | ')}` : '',
           mainThread.length ? `main thread ${mainThread.join(' | ')}` : '',
           slowest.length ? `largest responses ${slowest.join(' | ')}` : '',
