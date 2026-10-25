@@ -15,6 +15,7 @@ import { EmptyState, ErrorState } from '@/components/ui/states';
 import { Skeleton } from '@/components/ui/skeleton';
 import { FormulaErrorBoundary } from '@/components/formula-error-boundary';
 import { FormulaDisplay } from '@/components/formula-display';
+import { PageTransition } from '@/components/page-transition';
 import { renderLatex } from '@/lib/latex';
 import { Button } from '@/components/ui/button';
 import { OfflineBanner } from '@/components/offline-banner';
@@ -253,6 +254,18 @@ describe('FormulaErrorBoundary', () => {
     expect(screen.getByText('این فرمول بارگذاری نشد')).toBeInTheDocument();
     expect(document.body.textContent).not.toContain('secret stack detail');
     spy.mockRestore();
+  });
+});
+
+describe('PageTransition', () => {
+  it('does not fade the very first paint (it would delay the LCP)', () => {
+    const { container } = renderWithProviders(
+      <PageTransition>
+        <p>محتوا</p>
+      </PageTransition>,
+    );
+    expect(container.querySelector('.anim-page-in')).toBeNull();
+    expect(container.textContent).toContain('محتوا');
   });
 });
 
